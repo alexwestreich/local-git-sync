@@ -623,9 +623,9 @@ appTemplate:
             position2:
               position2:
                 container: tabbedcontainer1
-                row: .nan
+                row: 1
                 col: 6
-                height: .nan
+                height: 1
                 width: 2
             createdAt: 2020-09-12T17:07:39.942Z
             updatedAt: 2020-09-18T20:31:48.878Z
@@ -1682,7 +1682,7 @@ appTemplate:
               position2:
                 container: tabbedcontainer1
                 row: 1
-                height: .nan
+                height: 8
                 width: 12
             createdAt: 2020-09-15T20:54:29.849Z
             updatedAt: 2020-09-18T20:34:55.098Z
