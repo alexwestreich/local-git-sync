@@ -1606,7 +1606,7 @@ appTemplate:
                 - customButtonName: Edit
                 - columnMappersRenderAsHTML:
                     ordered: []
-                - pageSize: 14
+                - pageSize: 9
                 - useDynamicColumnSettings: false
                 - actionButtonPosition: left
                 - bulkUpdateAction: ''
@@ -1689,7 +1689,7 @@ appTemplate:
                 height: 8
                 width: 12
             createdAt: 2020-09-15T20:54:29.849Z
-            updatedAt: 2020-09-18T20:34:55.098Z
+            updatedAt: 2020-11-03T19:02:20.999Z
       - getCandidatesMainView:
           pluginTemplate:
             id: getCandidatesMainView
@@ -6399,7 +6399,7 @@ appTemplate:
             createdAt: 2020-09-18T20:58:55.814Z
             updatedAt: 2020-09-18T20:59:47.972Z
   createdAt: null
-  version: 2.63.22
+  version: 2.63.23
   responsiveLayoutDisabled: true
   urlFragmentDefinitions: []
   pageLoadValueOverrides: []
