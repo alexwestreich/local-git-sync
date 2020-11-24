@@ -4784,7 +4784,7 @@ appTemplate:
                 width: 6
                 tabNum: 8
             createdAt: 2020-09-16T12:00:25.671Z
-            updatedAt: 2020-09-24T01:15:23.768Z
+            updatedAt: 2020-11-24T17:49:04.938Z
       - plotlychart15:
           pluginTemplate:
             id: plotlychart15
@@ -4956,7 +4956,7 @@ appTemplate:
                 width: 6
                 tabNum: 9
             createdAt: 2020-09-16T14:28:24.051Z
-            updatedAt: 2020-09-24T01:15:23.914Z
+            updatedAt: 2020-11-24T17:49:05.087Z
       - plotlychart13:
           pluginTemplate:
             id: plotlychart13
@@ -6004,7 +6004,7 @@ appTemplate:
                 width: 6
                 tabNum: 8
             createdAt: 2020-09-17T05:34:05.371Z
-            updatedAt: 2020-09-24T01:15:24.066Z
+            updatedAt: 2020-11-24T17:49:05.254Z
       - text21:
           pluginTemplate:
             id: text21
@@ -8142,7 +8142,7 @@ appTemplate:
                 width: 12
                 tabNum: 10
             createdAt: 2020-09-21T09:13:48.624Z
-            updatedAt: 2020-09-24T01:15:24.335Z
+            updatedAt: 2020-11-24T17:49:05.493Z
       - text38:
           pluginTemplate:
             id: text38
@@ -10410,7 +10410,7 @@ appTemplate:
                 width: 7
                 tabNum: 9
             createdAt: 2020-09-23T02:36:57.923Z
-            updatedAt: 2020-09-24T01:15:24.537Z
+            updatedAt: 2020-11-24T17:49:05.663Z
       - text76:
           pluginTemplate:
             id: text76
