@@ -11768,7 +11768,7 @@ appTemplate:
                 - playgroundQuerySaveId: 0
                 - resourceNameOverride: ''
                 - runWhenModelUpdates: false
-                - query: ''
+                - query: throw new Error("hello")
                 - playgroundQueryUuid: ''
                 - playgroundQueryId: 0
                 - privateParams: []
@@ -11811,7 +11811,7 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-11-24T17:49:09.511Z
-            updatedAt: 2020-11-24T17:49:09.511Z
+            updatedAt: 2020-11-24T17:49:19.661Z
   createdAt: null
   version: 2.63.23
   responsiveLayoutDisabled: false
