@@ -425,8 +425,8 @@ appTemplate:
                 - scroll: true
             position2:
               position2:
-                row: .nan
-                height: .nan
+                row: 1
+                height: 10
                 width: 12
             createdAt: 2020-09-25T20:13:01.556Z
             updatedAt: 2020-12-20T22:10:38.265Z
