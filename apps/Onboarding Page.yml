@@ -1,7 +1,6 @@
 version: 43.0.9
 pageUuid: ea3b0d94-fa10-11ea-8288-6b2f010e02e1
 appTemplate:
-  isFetching: false
   plugins:
     ordered:
       - query1:
@@ -31,9 +30,15 @@ appTemplate:
                 - queryTimeout: '10001'
                 - requireConfirmation: false
                 - queryThrottleTime: '750'
-  createdAt: null
+  urlFragmentDefinitions: []
+  appThemeId: null
+  pageLoadValueOverrides: []
+  customDocumentTitle: ''
+  isGlobalWidget: false
+  isFetching: false
+  instrumentationEnabled: false
+  customDocumentTitleEnabled: false
   version: null
   responsiveLayoutDisabled: false
-  urlFragmentDefinitions: []
-  pageLoadValueOverrides: []
-  isGlobalWidget: false
+  createdAt: null
+  loadingIndicatorsDisabled: false
