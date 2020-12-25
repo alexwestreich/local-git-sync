@@ -1,0 +1,2550 @@
+version: 43.0.9
+pageUuid: 0c97f4a0-f134-11ea-958f-97bbe31c8bc1
+appTemplate:
+  isFetching: false
+  plugins:
+    ordered:
+      - new_users_today:
+          pluginTemplate:
+            id: new_users_today
+            type: widget
+            subtype: ChartWidget
+            template:
+              ordered:
+                - cutoutPercentage: '0'
+                - autoSkipTicks: false
+                - yMax: '10'
+                - isHorizontal: false
+                - xValuesType: time
+                - yMin: |
+                    1
+                - yMapper: ''
+                - yAxisLabel: Users
+                - xValues: '{{user_created_time_today.value}}'
+                - xAxisLabel: Time
+                - datasets:
+                    ordered:
+                      - dataset1:
+                          ordered:
+                            - seriesLabel: |
+                                # of users
+                            - yValues: '{{user_created_when_today.value}}'
+                - chartKindName: Line Chart
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 7
+                height: 9
+                width: 4
+            mobilePosition2:
+              position2:
+                row: 1
+                height: 9
+                width: 12
+            createdAt: 2020-09-07T18:47:56.377Z
+            updatedAt: 2020-09-25T21:50:23.079Z
+      - users_made_today:
+          pluginTemplate:
+            id: users_made_today
+            type: datasource
+            subtype: NoSqlQuery
+            resourceName: MissionMoonDB
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - method: find
+                - aggregation: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: "{\"$where\": \"function() { \n\tvar date = new Date();\n\tdate.setHours(0,0,0,0);\n return (this._id.getTimestamp() >= date);\n}\"}"
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - update: ''
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - useRawCollectionName: false
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - projection: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - sortBy: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - insert: ''
+                - queryTimeout: '2000'
+                - field: ''
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - limit: ''
+                - enableCaching: false
+                - options: ''
+                - collection: paperusers
+                - skip: ''
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-09-24T20:22:12.607Z
+            updatedAt: 2020-09-25T04:34:13.919Z
+      - user_created_time_today:
+          pluginTemplate:
+            id: user_created_time_today
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: |-
+                    var usersMade = {{users_made_today.data}}
+                    var allUsers = {}
+                    usersMade.forEach((user) => {
+                      const userCreatedDate = new Date(user.devices[0].created)
+                      userCreatedDate.setSeconds(0)
+                      var hour = userCreatedDate.getHours();
+                      var meridiem = hour >= 12 ? "PM" : "AM";
+                      currentTime = ((hour + 11) % 12 + 1) + ":" + userCreatedDate.getMinutes() + " " + meridiem;
+                      if(!(currentTime in allUsers))
+                        allUsers[currentTime] = userCreatedDate
+                    })
+                    return Object.values(allUsers)
+                - value: ''
+            createdAt: 2020-09-25T02:08:49.808Z
+            updatedAt: 2020-09-25T20:02:26.204Z
+      - user_created_when_today:
+          pluginTemplate:
+            id: user_created_when_today
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: "var usersMade = {{users_made_today.data}}\nvar allUsers = {}\nusersMade.forEach((user) => {\n  const userCreatedDate = new Date(user.devices[0].created)\n  var hour = userCreatedDate.getHours();\n  var meridiem = hour >= 12 ? \"PM\" : \"AM\";\n\tcurrentTime = ((hour + 11) % 12 + 1) + \":\" + userCreatedDate.getMinutes() + \" \" + meridiem;\n  if(!(currentTime in allUsers))\n    allUsers[currentTime] = 1\n  else\n    ++allUsers[currentTime]\n})\nreturn Object.values(allUsers)"
+                - value: ''
+            createdAt: 2020-09-25T04:11:48.268Z
+            updatedAt: 2020-09-26T01:10:11.177Z
+      - text1:
+          pluginTemplate:
+            id: text1
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: "## \U0001F95A New Users Today - {{user_created_count_today.value}} "
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 6
+                height: 1
+                width: 3
+            mobilePosition2:
+              position2:
+                col: 1
+                height: 1
+                width: 1
+            createdAt: 2020-09-25T04:36:15.864Z
+            updatedAt: 2020-09-26T01:15:35.009Z
+      - chart2:
+          pluginTemplate:
+            id: chart2
+            type: widget
+            subtype: ChartWidget
+            template:
+              ordered:
+                - cutoutPercentage: '0'
+                - autoSkipTicks: false
+                - isHorizontal: false
+                - xValuesType: time
+                - yMin: '1'
+                - yAxisLabel: Trades
+                - xValues: '{{trades_today_time.value}}'
+                - xAxisLabel: Time
+                - datasets:
+                    ordered:
+                      - dataset1:
+                          ordered:
+                            - seriesLabel: '# of trades'
+                            - yValues: '{{trades_today_when.value}}'
+                - chartKindName: Line Chart
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 7
+                col: 4
+                height: 9
+                width: 5
+            createdAt: 2020-09-25T05:37:18.244Z
+            updatedAt: 2020-09-25T21:50:35.237Z
+      - trades_today:
+          pluginTemplate:
+            id: trades_today
+            type: datasource
+            subtype: NoSqlQuery
+            resourceName: MissionMoonDB
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - method: find
+                - aggregation: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: "{\"$where\": \"function() { \n\tvar date = new Date();\n\tdate.setHours(0,0,0,0);\n return (this._id.getTimestamp() >= date);\n}\"}"
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - update: ''
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - useRawCollectionName: false
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - projection: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - sortBy: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - insert: ''
+                - queryTimeout: '10000'
+                - field: ''
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - limit: ''
+                - enableCaching: false
+                - options: ''
+                - collection: transactions
+                - skip: ''
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-09-25T05:38:08.808Z
+            updatedAt: 2020-09-25T06:15:45.204Z
+      - text2:
+          pluginTemplate:
+            id: text2
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: "## \U0001F4C8 Trades Today - {{trades_today_count.value}}"
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 6
+                col: 5
+                height: 1
+                width: 3
+            createdAt: 2020-09-25T06:04:13.969Z
+            updatedAt: 2020-09-25T23:09:29.204Z
+      - user_created_count_today:
+          pluginTemplate:
+            id: user_created_count_today
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: |-
+                    const userCreatedCount = {{users_made_today.data}}
+                    return userCreatedCount.length
+                - value: ''
+            createdAt: 2020-09-25T06:09:31.853Z
+            updatedAt: 2020-09-25T06:10:28.563Z
+      - trades_today_count:
+          pluginTemplate:
+            id: trades_today_count
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: |-
+                    const tradesTodayCount = {{trades_today.data}}
+                    return tradesTodayCount.length
+                - value: ''
+            createdAt: 2020-09-25T06:46:20.863Z
+            updatedAt: 2020-09-25T06:46:58.618Z
+      - trades_today_time:
+          pluginTemplate:
+            id: trades_today_time
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: "var tradesMade = {{trades_today.data}}\nvar allTrades = {}\ntradesMade.forEach((trade) => {\n  const transactionDate = new Date(trade.transactionDate)\n  transactionDate.setSeconds(0);\n\tvar hour = transactionDate.getHours();\n  var meridiem = hour >= 12 ? \"PM\" : \"AM\";\n\tcurrentTime = ((hour + 11) % 12 + 1) + \":\" + transactionDate.getMinutes() + \" \" + meridiem;\n  if(!(currentTime in allTrades))\n    allTrades[currentTime] = transactionDate\n})\nreturn Object.values(allTrades)\n"
+                - value: ''
+            createdAt: 2020-09-25T06:49:45.425Z
+            updatedAt: 2020-09-25T19:38:46.178Z
+      - statistic1:
+          pluginTemplate:
+            id: statistic1
+            type: widget
+            subtype: StatisticWidget
+            template:
+              ordered:
+                - title: Users trading today
+                - value: '{{users_that_traded_today.value}}'
+                - prefix: ''
+                - suffix: ''
+                - precision: '0'
+                - round: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                height: 2
+                width: 2
+            createdAt: 2020-09-25T15:56:17.796Z
+            updatedAt: 2020-09-25T16:52:26.927Z
+      - trades_today_when:
+          pluginTemplate:
+            id: trades_today_when
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: |-
+                    var tradesMade = {{trades_today.data}}
+                    var allTrades = {}
+                    tradesMade.forEach((trade) => {
+                      var tradeMadeDate = new Date(trade.transactionDate)
+                      var hour = tradeMadeDate.getHours();
+                      var meridiem = hour >= 12 ? "PM" : "AM";
+                      currentTime = ((hour + 11) % 12 + 1) + ":" + tradeMadeDate.getMinutes() + " " + meridiem;
+                      if(!(currentTime in allTrades))
+                        allTrades[currentTime] = 1
+                      else
+                        ++allTrades[currentTime]
+                    })
+                    return Object.values(allTrades)
+                - value: ''
+            createdAt: 2020-09-25T16:25:19.520Z
+            updatedAt: 2020-09-25T17:51:37.247Z
+      - users_that_traded_today:
+          pluginTemplate:
+            id: users_that_traded_today
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: |-
+                    const tradesToday = {{trades_today.data}}
+                    var traders = {}
+                    tradesToday.forEach((trade) => {
+                      traders[trade.userId] = 1
+                    })
+                    return Object.keys(traders).length
+                - value: ''
+            createdAt: 2020-09-25T16:39:10.574Z
+            updatedAt: 2020-09-25T16:40:27.325Z
+      - tabbedcontainer1:
+          pluginTemplate:
+            id: tabbedcontainer1
+            type: widget
+            subtype: TabbedContainerWidget
+            template:
+              ordered:
+                - disabled: ''
+                - selectedTab: '"0"'
+                - selectedTabIndex: 0
+                - showTabBar: true
+                - tabNames: '["Today", "7 Days", "1 Month"]'
+                - spinWhenChildrenAreFetching: true
+                - disableAnimation: false
+                - scroll: true
+            position2:
+              position2:
+                row: .nan
+                height: .nan
+                width: 12
+            createdAt: 2020-09-25T20:13:01.556Z
+            updatedAt: 2020-12-20T22:10:38.265Z
+      - statistic2:
+          pluginTemplate:
+            id: statistic2
+            type: widget
+            subtype: StatisticWidget
+            template:
+              ordered:
+                - title: Portfolios opened today
+                - value: '{{portfolios_opened_today_count.value}}'
+                - prefix: ''
+                - suffix: ''
+                - precision: '0'
+                - round: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 2
+                height: 2
+                width: 2
+            createdAt: 2020-09-25T20:29:19.113Z
+            updatedAt: 2020-09-25T20:52:46.157Z
+      - portfolios_opened_today:
+          pluginTemplate:
+            id: portfolios_opened_today
+            type: datasource
+            subtype: NoSqlQuery
+            resourceName: MissionMoonDB
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - method: find
+                - aggregation: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: "{\"$where\": \"function() { \n\tvar date = new Date();\n\tdate.setHours(0,0,0,0);\n return (this._id.getTimestamp() >= date);\n}\"}"
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - update: ''
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - useRawCollectionName: false
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - projection: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - sortBy: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - insert: ''
+                - queryTimeout: '10000'
+                - field: ''
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - limit: ''
+                - enableCaching: false
+                - options: ''
+                - collection: portfolios
+                - skip: ''
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-09-25T20:50:41.390Z
+            updatedAt: 2020-09-25T20:51:17.249Z
+      - portfolios_opened_today_count:
+          pluginTemplate:
+            id: portfolios_opened_today_count
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: |-
+                    const portfolios = {{portfolios_opened_today.data}}
+                    return portfolios.length
+                - value: ''
+            createdAt: 2020-09-25T20:51:29.119Z
+            updatedAt: 2020-09-25T20:51:48.149Z
+      - portfolio_avg_starting_amount_today:
+          pluginTemplate:
+            id: portfolio_avg_starting_amount_today
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: |-
+                    const portfolios = {{portfolios_opened_today.data}}
+                    var avgStartingBalance = 0
+                    portfolios.forEach((portfolio) => {
+                      avgStartingBalance += portfolio.seedAmount
+                    })
+                    if(portfolios.length > 0)
+                      return avgStartingBalance / portfolios.length
+                    return 0
+                - value: ''
+            createdAt: 2020-09-25T20:53:39.532Z
+            updatedAt: 2020-09-25T20:56:51.402Z
+      - statistic3:
+          pluginTemplate:
+            id: statistic3
+            type: widget
+            subtype: StatisticWidget
+            template:
+              ordered:
+                - title: Average starting portfolio balance
+                - value: '{{portfolio_avg_starting_amount_today.value}}'
+                - prefix: $
+                - suffix: ''
+                - precision: '2'
+                - round: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 4
+                height: 2
+                width: 2
+            createdAt: 2020-09-25T20:57:12.069Z
+            updatedAt: 2020-09-25T20:57:43.570Z
+      - text3:
+          pluginTemplate:
+            id: text3
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: center
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: "## \U0001F4C8 Trades placed "
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 6
+                col: 9
+                height: 1
+                width: 3
+            createdAt: 2020-09-25T21:08:06.786Z
+            updatedAt: 2020-09-25T23:10:44.768Z
+      - trade_data_today:
+          pluginTemplate:
+            id: trade_data_today
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: "const tradesToday = {{trades_today.data}}\nvar stockTrades = 0\nvar optionTrades = 0\nvar stocksTraded = {}\nvar optionsTraded = {}\ntradesToday.forEach((trade) => {\n  if(trade.symbol[0] == \".\"){\n    ++optionTrades \n\t\tif(!(trade.symbol in optionsTraded))\n      optionsTraded[trade.symbol] = 1\n    else\n      ++optionsTraded[trade.symbol]\n  } else {\n\t\tif(!(trade.symbol in stocksTraded))\n      stocksTraded[trade.symbol] = 1\n    else\n      ++stocksTraded[trade.symbol]\n    ++stockTrades\n  }\n})\nvar stocksTradedList = []\nvar optionsTradedList = []\nfor(var stock in stocksTraded)\n  stocksTradedList.push([stock, stocksTraded[stock]])\nstocksTradedList.sort((a, b) => {\n  return a[1] - b[1]\n})\nfor(var option in optionsTraded)\n  optionsTradedList.push([option, optionsTraded[option]])\noptionsTradedList.sort((a, b) => {\n  return a[1] - b[1]\n})\nvar mostTradedStock = [\"\", \"\"]\nvar mostTradedOption = [\"\", \"\"]\nif(stocksTradedList.length > 0)\n\tmostTradedStock = stocksTradedList[stocksTradedList.length-1]\nif(optionsTradedList.length > 0)\n\tmostTradedOption = optionsTradedList[optionsTradedList.length-1]\n\nconst parseOptionString = (option) => {\n    var newOption = {}\n    const optionName = option\n    option = option.substring(1)\n    newOption[\"ticker\"] = option.substring(0, option.search(/\\d+/))\n    option = option.substring(option.search(/\\d+/))\n    newOption[\"expiration\"] = option.substring(0, option.search(/[a-zA-Z]/))\n    option = option.substring(option.search(/[a-zA-Z]/))\n    newOption[\"type\"] = option[0]\n    newOption[\"strike\"] = option.substring(1)\n    newOption[\"underlying\"] = optionName\n    return newOption\n}\nconst monthNames = [\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\",\n  \"Jul\", \"Aug\", \"Sep\", \"Oct\", \"Nov\", \"Dec\"\n]\n\nconst formattedDate = (date) => {\n    const year = \"20\" + date[0] + date[1]\n    const month = date[2] + date[3]\n    const day =  date[4] + date[5]\n    var date = new Date(year + \"-\" + month + \"-\" + day)\n    var yr = date.getFullYear().toString()\n    return date.getUTCDate() + \" \" + monthNames[date.getMonth()] + \" \" + yr.slice(2)\n}\n\nif(mostTradedOption[0] != \"\") {\n\tconst option = parseOptionString(mostTradedOption[0])\n  mostTradedOption[0] = option[\"ticker\"]+\" \" + option[\"strike\"] + option[\"type\"] + \" exp. \" + formattedDate(option[\"expiration\"])\n}\n\nreturn {\n  \"stock_trades\": stockTrades,\n  \"option_trades\": optionTrades,\n  \"mostTradedStock\": mostTradedStock,\n  \"mostTradedOption\": mostTradedOption\n}"
+                - value: ''
+            createdAt: 2020-09-25T21:09:59.250Z
+            updatedAt: 2020-09-25T22:44:00.782Z
+      - chart3:
+          pluginTemplate:
+            id: chart3
+            type: widget
+            subtype: ChartWidget
+            template:
+              ordered:
+                - cutoutPercentage: |
+                    50
+                - autoSkipTicks: false
+                - isHorizontal: false
+                - xValuesType: category
+                - yAxisLabel: Y Axis
+                - xValues: '["Stock", "Option"]'
+                - xAxisLabel: asdasd
+                - datasets:
+                    ordered:
+                      - dataset1:
+                          ordered:
+                            - yValues: >-
+                                [{{trade_data_today.value.stock_trades}},
+                                {{trade_data_today.value.option_trades}}]
+                - chartKindName: Pie Chart
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 7
+                col: 9
+                height: 9
+                width: 3
+            createdAt: 2020-09-25T21:18:37.193Z
+            updatedAt: 2020-09-25T21:20:41.860Z
+      - text4:
+          pluginTemplate:
+            id: text4
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: >+
+                    ### {{trade_data_today.value.mostTradedStock[0]}}
+                    ({{trade_data_today.value.mostTradedStock[1]}})
+
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 1
+                col: 2
+                height: 1
+                width: 2
+            createdAt: 2020-09-25T21:42:42.856Z
+            updatedAt: 2020-09-25T23:06:23.365Z
+      - text5:
+          pluginTemplate:
+            id: text5
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |+
+                    Most traded stock
+
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#555555'
+                - renderAsMarkdown: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                col: 2
+                height: 1
+                width: 2
+            createdAt: 2020-09-25T21:42:58.691Z
+            updatedAt: 2020-12-19T23:20:15.817Z
+      - text6:
+          pluginTemplate:
+            id: text6
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: Most traded option
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                col: 4
+                height: 1
+                width: 2
+            createdAt: 2020-09-25T21:57:03.175Z
+            updatedAt: 2020-12-20T02:30:54.867Z
+      - text7:
+          pluginTemplate:
+            id: text7
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: >-
+                    ### {{trade_data_today.value.mostTradedOption[0]}}
+                    ({{trade_data_today.value.mostTradedOption[1]}})
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 1
+                col: 4
+                height: 1
+                width: 3
+            createdAt: 2020-09-25T21:57:24.457Z
+            updatedAt: 2020-09-25T23:06:43.156Z
+      - statistic4:
+          pluginTemplate:
+            id: statistic4
+            type: widget
+            subtype: StatisticWidget
+            template:
+              ordered:
+                - title: Users trading this week
+                - value: '{{users_that_traded_week.value}}'
+                - prefix: ''
+                - suffix: ''
+                - precision: '0'
+                - round: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                height: 2
+                width: 2
+                tabNum: 1
+            createdAt: 2020-09-25T23:04:38.806Z
+            updatedAt: 2020-09-27T03:32:09.146Z
+      - statistic5:
+          pluginTemplate:
+            id: statistic5
+            type: widget
+            subtype: StatisticWidget
+            template:
+              ordered:
+                - title: Portfolios opened this week
+                - value: '{{portfolios_opened_week_count.value}}'
+                - prefix: ''
+                - suffix: ''
+                - precision: '0'
+                - round: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 2
+                height: 2
+                width: 2
+                tabNum: 1
+            createdAt: 2020-09-25T23:04:52.269Z
+            updatedAt: 2020-09-27T03:21:02.919Z
+      - statistic6:
+          pluginTemplate:
+            id: statistic6
+            type: widget
+            subtype: StatisticWidget
+            template:
+              ordered:
+                - title: Average starting portfolio balance
+                - value: '{{portfolios_avg_week_balance.value}}'
+                - prefix: $
+                - suffix: ''
+                - precision: '2'
+                - round: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 4
+                height: 2
+                width: 2
+                tabNum: 1
+            createdAt: 2020-09-25T23:05:01.109Z
+            updatedAt: 2020-09-27T04:36:29.959Z
+      - text8:
+          pluginTemplate:
+            id: text8
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: "## \U0001F95A New Users Week - {{users_created_weekly_count.value}} "
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 6
+                height: 1
+                width: 3
+                tabNum: 1
+            createdAt: 2020-09-25T23:05:53.232Z
+            updatedAt: 2020-09-27T17:45:38.456Z
+      - chart4:
+          pluginTemplate:
+            id: chart4
+            type: widget
+            subtype: ChartWidget
+            template:
+              ordered:
+                - cutoutPercentage: '0'
+                - autoSkipTicks: false
+                - yMax: '5'
+                - isHorizontal: false
+                - xValuesType: time
+                - yMin: |
+                    1
+                - yMapper: ''
+                - yAxisLabel: Users
+                - xValues: '{{users_created_weekly_time.value}}'
+                - xAxisLabel: Time
+                - datasets:
+                    ordered:
+                      - dataset1:
+                          ordered:
+                            - seriesLabel: |
+                                # of users
+                            - yValues: '{{users_created_weekly_when.value}}'
+                - chartKindName: Line Chart
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 7
+                height: 9
+                width: 4
+                tabNum: 1
+            createdAt: 2020-09-25T23:06:02.176Z
+            updatedAt: 2020-09-26T23:09:35.873Z
+      - text9:
+          pluginTemplate:
+            id: text9
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |+
+                    Most traded stock this week
+
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#555555'
+                - renderAsMarkdown: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                col: 2
+                height: 1
+                width: 2
+                tabNum: 1
+            createdAt: 2020-09-25T23:06:15.046Z
+            updatedAt: 2020-09-27T17:45:08.676Z
+      - text10:
+          pluginTemplate:
+            id: text10
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: >+
+                    ### {{trade_data_week.value.mostTradedStock[0]}}
+                    ({{trade_data_week.value.mostTradedStock[1]}})
+
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 1
+                col: 2
+                height: 1
+                width: 2
+                tabNum: 1
+            createdAt: 2020-09-25T23:06:24.329Z
+            updatedAt: 2020-09-27T17:45:15.676Z
+      - text11:
+          pluginTemplate:
+            id: text11
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: Most traded option this week
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                col: 4
+                height: 1
+                width: 2
+                tabNum: 1
+            createdAt: 2020-09-25T23:06:33.952Z
+            updatedAt: 2020-09-27T17:45:22.106Z
+      - text12:
+          pluginTemplate:
+            id: text12
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: >-
+                    ### {{trade_data_week.value.mostTradedOption[0]}}
+                    ({{trade_data_week.value.mostTradedOption[1]}})
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 1
+                col: 4
+                height: 1
+                width: 3
+                tabNum: 1
+            createdAt: 2020-09-25T23:06:44.417Z
+            updatedAt: 2020-09-27T17:45:28.987Z
+      - text13:
+          pluginTemplate:
+            id: text13
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: "## \U0001F4C8 Trades Week - {{trades_week_count.value}}"
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 6
+                col: 5
+                height: 1
+                width: 3
+                tabNum: 1
+            createdAt: 2020-09-25T23:09:30.477Z
+            updatedAt: 2020-09-27T17:45:54.688Z
+      - chart5:
+          pluginTemplate:
+            id: chart5
+            type: widget
+            subtype: ChartWidget
+            template:
+              ordered:
+                - cutoutPercentage: '0'
+                - autoSkipTicks: false
+                - isHorizontal: false
+                - xValuesType: time
+                - yMin: '20'
+                - yAxisLabel: Trades
+                - xValues: '{{trades_week_time.value}}'
+                - xAxisLabel: Time
+                - datasets:
+                    ordered:
+                      - dataset1:
+                          ordered:
+                            - seriesLabel: '# of trades'
+                            - yValues: '{{trades_week_when.value}}'
+                - chartKindName: Line Chart
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 7
+                col: 4
+                height: 9
+                width: 5
+                tabNum: 1
+            createdAt: 2020-09-25T23:09:41.018Z
+            updatedAt: 2020-09-27T19:02:56.807Z
+      - text14:
+          pluginTemplate:
+            id: text14
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: center
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: "## \U0001F4C8 Trades placed "
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 6
+                col: 9
+                height: 1
+                width: 3
+                tabNum: 1
+            createdAt: 2020-09-25T23:10:46.082Z
+            updatedAt: 2020-09-27T17:57:24.600Z
+      - chart6:
+          pluginTemplate:
+            id: chart6
+            type: widget
+            subtype: ChartWidget
+            template:
+              ordered:
+                - cutoutPercentage: |
+                    50
+                - autoSkipTicks: false
+                - isHorizontal: false
+                - xValuesType: category
+                - yAxisLabel: Y Axis
+                - xValues: '["Stock", "Option"]'
+                - xAxisLabel: asdasd
+                - datasets:
+                    ordered:
+                      - dataset1:
+                          ordered:
+                            - yValues: >-
+                                [{{trade_data_week.value.stock_trades}},
+                                {{trade_data_week.value.option_trades}}]
+                - chartKindName: Pie Chart
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 7
+                col: 9
+                height: 9
+                width: 3
+                tabNum: 1
+            createdAt: 2020-09-25T23:10:55.179Z
+            updatedAt: 2020-09-26T22:56:48.497Z
+      - users_created_weekly:
+          pluginTemplate:
+            id: users_created_weekly
+            type: datasource
+            subtype: NoSqlQuery
+            resourceName: MissionMoonDB
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - method: find
+                - aggregation: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: "{\"$where\": \"function() { \n\tvar date = new Date();\n\tdate.setHours(0,0,0,0);\n var weeklyDate = new Date(date.setDate(date.getDate() - 7))\n return (this._id.getTimestamp() >= weeklyDate);\n}\"}"
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - update: ''
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - useRawCollectionName: false
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - projection: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - sortBy: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - insert: ''
+                - queryTimeout: '2000'
+                - field: ''
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - limit: ''
+                - enableCaching: false
+                - options: ''
+                - collection: paperusers
+                - skip: ''
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-09-26T01:02:15.997Z
+            updatedAt: 2020-09-26T01:02:42.813Z
+      - users_created_weekly_when:
+          pluginTemplate:
+            id: users_created_weekly_when
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: |-
+                    var usersMade = {{users_created_weekly.data}}
+                    var allUsers = {}
+                    usersMade.forEach((user) => {
+                      const userCreatedDate = new Date(user.devices[0].created)
+                      const currentTime = userCreatedDate.toDateString()
+                      if(!(currentTime in allUsers))
+                        allUsers[currentTime] = 1
+                      else
+                        ++allUsers[currentTime]
+                    })
+                    return Object.values(allUsers)
+                - value: ''
+            createdAt: 2020-09-26T01:09:08.751Z
+            updatedAt: 2020-09-27T19:00:39.803Z
+      - users_created_weekly_count:
+          pluginTemplate:
+            id: users_created_weekly_count
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: |-
+                    const userCreatedCount = {{users_created_weekly.data}}
+                    return userCreatedCount.length
+                - value: ''
+            createdAt: 2020-09-26T01:13:08.438Z
+            updatedAt: 2020-09-26T01:13:25.093Z
+      - users_created_weekly_time:
+          pluginTemplate:
+            id: users_created_weekly_time
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: |-
+                    var usersMade = {{users_created_weekly.data}}
+                    var allUsers = {}
+                    usersMade.forEach((user) => {
+                      const userCreatedDate = new Date(user.devices[0].created)
+                      userCreatedDate.setSeconds(0)
+                      const currentTime = userCreatedDate.toDateString()
+                      if(!(currentTime in allUsers))
+                        allUsers[currentTime] = userCreatedDate
+                    })
+                    return Object.values(allUsers)
+                - value: ''
+            createdAt: 2020-09-26T01:16:18.905Z
+            updatedAt: 2020-09-27T19:00:23.363Z
+      - trades_week:
+          pluginTemplate:
+            id: trades_week
+            type: datasource
+            subtype: NoSqlQuery
+            resourceName: MissionMoonDB
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - method: find
+                - aggregation: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: "{\"$where\": \"function() { \n\tvar date = new Date();\n\tdate.setHours(0,0,0,0);\n var weeklyDate = new Date(date.setDate(date.getDate() - 7))\n return (this._id.getTimestamp() >= weeklyDate);\n}\"}"
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - update: ''
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - useRawCollectionName: false
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - projection: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - sortBy: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - insert: ''
+                - queryTimeout: '10000'
+                - field: ''
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - limit: ''
+                - enableCaching: false
+                - options: ''
+                - collection: transactions
+                - skip: ''
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-09-26T17:33:01.571Z
+            updatedAt: 2020-09-26T17:33:25.133Z
+      - trade_data_week:
+          pluginTemplate:
+            id: trade_data_week
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: "const tradesToday = {{trades_week.data}}\nvar stockTrades = 0\nvar optionTrades = 0\nvar stocksTraded = {}\nvar optionsTraded = {}\ntradesToday.forEach((trade) => {\n  if(trade.symbol[0] == \".\"){\n    ++optionTrades \n\t\tif(!(trade.symbol in optionsTraded))\n      optionsTraded[trade.symbol] = 1\n    else\n      ++optionsTraded[trade.symbol]\n  } else {\n\t\tif(!(trade.symbol in stocksTraded))\n      stocksTraded[trade.symbol] = 1\n    else\n      ++stocksTraded[trade.symbol]\n    ++stockTrades\n  }\n})\nvar stocksTradedList = []\nvar optionsTradedList = []\nfor(var stock in stocksTraded)\n  stocksTradedList.push([stock, stocksTraded[stock]])\nstocksTradedList.sort((a, b) => {\n  return a[1] - b[1]\n})\nfor(var option in optionsTraded)\n  optionsTradedList.push([option, optionsTraded[option]])\noptionsTradedList.sort((a, b) => {\n  return a[1] - b[1]\n})\nvar mostTradedStock = [\"\", \"\"]\nvar mostTradedOption = [\"\", \"\"]\nif(stocksTradedList.length > 0)\n\tmostTradedStock = stocksTradedList[stocksTradedList.length-1]\nif(optionsTradedList.length > 0)\n\tmostTradedOption = optionsTradedList[optionsTradedList.length-1]\n\nconst parseOptionString = (option) => {\n    var newOption = {}\n    const optionName = option\n    option = option.substring(1)\n    newOption[\"ticker\"] = option.substring(0, option.search(/\\d+/))\n    option = option.substring(option.search(/\\d+/))\n    newOption[\"expiration\"] = option.substring(0, option.search(/[a-zA-Z]/))\n    option = option.substring(option.search(/[a-zA-Z]/))\n    newOption[\"type\"] = option[0]\n    newOption[\"strike\"] = option.substring(1)\n    newOption[\"underlying\"] = optionName\n    return newOption\n}\nconst monthNames = [\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\",\n  \"Jul\", \"Aug\", \"Sep\", \"Oct\", \"Nov\", \"Dec\"\n]\n\nconst formattedDate = (date) => {\n    const year = \"20\" + date[0] + date[1]\n    const month = date[2] + date[3]\n    const day =  date[4] + date[5]\n    var date = new Date(year + \"-\" + month + \"-\" + day)\n    var yr = date.getFullYear().toString()\n    return date.getUTCDate() + \" \" + monthNames[date.getMonth()] + \" \" + yr.slice(2)\n}\n\nif(mostTradedOption[0] != \"\") {\n\tconst option = parseOptionString(mostTradedOption[0])\n  mostTradedOption[0] = option[\"ticker\"]+\" \" + option[\"strike\"] + option[\"type\"] + \" exp. \" + formattedDate(option[\"expiration\"])\n}\n\nreturn {\n  \"stock_trades\": stockTrades,\n  \"option_trades\": optionTrades,\n  \"mostTradedStock\": mostTradedStock,\n  \"mostTradedOption\": mostTradedOption\n}"
+                - value: ''
+            createdAt: 2020-09-26T17:35:15.749Z
+            updatedAt: 2020-09-26T17:35:36.323Z
+      - trades_week_count:
+          pluginTemplate:
+            id: trades_week_count
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: |-
+                    const tradesTodayCount = {{trades_week.data}}
+                    return tradesTodayCount.length
+                - value: ''
+            createdAt: 2020-09-26T22:54:42.115Z
+            updatedAt: 2020-09-26T22:55:08.547Z
+      - portfolios_opened_weekly:
+          pluginTemplate:
+            id: portfolios_opened_weekly
+            type: datasource
+            subtype: NoSqlQuery
+            resourceName: MissionMoonDB
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - method: find
+                - aggregation: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: "{\"$where\": \"function() { \n\tvar date = new Date();\n\tdate.setHours(0,0,0,0);\n var weeklyDate = new Date(date.setDate(date.getDate() - 7))\n return (this._id.getTimestamp() >= weeklyDate);\n}\"}"
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - update: ''
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - useRawCollectionName: false
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - projection: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - sortBy: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - insert: ''
+                - queryTimeout: '10000'
+                - field: ''
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - limit: ''
+                - enableCaching: false
+                - options: ''
+                - collection: portfolios
+                - skip: ''
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-09-26T23:47:04.227Z
+            updatedAt: 2020-09-26T23:47:12.950Z
+      - portfolios_opened_week_count:
+          pluginTemplate:
+            id: portfolios_opened_week_count
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: |-
+                    const portfolios = {{portfolios_opened_weekly.data}}
+                    return portfolios.length
+                - value: ''
+            createdAt: 2020-09-27T02:50:27.069Z
+            updatedAt: 2020-09-27T02:53:37.494Z
+      - users_that_traded_week:
+          pluginTemplate:
+            id: users_that_traded_week
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: |-
+                    const tradesToday = {{trades_week.data}}
+                    var traders = {}
+                    tradesToday.forEach((trade) => {
+                      traders[trade.userId] = 1
+                    })
+                    return Object.keys(traders).length
+                - value: ''
+            createdAt: 2020-09-27T03:31:28.678Z
+            updatedAt: 2020-09-27T03:31:50.662Z
+      - portfolios_avg_week_balance:
+          pluginTemplate:
+            id: portfolios_avg_week_balance
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: |-
+                    const portfolios = {{portfolios_opened_weekly.data}}
+                    var avgStartingBalance = 0
+                    portfolios.forEach((portfolio) => {
+                      avgStartingBalance += portfolio.seedAmount
+                    })
+                    if(portfolios.length > 0)
+                      return avgStartingBalance / portfolios.length
+                    return 0
+                - value: ''
+            createdAt: 2020-09-27T03:39:02.226Z
+            updatedAt: 2020-09-27T03:39:14.935Z
+      - statistic7:
+          pluginTemplate:
+            id: statistic7
+            type: widget
+            subtype: StatisticWidget
+            template:
+              ordered:
+                - title: Users trading this month
+                - value: '{{users_that_traded_month.value}}'
+                - prefix: ''
+                - suffix: ''
+                - precision: '0'
+                - round: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                height: 2
+                width: 2
+                tabNum: 2
+            createdAt: 2020-09-27T17:44:46.742Z
+            updatedAt: 2020-09-27T18:39:39.659Z
+      - statistic8:
+          pluginTemplate:
+            id: statistic8
+            type: widget
+            subtype: StatisticWidget
+            template:
+              ordered:
+                - title: Portfolios opened this month
+                - value: '{{portfolios_opened_month_count.data.count}}'
+                - prefix: ''
+                - suffix: ''
+                - precision: '0'
+                - round: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 2
+                height: 2
+                width: 2
+                tabNum: 2
+            createdAt: 2020-09-27T17:44:55.013Z
+            updatedAt: 2020-09-27T18:36:19.537Z
+      - statistic9:
+          pluginTemplate:
+            id: statistic9
+            type: widget
+            subtype: StatisticWidget
+            template:
+              ordered:
+                - title: Average starting portfolio balance
+                - value: '0'
+                - prefix: $
+                - suffix: ''
+                - precision: '2'
+                - round: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 4
+                height: 2
+                width: 2
+                tabNum: 2
+            createdAt: 2020-09-27T17:45:03.006Z
+            updatedAt: 2020-09-27T18:36:09.476Z
+      - text15:
+          pluginTemplate:
+            id: text15
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |+
+                    Most traded stock this month
+
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#555555'
+                - renderAsMarkdown: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                col: 2
+                height: 1
+                width: 2
+                tabNum: 2
+            createdAt: 2020-09-27T17:45:09.429Z
+            updatedAt: 2020-12-20T00:06:37.365Z
+      - text16:
+          pluginTemplate:
+            id: text16
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: >+
+                    ### {{trades_data_month.value.mostTradedStock[0]}}
+                    ({{trades_data_month.value.mostTradedStock[1]}})
+
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 1
+                col: 2
+                height: 1
+                width: 2
+                tabNum: 2
+            createdAt: 2020-09-27T17:45:16.799Z
+            updatedAt: 2020-09-27T18:22:25.726Z
+      - text17:
+          pluginTemplate:
+            id: text17
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: Most traded option this month
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                col: 4
+                height: 1
+                width: 2
+                tabNum: 2
+            createdAt: 2020-09-27T17:45:23.203Z
+            updatedAt: 2020-09-27T18:23:31.498Z
+      - text18:
+          pluginTemplate:
+            id: text18
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: >-
+                    ### {{trades_data_month.value.mostTradedOption[0]}}
+                    ({{trades_data_month.value.mostTradedOption[1]}})
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 1
+                col: 4
+                height: 1
+                width: 3
+                tabNum: 2
+            createdAt: 2020-09-27T17:45:30.216Z
+            updatedAt: 2020-09-27T18:23:13.432Z
+      - text19:
+          pluginTemplate:
+            id: text19
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: "## \U0001F95A New Users Month - {{users_created_monthly_count.value}} "
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 6
+                height: 1
+                width: 3
+                tabNum: 2
+            createdAt: 2020-09-27T17:45:39.463Z
+            updatedAt: 2020-12-19T22:34:30.067Z
+      - chart7:
+          pluginTemplate:
+            id: chart7
+            type: widget
+            subtype: ChartWidget
+            template:
+              ordered:
+                - cutoutPercentage: '0'
+                - autoSkipTicks: false
+                - yMax: '5'
+                - isHorizontal: false
+                - xValuesType: time
+                - yMin: |
+                    1
+                - yMapper: ''
+                - yAxisLabel: Users
+                - xValues: '{{users_created_month_time.value}}'
+                - xAxisLabel: Time
+                - datasets:
+                    ordered:
+                      - dataset1:
+                          ordered:
+                            - seriesLabel: |
+                                # of users
+                            - yValues: '{{users_created_monthly_when.value}}'
+                - chartKindName: Line Chart
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 7
+                height: 9
+                width: 4
+                tabNum: 2
+            createdAt: 2020-09-27T17:45:46.320Z
+            updatedAt: 2020-09-27T18:56:55.161Z
+      - text20:
+          pluginTemplate:
+            id: text20
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: "## \U0001F4C8 Trades Month - {{trades_month_count.value}}"
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 6
+                col: 5
+                height: 1
+                width: 3
+                tabNum: 2
+            createdAt: 2020-09-27T17:45:56.426Z
+            updatedAt: 2020-09-27T18:42:41.082Z
+      - chart8:
+          pluginTemplate:
+            id: chart8
+            type: widget
+            subtype: ChartWidget
+            template:
+              ordered:
+                - cutoutPercentage: '0'
+                - autoSkipTicks: false
+                - isHorizontal: false
+                - xValuesType: time
+                - yMin: '1'
+                - yAxisLabel: Trades
+                - xValues: '{{trades_month_time.value}}'
+                - xAxisLabel: Time
+                - datasets:
+                    ordered:
+                      - dataset1:
+                          ordered:
+                            - seriesLabel: '# of trades'
+                            - yValues: '{{trades_month_when.value}}'
+                - chartKindName: Line Chart
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 7
+                col: 4
+                height: 9
+                width: 5
+                tabNum: 2
+            createdAt: 2020-09-27T17:46:03.538Z
+            updatedAt: 2020-09-27T18:47:08.349Z
+      - text21:
+          pluginTemplate:
+            id: text21
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: center
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: "## \U0001F4C8 Trades placed "
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 6
+                col: 9
+                height: 1
+                width: 3
+                tabNum: 2
+            createdAt: 2020-09-27T17:57:26.805Z
+            updatedAt: 2020-09-27T17:57:27.547Z
+      - chart9:
+          pluginTemplate:
+            id: chart9
+            type: widget
+            subtype: ChartWidget
+            template:
+              ordered:
+                - cutoutPercentage: |
+                    50
+                - autoSkipTicks: false
+                - isHorizontal: false
+                - xValuesType: category
+                - yAxisLabel: Y Axis
+                - xValues: '["Stock", "Option"]'
+                - xAxisLabel: asdasd
+                - datasets:
+                    ordered:
+                      - dataset1:
+                          ordered:
+                            - yValues: >-
+                                [{{trades_data_month.value.stock_trades}},
+                                {{trades_data_month.value.option_trades}}]
+                - chartKindName: Pie Chart
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 7
+                col: 9
+                height: 9
+                width: 3
+                tabNum: 2
+            createdAt: 2020-09-27T17:57:35.146Z
+            updatedAt: 2020-09-27T18:25:08.288Z
+      - trades_month:
+          pluginTemplate:
+            id: trades_month
+            type: datasource
+            subtype: NoSqlQuery
+            resourceName: MissionMoonDB
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - method: find
+                - aggregation: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: "{\"$where\": \"function() { \n\tvar date = new Date();\n\tdate.setHours(0,0,0,0);\n var weeklyDate = new Date(date.setDate(date.getDate() - 30))\n return (this._id.getTimestamp() >= weeklyDate);\n}\"}"
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - update: ''
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - useRawCollectionName: false
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - projection: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - sortBy: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - insert: ''
+                - queryTimeout: '10000'
+                - field: ''
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - limit: ''
+                - enableCaching: false
+                - options: ''
+                - collection: transactions
+                - skip: ''
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-09-27T18:19:31.800Z
+            updatedAt: 2020-09-27T18:20:15.213Z
+      - trades_data_month:
+          pluginTemplate:
+            id: trades_data_month
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: "const tradesToday = {{trades_month.data}}\nvar stockTrades = 0\nvar optionTrades = 0\nvar stocksTraded = {}\nvar tradedOverTheMonth = {}\nvar optionsTraded = {}\ntradesToday.forEach((trade) => {\n  if(trade.symbol[0] == \".\"){\n    ++optionTrades \n\t\tif(!(trade.symbol in optionsTraded))\n      optionsTraded[trade.symbol] = 1\n    else\n      ++optionsTraded[trade.symbol]\n  } else {\n\t\tif(!(trade.symbol in stocksTraded))\n      stocksTraded[trade.symbol] = 1\n    else\n      ++stocksTraded[trade.symbol]\n    ++stockTrades\n    if(trade.userId in tradedOverTheMonth)\n      ++tradedOverTheMonth[trade.userId] \n    else\n      tradedOverTheMonth[trade.userId] = 1\n  }\n})\nvar stocksTradedList = []\nvar optionsTradedList = []\nfor(var stock in stocksTraded)\n  stocksTradedList.push([stock, stocksTraded[stock]])\nstocksTradedList.sort((a, b) => {\n  return a[1] - b[1]\n})\nfor(var option in optionsTraded)\n  optionsTradedList.push([option, optionsTraded[option]])\noptionsTradedList.sort((a, b) => {\n  return a[1] - b[1]\n})\nvar mostTradedStock = [\"\", \"\"]\nvar mostTradedOption = [\"\", \"\"]\nif(stocksTradedList.length > 0)\n\tmostTradedStock = stocksTradedList[stocksTradedList.length-1]\nif(optionsTradedList.length > 0)\n\tmostTradedOption = optionsTradedList[optionsTradedList.length-1]\n\nconst parseOptionString = (option) => {\n    var newOption = {}\n    const optionName = option\n    option = option.substring(1)\n    newOption[\"ticker\"] = option.substring(0, option.search(/\\d+/))\n    option = option.substring(option.search(/\\d+/))\n    newOption[\"expiration\"] = option.substring(0, option.search(/[a-zA-Z]/))\n    option = option.substring(option.search(/[a-zA-Z]/))\n    newOption[\"type\"] = option[0]\n    newOption[\"strike\"] = option.substring(1)\n    newOption[\"underlying\"] = optionName\n    return newOption\n}\nconst monthNames = [\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\",\n  \"Jul\", \"Aug\", \"Sep\", \"Oct\", \"Nov\", \"Dec\"\n]\n\nconst formattedDate = (date) => {\n    const year = \"20\" + date[0] + date[1]\n    const month = date[2] + date[3]\n    const day =  date[4] + date[5]\n    var date = new Date(year + \"-\" + month + \"-\" + day)\n    var yr = date.getFullYear().toString()\n    return date.getUTCDate() + \" \" + monthNames[date.getMonth()] + \" \" + yr.slice(2)\n}\n\nif(mostTradedOption[0] != \"\") {\n\tconst option = parseOptionString(mostTradedOption[0])\n  mostTradedOption[0] = option[\"ticker\"]+\" \" + option[\"strike\"] + option[\"type\"] + \" exp. \" + formattedDate(option[\"expiration\"])\n}\n\nvar tradesPerUser = 0\nvar tradeNumVals = {}\nvar overOneTradingUser = Object.values(tradedOverTheMonth).length \nconst tradedValuesOverTheMonth = Object.values(tradedOverTheMonth)\nfor(tradeVal in tradedValuesOverTheMonth) {\n  if(tradedValuesOverTheMonth[tradeVal] < 2) \n    --overOneTradingUser\n  tradesPerUser += tradedValuesOverTheMonth[tradeVal]\n  const tradedValue = tradedValuesOverTheMonth[tradeVal]\n  if(tradedValue <= 15) {\n    if(tradedValuesOverTheMonth[tradeVal] in tradeNumVals){\n      ++tradeNumVals[tradedValuesOverTheMonth[tradeVal]] \n    } else {\n      tradeNumVals[tradedValuesOverTheMonth[tradeVal]] = 1\n    }\n  } else {\n      if(15 in tradeNumVals)\n        ++tradeNumVals[15] \n      else\n        tradeNumVals[15] = 1\n  }\n}\n\ntradesPerUser = (tradesPerUser) / overOneTradingUser\n\nreturn {\n  \"stock_trades\": stockTrades,\n  \"option_trades\": optionTrades,\n  \"mostTradedStock\": mostTradedStock,\n  \"mostTradedOption\": mostTradedOption,\n  \"trading_users\": Object.keys(tradedOverTheMonth),\n  \"trades\": Object.values(tradedOverTheMonth),\n  \"trades_per_user\": tradesPerUser,\n  \"trade_num_vals\": tradeNumVals\n}"
+                - value: ''
+            createdAt: 2020-09-27T18:21:34.393Z
+            updatedAt: 2020-12-19T23:19:37.872Z
+      - portfolios_opened_month_count:
+          pluginTemplate:
+            id: portfolios_opened_month_count
+            type: datasource
+            subtype: NoSqlQuery
+            resourceName: MissionMoonDB
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - method: count
+                - aggregation: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: "{\"$where\": \"function() { \n\tvar date = new Date();\n\tdate.setHours(0,0,0,0);\n var weeklyDate = new Date(date.setDate(date.getDate() - 30))\n return (this._id.getTimestamp() >= weeklyDate);\n}\"}"
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - update: ''
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - useRawCollectionName: false
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - projection: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - sortBy: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - insert: ''
+                - queryTimeout: '10000'
+                - field: ''
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - limit: ''
+                - enableCaching: false
+                - options: ''
+                - collection: portfolios
+                - skip: ''
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-09-27T18:35:12.207Z
+            updatedAt: 2020-09-27T18:35:31.776Z
+      - trades_month_count:
+          pluginTemplate:
+            id: trades_month_count
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: |-
+                    const tradesMonth = {{trades_month.data}}
+                    return tradesMonth.length
+                - value: ''
+            createdAt: 2020-09-27T18:37:57.093Z
+            updatedAt: 2020-09-27T18:38:32.640Z
+      - users_that_traded_month:
+          pluginTemplate:
+            id: users_that_traded_month
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: |-
+                    const tradesToday = {{trades_month.data}}
+                    var traders = {}
+                    tradesToday.forEach((trade) => {
+                      traders[trade.userId] = 1
+                    })
+                    return Object.keys(traders).length
+                - value: ''
+            createdAt: 2020-09-27T18:39:14.296Z
+            updatedAt: 2020-09-27T18:39:24.266Z
+      - users_created_monthly:
+          pluginTemplate:
+            id: users_created_monthly
+            type: datasource
+            subtype: NoSqlQuery
+            resourceName: MissionMoonDB
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - method: find
+                - aggregation: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: "{\"$where\": \"function() { \n\tvar date = new Date();\n\tdate.setHours(0,0,0,0);\n var weeklyDate = new Date(date.setDate(date.getDate() - 30))\n return (this._id.getTimestamp() >= weeklyDate);\n}\"}"
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - update: ''
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - useRawCollectionName: false
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - projection: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - sortBy: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - insert: ''
+                - queryTimeout: '10000'
+                - field: ''
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - limit: ''
+                - enableCaching: false
+                - options: ''
+                - collection: paperusers
+                - skip: ''
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-09-27T18:40:42.487Z
+            updatedAt: 2020-09-27T18:40:56.798Z
+      - users_created_monthly_count:
+          pluginTemplate:
+            id: users_created_monthly_count
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: |-
+                    const userCreatedCount = {{users_created_monthly.data}}
+                    return userCreatedCount.length
+                - value: ''
+            createdAt: 2020-09-27T18:41:19.193Z
+            updatedAt: 2020-09-27T18:41:31.695Z
+      - trades_month_time:
+          pluginTemplate:
+            id: trades_month_time
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: "var tradesMade = {{trades_month.data}}\nvar allTrades = {}\ntradesMade.forEach((trade) => {\n  const transactionDate = new Date(trade.transactionDate)\n  transactionDate.setSeconds(0);\n\tvar currentTime = transactionDate.toDateString()\n  if(!(currentTime in allTrades))\n    allTrades[currentTime] = transactionDate\n})\nreturn Object.values(allTrades)\n"
+                - value: ''
+            createdAt: 2020-09-27T18:42:46.232Z
+            updatedAt: 2020-09-27T18:53:01.725Z
+      - trades_month_when:
+          pluginTemplate:
+            id: trades_month_when
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: |-
+                    var tradesMade = {{trades_month.data}}
+                    var allTrades = {}
+                    tradesMade.forEach((trade) => {
+                      var tradeMadeDate = new Date(trade.transactionDate)
+                      var currentTime = tradeMadeDate.toDateString()
+                      if(!(currentTime in allTrades))
+                        allTrades[currentTime] = 1
+                      else
+                        ++allTrades[currentTime]
+                    })
+                    return Object.values(allTrades)
+                - value: ''
+            createdAt: 2020-09-27T18:43:21.415Z
+            updatedAt: 2020-09-27T18:52:06.025Z
+      - users_created_month_time:
+          pluginTemplate:
+            id: users_created_month_time
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: "var usersMade = {{users_created_monthly.data}}\nvar allUsers = {}\nusersMade.forEach((user) => {\n  const userCreatedDate = new Date(user.devices[0].created)\n  userCreatedDate.setSeconds(0)\n\tconst currentTime = userCreatedDate.toDateString()\n  if(!(currentTime in allUsers))\n    allUsers[currentTime] = userCreatedDate\n})\nreturn Object.values(allUsers)"
+                - value: ''
+            createdAt: 2020-09-27T18:55:20.779Z
+            updatedAt: 2020-09-27T18:55:44.258Z
+      - users_created_monthly_when:
+          pluginTemplate:
+            id: users_created_monthly_when
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: |-
+                    var usersMade = {{users_created_monthly.data}}
+                    var allUsers = {}
+                    usersMade.forEach((user) => {
+                      const userCreatedDate = new Date(user.devices[0].created)
+                      const currentTime = userCreatedDate.toDateString()
+                      if(!(currentTime in allUsers))
+                        allUsers[currentTime] = 1
+                      else
+                        ++allUsers[currentTime]
+                    })
+                    return Object.values(allUsers)
+                - value: ''
+            createdAt: 2020-09-27T18:55:58.403Z
+            updatedAt: 2020-09-27T18:56:17.272Z
+      - trades_week_time:
+          pluginTemplate:
+            id: trades_week_time
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: "var tradesMade = {{trades_week.data}}\nvar allTrades = {}\ntradesMade.forEach((trade) => {\n  const transactionDate = new Date(trade.transactionDate)\n  transactionDate.setSeconds(0);\n\tvar currentTime = transactionDate.toDateString()\n  if(!(currentTime in allTrades))\n    allTrades[currentTime] = transactionDate\n})\nreturn Object.values(allTrades)\n"
+                - value: ''
+            createdAt: 2020-09-27T19:01:09.336Z
+            updatedAt: 2020-09-27T19:01:22.702Z
+      - trades_week_when:
+          pluginTemplate:
+            id: trades_week_when
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: |-
+                    var tradesMade = {{trades_week.data}}
+                    var allTrades = {}
+                    tradesMade.forEach((trade) => {
+                      var tradeMadeDate = new Date(trade.transactionDate)
+                      var currentTime = tradeMadeDate.toDateString()
+                      if(!(currentTime in allTrades))
+                        allTrades[currentTime] = 1
+                      else
+                        ++allTrades[currentTime]
+                    })
+                    return Object.values(allTrades)
+                - value: ''
+            createdAt: 2020-09-27T19:01:30.658Z
+            updatedAt: 2020-09-27T19:01:40.512Z
+      - chart10:
+          pluginTemplate:
+            id: chart10
+            type: widget
+            subtype: ChartWidget
+            template:
+              ordered:
+                - cutoutPercentage: '0'
+                - autoSkipTicks: false
+                - yMax: '5'
+                - isHorizontal: false
+                - xValuesType: time
+                - yMin: |
+                    1
+                - yMapper: ''
+                - yAxisLabel: Users
+                - xValues: '{{portfolios_time.value}}'
+                - xAxisLabel: Time
+                - datasets:
+                    ordered:
+                      - dataset1:
+                          ordered:
+                            - seriesLabel: |
+                                # of users
+                            - yValues: '{{portfolios_when.value}}'
+                - chartKindName: Line Chart
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 17
+                height: 9
+                width: 4
+                tabNum: 2
+            createdAt: 2020-12-19T22:15:46.170Z
+            updatedAt: 2020-12-19T22:41:00.567Z
+      - portfolios_month:
+          pluginTemplate:
+            id: portfolios_month
+            type: datasource
+            subtype: NoSqlQuery
+            resourceName: MissionMoonDB
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - method: find
+                - aggregation: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: "{\"$where\": \"function() { \n\tvar date = new Date();\n\tdate.setHours(0,0,0,0);\n var weeklyDate = new Date(date.setDate(date.getDate() - 30))\n return (this._id.getTimestamp() >= weeklyDate);\n}\"}"
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - update: ''
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - useRawCollectionName: false
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - projection: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - sortBy: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - insert: ''
+                - queryTimeout: '10000'
+                - field: ''
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - limit: ''
+                - enableCaching: false
+                - options: ''
+                - collection: portfolios
+                - skip: ''
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-12-19T22:21:16.106Z
+            updatedAt: 2020-12-19T22:35:38.879Z
+      - text22:
+          pluginTemplate:
+            id: text22
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |
+                    ### Portfolios / month: {{port_found_month.data.length
+                    }}
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+                - id: text22
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 16
+                height: 1
+                width: 3
+                tabNum: 2
+            createdAt: 2020-12-19T22:29:51.437Z
+            updatedAt: 2020-12-19T23:24:12.031Z
+      - statistic10:
+          pluginTemplate:
+            id: statistic10
+            type: widget
+            subtype: StatisticWidget
+            template:
+              ordered:
+                - title: Trades per user
+                - value: '{{portfolios_opened_month_count.data.count}}'
+                - prefix: ''
+                - suffix: ''
+                - precision: '0'
+                - round: true
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 2
+                col: 2
+                height: 2
+                width: 2
+                tabNum: 2
+            createdAt: 2020-12-19T22:33:58.966Z
+            updatedAt: 2020-12-19T22:34:11.699Z
+      - portfolios_when:
+          pluginTemplate:
+            id: portfolios_when
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: |-
+                    var portfoliosMade = {{portfolios_month.data}}
+                    var allPortfolios = {}
+                    portfoliosMade.forEach((portfolio) => {
+                      var portfolioDate = new Date(portfolio.createdDate)
+                      var currentTime = portfolioDate.toDateString()
+                      if(!(currentTime in allPortfolios))
+                        allPortfolios[currentTime] = 1
+                      else
+                        ++allPortfolios[currentTime]
+                    })
+                    return Object.values(allPortfolios)
+                - value: ''
+            createdAt: 2020-12-19T22:35:59.171Z
+            updatedAt: 2020-12-19T22:37:22.666Z
+      - portfolios_time:
+          pluginTemplate:
+            id: portfolios_time
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: "var portfoliosMade = {{portfolios_month.data}}\nvar allPortfolios = {}\nportfoliosMade.forEach((portfolio) => {\n  const portfolioDate = new Date(portfolio.createdDate)\n  portfolioDate.setSeconds(0);\n\tvar currentTime = portfolioDate.toDateString()\n  if(!(currentTime in allPortfolios))\n    allPortfolios[currentTime] = portfolioDate\n})\nreturn Object.values(allPortfolios)"
+                - value: ''
+            createdAt: 2020-12-19T22:37:35.514Z
+            updatedAt: 2020-12-19T22:39:35.519Z
+      - aggregate_new_users:
+          pluginTemplate:
+            id: aggregate_new_users
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: "var valuesMade = {{users_created_monthly.data}}\nvar userMapping = {}\nvaluesMade.forEach((user) => {\n  const userCreatedDate = new Date(user.devices[0].created)\n  const currentTime = userCreatedDate.toDateString()\n  if(!(currentTime in userMapping))\n    userMapping[currentTime] = 1\n  else\n    ++userMapping[currentTime]\n})\n\n\nvar numberOfNewUsers = Object.values(userMapping)\nvar totalUsers = [numberOfNewUsers[0]]\nfor(user in numberOfNewUsers) {\n\tif(user > 0) {\n\t\ttotalUsers[user] = numberOfNewUsers[user] + totalUsers[totalUsers.length - 1]\n\t}\n}\nvar mapping = {}\nvar i = 0\nObject.keys(userMapping).forEach((date) => {\n\tmapping[date] = totalUsers[i++]\n})\n\nreturn mapping"
+                - value: ''
+            createdAt: 2020-12-19T22:41:10.963Z
+            updatedAt: 2020-12-19T23:58:15.039Z
+      - chart11:
+          pluginTemplate:
+            id: chart11
+            type: widget
+            subtype: ChartWidget
+            template:
+              ordered:
+                - cutoutPercentage: '0'
+                - autoSkipTicks: false
+                - isHorizontal: false
+                - xValuesType: category
+                - yAxisLabel: Number of users
+                - xValues: '{{Object.keys(trades_data_month.value.trade_num_vals)}}'
+                - id: chart11
+                - xAxisLabel: Number of trades (and those >= 15)
+                - datasets:
+                    ordered:
+                      - dataset1:
+                          ordered:
+                            - yValues: >-
+                                {{Object.values(trades_data_month.value.trade_num_vals)}}
+                            - seriesLabel: users making trades
+                - chartKindName: Bar Chart
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 17
+                col: 4
+                height: 9
+                width: 5
+                tabNum: 2
+            createdAt: 2020-12-19T23:20:38.658Z
+            updatedAt: 2020-12-19T23:23:32.827Z
+      - chart12:
+          pluginTemplate:
+            id: chart12
+            type: widget
+            subtype: ChartWidget
+            template:
+              ordered:
+                - cutoutPercentage: '0'
+                - autoSkipTicks: false
+                - isHorizontal: false
+                - xValuesType: time
+                - yAxisLabel: Users
+                - xValues: '{{Object.keys(aggregate_new_users.value)}}'
+                - id: chart12
+                - xAxisLabel: |
+                    Time
+                - datasets:
+                    ordered:
+                      - dataset1:
+                          ordered:
+                            - yValues: '{{Object.values(aggregate_new_users.value)}}'
+                            - seriesLabel: Total users over time
+                - chartKindName: Line Chart
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 26
+                height: 9
+                width: 6
+                tabNum: 2
+            createdAt: 2020-12-19T23:59:07.411Z
+            updatedAt: 2020-12-20T00:04:21.647Z
+      - asd:
+          pluginTemplate:
+            id: asd
+            type: datasource
+            subtype: NoSqlQuery
+            resourceName: MissionMoonDB
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - method: find
+                - aggregation: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: |-
+                    {
+                      
+                    }
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - update: ''
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - useRawCollectionName: false
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - projection: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - sortBy: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - insert: ''
+                - queryTimeout: '10000'
+                - field: ''
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - limit: ''
+                - enableCaching: false
+                - options: ''
+                - collection: ''
+                - skip: ''
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-12-20T22:12:38.859Z
+            updatedAt: 2020-12-20T22:12:50.231Z
+  createdAt: null
+  version: 2.64.70
+  responsiveLayoutDisabled: false
+  urlFragmentDefinitions: []
+  pageLoadValueOverrides: []
+  isGlobalWidget: false
