@@ -2140,8 +2140,8 @@ appTemplate:
             position2:
               position2:
                 container: tabbedcontainer1
-                row: .nan
-                height: .nan
+                row: 1
+                height: 6
                 width: 8
             createdAt: 2020-12-29T02:28:15.767Z
             updatedAt: 2020-12-30T17:58:45.143Z
