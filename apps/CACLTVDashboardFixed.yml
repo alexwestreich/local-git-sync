@@ -1,0 +1,3056 @@
+version: 43.0.9
+pageUuid: c9a7289c-4574-11eb-9fa1-1fdd0209f34a
+appTemplate:
+  plugins:
+    ordered:
+      - cac_ltv:
+          pluginTemplate:
+            id: cac_ltv
+            type: datasource
+            subtype: SqlQueryUnified
+            resourceName: BigQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - records: ''
+                - databasePasswordOverride: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: >-
+                    with T as (
+
+                    select date_trunc(cast(c.created_at as date), WEEK(MONDAY)) 
+                    as call_scheduled_date,
+
+                    i.session_id as id,  i.user_id,
+                    pu.assigned_clinician_user_id,
+
+                    if(CAST({{textinput_pay.value.trim().length==0}} AS BOOL) ,
+                    if(CAST(pu.billing_cash_pay_90_min as numeric)=0,NULL,
+                    CAST(pu.billing_cash_pay_90_min as numeric) ) ,
+                    CAST({{textinput_pay.value}} as numeric)) as
+                    billing_cash_pay_90_min,
+
+                    if(CAST({{textinput_pay.value.trim().length==0}} AS BOOL)
+                    ,if(CAST(pu.billing_cash_pay_60_min as numeric)=0,NULL,
+                    CAST(pu.billing_cash_pay_60_min as numeric)),
+                    CAST({{textinput_pay.value}} as numeric)) as
+                    billing_cash_pay_60_min,
+
+                    if(pc.rate_clinical=0,NULL,pc.rate_clinical/100) as
+                    rate_clinical ,
+                    if(pc.rate_non_clinical=0,NULL,pc.rate_non_clinical/100) as
+                    rate_non_clinical,
+
+                    case when c.channel like "web_%" then "web"
+
+                    else c.channel
+
+                    end as channel,
+
+                    c.submitted as calendar_submitted,
+
+                    if(i.label="Completed" or i.label="Converted",TRUE,FALSE) as
+                    call_completed,
+
+                    if(i.label="Converted",TRUE, FALSE) as call_converted,
+
+                    from mysql_rds_nocd_v2.calendar_visits c join
+                    mysql_rds_nocd_v2.intake_calls i  on
+                    i.session_id=c.session_id
+
+                    left join mysql_rds_nocd_v2.premium_users pu on pu.user_id =
+                    i.user_id
+
+                    left join mysql_rds_nocd_v2.premium_clinicians pc on
+                    pu.assigned_clinician_user_id=pc.user_id
+
+                    where i._fivetran_deleted=false and
+                    c._fivetran_deleted=false
+
+                    -- and date(c.created_at) >= '2020-11-01'
+
+                    -- and date(c.created_at) <=  '2020-12-24'
+
+                    and i.canceled = False
+
+                    ),
+
+                    A as (
+
+                    select
+
+                    call_scheduled_date,
+
+                    T.channel,
+
+                    calendar_submitted,
+
+                    call_completed,
+
+                    call_converted,
+
+                    if(avg(billing_cash_pay_90_min) is null, 123.0,
+                    avg(billing_cash_pay_90_min) ) as pay90min,
+
+                    if(avg(billing_cash_pay_60_min) is null, 123.0,
+                    avg(billing_cash_pay_60_min) ) as pay60min,
+
+                    if(avg(rate_clinical) is null, 75.0,  avg(rate_clinical) )
+                    as rate_clinical,
+
+                    if (avg(rate_non_clinical) is null, 50.0,
+                    avg(rate_clinical)) as rate_non_clinical,
+
+                    max(s.spend ) as spend,
+
+                    count(*) as cnt
+
+                    from T
+
+                    join analytics.channel_spend_table s on
+                    date_trunc(s.date,WEEK(MONDAY)) = call_scheduled_date  and
+                    s.channel = T.channel
+
+                    group by call_scheduled_date, channel,  calendar_submitted,
+                    call_completed, call_converted
+
+                    order by call_scheduled_date desc, call_converted desc
+
+                    ),
+
+                    B as (
+
+                    select
+
+                    call_scheduled_date, channel,
+
+                    sum(if(calendar_submitted=TRUE, cnt, 0.0)) as
+                    calendar_submitted_cnt,
+
+                    sum(if(call_completed=TRUE , cnt, 0.0)) as
+                    call_completed_cnt,
+
+                    sum(if(call_converted=TRUE , cnt, 0.0)) as
+                    call_converted_cnt,
+
+                    avg(if(call_converted=TRUE , pay90min, NULL)) as pay90min,
+
+                    avg(if(call_converted=TRUE , pay60min, NULL)) as pay60min,
+
+                    avg(if(call_converted=TRUE , rate_clinical, NULL)) as
+                    rate_clinical,
+
+                    avg(if(call_converted=TRUE , rate_non_clinical, NULL)) as
+                    rate_non_clinical,
+
+                    avg(spend) as spend
+
+                    from A
+
+                    group by call_scheduled_date, channel
+
+                    )
+
+                    select B.*,
+
+                    if(cast({{textinput_therapy_hours.value}} as numeric)>=1.5, 
+                       cast({{textinput_conv.value/100}} as numeric)*B.call_converted_cnt*(B.pay90min+(cast({{textinput_therapy_hours.value}} as numeric)-1.5)*B.pay60min),0.0)  as clinical_receive,
+                    if(cast({{textinput_therapy_hours.value}} as numeric)>=1.5,
+                    cast({{textinput_conv.value/100*(1+textinput_overhead.value/100)}}
+                    as
+                    numeric)*B.call_converted_cnt*B.rate_clinical*cast({{textinput_therapy_hours.value}}
+                    as numeric),0.0)  as clinical_pay,
+
+                    if(cast({{textinput_therapy_hours.value}} as numeric)>=1.5, 
+                    cast({{textinput_conv.value/100}} as
+                    numeric)*(B.call_converted_cnt*(B.pay90min+(cast({{textinput_therapy_hours.value}}
+                    as numeric)-1.5)*B.pay60min) -
+                    cast({{1+textinput_overhead.value/100}} as
+                    numeric)*B.call_converted_cnt*B.rate_clinical*cast({{textinput_therapy_hours.value}}
+                    as numeric)),0)  as clinical_net
+
+                    from B
+
+                    order by call_scheduled_date desc, channel
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - warningCodes: []
+                - data: null
+                - recordId: ''
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - dataArray: []
+                - cacheKeyTtl: ''
+                - filterBy: ''
+                - metadata: null
+                - editorMode: sql
+                - actionType: ''
+                - triggersOnFailure: []
+                - shouldUseLegacySql: false
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - databaseNameOverride: ''
+                - confirmationMessage: null
+                - isFetching: false
+                - changeset: ''
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - enableBulkUpdates: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - bulkUpdatePrimaryKey: ''
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - tableName: ''
+                - queryTimeout: '10001'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - databaseUsernameOverride: ''
+                - shouldEnableBatchQuerying: false
+                - doNotThrowOnNoOp: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-12-23T23:15:47.975Z
+            updatedAt: 2021-01-06T15:24:22.389Z
+      - channel_spend:
+          pluginTemplate:
+            id: channel_spend
+            type: datasource
+            subtype: SqlQueryUnified
+            resourceName: BigQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - records: ''
+                - databasePasswordOverride: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: |-
+                    select * from analytics.channel_spend_table
+                    order by date desc, channel asc
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - warningCodes: []
+                - data: null
+                - recordId: ''
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - dataArray: []
+                - cacheKeyTtl: ''
+                - filterBy: ''
+                - metadata: null
+                - editorMode: sql
+                - actionType: ''
+                - triggersOnFailure: []
+                - shouldUseLegacySql: false
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - databaseNameOverride: ''
+                - confirmationMessage: null
+                - isFetching: false
+                - changeset: ''
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - enableBulkUpdates: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - bulkUpdatePrimaryKey: ''
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - tableName: ''
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - databaseUsernameOverride: ''
+                - shouldEnableBatchQuerying: false
+                - doNotThrowOnNoOp: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-12-24T00:17:35.959Z
+            updatedAt: 2020-12-24T03:42:21.038Z
+      - channel_spend_update_row:
+          pluginTemplate:
+            id: channel_spend_update_row
+            type: datasource
+            subtype: SqlQueryUnified
+            resourceName: BigQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - records: ''
+                - databasePasswordOverride: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: >-
+                    update analytics.channel_spend_table
+
+                    set spend = cast({{state1.value.spend}} as numeric)
+
+                    where date = cast({{state1.value.date}} as date) and channel
+                    = {{state1.value.channel}}
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - warningCodes: []
+                - data: null
+                - recordId: ''
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - dataArray: []
+                - cacheKeyTtl: ''
+                - filterBy: ''
+                - metadata: null
+                - editorMode: sql
+                - actionType: ''
+                - triggersOnFailure: []
+                - shouldUseLegacySql: false
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - databaseNameOverride: ''
+                - confirmationMessage: null
+                - isFetching: false
+                - changeset: ''
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - enableBulkUpdates: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - bulkUpdatePrimaryKey: ''
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - tableName: ''
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - databaseUsernameOverride: ''
+                - shouldEnableBatchQuerying: false
+                - doNotThrowOnNoOp: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-12-24T03:51:14.647Z
+            updatedAt: 2020-12-24T06:09:20.431Z
+      - channel_spend_bulk_update:
+          pluginTemplate:
+            id: channel_spend_bulk_update
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: "var ud = table2.recordUpdates;\nfor(i in ud){\n\tstate1.setValue(ud[i]);\n\tchannel_spend_update_row.trigger()\n}"
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess:
+                    - channel_spend
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-12-24T04:15:48.444Z
+            updatedAt: 2020-12-24T05:52:38.625Z
+      - agg_month:
+          pluginTemplate:
+            id: agg_month
+            type: datasource
+            subtype: SqlTransformQuery
+            resourceName: SQL Transforms
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: >-
+                    with A as
+
+                    (
+
+                    select call_scheduled_date, 
+
+                    sum(convert(float,calendar_submitted_cnt)) as 
+                    calendar_submitted_cnt,
+
+                    sum(convert(float,call_completed_cnt)) as 
+                    call_completed_cnt,
+
+                    sum(convert(float,call_converted_cnt)) as 
+                    call_converted_cnt,
+
+                    -- avg(rate_clinical) as rate_clinical,
+
+                    -- avg(rate_non_clinical) as rate_non_clinical,
+
+                    sum(convert(float,rate_clinical)*convert(float,call_converted_cnt))/sum(convert(float,call_converted_cnt))
+                    as rate_clinical,
+
+                    sum(convert(float,rate_non_clinical)*convert(float,call_converted_cnt))/sum(convert(float,call_converted_cnt)) 
+                    as rate_non_clinical,  
+
+                    sum(convert(float,clinical_receive)) as nocd_receive,
+
+                    sum(convert(float,clinical_pay)) as nocd_pay,
+
+                    sum(convert(float,clinical_net)) as margin
+
+                    from {{formatDataAsArray(cac_ltv_state.data)}} group by
+                    call_scheduled_date order by call_scheduled_date desc
+
+                    ),
+
+                    B as (
+
+                    select call_scheduled_date, sum(spend) as spend from
+
+                    (select call_scheduled_date as call_scheduled_date, channel,
+                    max(convert(float,spend)) as spend 
+
+                    from {{formatDataAsArray(cac_ltv_state.data)}} group by
+                    call_scheduled_date, channel) 
+
+                    group by call_scheduled_date  )
+
+                    select * from A join B using call_scheduled_date
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-12-24T04:46:32.576Z
+            updatedAt: 2021-01-06T15:55:07.352Z
+      - cac_ltv_state:
+          pluginTemplate:
+            id: cac_ltv_state
+            type: datasource
+            subtype: SqlQueryUnified
+            resourceName: BigQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - records: ''
+                - databasePasswordOverride: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: >-
+                    with T as (
+
+                    select date_trunc(cast(c.created_at as date), WEEK(MONDAY)) 
+                    as call_scheduled_date,
+
+                    i.session_id as id,  i.user_id,
+                    pu.assigned_clinician_user_id,
+
+                    if(CAST({{textinput_pay.value.trim().length==0}} AS BOOL) ,
+                    if(CAST(pu.billing_cash_pay_90_min as numeric)=0,NULL,
+                    CAST(pu.billing_cash_pay_90_min as numeric) ) ,
+                    CAST({{textinput_pay.value}} as numeric)) as
+                    billing_cash_pay_90_min,
+
+                    if(CAST({{textinput_pay.value.trim().length==0}} AS BOOL)
+                    ,if(CAST(pu.billing_cash_pay_60_min as numeric)=0,NULL,
+                    CAST(pu.billing_cash_pay_60_min as numeric)),
+                    CAST({{textinput_pay.value}} as numeric)) as
+                    billing_cash_pay_60_min,
+
+                    if(pc.rate_clinical=0,NULL,pc.rate_clinical/100) as
+                    rate_clinical ,
+                    if(pc.rate_non_clinical=0,NULL,pc.rate_non_clinical/100) as
+                    rate_non_clinical,
+
+                    case when c.channel like "web_%" then "web"
+
+                    else c.channel
+
+                    end as channel,
+
+                    if(i.state is null or i.state="","Unknown", i.state) as
+                    state,
+
+                    c.submitted as calendar_submitted,
+
+                    if(i.label="Completed" or i.label="Converted",TRUE,FALSE) as
+                    call_completed,
+
+                    if(i.label="Converted",TRUE, FALSE) as call_converted,
+
+                    from mysql_rds_nocd_v2.calendar_visits c join
+                    mysql_rds_nocd_v2.intake_calls i  on
+                    i.session_id=c.session_id
+
+                    left join mysql_rds_nocd_v2.premium_users pu on pu.user_id =
+                    i.user_id
+
+                    left join mysql_rds_nocd_v2.premium_clinicians pc on
+                    pu.assigned_clinician_user_id=pc.user_id
+
+                    where i._fivetran_deleted=false and
+                    c._fivetran_deleted=false
+
+                    -- and date(c.created_at) >= '2020-11-01'
+
+                    -- and date(c.created_at) <=  '2020-12-24'
+
+                    and i.canceled = False
+
+                    ),
+
+                    A as (
+
+                    select
+
+                    call_scheduled_date,
+
+                    T.channel,
+
+                    T.state,
+
+                    calendar_submitted,
+
+                    call_completed,
+
+                    call_converted,
+
+                    if(avg(billing_cash_pay_90_min) is null, 123,
+                    avg(billing_cash_pay_90_min) ) as pay90min,
+
+                    if(avg(billing_cash_pay_60_min) is null, 123,
+                    avg(billing_cash_pay_60_min) ) as pay60min,
+
+                    if(avg(rate_clinical) is null, 75,  avg(rate_clinical) ) as
+                    rate_clinical,
+
+                    if (avg(rate_non_clinical) is null, 50, avg(rate_clinical))
+                    as rate_non_clinical,
+
+                    max(s.spend ) as spend,
+
+                    count(*) as cnt
+
+                    from T
+
+                    join analytics.channel_spend_table s on
+                    date_trunc(s.date,WEEK(MONDAY)) = call_scheduled_date  and
+                    s.channel = T.channel
+
+                    group by call_scheduled_date, channel,  state,
+                    calendar_submitted, call_completed, call_converted
+
+                    order by call_scheduled_date desc, call_converted desc
+
+                    ),
+
+                    B as (
+
+                    select
+
+                    call_scheduled_date, channel, state,
+
+                    sum(if(calendar_submitted=TRUE, cnt, 0)) as
+                    calendar_submitted_cnt,
+
+                    sum(if(call_completed=TRUE , cnt, 0)) as call_completed_cnt,
+
+                    sum(if(call_converted=TRUE , cnt, 0)) as call_converted_cnt,
+
+                    avg(if(call_converted=TRUE , pay90min, NULL)) as pay90min,
+
+                    avg(if(call_converted=TRUE , pay60min, NULL)) as pay60min,
+
+                    avg(if(call_converted=TRUE , rate_clinical, NULL)) as
+                    rate_clinical,
+
+                    avg(if(call_converted=TRUE , rate_non_clinical, NULL)) as
+                    rate_non_clinical,
+
+                    avg(spend) as spend
+
+                    from A
+
+                    group by call_scheduled_date, channel, state
+
+                    )
+
+                    select B.*,
+
+                    if(cast({{textinput_therapy_hours.value}} as numeric)>=1.5,
+                    cast({{textinput_conv.value/100}} as
+                    numeric)*B.call_converted_cnt*(B.pay90min+(cast({{textinput_therapy_hours.value}}
+                    as numeric)-1.5)*B.pay60min),0)  as clinical_receive,
+
+                    if(cast({{textinput_therapy_hours.value}} as numeric)>=1.5,
+                    cast({{textinput_conv.value/100*(1+textinput_overhead.value/100)}}
+                    as
+                    numeric)*B.call_converted_cnt*B.rate_clinical*cast({{textinput_therapy_hours.value}}
+                    as numeric),0)  as clinical_pay,
+
+                    if(cast({{textinput_therapy_hours.value}} as numeric)>=1.5, 
+                    cast({{textinput_conv.value/100}} as
+                    numeric)*(B.call_converted_cnt*(B.pay90min+(cast({{textinput_therapy_hours.value}}
+                    as numeric)-1.5)*B.pay60min) -
+                    cast({{1+textinput_overhead.value/100}} as
+                    numeric)*B.call_converted_cnt*B.rate_clinical*cast({{textinput_therapy_hours.value}}
+                    as numeric)),0)  as clinical_net
+
+                    from B
+
+                    order by call_scheduled_date desc, channel, state
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - warningCodes: []
+                - data: null
+                - recordId: ''
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - dataArray: []
+                - cacheKeyTtl: ''
+                - filterBy: ''
+                - metadata: null
+                - editorMode: sql
+                - actionType: ''
+                - triggersOnFailure: []
+                - shouldUseLegacySql: false
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - databaseNameOverride: ''
+                - confirmationMessage: null
+                - isFetching: false
+                - changeset: ''
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - enableBulkUpdates: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - bulkUpdatePrimaryKey: ''
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - tableName: ''
+                - queryTimeout: '10001'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - databaseUsernameOverride: ''
+                - shouldEnableBatchQuerying: false
+                - doNotThrowOnNoOp: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-12-29T05:37:28.779Z
+            updatedAt: 2020-12-30T17:53:20.644Z
+      - grp_channel:
+          pluginTemplate:
+            id: grp_channel
+            type: datasource
+            subtype: SqlTransformQuery
+            resourceName: SQL Transforms
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: >-
+                    select call_scheduled_date, channel,
+
+                    max(convert(float,spend)) as spend, 
+
+                    sum(convert(float,calendar_submitted_cnt)) as 
+                    calendar_submitted_cnt,
+
+                    sum(convert(float,call_completed_cnt)) as 
+                    call_completed_cnt,
+
+                    sum(convert(float,call_converted_cnt)) as 
+                    call_converted_cnt,
+
+                    -- avg(rate_clinical) as rate_clinical,
+
+                    -- avg(rate_non_clinical) as rate_non_clinical,
+
+                    sum(convert(float,rate_clinical)*convert(float,call_converted_cnt))/sum(convert(float,call_converted_cnt))
+                    as rate_clinical,
+
+                    sum(convert(float,rate_non_clinical)*convert(float,call_converted_cnt))/sum(convert(float,call_converted_cnt)) 
+                    as rate_non_clinical,
+
+                    sum(convert(float,clinical_receive)) as nocd_receive,
+
+                    sum(convert(float,clinical_pay)) as nocd_pay,
+
+                    sum(convert(float,clinical_net)) as margin
+
+                    from {{formatDataAsArray(cac_ltv_state.data)}} group by
+                    call_scheduled_date, channel order by call_scheduled_date
+                    desc, channel asc
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-12-29T05:47:19.525Z
+            updatedAt: 2021-01-06T15:54:19.234Z
+      - grp_state:
+          pluginTemplate:
+            id: grp_state
+            type: datasource
+            subtype: SqlTransformQuery
+            resourceName: SQL Transforms
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: >-
+                    select  state,
+
+                    -- sum(cast(spend as number)) as spend, 
+
+                    sum(convert(float,calendar_submitted_cnt)) as 
+                    calendar_submitted_cnt,
+
+                    sum(convert(float,call_completed_cnt)) as 
+                    call_completed_cnt,
+
+                    sum(convert(float,call_converted_cnt)) as 
+                    call_converted_cnt,
+
+                    sum(convert(float,rate_clinical)*convert(float,call_converted_cnt))/sum(convert(float,call_converted_cnt))
+                    as rate_clinical,
+
+                    sum(convert(float,rate_non_clinical)*convert(float,call_converted_cnt))/sum(convert(float,call_converted_cnt)) 
+                    as rate_non_clinical,
+
+                    sum(convert(float,clinical_receive)) as nocd_receive,
+
+                    sum(convert(float,clinical_pay)) as nocd_pay,
+
+                    sum(convert(float,clinical_net)) as margin
+
+                    from {{formatDataAsArray(cac_ltv_state.data)}}
+
+                    where (cast(call_scheduled_date as DATE) =
+                    cast({{select_startdate.value}} as DATE)
+
+                    or "All" = cast({{select_startdate.value}} as string) )
+
+                    group by  state  
+
+                    order by  state asc
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-12-29T05:57:53.115Z
+            updatedAt: 2021-01-13T23:11:10.235Z
+      - query_dates:
+          pluginTemplate:
+            id: query_dates
+            type: datasource
+            subtype: SqlTransformQuery
+            resourceName: SQL Transforms
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: >-
+                    select distinct call_scheduled_date as date from
+                    {{formatDataAsArray(cac_ltv.data)}} where
+                    call_scheduled_date is not null order by call_scheduled_date
+                    desc
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-12-29T18:16:52.104Z
+            updatedAt: 2020-12-29T18:34:11.427Z
+      - sql_audit:
+          pluginTemplate:
+            id: sql_audit
+            type: datasource
+            subtype: SqlQueryUnified
+            resourceName: BigQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - records: ''
+                - databasePasswordOverride: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: >-
+                    select distinct date_trunc(cast(c.created_at as date),
+                    WEEK(MONDAY))  as call_scheduled_date, pu.user_id,
+
+                    pu.assigned_clinician_user_id, i.state as state, c.channel,
+                    pc.email,
+
+                    if(pc.rate_clinical=0,NULL,pc.rate_clinical/100) as
+                    rate_clinical ,
+                    if(pc.rate_non_clinical=0,NULL,pc.rate_non_clinical/100) as
+                    rate_non_clinical,
+
+                    from mysql_rds_nocd_v2.calendar_visits c join
+                    mysql_rds_nocd_v2.intake_calls i  on
+                    i.session_id=c.session_id
+
+                    join mysql_rds_nocd_v2.premium_users pu on pu.user_id =
+                    i.user_id
+
+                    join mysql_rds_nocd_v2.premium_clinicians pc on
+                    pu.assigned_clinician_user_id=pc.user_id
+
+                    where i._fivetran_deleted=false and
+                    c._fivetran_deleted=false
+
+                    and i.canceled = False
+
+                    and i.label  = 'Converted'  and (
+                    date_trunc(cast(c.created_at as date), WEEK(MONDAY))  =
+                    cast({{select_audit_date.value}} as date) 
+
+                    or cast({{select_audit_date.value}} as string) = "All" )
+
+                    and i.state = cast({{select_audit_state.value}} as string)
+
+                    order by pc.email
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - warningCodes: []
+                - data: null
+                - recordId: ''
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - dataArray: []
+                - cacheKeyTtl: ''
+                - filterBy: ''
+                - metadata: null
+                - editorMode: sql
+                - actionType: ''
+                - triggersOnFailure: []
+                - shouldUseLegacySql: false
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - databaseNameOverride: ''
+                - confirmationMessage: null
+                - isFetching: false
+                - changeset: ''
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - enableBulkUpdates: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - bulkUpdatePrimaryKey: ''
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - tableName: ''
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - databaseUsernameOverride: ''
+                - shouldEnableBatchQuerying: false
+                - doNotThrowOnNoOp: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-12-30T16:07:54.314Z
+            updatedAt: 2021-01-13T23:26:35.005Z
+      - query_states:
+          pluginTemplate:
+            id: query_states
+            type: datasource
+            subtype: SqlTransformQuery
+            resourceName: SQL Transforms
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: >-
+                    select distinct state as state from
+                    {{formatDataAsArray(cac_ltv_state.data)}} where state is not
+                    null order by state asc
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-12-30T16:11:28.813Z
+            updatedAt: 2020-12-30T16:14:36.064Z
+      - q_audit_state:
+          pluginTemplate:
+            id: q_audit_state
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: >
+                    tabbedcontainer2.selectTab(3)
+
+                    select_audit_date.setValue(select_startdate.value)
+
+                    select_audit_state.setValue(table4.selectedRow.data.state)
+
+
+                    select_audit_date_raw.setValue(select_startdate.value)
+
+                    select_audit_state_raw.setValue(table4.selectedRow.data.state)
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-01-12T19:58:59.413Z
+            updatedAt: 2021-01-12T20:28:12.247Z
+      - q_audit_state_raw_filter:
+          pluginTemplate:
+            id: q_audit_state_raw_filter
+            type: datasource
+            subtype: SqlTransformQuery
+            resourceName: SQL Transforms
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: >-
+                    select * from {{formatDataAsArray(cac_ltv_state.data)}} 
+
+                    where ( state = cast({{select_audit_state_raw.value}} as
+                    string) or "All" = cast({{select_audit_state_raw.value}} as
+                    string) )
+
+                    and (cast(call_scheduled_date as date) =
+                    cast({{select_audit_date_raw.value}} as date)
+
+                    or "All" = cast({{select_audit_date_raw.value}} as string) )
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-01-12T20:29:59.035Z
+            updatedAt: 2021-01-12T20:45:10.788Z
+      - table1:
+          pluginTemplate:
+            id: table1
+            type: widget
+            subtype: TableWidget
+            template:
+              ordered:
+                - showCustomButton: false
+                - sortMappedValue:
+                    ordered: []
+                - normalizedData: null
+                - saveChangesDisabled: ''
+                - columnWidths:
+                    - object:
+                        id: call_scheduled_date
+                        value: 147.390625
+                - columnWidthsMobile: []
+                - hasNextAfterCursor: ''
+                - columnTypeSpecificExtras:
+                    ordered: []
+                - onRowAdded: ''
+                - columnHeaderNames:
+                    ordered:
+                      - clinical_receive: nocd_receive
+                      - clinical_pay: nocd_pay
+                      - clinical_net: margin
+                - alwaysShowPaginator: false
+                - columnColors:
+                    ordered:
+                      - call_scheduled_date: ''
+                      - channel: ''
+                      - calendar_submitted_cnt: ''
+                      - rate_non_clinical: ''
+                      - nocd_receive: ''
+                      - nocd_pay: ''
+                      - name: ''
+                      - sales: ''
+                      - margin: ''
+                      - pay60min: ''
+                      - clinical_net: ''
+                      - rate_clinical: ''
+                      - pay90min: ''
+                      - call_completed_cnt: ''
+                      - clinical_receive: ''
+                      - id: ''
+                      - call_converted_cnt: ''
+                      - clinical_pay: ''
+                      - email: ''
+                      - spend: ''
+                - allowMultiRowSelect: false
+                - columnFormats:
+                    ordered:
+                      - rate_non_clinical: usd_dollars
+                      - nocd_receive: usd_dollars
+                      - nocd_pay: usd_dollars
+                      - margin: usd_dollars
+                      - pay60min: float
+                      - clinical_net: usd_dollars
+                      - rate_clinical: usd_dollars
+                      - pay90min: float
+                      - clinical_receive: usd_dollars
+                      - clinical_pay: usd_dollars
+                      - spend: usd_dollars
+                - columnRestrictedEditing:
+                    ordered: []
+                - showFilterButton: true
+                - nextBeforeCursor: ''
+                - columnVisibility:
+                    ordered:
+                      - call_scheduled_date: true
+                      - channel: true
+                      - calendar_submitted_cnt: true
+                      - rate_non_clinical: true
+                      - nocd_receive: true
+                      - nocd_pay: true
+                      - name: true
+                      - Sales: true
+                      - sales: true
+                      - margin: true
+                      - pay60min: false
+                      - clinical_net: true
+                      - rate_clinical: true
+                      - pay90min: false
+                      - call_completed_cnt: true
+                      - clinical_receive: true
+                      - Title: true
+                      - id: true
+                      - call_converted_cnt: true
+                      - clinical_pay: true
+                      - email: true
+                      - Description: true
+                      - spend: true
+                - selectedPageIndex: '0'
+                - actionButtonColumnName: Actions
+                - filterStackType: and
+                - downloadRawData: false
+                - showFetchingIndicator: true
+                - serverPaginated: false
+                - data: '{{grp_channel.data}}'
+                - displayedData: null
+                - actionButtons: []
+                - actionButtonSelectsRow: true
+                - selectRowByDefault: true
+                - defaultSortByColumn: ''
+                - paginationOffset: 0
+                - columnAlignment:
+                    ordered:
+                      - rate_non_clinical: right
+                      - nocd_receive: right
+                      - nocd_pay: right
+                      - margin: right
+                      - pay60min: right
+                      - clinical_net: right
+                      - rate_clinical: right
+                      - pay90min: right
+                      - clinical_receive: right
+                      - clinical_pay: right
+                      - spend: right
+                - sortedDesc: false
+                - customButtonName: ''
+                - columnMappersRenderAsHTML:
+                    ordered: []
+                - pageSize: 9
+                - useDynamicColumnSettings: false
+                - actionButtonPosition: left
+                - bulkUpdateAction: ''
+                - afterCursor: ''
+                - onCustomButtonPressQueryName: ''
+                - changeSet:
+                    object: {}
+                - sortedColumn: ''
+                - columnAllowOverflow:
+                    ordered: []
+                - beforeCursor: ''
+                - serverPaginationType: limitOffsetBased
+                - onRowSelect: ''
+                - showDownloadButton: true
+                - selectedIndex: ''
+                - defaultSortDescending: false
+                - dynamicColumnSettings: null
+                - totalRowCount: ''
+                - recordUpdates:
+                    array: []
+                - newRow: null
+                - columnEditable:
+                    ordered: []
+                - id: table1
+                - filters:
+                    array: []
+                - displayedDataIndices: null
+                - disableSorting:
+                    ordered: []
+                - columnMappers:
+                    ordered: []
+                - showClearSelection: false
+                - selectedCell:
+                    object:
+                      index: null
+                      data: null
+                      columnName: null
+                - columns:
+                    - Title
+                    - Description
+                    - Sales
+                    - id
+                    - name
+                    - email
+                    - sales
+                    - call_scheduled_date
+                    - channel
+                    - spend
+                    - calendar_submitted_cnt
+                    - call_completed_cnt
+                    - call_converted_cnt
+                    - pay90min
+                    - pay60min
+                    - rate_clinical
+                    - rate_non_clinical
+                    - clinical_receive
+                    - clinical_pay
+                    - clinical_net
+                    - nocd_receive
+                    - nocd_pay
+                    - margin
+                - sort: null
+                - calculatedColumns: []
+                - selectedRow:
+                    object:
+                      index: null
+                      data: null
+                - showPaginationOnTop: false
+                - nextAfterCursor: ''
+                - useCompactMode: false
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: tabbedcontainer2
+                height: 12
+                width: 12
+            createdAt: 2020-12-23T23:15:55.995Z
+            updatedAt: 2020-12-29T15:40:50.409Z
+      - textinput_therapy_hours:
+          pluginTemplate:
+            id: textinput_therapy_hours
+            type: widget
+            subtype: TextInputWidget
+            template:
+              ordered:
+                - validationMaxlengthValue: ''
+                - readonly: ''
+                - disabledKeyCodes: ''
+                - showNumberCommas: false
+                - validationMaxValue: ''
+                - onBlur: ''
+                - currencyType: USD
+                - leftIconName: ''
+                - initialValue: '8'
+                - validationMessage: ''
+                - tooltipText: ''
+                - value: ''
+                - suffix: ''
+                - validationMinlengthValue: ''
+                - validationLengthValue: ''
+                - placeholder: Search here...
+                - validationType: ''
+                - label: Expected Therapy Hours
+                - currencyMajorOnly: false
+                - formattedValue: ''
+                - allowedInputsRegex: ''
+                - labelMaxWidth: ''
+                - enableValidationType: false
+                - labelPlacedOnLeft: false
+                - onSubmit: ''
+                - validationMinValue: ''
+                - lastSubmittedAt: ''
+                - validationState:
+                    object:
+                      required: ''
+                      validationType: ''
+                - type: number
+                - id: textinput1
+                - allowedRegex: ''
+                - required: false
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 2
+                col: 8
+                height: 1
+                width: 4
+            createdAt: 2020-12-23T23:16:27.069Z
+            updatedAt: 2020-12-23T23:17:31.465Z
+      - tabbedcontainer1:
+          pluginTemplate:
+            id: tabbedcontainer1
+            type: widget
+            subtype: TabbedContainerWidget
+            template:
+              ordered:
+                - spinWhenChildrenAreFetching: true
+                - scroll: false
+                - tabNames: >-
+                    ["CACLTV", "View Channel Spend", "Edit Channel Spend Google
+                    Sheet"]
+                - selectedTabIndex: 0
+                - selectedTab: '"0"'
+                - id: tabbedcontainer1
+                - showTabBar: true
+                - disableAnimation: false
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                height: 18
+                width: 12
+            createdAt: 2020-12-24T03:33:58.841Z
+            updatedAt: 2020-12-24T16:56:57.158Z
+      - table2:
+          pluginTemplate:
+            id: table2
+            type: widget
+            subtype: TableWidget
+            template:
+              ordered:
+                - showCustomButton: false
+                - sortMappedValue:
+                    ordered: []
+                - normalizedData: null
+                - saveChangesDisabled: 'true'
+                - columnWidths: []
+                - columnWidthsMobile: []
+                - hasNextAfterCursor: ''
+                - columnTypeSpecificExtras:
+                    ordered: []
+                - onRowAdded: ''
+                - columnHeaderNames:
+                    ordered: []
+                - alwaysShowPaginator: false
+                - columnColors:
+                    ordered:
+                      - call_scheduled_date: ''
+                      - channel: ''
+                      - calendar_submitted_cnt: ''
+                      - rate_non_clinical: ''
+                      - date: ''
+                      - pay60min: ''
+                      - clinical_net: ''
+                      - rate_clinical: ''
+                      - pay90min: ''
+                      - call_completed_cnt: ''
+                      - clinical_receive: ''
+                      - call_converted_cnt: ''
+                      - clinical_pay: ''
+                      - spend: ''
+                - allowMultiRowSelect: false
+                - columnFormats:
+                    ordered: []
+                - columnRestrictedEditing:
+                    ordered: []
+                - showFilterButton: true
+                - nextBeforeCursor: ''
+                - columnVisibility:
+                    ordered:
+                      - call_scheduled_date: true
+                      - channel: true
+                      - calendar_submitted_cnt: true
+                      - rate_non_clinical: true
+                      - Sales: true
+                      - date: true
+                      - pay60min: true
+                      - clinical_net: true
+                      - rate_clinical: true
+                      - pay90min: true
+                      - call_completed_cnt: true
+                      - clinical_receive: true
+                      - Title: true
+                      - call_converted_cnt: true
+                      - clinical_pay: true
+                      - Description: true
+                      - spend: true
+                - selectedPageIndex: '0'
+                - actionButtonColumnName: Actions
+                - filterStackType: and
+                - downloadRawData: true
+                - showFetchingIndicator: true
+                - serverPaginated: false
+                - data: '{{ channel_spend.data }}'
+                - displayedData: null
+                - actionButtons: []
+                - actionButtonSelectsRow: true
+                - selectRowByDefault: false
+                - defaultSortByColumn: ''
+                - paginationOffset: 0
+                - columnAlignment:
+                    ordered: []
+                - sortedDesc: false
+                - customButtonName: ''
+                - columnMappersRenderAsHTML:
+                    ordered: []
+                - pageSize: 11
+                - useDynamicColumnSettings: false
+                - actionButtonPosition: left
+                - bulkUpdateAction: ''
+                - afterCursor: ''
+                - onCustomButtonPressQueryName: ''
+                - changeSet:
+                    object: {}
+                - sortedColumn: ''
+                - columnAllowOverflow:
+                    ordered: []
+                - beforeCursor: ''
+                - serverPaginationType: limitOffsetBased
+                - onRowSelect: ''
+                - showDownloadButton: true
+                - selectedIndex: ''
+                - defaultSortDescending: false
+                - dynamicColumnSettings: null
+                - totalRowCount: ''
+                - recordUpdates:
+                    array: []
+                - newRow: null
+                - columnEditable:
+                    ordered:
+                      - spend: true
+                - id: table2
+                - filters:
+                    array: []
+                - displayedDataIndices: null
+                - disableSorting:
+                    ordered: []
+                - columnMappers:
+                    ordered: []
+                - showClearSelection: false
+                - selectedCell:
+                    object:
+                      index: null
+                      data: null
+                      columnName: null
+                - columns:
+                    - Title
+                    - Description
+                    - Sales
+                    - call_scheduled_date
+                    - calendar_submitted_cnt
+                    - call_completed_cnt
+                    - call_converted_cnt
+                    - pay90min
+                    - pay60min
+                    - rate_clinical
+                    - rate_non_clinical
+                    - date
+                    - channel
+                    - spend
+                    - clinical_receive
+                    - clinical_pay
+                    - clinical_net
+                - sort: null
+                - calculatedColumns: []
+                - selectedRow:
+                    object:
+                      index: null
+                      data: null
+                - showPaginationOnTop: false
+                - nextAfterCursor: ''
+                - useCompactMode: false
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 1
+                height: 15
+                width: 12
+                tabNum: 1
+            createdAt: 2020-12-24T03:36:22.374Z
+            updatedAt: 2020-12-24T16:54:01.838Z
+      - state1:
+          pluginTemplate:
+            id: state1
+            type: state
+            subtype: State
+            template:
+              ordered:
+                - value: null
+            createdAt: 2020-12-24T05:09:12.367Z
+            updatedAt: 2020-12-24T05:09:12.367Z
+      - state2:
+          pluginTemplate:
+            id: state2
+            type: state
+            subtype: State
+            template:
+              ordered:
+                - value: null
+            createdAt: 2020-12-24T05:09:41.125Z
+            updatedAt: 2020-12-24T05:09:41.125Z
+      - state3:
+          pluginTemplate:
+            id: state3
+            type: state
+            subtype: State
+            template:
+              ordered:
+                - value: null
+            createdAt: 2020-12-24T05:09:43.505Z
+            updatedAt: 2020-12-24T05:09:43.505Z
+      - button1:
+          pluginTemplate:
+            id: button1
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#3c92dc'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: Refresh
+                - exportQuery: ''
+                - action: channel_spend
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - id: button1
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: tabbedcontainer1
+                col: 10
+                height: 1
+                width: 2
+                tabNum: 1
+            createdAt: 2020-12-24T06:13:54.901Z
+            updatedAt: 2020-12-29T18:06:11.868Z
+      - iframe1:
+          pluginTemplate:
+            id: iframe1
+            type: widget
+            subtype: IFrameWidget
+            template:
+              ordered:
+                - pageUrl: >-
+                    https://docs.google.com/spreadsheets/d/1TR0Moggt0GR4WErCGTh0RPF-rDKK_Y0SFZsQUElPGz4
+                - srcDoc: ''
+                - id: iframe1
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: tabbedcontainer1
+                height: 16
+                width: 12
+                tabNum: 2
+            createdAt: 2020-12-24T16:58:22.219Z
+            updatedAt: 2020-12-24T16:59:48.845Z
+      - textinput_conv:
+          pluginTemplate:
+            id: textinput_conv
+            type: widget
+            subtype: TextInputWidget
+            template:
+              ordered:
+                - validationMaxlengthValue: ''
+                - readonly: ''
+                - disabledKeyCodes: ''
+                - showNumberCommas: false
+                - validationMaxValue: ''
+                - onBlur: ''
+                - currencyType: USD
+                - leftIconName: ''
+                - initialValue: '65'
+                - validationMessage: ''
+                - tooltipText: ''
+                - value: ''
+                - suffix: ''
+                - validationMinlengthValue: ''
+                - validationLengthValue: ''
+                - placeholder: Search here...
+                - validationType: ''
+                - label: |-
+                    Conversion Rate %
+                    Expected Diagn.
+                - currencyMajorOnly: false
+                - formattedValue: ''
+                - allowedInputsRegex: ''
+                - labelMaxWidth: ''
+                - enableValidationType: false
+                - labelPlacedOnLeft: false
+                - onSubmit: ''
+                - validationMinValue: ''
+                - lastSubmittedAt: ''
+                - validationState:
+                    object:
+                      required: ''
+                      validationType: ''
+                - type: number
+                - id: textinput2
+                - allowedRegex: ''
+                - required: false
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 1
+                col: 8
+                height: 1
+                width: 4
+            createdAt: 2020-12-28T19:20:46.725Z
+            updatedAt: 2020-12-28T19:27:29.072Z
+      - textinput_overhead:
+          pluginTemplate:
+            id: textinput_overhead
+            type: widget
+            subtype: TextInputWidget
+            template:
+              ordered:
+                - validationMaxlengthValue: ''
+                - readonly: ''
+                - disabledKeyCodes: ''
+                - showNumberCommas: false
+                - validationMaxValue: ''
+                - onBlur: ''
+                - currencyType: USD
+                - leftIconName: ''
+                - initialValue: '20'
+                - validationMessage: ''
+                - tooltipText: ''
+                - value: ''
+                - suffix: ''
+                - validationMinlengthValue: ''
+                - validationLengthValue: ''
+                - placeholder: Search here...
+                - validationType: ''
+                - label: |-
+                    Overhead %
+                    Clincial Pay
+                - currencyMajorOnly: false
+                - formattedValue: ''
+                - allowedInputsRegex: ''
+                - labelMaxWidth: ''
+                - enableValidationType: false
+                - labelPlacedOnLeft: false
+                - onSubmit: ''
+                - validationMinValue: ''
+                - lastSubmittedAt: ''
+                - validationState:
+                    object:
+                      required: ''
+                      validationType: ''
+                - type: text
+                - id: textinput3
+                - allowedRegex: ''
+                - required: false
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: tabbedcontainer1
+                col: 8
+                height: 1
+                width: 4
+            createdAt: 2020-12-28T19:20:53.943Z
+            updatedAt: 2020-12-28T19:26:48.051Z
+      - textinput_pay:
+          pluginTemplate:
+            id: textinput_pay
+            type: widget
+            subtype: TextInputWidget
+            template:
+              ordered:
+                - validationMaxlengthValue: ''
+                - readonly: ''
+                - disabledKeyCodes: ''
+                - showNumberCommas: true
+                - validationMaxValue: ''
+                - onBlur: ''
+                - hidden: |+
+
+                - currencyType: USD
+                - leftIconName: ''
+                - initialValue: '123.00'
+                - validationMessage: ''
+                - tooltipText: ''
+                - value: ''
+                - suffix: ''
+                - validationMinlengthValue: ''
+                - validationLengthValue: ''
+                - placeholder: Search here...
+                - validationType: ''
+                - label: |-
+                    Member Pay
+                    Flat Override
+                - currencyMajorOnly: false
+                - formattedValue: ''
+                - allowedInputsRegex: ''
+                - labelMaxWidth: ''
+                - enableValidationType: false
+                - labelPlacedOnLeft: false
+                - onSubmit: ''
+                - validationMinValue: ''
+                - lastSubmittedAt: ''
+                - validationState:
+                    object:
+                      required: ''
+                      validationType: ''
+                - type: number
+                - id: textinput4
+                - allowedRegex: ''
+                - required: false
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: 3
+                col: 8
+                height: 1
+                width: 4
+            createdAt: 2020-12-28T21:18:21.571Z
+            updatedAt: 2021-01-14T15:27:54.019Z
+      - tabbedcontainer2:
+          pluginTemplate:
+            id: tabbedcontainer2
+            type: widget
+            subtype: TabbedContainerWidget
+            template:
+              ordered:
+                - spinWhenChildrenAreFetching: true
+                - scroll: false
+                - tabNames: >-
+                    ["Channel", "Totals","State", "Audit Clinical Rate","Audit
+                    State Raw"]
+                - selectedTabIndex: 0
+                - selectedTab: '"0"'
+                - id: tabbedcontainer2
+                - showTabBar: true
+                - disableAnimation: false
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: tabbedcontainer1
+                row: .nan
+                height: .nan
+                width: 8
+            createdAt: 2020-12-29T02:28:15.767Z
+            updatedAt: 2020-12-30T17:58:45.143Z
+      - table3:
+          pluginTemplate:
+            id: table3
+            type: widget
+            subtype: TableWidget
+            template:
+              ordered:
+                - showCustomButton: false
+                - sortMappedValue:
+                    ordered: []
+                - normalizedData: null
+                - saveChangesDisabled: ''
+                - columnWidths:
+                    - object:
+                        id: spend
+                        value: 166
+                - columnWidthsMobile: []
+                - hasNextAfterCursor: ''
+                - columnTypeSpecificExtras:
+                    ordered: []
+                - onRowAdded: ''
+                - columnHeaderNames:
+                    ordered: []
+                - alwaysShowPaginator: false
+                - columnColors:
+                    ordered:
+                      - call_scheduled_date: ''
+                      - channel: ''
+                      - calendar_submitted_cnt: ''
+                      - rate_non_clinical: ''
+                      - nocd_receive: ''
+                      - nocd_pay: ''
+                      - call_scheduled: ''
+                      - margin: ''
+                      - pay60min: ''
+                      - clinical_net: ''
+                      - rate_clinical: ''
+                      - pay90min: ''
+                      - call_completed_cnt: ''
+                      - call_schedule_date: ''
+                      - clinical_receive: ''
+                      - call_converted_cnt: ''
+                      - calendar_converted_cnt: ''
+                      - clinical_pay: ''
+                      - spend: ''
+                - allowMultiRowSelect: false
+                - columnFormats:
+                    ordered:
+                      - rate_clinical: usd_dollars
+                      - rate_non_clinical: usd_dollars
+                      - spend: usd_dollars
+                      - nocd_receive: usd_dollars
+                      - nocd_pay: usd_dollars
+                      - margin: usd_dollars
+                - columnRestrictedEditing:
+                    ordered: []
+                - showFilterButton: true
+                - nextBeforeCursor: ''
+                - columnVisibility:
+                    ordered:
+                      - call_scheduled_date: true
+                      - channel: true
+                      - calendar_submitted_cnt: true
+                      - rate_non_clinical: true
+                      - nocd_receive: true
+                      - nocd_pay: true
+                      - call_scheduled: true
+                      - Sales: true
+                      - margin: true
+                      - pay60min: true
+                      - clinical_net: true
+                      - rate_clinical: true
+                      - pay90min: true
+                      - call_completed_cnt: true
+                      - call_schedule_date: true
+                      - clinical_receive: true
+                      - Title: true
+                      - call_converted_cnt: true
+                      - calendar_converted_cnt: true
+                      - clinical_pay: true
+                      - Description: true
+                      - spend: true
+                - selectedPageIndex: '0'
+                - actionButtonColumnName: Actions
+                - filterStackType: and
+                - downloadRawData: false
+                - showFetchingIndicator: true
+                - serverPaginated: false
+                - data: '{{ agg_month.data}}'
+                - displayedData: null
+                - actionButtons: []
+                - actionButtonSelectsRow: true
+                - selectRowByDefault: true
+                - defaultSortByColumn: ''
+                - paginationOffset: 0
+                - columnAlignment:
+                    ordered:
+                      - rate_clinical: right
+                      - rate_non_clinical: right
+                      - spend: right
+                      - nocd_receive: right
+                      - nocd_pay: right
+                      - margin: right
+                - sortedDesc: false
+                - customButtonName: ''
+                - columnMappersRenderAsHTML:
+                    ordered: []
+                - pageSize: 9
+                - useDynamicColumnSettings: false
+                - actionButtonPosition: left
+                - bulkUpdateAction: ''
+                - afterCursor: ''
+                - onCustomButtonPressQueryName: ''
+                - changeSet:
+                    object: {}
+                - sortedColumn: ''
+                - columnAllowOverflow:
+                    ordered: []
+                - beforeCursor: ''
+                - serverPaginationType: limitOffsetBased
+                - onRowSelect: ''
+                - showDownloadButton: true
+                - selectedIndex: ''
+                - defaultSortDescending: false
+                - dynamicColumnSettings: null
+                - totalRowCount: ''
+                - recordUpdates:
+                    array: []
+                - newRow: null
+                - columnEditable:
+                    ordered: []
+                - id: table3
+                - filters:
+                    array: []
+                - displayedDataIndices: null
+                - disableSorting:
+                    ordered: []
+                - columnMappers:
+                    ordered: []
+                - showClearSelection: false
+                - selectedCell:
+                    object:
+                      index: null
+                      data: null
+                      columnName: null
+                - columns:
+                    - call_scheduled
+                    - call_scheduled_date
+                    - spend
+                    - calendar_submitted_cnt
+                    - call_completed_cnt
+                    - call_converted_cnt
+                    - rate_clinical
+                    - rate_non_clinical
+                    - nocd_receive
+                    - nocd_pay
+                    - margin
+                    - call_schedule_date
+                - sort: null
+                - calculatedColumns: []
+                - selectedRow:
+                    object:
+                      index: null
+                      data: null
+                - showPaginationOnTop: false
+                - nextAfterCursor: ''
+                - useCompactMode: false
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: tabbedcontainer2
+                height: 12
+                width: 12
+                tabNum: 1
+            createdAt: 2020-12-29T02:35:23.949Z
+            updatedAt: 2020-12-29T17:44:29.138Z
+      - table4:
+          pluginTemplate:
+            id: table4
+            type: widget
+            subtype: TableWidget
+            template:
+              ordered:
+                - showCustomButton: false
+                - sortMappedValue:
+                    ordered: []
+                - normalizedData: null
+                - saveChangesDisabled: ''
+                - columnWidths:
+                    - object:
+                        id: call_converted_cnt
+                        value: 101
+                    - object:
+                        id: calendar_submitted_cnt
+                        value: 115.36458587646484
+                - columnWidthsMobile: []
+                - hasNextAfterCursor: ''
+                - columnTypeSpecificExtras:
+                    ordered: []
+                - onRowAdded: ''
+                - columnHeaderNames:
+                    ordered: []
+                - alwaysShowPaginator: false
+                - columnColors:
+                    ordered:
+                      - call_scheduled_date: ''
+                      - channel: ''
+                      - calendar_submitted_cnt: ''
+                      - rate_non_clinical: ''
+                      - nocd_receive: ''
+                      - nocd_pay: ''
+                      - margin: ''
+                      - startdate: ''
+                      - state: ''
+                      - rate_clinical: ''
+                      - call_completed_cnt: ''
+                      - call_converted_cnt: ''
+                      - spend: ''
+                - allowMultiRowSelect: false
+                - columnFormats:
+                    ordered:
+                      - margin: usd_dollars
+                      - nocd_pay: usd_dollars
+                      - nocd_receive: usd_dollars
+                      - rate_non_clinical: usd_dollars
+                      - rate_clinical: usd_dollars
+                - columnRestrictedEditing:
+                    ordered: []
+                - showFilterButton: true
+                - nextBeforeCursor: ''
+                - columnVisibility:
+                    ordered:
+                      - call_scheduled_date: true
+                      - channel: true
+                      - calendar_submitted_cnt: true
+                      - rate_non_clinical: true
+                      - nocd_receive: true
+                      - nocd_pay: true
+                      - Sales: true
+                      - margin: true
+                      - startdate: true
+                      - state: true
+                      - rate_clinical: true
+                      - call_completed_cnt: true
+                      - Title: true
+                      - call_converted_cnt: true
+                      - Description: true
+                      - spend: true
+                - selectedPageIndex: '0'
+                - actionButtonColumnName: Actions
+                - filterStackType: and
+                - downloadRawData: false
+                - showFetchingIndicator: true
+                - serverPaginated: false
+                - data: '{{ grp_state.data }}'
+                - displayedData: null
+                - actionButtons:
+                    - ordered:
+                        - actionButtonText: Audit
+                        - actionButtonType: runQuery
+                        - actionButtonQuery: q_audit_state
+                        - actionButtonInternalUrlPath: ''
+                        - actionButtonInternalUrlQuery: ''
+                        - actionButtonUrl: ''
+                        - actionButtonNewWindow: false
+                        - actionButtonDisabled: ''
+                - actionButtonSelectsRow: true
+                - selectRowByDefault: true
+                - defaultSortByColumn: ''
+                - paginationOffset: 0
+                - columnAlignment:
+                    ordered:
+                      - margin: right
+                      - nocd_pay: right
+                      - nocd_receive: right
+                      - rate_non_clinical: right
+                      - rate_clinical: right
+                - sortedDesc: false
+                - customButtonName: ''
+                - columnMappersRenderAsHTML:
+                    ordered: []
+                - pageSize: 8
+                - useDynamicColumnSettings: false
+                - actionButtonPosition: left
+                - bulkUpdateAction: ''
+                - afterCursor: ''
+                - onCustomButtonPressQueryName: ''
+                - changeSet:
+                    object: {}
+                - sortedColumn: ''
+                - columnAllowOverflow:
+                    ordered: []
+                - beforeCursor: ''
+                - serverPaginationType: limitOffsetBased
+                - onRowSelect: ''
+                - showDownloadButton: true
+                - selectedIndex: ''
+                - defaultSortDescending: false
+                - dynamicColumnSettings: null
+                - totalRowCount: ''
+                - recordUpdates:
+                    array: []
+                - newRow: null
+                - columnEditable:
+                    ordered: []
+                - id: table4
+                - filters:
+                    array: []
+                - displayedDataIndices: null
+                - disableSorting:
+                    ordered: []
+                - columnMappers:
+                    ordered: []
+                - showClearSelection: false
+                - selectedCell:
+                    object:
+                      index: null
+                      data: null
+                      columnName: null
+                - columns:
+                    - call_scheduled_date
+                    - state
+                    - spend
+                    - calendar_submitted_cnt
+                    - call_completed_cnt
+                    - call_converted_cnt
+                    - rate_clinical
+                    - rate_non_clinical
+                    - nocd_receive
+                    - nocd_pay
+                    - margin
+                    - startdate
+                - sort: null
+                - calculatedColumns: []
+                - selectedRow:
+                    object:
+                      index: null
+                      data: null
+                - showPaginationOnTop: false
+                - nextAfterCursor: ''
+                - useCompactMode: false
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: tabbedcontainer2
+                row: 1
+                height: 11
+                width: 12
+                tabNum: 2
+            createdAt: 2020-12-29T05:56:38.381Z
+            updatedAt: 2021-01-12T20:07:31.966Z
+      - select_startdate:
+          pluginTemplate:
+            id: select_startdate
+            type: widget
+            subtype: SelectWidget
+            template:
+              ordered:
+                - enableClientSideMatching: true
+                - values: '{{["All"].concat(query_dates.data.map(r=>r["date"]))}}'
+                - allowOutOfRangeValues: false
+                - enableFuzzyMatching: true
+                - searchValue: ''
+                - showFetchingIndicator: true
+                - enableCaseSensitivity: false
+                - validationMessage: ''
+                - displayValue: ''
+                - tooltipText: ''
+                - value: '"All"'
+                - maxResults: 50
+                - placeholder: ''
+                - label: Week Date
+                - clearValueOnFocus: true
+                - labelMaxWidth: ''
+                - labelPlacedOnLeft: false
+                - validationState: ''
+                - id: select1
+                - onSelect: ''
+                - allowCustomValues: false
+                - disabled: ''
+                - hideClearButton: false
+                - required: false
+                - labels: '{{["All"].concat(query_dates.data.map(r=>r["date"]))}}'
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: tabbedcontainer2
+                height: 1
+                width: 4
+                tabNum: 2
+            createdAt: 2020-12-29T18:29:15.694Z
+            updatedAt: 2021-01-13T23:12:00.667Z
+      - table5:
+          pluginTemplate:
+            id: table5
+            type: widget
+            subtype: TableWidget
+            template:
+              ordered:
+                - showCustomButton: false
+                - sortMappedValue:
+                    ordered: []
+                - normalizedData: null
+                - saveChangesDisabled: ''
+                - columnWidths: []
+                - columnWidthsMobile: []
+                - hasNextAfterCursor: ''
+                - columnTypeSpecificExtras:
+                    ordered: []
+                - onRowAdded: ''
+                - columnHeaderNames:
+                    ordered: []
+                - alwaysShowPaginator: false
+                - columnColors:
+                    ordered:
+                      - call_scheduled_date: ''
+                      - channel: ''
+                      - calendar_submitted_cnt: ''
+                      - rate_non_clinical: ''
+                      - nocd_receive: ''
+                      - nocd_pay: ''
+                      - assigned_clinician_user_id: ''
+                      - margin: ''
+                      - user_id: ''
+                      - state: ''
+                      - rate_clinical: ''
+                      - call_completed_cnt: ''
+                      - call_converted_cnt: ''
+                      - email: ''
+                - allowMultiRowSelect: false
+                - columnFormats:
+                    ordered: []
+                - columnRestrictedEditing:
+                    ordered: []
+                - showFilterButton: true
+                - nextBeforeCursor: ''
+                - columnVisibility:
+                    ordered:
+                      - call_scheduled_date: true
+                      - channel: true
+                      - calendar_submitted_cnt: true
+                      - rate_non_clinical: true
+                      - nocd_receive: true
+                      - nocd_pay: true
+                      - Sales: true
+                      - assigned_clinician_user_id: true
+                      - margin: true
+                      - user_id: true
+                      - state: true
+                      - rate_clinical: true
+                      - call_completed_cnt: true
+                      - Title: true
+                      - call_converted_cnt: true
+                      - email: true
+                      - Description: true
+                - selectedPageIndex: '0'
+                - actionButtonColumnName: Actions
+                - filterStackType: and
+                - downloadRawData: false
+                - showFetchingIndicator: true
+                - serverPaginated: false
+                - data: '{{sql_audit.data }}'
+                - displayedData: null
+                - actionButtons: []
+                - actionButtonSelectsRow: true
+                - selectRowByDefault: true
+                - defaultSortByColumn: ''
+                - paginationOffset: 0
+                - columnAlignment:
+                    ordered: []
+                - sortedDesc: false
+                - customButtonName: ''
+                - columnMappersRenderAsHTML:
+                    ordered: []
+                - pageSize: 8
+                - useDynamicColumnSettings: false
+                - actionButtonPosition: left
+                - bulkUpdateAction: ''
+                - afterCursor: ''
+                - onCustomButtonPressQueryName: ''
+                - changeSet:
+                    object: {}
+                - sortedColumn: ''
+                - columnAllowOverflow:
+                    ordered: []
+                - beforeCursor: ''
+                - serverPaginationType: limitOffsetBased
+                - onRowSelect: ''
+                - showDownloadButton: true
+                - selectedIndex: ''
+                - defaultSortDescending: false
+                - dynamicColumnSettings: null
+                - totalRowCount: ''
+                - recordUpdates:
+                    array: []
+                - newRow: null
+                - columnEditable:
+                    ordered: []
+                - id: table5
+                - filters:
+                    array: []
+                - displayedDataIndices: null
+                - disableSorting:
+                    ordered: []
+                - columnMappers:
+                    ordered: []
+                - showClearSelection: false
+                - selectedCell:
+                    object:
+                      index: null
+                      data: null
+                      columnName: null
+                - columns:
+                    - Title
+                    - Description
+                    - Sales
+                    - call_scheduled_date
+                    - state
+                    - calendar_submitted_cnt
+                    - call_completed_cnt
+                    - call_converted_cnt
+                    - rate_clinical
+                    - rate_non_clinical
+                    - nocd_receive
+                    - nocd_pay
+                    - margin
+                    - assigned_clinician_user_id
+                    - email
+                    - user_id
+                    - channel
+                - sort: null
+                - calculatedColumns: []
+                - selectedRow:
+                    object:
+                      index: null
+                      data: null
+                - showPaginationOnTop: false
+                - nextAfterCursor: ''
+                - useCompactMode: false
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: tabbedcontainer2
+                row: 1
+                height: 11
+                width: 12
+                tabNum: 3
+            createdAt: 2020-12-30T16:07:39.445Z
+            updatedAt: 2021-01-13T23:59:18.179Z
+      - select_audit_date:
+          pluginTemplate:
+            id: select_audit_date
+            type: widget
+            subtype: SelectWidget
+            template:
+              ordered:
+                - enableClientSideMatching: true
+                - values: '{{query_dates.data.map(r=>r["date"])}}'
+                - allowOutOfRangeValues: false
+                - enableFuzzyMatching: true
+                - searchValue: ''
+                - showFetchingIndicator: true
+                - enableCaseSensitivity: false
+                - validationMessage: ''
+                - displayValue: ''
+                - tooltipText: ''
+                - value: '{{query_dates.data.map(r=>r["date"])[0]}}'
+                - maxResults: 50
+                - placeholder: ''
+                - label: Week Date
+                - clearValueOnFocus: true
+                - labelMaxWidth: ''
+                - labelPlacedOnLeft: false
+                - validationState: ''
+                - id: select2
+                - onSelect: ''
+                - allowCustomValues: false
+                - disabled: ''
+                - hideClearButton: false
+                - required: false
+                - labels: '{{query_dates.data.map(r=>r["date"])}}'
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: tabbedcontainer2
+                height: 1
+                width: 4
+                tabNum: 3
+            createdAt: 2020-12-30T16:09:18.220Z
+            updatedAt: 2020-12-30T16:24:21.929Z
+      - select_audit_state:
+          pluginTemplate:
+            id: select_audit_state
+            type: widget
+            subtype: SelectWidget
+            template:
+              ordered:
+                - enableClientSideMatching: true
+                - values: '{{query_states.data.map(r=>r["state"])}}'
+                - allowOutOfRangeValues: false
+                - enableFuzzyMatching: true
+                - searchValue: ''
+                - showFetchingIndicator: true
+                - enableCaseSensitivity: false
+                - validationMessage: ''
+                - displayValue: ''
+                - tooltipText: ''
+                - value: '{{query_states.data.map(r=>r["state"])[0]}}'
+                - maxResults: 50
+                - placeholder: ''
+                - label: State
+                - clearValueOnFocus: true
+                - labelMaxWidth: ''
+                - labelPlacedOnLeft: false
+                - validationState: ''
+                - id: select3
+                - onSelect: ''
+                - allowCustomValues: false
+                - disabled: ''
+                - hideClearButton: false
+                - required: false
+                - labels: '{{query_states.data.map(r=>r["state"])}}'
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: tabbedcontainer2
+                col: 8
+                height: 1
+                width: 4
+                tabNum: 3
+            createdAt: 2020-12-30T16:09:33.744Z
+            updatedAt: 2020-12-30T16:23:49.707Z
+      - table6:
+          pluginTemplate:
+            id: table6
+            type: widget
+            subtype: TableWidget
+            template:
+              ordered:
+                - showCustomButton: false
+                - sortMappedValue:
+                    ordered: []
+                - normalizedData: null
+                - saveChangesDisabled: ''
+                - columnWidths: []
+                - columnWidthsMobile: []
+                - hasNextAfterCursor: ''
+                - columnTypeSpecificExtras:
+                    ordered: []
+                - onRowAdded: ''
+                - columnHeaderNames:
+                    ordered: []
+                - alwaysShowPaginator: false
+                - columnColors:
+                    ordered:
+                      - call_scheduled_date: ''
+                      - channel: ''
+                      - calendar_submitted_cnt: ''
+                      - rate_non_clinical: ''
+                      - pay60min: ''
+                      - state: ''
+                      - clinical_net: ''
+                      - rate_clinical: ''
+                      - pay90min: ''
+                      - call_completed_cnt: ''
+                      - clinical_receive: ''
+                      - call_converted_cnt: ''
+                      - clinical_pay: ''
+                      - spend: ''
+                - allowMultiRowSelect: false
+                - columnFormats:
+                    ordered:
+                      - clinical_net: usd_dollars
+                      - clinical_pay: usd_dollars
+                      - clinical_receive: usd_dollars
+                      - spend: usd_dollars
+                      - rate_non_clinical: usd_dollars
+                      - rate_clinical: usd_dollars
+                      - pay60min: usd_dollars
+                      - pay90min: usd_dollars
+                - columnRestrictedEditing:
+                    ordered: []
+                - showFilterButton: true
+                - nextBeforeCursor: ''
+                - columnVisibility:
+                    ordered:
+                      - call_scheduled_date: true
+                      - channel: true
+                      - calendar_submitted_cnt: true
+                      - rate_non_clinical: true
+                      - Sales: true
+                      - pay60min: true
+                      - state: true
+                      - clinical_net: true
+                      - rate_clinical: true
+                      - pay90min: true
+                      - call_completed_cnt: true
+                      - clinical_receive: true
+                      - Title: true
+                      - call_converted_cnt: true
+                      - clinical_pay: true
+                      - Description: true
+                      - spend: true
+                - selectedPageIndex: '0'
+                - actionButtonColumnName: Actions
+                - filterStackType: and
+                - downloadRawData: false
+                - showFetchingIndicator: true
+                - serverPaginated: false
+                - data: '{{ q_audit_state_raw_filter.data}}'
+                - displayedData: null
+                - actionButtons: []
+                - actionButtonSelectsRow: true
+                - selectRowByDefault: true
+                - defaultSortByColumn: ''
+                - paginationOffset: 0
+                - columnAlignment:
+                    ordered:
+                      - clinical_net: right
+                      - clinical_pay: right
+                      - clinical_receive: right
+                      - spend: right
+                      - rate_non_clinical: right
+                      - rate_clinical: right
+                      - pay60min: right
+                      - pay90min: right
+                - sortedDesc: false
+                - customButtonName: ''
+                - columnMappersRenderAsHTML:
+                    ordered: []
+                - pageSize: 8
+                - useDynamicColumnSettings: false
+                - actionButtonPosition: left
+                - bulkUpdateAction: ''
+                - afterCursor: ''
+                - onCustomButtonPressQueryName: ''
+                - changeSet:
+                    object: {}
+                - sortedColumn: ''
+                - columnAllowOverflow:
+                    ordered: []
+                - beforeCursor: ''
+                - serverPaginationType: limitOffsetBased
+                - onRowSelect: ''
+                - showDownloadButton: true
+                - selectedIndex: ''
+                - defaultSortDescending: false
+                - dynamicColumnSettings: null
+                - totalRowCount: ''
+                - recordUpdates:
+                    array: []
+                - newRow: null
+                - columnEditable:
+                    ordered: []
+                - id: table6
+                - filters:
+                    array: []
+                - displayedDataIndices: null
+                - disableSorting:
+                    ordered: []
+                - columnMappers:
+                    ordered: []
+                - showClearSelection: false
+                - selectedCell:
+                    object:
+                      index: null
+                      data: null
+                      columnName: null
+                - columns:
+                    - Title
+                    - Description
+                    - Sales
+                    - call_scheduled_date
+                    - channel
+                    - state
+                    - calendar_submitted_cnt
+                    - call_completed_cnt
+                    - call_converted_cnt
+                    - pay90min
+                    - pay60min
+                    - rate_clinical
+                    - rate_non_clinical
+                    - spend
+                    - clinical_receive
+                    - clinical_pay
+                    - clinical_net
+                - sort: null
+                - calculatedColumns: []
+                - selectedRow:
+                    object:
+                      index: null
+                      data: null
+                - showPaginationOnTop: false
+                - nextAfterCursor: ''
+                - useCompactMode: false
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: tabbedcontainer2
+                row: 1
+                height: 11
+                width: 12
+                tabNum: 4
+            createdAt: 2020-12-30T17:58:58.565Z
+            updatedAt: 2021-01-12T20:34:57.627Z
+      - select_audit_date_raw:
+          pluginTemplate:
+            id: select_audit_date_raw
+            type: widget
+            subtype: SelectWidget
+            template:
+              ordered:
+                - enableClientSideMatching: true
+                - values: '{{["All"].concat(query_dates.data.map(r=>r["date"]))}}'
+                - allowOutOfRangeValues: false
+                - enableFuzzyMatching: true
+                - searchValue: ''
+                - showFetchingIndicator: true
+                - enableCaseSensitivity: false
+                - validationMessage: ''
+                - displayValue: ''
+                - tooltipText: ''
+                - value: '"All"'
+                - maxResults: 50
+                - placeholder: ''
+                - label: Week Date
+                - clearValueOnFocus: true
+                - labelMaxWidth: ''
+                - labelPlacedOnLeft: false
+                - validationState: ''
+                - id: select4
+                - onSelect: ''
+                - allowCustomValues: false
+                - disabled: ''
+                - hideClearButton: false
+                - required: false
+                - labels: '{{["All"].concat(query_dates.data.map(r=>r["date"]))}}'
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: tabbedcontainer2
+                height: 1
+                width: 4
+                tabNum: 4
+            createdAt: 2021-01-12T20:17:41.265Z
+            updatedAt: 2021-01-12T20:43:01.589Z
+      - select_audit_state_raw:
+          pluginTemplate:
+            id: select_audit_state_raw
+            type: widget
+            subtype: SelectWidget
+            template:
+              ordered:
+                - enableClientSideMatching: true
+                - values: '{{["All"].concat(query_states.data.map(r=>r["state"]))}}'
+                - allowOutOfRangeValues: false
+                - enableFuzzyMatching: true
+                - searchValue: ''
+                - showFetchingIndicator: true
+                - enableCaseSensitivity: false
+                - validationMessage: ''
+                - displayValue: ''
+                - tooltipText: ''
+                - value: '"All"'
+                - maxResults: 50
+                - placeholder: ''
+                - label: State
+                - clearValueOnFocus: true
+                - labelMaxWidth: ''
+                - labelPlacedOnLeft: false
+                - validationState: ''
+                - id: select5
+                - onSelect: ''
+                - allowCustomValues: false
+                - disabled: ''
+                - hideClearButton: false
+                - required: false
+                - labels: '{{["All"].concat(query_states.data.map(r=>r["state"]))}}'
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: tabbedcontainer2
+                col: 8
+                height: 1
+                width: 4
+                tabNum: 4
+            createdAt: 2021-01-12T20:17:50.861Z
+            updatedAt: 2021-01-12T20:42:35.471Z
+  urlFragmentDefinitions: []
+  appThemeId: null
+  pageLoadValueOverrides: []
+  customDocumentTitle: ''
+  isGlobalWidget: false
+  isFetching: false
+  instrumentationEnabled: false
+  customDocumentTitleEnabled: false
+  version: 2.64.74
+  responsiveLayoutDisabled: false
+  createdAt: null
+  loadingIndicatorsDisabled: false
