@@ -12,26 +12,67 @@ appTemplate:
             template:
               ordered:
                 - queryRefreshTime: ''
+                - databasePasswordOverride: ''
                 - queryDisabledMessage: ''
                 - successMessage: ''
                 - queryDisabled: ''
+                - playgroundQuerySaveId: 0
                 - resourceNameOverride: ''
                 - runWhenModelUpdates: true
+                - showFailureToaster: true
                 - query: >-
                     select cubbies, online, location_host, autofill_limit from
                     pods where id = 'eacfc9c1-1012-4423-8891-e60f49c9c471';
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
                 - privateParams: []
                 - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
                 - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
                 - showSuccessToaster: true
+                - dataArray: []
+                - cacheKeyTtl: ''
+                - metadata: null
                 - triggersOnFailure: []
+                - shouldUseLegacySql: false
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - databaseNameOverride: ''
                 - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
                 - watchedParams: []
+                - enableErrorTransformer: false
                 - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
                 - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
                 - queryTimeout: '10000'
                 - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - databaseUsernameOverride: ''
+                - shouldEnableBatchQuerying: false
                 - queryThrottleTime: '750'
+                - notificationDuration: ''
             createdAt: 2018-08-16T02:20:05.421Z
             updatedAt: 2018-08-23T16:17:06.492Z
       - autofill_limit:
@@ -41,13 +82,19 @@ appTemplate:
             subtype: SliderWidget
             template:
               ordered:
-                - label: Autofill
-                - labelMaxWidth: ''
-                - value: '{{pod.data.autofill_limit[0]}}'
-                - min: '0'
                 - max: '{{pod.data.cubbies[0]}}'
                 - step: 1
+                - tooltipText: ''
+                - value: '{{pod.data.autofill_limit[0]}}'
+                - min: '0'
+                - label: Autofill
+                - labelMaxWidth: ''
+                - vertical: false
+                - labelPlacedOnLeft: false
                 - type: number
+                - disabled: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: pod_update_form
@@ -62,10 +109,18 @@ appTemplate:
             subtype: TextWidget
             template:
               ordered:
-                - value: '<h2>Pod @{{pod.data.location_host}}</h2>'
-                - html: true
-                - scrollOverflow: false
+                - horizontalAlign: left
                 - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: '<h2>Pod @{{pod.data.location_host}}</h2>'
+                - renderAsHtml: true
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: false
+            style:
+              ordered: []
             position2:
               position2:
                 height: 2
@@ -79,16 +134,24 @@ appTemplate:
             subtype: FormWidget
             template:
               ordered:
+                - spinWhenChildrenAreFetching: true
                 - clearFormAfterSubmit: false
                 - borderless: false
+                - requireValidFormForSubmit: true
+                - showBorder: true
                 - data: ''
+                - showDropShadow: true
                 - submitButtonFullWidth: true
+                - scroll: false
                 - submitDisabled: ''
                 - submitButtonText: Update Pod
                 - onSubmit: update_pod
                 - requiredFormControls: []
+                - hideSubmit: false
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered: []
             position2:
               position2:
                 row: 2
@@ -106,35 +169,75 @@ appTemplate:
               ordered:
                 - queryRefreshTime: ''
                 - records: ''
+                - databasePasswordOverride: ''
                 - queryDisabledMessage: ''
                 - successMessage: ''
                 - queryDisabled: ''
+                - playgroundQuerySaveId: 0
                 - resourceNameOverride: ''
                 - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: ''
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
                 - privateParams: []
                 - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
                 - data: null
                 - recordId: ''
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
                 - showSuccessToaster: true
+                - cacheKeyTtl: ''
                 - filterBy: >-
                     [{"key":"id","value":"eacfc9c1-1012-4423-8891-e60f49c9c471","operation":"="}]
+                - metadata: null
                 - actionType: UPDATE_BY
                 - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - databaseNameOverride: ''
                 - confirmationMessage: null
+                - isFetching: false
                 - changeset: >-
                     [{"key":"autofill_limit","value":"{{
                     pod_update_form.data.autofill_limit
                     }}"},{"key":"online","value":"{{
                     pod_update_form.data.toggle_online }}"}]
+                - rawData: null
+                - queryTriggerDelay: '0'
                 - watchedParams: []
+                - enableErrorTransformer: false
                 - enableBulkUpdates: false
                 - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
                 - bulkUpdatePrimaryKey: ''
                 - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
                 - tableName: pods
                 - queryTimeout: '10000'
                 - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - databaseUsernameOverride: ''
+                - doNotThrowOnNoOp: false
                 - queryThrottleTime: '750'
+                - notificationDuration: ''
             createdAt: 2018-08-23T15:48:03.224Z
             updatedAt: 2018-08-23T16:17:06.493Z
       - toggle_online:
@@ -144,11 +247,17 @@ appTemplate:
             subtype: ToggleWidget
             template:
               ordered:
-                - label: Online?
-                - labelMaxWidth: ''
-                - value: '{{pod.data.online[0]}}'
-                - toggleOnQuery: ''
                 - toggleOffQuery: ''
+                - toggleType: default
+                - tooltipText: ''
+                - value: '{{pod.data.online[0]}}'
+                - label: Online?
+                - toggleOnQuery: ''
+                - labelMaxWidth: ''
+                - labelPlacedOnLeft: false
+                - disabled: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: pod_update_form
@@ -165,12 +274,20 @@ appTemplate:
             subtype: TextWidget
             template:
               ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
                 - value: >-
                     <p><b>Danger!</b> Only use this to force a data sync. The
                     pod is configured to be 
-                - html: true
-                - scrollOverflow: false
-                - truncateOverflow: false
+                - renderAsHtml: true
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: pod_update_form
@@ -187,7 +304,7 @@ appTemplate:
   isFetching: false
   instrumentationEnabled: false
   customDocumentTitleEnabled: false
-  version: 2.28.1
+  version: 2.64.73
   responsiveLayoutDisabled: false
   createdAt: null
   loadingIndicatorsDisabled: false
