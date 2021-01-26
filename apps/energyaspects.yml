@@ -3,15 +3,16 @@ pageUuid: bd266fb2-600c-11eb-b6e3-7365f0a0a87a
 appTemplate:
   plugins:
     ordered:
-      - pod:
+      - get_snapshot_picker_tree:
           pluginTemplate:
-            id: pod
+            id: get_snapshot_picker_tree
             type: datasource
-            subtype: SqlQuery
-            resourceName: PG Live (read)
+            subtype: SqlQueryUnified
+            resourceName: ea_2
             template:
               ordered:
                 - queryRefreshTime: ''
+                - records: ''
                 - databasePasswordOverride: ''
                 - queryDisabledMessage: ''
                 - successMessage: ''
@@ -20,15 +21,15 @@ appTemplate:
                 - resourceNameOverride: ''
                 - runWhenModelUpdates: true
                 - showFailureToaster: true
-                - query: >-
-                    select cubbies, online, location_host, autofill_limit from
-                    pods where id = 'eacfc9c1-1012-4423-8891-e60f49c9c471';
+                - query: "select jsonb_build_object(\n    'label',         tst.snapshot_type,\n    'value', array(select tbl_snapshot_jobs.id from config.tbl_snapshot_jobs where snapshot_type_id = tst.id),\n    'children', array_agg(jsonb_build_object('label',tsj.snapshot_name,'value',tsj.id))\n\n  ) as feature\n  from config.tbl_snapshot_type tst\n  inner join config.tbl_snapshot_jobs tsj\n  \ton tsj.snapshot_type_id = tst.id\n  group by tst.snapshot_type , tst.id"
                 - playgroundQueryUuid: ''
                 - playgroundQueryId: 0
                 - privateParams: []
                 - triggersOnSuccess: []
                 - runWhenPageLoadsDelay: ''
+                - warningCodes: []
                 - data: null
+                - recordId: ''
                 - importedQueryInputs:
                     ordered: []
                 - showSuccessConfetti: false
@@ -36,7 +37,10 @@ appTemplate:
                 - showSuccessToaster: true
                 - dataArray: []
                 - cacheKeyTtl: ''
+                - filterBy: ''
                 - metadata: null
+                - editorMode: sql
+                - actionType: ''
                 - triggersOnFailure: []
                 - shouldUseLegacySql: false
                 - errorTransformer: >-
@@ -49,122 +53,37 @@ appTemplate:
                 - databaseNameOverride: ''
                 - confirmationMessage: null
                 - isFetching: false
+                - changeset: ''
                 - rawData: null
                 - queryTriggerDelay: '0'
                 - watchedParams: []
                 - enableErrorTransformer: false
+                - enableBulkUpdates: false
                 - timestamp: 0
                 - importedQueryDefaults:
                     ordered: []
                 - enableTransformer: false
+                - bulkUpdatePrimaryKey: ''
                 - runWhenPageLoads: false
-                - transformer: >-
-                    // type your code here
-
-                    // example: return formatDataAsArray(data).filter(row =>
-                    row.quantity > 20)
-
-                    return data
+                - transformer: ''
+                - tableName: ''
                 - queryTimeout: '10000'
                 - requireConfirmation: false
                 - queryFailureConditions: ''
                 - enableCaching: false
                 - databaseUsernameOverride: ''
                 - shouldEnableBatchQuerying: false
+                - doNotThrowOnNoOp: false
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
-            createdAt: 2018-08-16T02:20:05.421Z
-            updatedAt: 2018-08-23T16:17:06.492Z
-      - autofill_limit:
+            createdAt: 2021-01-14T16:17:48.285Z
+            updatedAt: 2021-01-25T22:00:46.700Z
+      - get_snapshot_types:
           pluginTemplate:
-            id: autofill_limit
-            type: widget
-            subtype: SliderWidget
-            template:
-              ordered:
-                - max: '{{pod.data.cubbies[0]}}'
-                - step: 1
-                - tooltipText: ''
-                - value: '{{pod.data.autofill_limit[0]}}'
-                - min: '0'
-                - label: Autofill
-                - labelMaxWidth: ''
-                - vertical: false
-                - labelPlacedOnLeft: false
-                - type: number
-                - disabled: false
-            style:
-              ordered: []
-            position2:
-              position2:
-                container: pod_update_form
-                height: 2
-                width: 12
-            createdAt: 2018-08-22T15:53:48.267Z
-            updatedAt: 2018-08-23T16:17:06.492Z
-      - title:
-          pluginTemplate:
-            id: title
-            type: widget
-            subtype: TextWidget
-            template:
-              ordered:
-                - horizontalAlign: left
-                - truncateOverflow: false
-                - verticalAlign: center
-                - scrollOverflow: false
-                - tooltipText: ''
-                - value: '<h2>Pod @{{pod.data.location_host}}</h2>'
-                - renderAsHtml: true
-                - backgroundColor: '#0000'
-                - textColor: '#312929'
-                - renderAsMarkdown: false
-            style:
-              ordered: []
-            position2:
-              position2:
-                height: 2
-                width: 6
-            createdAt: 2018-08-23T15:44:33.496Z
-            updatedAt: 2018-08-23T16:17:06.492Z
-      - pod_update_form:
-          pluginTemplate:
-            id: pod_update_form
-            type: widget
-            subtype: FormWidget
-            template:
-              ordered:
-                - spinWhenChildrenAreFetching: true
-                - clearFormAfterSubmit: false
-                - borderless: false
-                - requireValidFormForSubmit: true
-                - showBorder: true
-                - data: ''
-                - showDropShadow: true
-                - submitButtonFullWidth: true
-                - scroll: false
-                - submitDisabled: ''
-                - submitButtonText: Update Pod
-                - onSubmit: update_pod
-                - requiredFormControls: []
-                - hideSubmit: false
-                - loading: ''
-                - disabled: ''
-            style:
-              ordered: []
-            position2:
-              position2:
-                row: 2
-                height: 7
-                width: 6
-            createdAt: 2018-08-23T15:46:18.065Z
-            updatedAt: 2018-08-23T16:17:06.493Z
-      - update_pod:
-          pluginTemplate:
-            id: update_pod
+            id: get_snapshot_types
             type: datasource
-            subtype: RetoolTableQuery
-            resourceName: PG Live (edit)
+            subtype: SqlQueryUnified
+            resourceName: ea_2
             template:
               ordered:
                 - queryRefreshTime: ''
@@ -175,14 +94,17 @@ appTemplate:
                 - queryDisabled: ''
                 - playgroundQuerySaveId: 0
                 - resourceNameOverride: ''
-                - runWhenModelUpdates: false
+                - runWhenModelUpdates: true
                 - showFailureToaster: true
-                - query: ''
+                - query: |-
+                    select * 
+                    from config.tbl_snapshot_type;
                 - playgroundQueryUuid: ''
                 - playgroundQueryId: 0
                 - privateParams: []
                 - triggersOnSuccess: []
                 - runWhenPageLoadsDelay: ''
+                - warningCodes: []
                 - data: null
                 - recordId: ''
                 - importedQueryInputs:
@@ -190,12 +112,14 @@ appTemplate:
                 - showSuccessConfetti: false
                 - isImported: false
                 - showSuccessToaster: true
+                - dataArray: []
                 - cacheKeyTtl: ''
-                - filterBy: >-
-                    [{"key":"id","value":"eacfc9c1-1012-4423-8891-e60f49c9c471","operation":"="}]
+                - filterBy: ''
                 - metadata: null
-                - actionType: UPDATE_BY
+                - editorMode: sql
+                - actionType: ''
                 - triggersOnFailure: []
+                - shouldUseLegacySql: false
                 - errorTransformer: >-
                     // The variable 'data' allows you to reference the request's
                     data in the transformer. 
@@ -206,11 +130,7 @@ appTemplate:
                 - databaseNameOverride: ''
                 - confirmationMessage: null
                 - isFetching: false
-                - changeset: >-
-                    [{"key":"autofill_limit","value":"{{
-                    pod_update_form.data.autofill_limit
-                    }}"},{"key":"online","value":"{{
-                    pod_update_form.data.toggle_online }}"}]
+                - changeset: ''
                 - rawData: null
                 - queryTriggerDelay: '0'
                 - watchedParams: []
@@ -229,47 +149,1317 @@ appTemplate:
                     row.quantity > 20)
 
                     return data
-                - tableName: pods
+                - tableName: ''
                 - queryTimeout: '10000'
                 - requireConfirmation: false
                 - queryFailureConditions: ''
                 - enableCaching: false
                 - databaseUsernameOverride: ''
+                - shouldEnableBatchQuerying: false
                 - doNotThrowOnNoOp: false
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
-            createdAt: 2018-08-23T15:48:03.224Z
-            updatedAt: 2018-08-23T16:17:06.493Z
-      - toggle_online:
+            createdAt: 2021-01-20T12:35:49.013Z
+            updatedAt: 2021-01-20T12:36:01.665Z
+      - get_jobs_http:
           pluginTemplate:
-            id: toggle_online
-            type: widget
-            subtype: ToggleWidget
+            id: get_jobs_http
+            type: datasource
+            subtype: RESTQuery
+            resourceName: REST-WithoutResource
             template:
               ordered:
-                - toggleOffQuery: ''
-                - toggleType: default
+                - queryRefreshTime: ''
+                - paginationLimit: ''
+                - body: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - paginationPaginationField: ''
+                - headers: >-
+                    [{"key":"Authorization","value":"Bearer
+                    eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzb21ldGhpbmciOiJlbHNlIn0.LJGyeizYTIHGqpdW45l_luc1i8bXtn8R7m5cU3Ui-b0"}]
+                - showFailureToaster: true
+                - paginationEnabled: false
+                - query: >-
+                    https://europe-west2-ea-publishing.cloudfunctions.net/list-schedule
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - cookies: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - paginationDataField: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - type: GET
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - bodyType: json
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-01-20T12:43:54.691Z
+            updatedAt: 2021-01-20T12:44:20.339Z
+      - filterSID:
+          pluginTemplate:
+            id: filterSID
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: >-
+                    // Assert Equals
+
+                    function assertEquals (row, filterComponent,
+                    tableColumnString) {
+                      if (filterComponent.value == null) {return true}
+                      else if (filterComponent.value.length == 0) { return true}
+                      else {
+                        for (i = 0; i < filterComponent.value.length; i++) {
+                          if (row[tableColumnString] == filterComponent.value[i]) {
+                            return true
+                          }
+                        }
+                      }
+                    }
+
+
+
+                    // Assert Contains (use string.includes)
+
+                    function assertContains (row, filterComponent,
+                    tableColumnString) {
+                      if (filterComponent.value == null) {return true}
+                      else if (filterComponent.value.length == 0) {return true}
+                      else {
+                        for (i = 0; i < filterComponent.value.length; i++) {
+                          if (row[tableColumnString].toString().includes(filterComponent.value[i])) {
+                            return true
+                          }
+                        }
+                      }
+                    }
+
+
+
+                    // Assert Contains Value (use string.includes)
+
+                    function assertContainsValue (row, filterComponent,
+                    tableColumnString) {
+                      if (filterComponent.value == null) {return true}
+                      else if (filterComponent.value.length == 0) {return true}
+                      else {
+                          if (_.lowerCase(row[tableColumnString].toString()).includes(_.lowerCase(filterComponent.value))) {
+                            return true
+                          }
+                      }
+                    }
+
+
+                    // Possible to use AND/OR logic between filters (&& / ||)
+
+                    //var results =
+                    formatDataAsArray(get_assets_all.data).filter(row =>
+                    assertEquals(row, countryFilter, "Country ISO") &&
+                    assertEquals(row, statusFilter, "Status"))
+
+
+                    // Chaining filter operations (should be much more efficient
+                    but could not tell the difference)
+
+                    var results =
+                    (formatDataAsArray(get_snapshot_metadata.data).filter(row =>
+                    assertContains(row, searchSID, "series_id")))
+
+                    var results =
+                    (formatDataAsArray(get_snapshot_metadata.data).filter(row
+                    =>assertContainsValue(row, searchSID,
+                    "ea_client_description")))
+                                                                                        
+                    // Update tempt state to show results
+
+                    filterState.setValue({"show": true})
+
+
+                    return results
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: false
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: true
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-01-20T21:17:29.077Z
+            updatedAt: 2021-01-22T15:42:43.175Z
+      - watchFilterSID:
+          pluginTemplate:
+            id: watchFilterSID
+            type: datasource
+            subtype: ParentWindowQuery
+            resourceName: ParentWindow
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: ''
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess:
+                    - filterSID
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - placeholder: ''
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+                - selector: '{{searchSID.value}}'
+            createdAt: 2021-01-20T21:23:49.253Z
+            updatedAt: 2021-01-22T15:42:57.449Z
+      - get_sids_for_job:
+          pluginTemplate:
+            id: get_sids_for_job
+            type: datasource
+            subtype: SqlQueryUnified
+            resourceName: ea_2
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - records: ''
+                - databasePasswordOverride: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: >-
+                    select sm.* from config.tbl_snapshot_metadata sm join
+                    config.tbl_snapshot_series ss on ss.ea_series_id = sm.id 
+                    join config.tbl_snapshot_jobs sj on ss.snapshot_job_id =
+                    {{jobsTable.selectedRow.data.id}}
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - warningCodes: []
+                - data: null
+                - recordId: ''
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - dataArray: []
+                - cacheKeyTtl: ''
+                - filterBy: ''
+                - metadata: null
+                - editorMode: sql
+                - actionType: ''
+                - triggersOnFailure: []
+                - shouldUseLegacySql: false
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - databaseNameOverride: ''
+                - confirmationMessage: null
+                - isFetching: false
+                - changeset: ''
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - enableBulkUpdates: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - bulkUpdatePrimaryKey: ''
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - tableName: ''
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - databaseUsernameOverride: ''
+                - shouldEnableBatchQuerying: false
+                - doNotThrowOnNoOp: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-01-25T02:41:51.830Z
+            updatedAt: 2021-01-25T09:28:18.203Z
+      - get_jobs:
+          pluginTemplate:
+            id: get_jobs
+            type: datasource
+            subtype: SqlQueryUnified
+            resourceName: ea_2
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - records: ''
+                - databasePasswordOverride: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: |-
+                    select *
+                    from config.tbl_snapshot_jobs
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - warningCodes: []
+                - data: null
+                - recordId: ''
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - dataArray: []
+                - cacheKeyTtl: ''
+                - filterBy: ''
+                - metadata: null
+                - editorMode: sql
+                - actionType: ''
+                - triggersOnFailure: []
+                - shouldUseLegacySql: false
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - databaseNameOverride: ''
+                - confirmationMessage: null
+                - isFetching: false
+                - changeset: ''
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - enableBulkUpdates: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - bulkUpdatePrimaryKey: ''
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - tableName: ''
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - databaseUsernameOverride: ''
+                - shouldEnableBatchQuerying: false
+                - doNotThrowOnNoOp: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-01-25T02:42:28.428Z
+            updatedAt: 2021-01-25T02:42:30.747Z
+      - add_job:
+          pluginTemplate:
+            id: add_job
+            type: datasource
+            subtype: SqlQueryUnified
+            resourceName: ea_2
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - records: ''
+                - databasePasswordOverride: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: >
+                    insert into config.tbl_snapshot_jobs (id, snapshot_name,
+                    snapshot_type_id,  schedule, status) VALUES (DEFAULT,
+                    {{jobsTable.newRow.snapshot_name}},
+                    {{jobsTable.newRow.snapshot_type_id}},{{jobsTable.newRow.schedule}},{{jobsTable.newRow.status
+                    }})
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess:
+                    - get_jobs
+                    - add_job_http
+                - runWhenPageLoadsDelay: ''
+                - warningCodes: []
+                - data: null
+                - recordId: ''
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - dataArray: []
+                - cacheKeyTtl: ''
+                - filterBy: ''
+                - metadata: null
+                - editorMode: sql
+                - actionType: ''
+                - triggersOnFailure: []
+                - shouldUseLegacySql: false
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - databaseNameOverride: ''
+                - confirmationMessage: null
+                - isFetching: false
+                - changeset: ''
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - enableBulkUpdates: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - bulkUpdatePrimaryKey: ''
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - tableName: ''
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - databaseUsernameOverride: ''
+                - shouldEnableBatchQuerying: false
+                - doNotThrowOnNoOp: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-01-25T05:10:12.946Z
+            updatedAt: 2021-01-25T13:30:41.102Z
+      - build_sids_payload:
+          pluginTemplate:
+            id: build_sids_payload
+            type: datasource
+            subtype: SqlQueryUnified
+            resourceName: ea_2
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - records: ''
+                - databasePasswordOverride: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: "select \n  \t\t\tjsonb_build_object(\n               'sids',  array_agg(sm.series_id)\n           ) as obj\nfrom config.tbl_snapshot_metadata sm join config.tbl_snapshot_series ss on ss.ea_series_id = sm.id where ss.snapshot_job_id = {{jobsTable.selectedRow.data.id}}"
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - warningCodes: []
+                - data: null
+                - recordId: ''
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - dataArray: []
+                - cacheKeyTtl: ''
+                - filterBy: ''
+                - metadata: null
+                - editorMode: sql
+                - actionType: ''
+                - triggersOnFailure: []
+                - shouldUseLegacySql: false
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - databaseNameOverride: ''
+                - confirmationMessage: null
+                - isFetching: false
+                - changeset: ''
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - enableBulkUpdates: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - bulkUpdatePrimaryKey: ''
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - tableName: ''
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - databaseUsernameOverride: ''
+                - shouldEnableBatchQuerying: false
+                - doNotThrowOnNoOp: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-01-25T05:39:54.112Z
+            updatedAt: 2021-01-26T03:58:44.174Z
+      - update_job:
+          pluginTemplate:
+            id: update_job
+            type: datasource
+            subtype: RESTQuery
+            resourceName: REST-WithoutResource
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - paginationLimit: ''
+                - body: >-
+                    [{"key":"job","value":"{{_.toLower(jobsTable.selectedRow.data.snapshot_name)}}"},{"key":"status","value":"{{jobsTable.selectedRow.data.status}}"},{"key":"sids","value":"{{build_sids_payload.data.obj}}"}]
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - paginationPaginationField: ''
+                - headers: >-
+                    [{"key":"Authorization","value":"Bearer
+                    eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzb21ldGhpbmciOiJlbHNlIn0.LJGyeizYTIHGqpdW45l_luc1i8bXtn8R7m5cU3Ui-b0"}]
+                - showFailureToaster: true
+                - paginationEnabled: false
+                - query: >-
+                    https://europe-west2-ea-publishing.cloudfunctions.net/update-job
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - cookies: '[{"key":"","value":""},{"key":"","value":""}]'
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - paginationDataField: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - type: POST
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - bodyType: json
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-01-25T06:19:14.206Z
+            updatedAt: 2021-01-25T06:57:12.220Z
+      - add_job_http:
+          pluginTemplate:
+            id: add_job_http
+            type: datasource
+            subtype: RESTQuery
+            resourceName: REST-WithoutResource
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - paginationLimit: ''
+                - body: >-
+                    [{"key":"name","value":"{{jobsTable.newRow.snapshot_name}}"},{"key":"description","value":"{{jobsTable.newRow.snapshot_name}}"},{"key":"schedule","value":"{{jobsTable.newRow.schedule}}"},{"key":"status","value":"{{jobsTable.newRow.status}}"},{"key":"sids","value":"{{build_sids_payload.data.obj[0]}}"}]
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - paginationPaginationField: ''
+                - headers: >-
+                    [{"key":"Authorization","value":"Bearer
+                    eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzb21ldGhpbmciOiJlbHNlIn0.LJGyeizYTIHGqpdW45l_luc1i8bXtn8R7m5cU3Ui-b0"}]
+                - showFailureToaster: true
+                - paginationEnabled: false
+                - query: >-
+                    https://europe-west2-ea-publishing.cloudfunctions.net/create-job
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - cookies: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - paginationDataField: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - type: POST
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - bodyType: json
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-01-25T11:25:25.282Z
+            updatedAt: 2021-01-26T04:00:02.059Z
+      - update_jobs:
+          pluginTemplate:
+            id: update_jobs
+            type: datasource
+            subtype: SqlQueryUnified
+            resourceName: ea_2
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - records: '{{jobsTable.recordUpdates}}'
+                - databasePasswordOverride: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: ''
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - recordId: ''
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - dataArray: []
+                - cacheKeyTtl: ''
+                - filterBy: ''
+                - metadata: null
+                - editorMode: gui
+                - actionType: BULK_UPDATE_BY_KEY
+                - triggersOnFailure: []
+                - shouldUseLegacySql: false
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - databaseNameOverride: ''
+                - confirmationMessage: null
+                - isFetching: false
+                - changeset: ''
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - enableBulkUpdates: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - bulkUpdatePrimaryKey: id
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - tableName: config.tbl_snapshot_jobs
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - databaseUsernameOverride: ''
+                - shouldEnableBatchQuerying: false
+                - doNotThrowOnNoOp: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-01-25T06:45:32.514Z
+            updatedAt: 2021-01-25T06:47:52.816Z
+      - delete_job:
+          pluginTemplate:
+            id: delete_job
+            type: datasource
+            subtype: SqlQueryUnified
+            resourceName: ea_2
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - records: ''
+                - databasePasswordOverride: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: >-
+                    delete from config.tbl_snapshot_jobs where
+                    config.tbl_snapshot_jobs.id =
+                    {{jobsTable.selectedRow.data.id}}
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess:
+                    - get_jobs
+                - runWhenPageLoadsDelay: ''
+                - warningCodes: []
+                - data: null
+                - recordId: ''
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - dataArray: []
+                - cacheKeyTtl: ''
+                - filterBy: ''
+                - metadata: null
+                - editorMode: sql
+                - actionType: ''
+                - triggersOnFailure: []
+                - shouldUseLegacySql: false
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - databaseNameOverride: ''
+                - confirmationMessage: null
+                - isFetching: false
+                - changeset: ''
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - enableBulkUpdates: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - bulkUpdatePrimaryKey: ''
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - tableName: ''
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - databaseUsernameOverride: ''
+                - shouldEnableBatchQuerying: false
+                - doNotThrowOnNoOp: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-01-25T09:37:57.144Z
+            updatedAt: 2021-01-25T09:42:50.403Z
+      - snapshotDatetimePicker:
+          pluginTemplate:
+            id: snapshotDatetimePicker
+            type: widget
+            subtype: DateTimePickerWidget
+            template:
+              ordered:
+                - minDate: ''
+                - showTime: true
+                - formattedString: null
                 - tooltipText: ''
-                - value: '{{pod.data.online[0]}}'
-                - label: Online?
-                - toggleOnQuery: ''
+                - value: null
+                - maxDate: ''
+                - placeholder: Date for release to clients
+                - label: ''
                 - labelMaxWidth: ''
                 - labelPlacedOnLeft: false
+                - format: 'MM/DD/YYYY HH:mm'
+                - validationState: ''
+                - id: datetimepicker1
+                - onSelect: ''
+                - disabled: ''
+                - useLocalTimezone: false
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: mainContainer
+                row: 2
+                col: 8
+                height: 1
+                width: 2
+            createdAt: 2020-12-15T15:53:25.361Z
+            updatedAt: 2021-01-22T15:41:36.035Z
+      - snapshopCreateButton:
+          pluginTemplate:
+            id: snapshopCreateButton
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#990033'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: Create Release Snapshot
+                - exportQuery: ''
+                - action: ''
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - id: button1
+                - exportFileName: ''
+                - loading: ''
+                - disabled: >-
+                    {{snapshotPicker.checked == 0 ||
+                    !snapshotDatetimePicker.value || !confirmCheckbox.value}}
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: mainContainer
+                row: 8
+                col: 10
+                height: 1
+                width: 2
+            createdAt: 2020-12-15T15:55:43.283Z
+            updatedAt: 2021-01-22T15:42:05.036Z
+      - mainContainer:
+          pluginTemplate:
+            id: mainContainer
+            type: widget
+            subtype: TabbedContainerWidget
+            template:
+              ordered:
+                - spinWhenChildrenAreFetching: false
+                - scroll: false
+                - tabNames: >-
+                    ["Create Snapshot","Manage Datasets","Manage Snapshot
+                    Schedule"]
+                - selectedTabIndex: 0
+                - selectedTab: '"0"'
+                - id: tabbedcontainer1
+                - showTabBar: true
+                - disableAnimation: false
                 - disabled: ''
             style:
               ordered: []
             position2:
               position2:
-                container: pod_update_form
                 row: 2
-                col: 10
-                height: 2
-                width: 2
-            createdAt: 2018-08-23T16:00:35.900Z
-            updatedAt: 2018-08-23T16:17:06.493Z
-      - text2:
+                height: 33
+                width: 10
+            createdAt: 2021-01-04T17:04:05.095Z
+            updatedAt: 2021-01-25T20:37:25.598Z
+      - metadataTable:
           pluginTemplate:
-            id: text2
+            id: metadataTable
+            type: widget
+            subtype: TableWidget
+            template:
+              ordered:
+                - showCustomButton: false
+                - sortMappedValue:
+                    ordered: []
+                - normalizedData: null
+                - saveChangesDisabled: ''
+                - columnWidths:
+                    - object:
+                        id: id
+                        value: 70.515625
+                    - object:
+                        id: date_from_min
+                        value: 109.953125
+                    - object:
+                        id: date_to_min
+                        value: 105.953125
+                    - object:
+                        id: ea_client_source
+                        value: 293
+                    - object:
+                        id: data_service_file
+                        value: 177
+                    - object:
+                        id: ea_snapshot_ids
+                        value: 174
+                    - object:
+                        id: ea_client_api
+                        value: 92
+                    - object:
+                        id: ea_category_ids
+                        value: 118
+                    - object:
+                        id: series_id
+                        value: 271.40625
+                    - object:
+                        id: ea_client_description
+                        value: 314.421875
+                    - object:
+                        id: ea_identifier
+                        value: 116.609375
+                - columnWidthsMobile: []
+                - hasNextAfterCursor: ''
+                - columnTypeSpecificExtras:
+                    ordered: []
+                - onRowAdded: ''
+                - columnHeaderNames:
+                    ordered:
+                      - series_id: SID
+                - alwaysShowPaginator: false
+                - columnColors:
+                    ordered:
+                      - ea_series_id: ''
+                      - ea_snapshot_ids: ''
+                      - dataset_id: ''
+                      - series_id: ''
+                      - ea_dataset_type: ''
+                      - snapshot_type_id: ''
+                      - snapshot_name: ''
+                      - ea_client_api: ''
+                      - ea_client_description: ''
+                      - name: ''
+                      - ea_identifier: ''
+                      - ea_client_source: ''
+                      - sales: ''
+                      - date_from_min: ''
+                      - ticker_id: ''
+                      - date_to_max: ''
+                      - dataset_name: ''
+                      - status: ''
+                      - schedule: ''
+                      - snapshot_job_id: ''
+                      - ea_category_ids: ''
+                      - id: ''
+                      - data_service_file: ''
+                      - email: ''
+                      - date_to_min: ''
+                - allowMultiRowSelect: false
+                - columnFormats:
+                    ordered:
+                      - date_from_min: date
+                      - date_to_min: date
+                      - ea_snapshot_ids: modal
+                      - date_to_max: date
+                      - ea_dataset_type: dropdown
+                - columnRestrictedEditing:
+                    ordered: []
+                - showFilterButton: true
+                - nextBeforeCursor: ''
+                - columnVisibility:
+                    ordered:
+                      - ea_series_id: true
+                      - ea_snapshot_ids: false
+                      - dataset_id: true
+                      - series_id: true
+                      - ea_dataset_type: true
+                      - snapshot_type_id: true
+                      - snapshot_name: true
+                      - ea_client_api: false
+                      - ea_client_description: true
+                      - name: true
+                      - ea_identifier: true
+                      - ea_client_source: true
+                      - Sales: true
+                      - sales: true
+                      - date_from_min: false
+                      - ticker_id: true
+                      - date_to_max: false
+                      - dataset_name: true
+                      - status: true
+                      - schedule: true
+                      - Title: true
+                      - snapshot_job_id: true
+                      - ea_category_ids: false
+                      - id: false
+                      - data_service_file: false
+                      - email: true
+                      - Description: true
+                      - date_to_min: true
+                - selectedPageIndex: '0'
+                - actionButtonColumnName: Actions
+                - filterStackType: and
+                - hidden: '{{!jobsTable.data}}'
+                - downloadRawData: false
+                - showFetchingIndicator: true
+                - serverPaginated: false
+                - data: '{{get_sids_for_job.data}}'
+                - displayedData: null
+                - actionButtons: []
+                - actionButtonSelectsRow: true
+                - selectRowByDefault: true
+                - defaultSortByColumn: ''
+                - paginationOffset: 0
+                - columnAlignment:
+                    ordered:
+                      - date_from_min: right
+                      - date_to_min: right
+                      - ea_snapshot_ids: left
+                      - date_to_max: right
+                      - ea_dataset_type: left
+                - sortedDesc: false
+                - customButtonName: ''
+                - columnMappersRenderAsHTML:
+                    ordered: []
+                - pageSize: 9
+                - useDynamicColumnSettings: false
+                - actionButtonPosition: left
+                - bulkUpdateAction: ''
+                - afterCursor: ''
+                - onCustomButtonPressQueryName: ''
+                - changeSet:
+                    object: {}
+                - sortedColumn: ''
+                - columnAllowOverflow:
+                    ordered: []
+                - beforeCursor: ''
+                - serverPaginationType: limitOffsetBased
+                - onRowSelect: ''
+                - showDownloadButton: false
+                - selectedIndex: ''
+                - defaultSortDescending: false
+                - dynamicColumnSettings: null
+                - totalRowCount: ''
+                - recordUpdates:
+                    array: []
+                - newRow: null
+                - columnEditable:
+                    ordered:
+                      - ea_client_description: true
+                      - date_from_min: true
+                - id: table1
+                - filters:
+                    array: []
+                - displayedDataIndices: null
+                - disableSorting:
+                    ordered: []
+                - columnMappers:
+                    ordered: []
+                - showClearSelection: false
+                - selectedCell:
+                    object:
+                      index: null
+                      data: null
+                      columnName: null
+                - columns:
+                    - Title
+                    - Description
+                    - Sales
+                    - id
+                    - name
+                    - email
+                    - sales
+                    - series_id
+                    - ea_identifier
+                    - ea_client_description
+                    - ea_client_source
+                    - date_from_min
+                    - date_to_max
+                    - ea_client_api
+                    - ea_category_ids
+                    - ea_snapshot_ids
+                    - date_to_min
+                    - data_service_file
+                    - dataset_id
+                    - ticker_id
+                    - dataset_name
+                    - ea_dataset_type
+                    - snapshot_job_id
+                    - ea_series_id
+                    - snapshot_type_id
+                    - snapshot_name
+                    - schedule
+                    - status
+                - sort: null
+                - calculatedColumns: []
+                - selectedRow:
+                    object:
+                      index: null
+                      data: null
+                - showPaginationOnTop: false
+                - nextAfterCursor: ''
+                - useCompactMode: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: mainContainer
+                row: 10
+                height: 8
+                width: 8
+                tabNum: 1
+            createdAt: 2021-01-14T16:11:54.710Z
+            updatedAt: 2021-01-26T03:55:05.238Z
+      - headerContainer:
+          pluginTemplate:
+            id: headerContainer
+            type: widget
+            subtype: ContainerWidget
+            template:
+              ordered:
+                - title: ''
+                - disabled: ''
+                - spinWhenChildrenAreFetching: true
+                - showBorder: true
+                - showDropShadow: true
+                - backgroundColor: white
+                - scroll: false
+                - id: container1
+            style:
+              ordered: []
+            position2:
+              position2:
+                height: 2
+                width: 10
+            createdAt: 2021-01-14T16:15:46.832Z
+            updatedAt: 2021-01-14T16:26:33.733Z
+      - welcomeHeader:
+          pluginTemplate:
+            id: welcomeHeader
             type: widget
             subtype: TextWidget
             template:
@@ -279,25 +1469,1406 @@ appTemplate:
                 - verticalAlign: center
                 - scrollOverflow: false
                 - tooltipText: ''
-                - value: >-
-                    <p><b>Danger!</b> Only use this to force a data sync. The
-                    pod is configured to be 
-                - renderAsHtml: true
+                - value: |
+                    Welcome to **API Manager**, {{current_user.fullName}}! 
+                - renderAsHtml: false
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
-                - renderAsMarkdown: false
+                - renderAsMarkdown: true
+                - id: text4
             style:
               ordered: []
             position2:
               position2:
-                container: pod_update_form
+                container: headerContainer
+                height: 1
+                width: 3
+            createdAt: 2021-01-14T16:25:57.933Z
+            updatedAt: 2021-01-19T21:58:56.952Z
+      - snapshotPicker:
+          pluginTemplate:
+            id: snapshotPicker
+            type: widget
+            subtype: CheckboxTreeWidget
+            template:
+              ordered:
+                - delimiter: '-'
+                - checked:
+                    array: []
+                - checkedPathArray:
+                    array: []
+                - onChange: ''
+                - tooltipText: ''
+                - structure: '{{ get_snapshot_picker_tree.data.feature }}'
+                - label: ''
+                - checkedPathStrings:
+                    array: []
+                - labelMaxWidth: ''
+                - leafPathArray:
+                    array: []
+                - labelPlacedOnLeft: false
+                - expanded: '[''Publication'',''Data Service'']'
+                - id: checkboxtree1
+                - selected:
+                    array: []
+                - disabled: ''
+                - checkStrictly: true
+                - leafPathStrings:
+                    array: []
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: mainContainer
                 row: 2
-                height: 2
+                col: 5
+                height: 7
+                width: 3
+            createdAt: 2021-01-20T10:27:07.810Z
+            updatedAt: 2021-01-25T20:57:55.206Z
+      - manageSIDHeader:
+          pluginTemplate:
+            id: manageSIDHeader
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: '**Manage series for Snapshot jobs**'
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+                - id: text6
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: mainContainer
+                row: 9
+                height: 1
+                width: 3
+                tabNum: 1
+            createdAt: 2021-01-20T12:34:49.221Z
+            updatedAt: 2021-01-25T09:16:45.228Z
+      - snapshotTimeline:
+          pluginTemplate:
+            id: snapshotTimeline
+            type: widget
+            subtype: TimelineWidget
+            template:
+              ordered:
+                - items: '{{get_jobs_http.data.map(d => d.description)}}'
+                - pending: ''
+                - renderAsHtml: true
+                - isGrouped: true
+                - groupBy: day
+                - timestamps: '{{query16.data}}'
+                - id: timeline1
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: mainContainer
+                row: 1
+                height: 12
+                width: 4
+            createdAt: 2021-01-20T12:37:54.218Z
+            updatedAt: 2021-01-26T05:15:22.013Z
+      - snapshotTimelineHeader:
+          pluginTemplate:
+            id: snapshotTimelineHeader
+            type: widget
+            subtype: AlertWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - url: ''
+                - newWindow: false
+                - typeInputMethod: dropdown
+                - exportQuery: ''
+                - action: ''
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - title: Upcoming Release Snapshots
+                - type: info
+                - id: alert1
+                - exportFileName: ''
+                - description: 'Previous X hours, next Y hours'
+                - buttonText: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: mainContainer
+                height: 1
+                width: 4
+            createdAt: 2021-01-20T13:06:36.608Z
+            updatedAt: 2021-01-22T09:13:40.984Z
+      - alert2:
+          pluginTemplate:
+            id: alert2
+            type: widget
+            subtype: AlertWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - url: ''
+                - newWindow: false
+                - typeInputMethod: dropdown
+                - exportQuery: ''
+                - action: ''
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - title: Create Release Snapshot
+                - type: info
+                - id: alert2
+                - exportFileName: ''
+                - description: >-
+                    Select a publication/data service file, and date/time for
+                    release
+                - buttonText: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: mainContainer
+                col: 5
+                height: 1
+                width: 6
+            createdAt: 2021-01-20T13:07:45.807Z
+            updatedAt: 2021-01-22T09:13:34.954Z
+      - snapshotHeader:
+          pluginTemplate:
+            id: snapshotHeader
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: '**Snapshot**'
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+                - id: text5
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: mainContainer
+                row: 1
+                col: 5
+                height: 1
+                width: 3
+            createdAt: 2021-01-20T13:12:01.692Z
+            updatedAt: 2021-01-20T13:12:10.847Z
+      - dateHeader:
+          pluginTemplate:
+            id: dateHeader
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |
+                    **Release Date / Time**
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+                - id: text8
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: mainContainer
+                row: 1
+                col: 8
+                height: 1
+                width: 3
+            createdAt: 2021-01-20T13:12:16.636Z
+            updatedAt: 2021-01-20T13:12:30.647Z
+      - adhocJobDescription:
+          pluginTemplate:
+            id: adhocJobDescription
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: >+
+                    You have selected: {{_.map(snapshotPicker.checked,
+                    )}}</br>to create a release to clients at:
+                    {{snapshotDatetimePicker.formattedString}}
+
+                - renderAsHtml: true
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+                - id: text9
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: mainContainer
+                row: 3
+                col: 8
+                height: 4
+                width: 4
+            createdAt: 2021-01-20T13:15:41.519Z
+            updatedAt: 2021-01-25T14:36:22.852Z
+      - searchSID:
+          pluginTemplate:
+            id: searchSID
+            type: widget
+            subtype: TextInputWidget
+            template:
+              ordered:
+                - validationMaxlengthValue: ''
+                - readonly: ''
+                - disabledKeyCodes: ''
+                - showNumberCommas: false
+                - validationMaxValue: ''
+                - onBlur: ''
+                - currencyType: USD
+                - leftIconName: ''
+                - initialValue: ''
+                - validationMessage: ''
+                - tooltipText: ''
+                - value: ''
+                - suffix: ''
+                - validationMinlengthValue: ''
+                - validationLengthValue: ''
+                - placeholder: Search for an SID...
+                - validationType: ''
+                - label: Search
+                - currencyMajorOnly: false
+                - formattedValue: ''
+                - allowedInputsRegex: ''
+                - labelMaxWidth: ''
+                - enableValidationType: false
+                - labelPlacedOnLeft: false
+                - onSubmit: ''
+                - validationMinValue: ''
+                - lastSubmittedAt: ''
+                - validationState:
+                    object:
+                      required: ''
+                      validationType: ''
+                - type: text
+                - id: textinput1
+                - allowedRegex: ''
+                - required: false
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: mainContainer
+                col: 8
+                height: 1
+                width: 4
+                tabNum: 1
+            createdAt: 2021-01-20T21:16:05.373Z
+            updatedAt: 2021-01-20T21:16:33.465Z
+      - filterState:
+          pluginTemplate:
+            id: filterState
+            type: state
+            subtype: State
+            template:
+              ordered:
+                - value: '{"show": true}'
+            createdAt: 2021-01-20T21:18:37.496Z
+            updatedAt: 2021-01-22T08:41:21.957Z
+      - text10:
+          pluginTemplate:
+            id: text10
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - hidden: '{{!retoolContext.inEditorMode}}'
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: >-
+                    **todo** - should display historic runs + next runs - maybe
+                    new endpoint?
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+                - id: text10
+            style:
+              ordered:
+                - primary-text: '#ff0000ff'
+                - secondary-text: '#ff0000b3'
+                - tertiary-text: '#ff00007d'
+            position2:
+              position2:
+                container: mainContainer
+                row: 13
+                height: 1
+                width: 3
+            createdAt: 2021-01-21T10:58:25.078Z
+            updatedAt: 2021-01-22T09:40:48.949Z
+      - text11:
+          pluginTemplate:
+            id: text11
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - hidden: '{{!retoolContext.inEditorMode}}'
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |
+                    **todo** - map ID from snapshot to name in display text
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+                - id: text11
+            style:
+              ordered:
+                - primary-text: '#ff0000ff'
+                - secondary-text: '#ff0000b3'
+                - tertiary-text: '#ff00007d'
+            position2:
+              position2:
+                container: mainContainer
+                row: 7
+                col: 8
+                height: 1
+                width: 3
+            createdAt: 2021-01-21T10:58:56.813Z
+            updatedAt: 2021-01-22T09:40:47.253Z
+      - text12:
+          pluginTemplate:
+            id: text12
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: '**todo** add CRUD to tables'
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+                - id: text12
+            style:
+              ordered:
+                - primary-text: '#fa0000ff'
+                - secondary-text: '#fa0000b3'
+                - tertiary-text: '#fa00007d'
+            position2:
+              position2:
+                container: mainContainer
+                row: 10
+                col: 8
+                height: 1
+                width: 3
+                tabNum: 1
+            createdAt: 2021-01-21T11:02:36.033Z
+            updatedAt: 2021-01-25T13:35:32.976Z
+      - text13:
+          pluginTemplate:
+            id: text13
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: >+
+                    **todo** add nice elements to table e.g. datepicker, job
+                    mapping modal? 
+
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+                - id: text13
+            style:
+              ordered:
+                - primary-text: '#ff0000ff'
+                - secondary-text: '#ff0000b3'
+                - tertiary-text: '#ff00007d'
+            position2:
+              position2:
+                container: mainContainer
+                row: 11
+                col: 8
+                height: 1
+                width: 3
+                tabNum: 1
+            createdAt: 2021-01-21T11:03:05.748Z
+            updatedAt: 2021-01-25T13:35:33.262Z
+      - text14:
+          pluginTemplate:
+            id: text14
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: >
+                    **todo** - do we need to manage (enable/disable, edit cron,
+                    etc.) this here - is it MVP or nice to have? 
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+                - id: text14
+            style:
+              ordered:
+                - primary-text: '#ff0000ff'
+                - secondary-text: '#ff0000b3'
+                - tertiary-text: '#ff00007d'
+            position2:
+              position2:
+                container: mainContainer
+                row: 1
+                col: 4
+                height: 5
+                width: 3
+                tabNum: 2
+            createdAt: 2021-01-21T11:16:01.670Z
+            updatedAt: 2021-01-21T11:17:04.332Z
+      - jsonexplorer1:
+          pluginTemplate:
+            id: jsonexplorer1
+            type: widget
+            subtype: JSONExplorerWidget
+            template:
+              ordered:
+                - value: |-
+                    {
+                      "payload": {
+                        "snapshot_datetime": {{snapshotDatetimePicker.formattedString}},
+                        "sids": {{get_sids_for_jobs.data.series_id}}
+                      }
+                    }
+                - html: false
+                - expandNodes: true
+                - id: jsonexplorer1
+                - hidden: '{{!retoolContext.inEditorMode}}'
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: mainContainer
+                row: 18
+                col: 6
+                height: 6
+                width: 4
+            createdAt: 2021-01-21T12:55:01.049Z
+            updatedAt: 2021-01-22T09:40:44.693Z
+      - confirmCheckbox:
+          pluginTemplate:
+            id: confirmCheckbox
+            type: widget
+            subtype: CheckboxWidget
+            template:
+              ordered:
+                - label: Confirm?
+                - value: false
+                - disabled: ''
+                - onCheckQuery: ''
+                - onUncheckQuery: ''
+                - id: checkbox1
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: mainContainer
+                row: 8
+                col: 9
+                height: 1
+                width: 1
+            createdAt: 2021-01-21T15:12:28.440Z
+            updatedAt: 2021-01-22T09:12:20.143Z
+      - text16:
+          pluginTemplate:
+            id: text16
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - hidden: '{{!retoolContext.inEditorMode}}'
+                - showInEditor: true
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |+
+                    **Dev payload**
+
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+                - id: text16
+            style:
+              ordered:
+                - primary-text: '#ff0000ff'
+                - secondary-text: '#ff0000b3'
+                - tertiary-text: '#ff00007d'
+            position2:
+              position2:
+                container: mainContainer
+                row: 13
+                col: 6
+                height: 1
+                width: 3
+            createdAt: 2021-01-22T09:12:42.159Z
+            updatedAt: 2021-01-22T09:40:38.450Z
+      - text15:
+          pluginTemplate:
+            id: text15
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: '**todo** always pass seconds as :00'
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+                - id: text15
+            style:
+              ordered:
+                - primary-text: '#ff0000ff'
+                - secondary-text: '#ff0000b3'
+                - tertiary-text: '#ff00007d'
+            position2:
+              position2:
+                container: mainContainer
+                row: 9
+                col: 8
+                height: 1
+                width: 3
+            createdAt: 2021-01-22T15:40:48.820Z
+            updatedAt: 2021-01-22T15:41:16.816Z
+      - text17:
+          pluginTemplate:
+            id: text17
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |
+                    **Manage Snapshot Jobs**
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+                - id: text17
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: mainContainer
+                height: 1
+                width: 3
+                tabNum: 1
+            createdAt: 2021-01-25T02:50:01.126Z
+            updatedAt: 2021-01-25T09:16:26.398Z
+      - jobsTable:
+          pluginTemplate:
+            id: jobsTable
+            type: widget
+            subtype: TableWidget
+            template:
+              ordered:
+                - showCustomButton: false
+                - sortMappedValue:
+                    ordered: []
+                - normalizedData: null
+                - saveChangesDisabled: ''
+                - columnWidths:
+                    - object:
+                        id: ea_client_description
+                        value: 212.6624984741211
+                    - object:
+                        id: dataset_name
+                        value: 161.6624984741211
+                - columnWidthsMobile: []
+                - hasNextAfterCursor: ''
+                - columnTypeSpecificExtras:
+                    ordered:
+                      - snapshot_type_id:
+                          ordered:
+                            - dropdownValues: '{{get_snapshot_types.data.id}}'
+                            - dropdownLabels: '{{get_snapshot_types.data.snapshot_type}}'
+                - onRowAdded: add_job
+                - columnHeaderNames:
+                    ordered:
+                      - snapshot_name: |
+                          Snapshot
+                      - snapshot_type_id: Type
+                      - schedule: Schedule
+                      - status: Enabled
+                - alwaysShowPaginator: false
+                - columnColors:
+                    ordered:
+                      - dataset_id: ''
+                      - ea_dataset_type: ''
+                      - snapshot_type_id: ''
+                      - snapshot_name: ''
+                      - ea_client_api: ''
+                      - ea_client_description: ''
+                      - ea_client_source: ''
+                      - date_from_min: ''
+                      - date_to_max: ''
+                      - dataset_name: ''
+                      - status: ''
+                      - schedule: ''
+                      - ea_category_ids: ''
+                      - id: ''
+                - allowMultiRowSelect: false
+                - columnFormats:
+                    ordered:
+                      - snapshot_type_id: dropdown
+                      - status: boolean
+                      - snapshot_name: textinput
+                - columnRestrictedEditing:
+                    ordered: []
+                - showFilterButton: true
+                - nextBeforeCursor: ''
+                - columnVisibility:
+                    ordered:
+                      - dataset_id: false
+                      - ea_dataset_type: true
+                      - snapshot_type_id: true
+                      - snapshot_name: true
+                      - ea_client_api: true
+                      - ea_client_description: true
+                      - ea_client_source: true
+                      - Sales: true
+                      - date_from_min: true
+                      - date_to_max: true
+                      - dataset_name: true
+                      - status: true
+                      - schedule: true
+                      - Title: true
+                      - ea_category_ids: true
+                      - id: false
+                      - Description: true
+                - selectedPageIndex: '0'
+                - actionButtonColumnName: ''
+                - filterStackType: and
+                - downloadRawData: false
+                - showFetchingIndicator: true
+                - serverPaginated: false
+                - data: '{{get_jobs.data}}'
+                - displayedData: null
+                - actionButtons:
+                    - ordered:
+                        - actionButtonText: Delete
+                        - actionButtonType: runQuery
+                        - actionButtonQuery: delete_job
+                        - actionButtonInternalUrlPath: ''
+                        - actionButtonInternalUrlQuery: ''
+                        - actionButtonUrl: ''
+                        - actionButtonNewWindow: false
+                        - actionButtonDisabled: ''
+                - actionButtonSelectsRow: true
+                - selectRowByDefault: true
+                - defaultSortByColumn: ''
+                - paginationOffset: 0
+                - columnAlignment:
+                    ordered:
+                      - snapshot_type_id: left
+                      - status: center
+                      - snapshot_name: left
+                - sortedDesc: false
+                - customButtonName: ''
+                - columnMappersRenderAsHTML:
+                    ordered: []
+                - pageSize: 5
+                - useDynamicColumnSettings: false
+                - actionButtonPosition: right
+                - bulkUpdateAction: update_job
+                - afterCursor: ''
+                - onCustomButtonPressQueryName: ''
+                - changeSet:
+                    object: {}
+                - sortedColumn: ''
+                - columnAllowOverflow:
+                    ordered: []
+                - beforeCursor: ''
+                - serverPaginationType: limitOffsetBased
+                - onRowSelect: ''
+                - showDownloadButton: true
+                - selectedIndex: ''
+                - defaultSortDescending: false
+                - dynamicColumnSettings: null
+                - totalRowCount: ''
+                - recordUpdates:
+                    array: []
+                - newRow: null
+                - columnEditable:
+                    ordered:
+                      - schedule: true
+                      - snapshot_name: true
+                      - status: true
+                - id: table3
+                - filters:
+                    array: []
+                - displayedDataIndices: null
+                - disableSorting:
+                    ordered: []
+                - columnMappers:
+                    ordered: []
+                - showClearSelection: false
+                - selectedCell:
+                    object:
+                      index: null
+                      data: null
+                      columnName: null
+                - columns:
+                    - id
+                    - snapshot_name
+                    - snapshot_type_id
+                    - schedule
+                    - status
+                    - dataset_id
+                - sort: null
+                - calculatedColumns: []
+                - selectedRow:
+                    object:
+                      index: null
+                      data: null
+                - showPaginationOnTop: false
+                - nextAfterCursor: ''
+                - useCompactMode: false
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: mainContainer
+                row: 1
+                height: 8
+                width: 12
+                tabNum: 1
+            createdAt: 2021-01-25T02:51:28.923Z
+            updatedAt: 2021-01-25T20:59:35.270Z
+      - addTickers:
+          pluginTemplate:
+            id: addTickers
+            type: widget
+            subtype: ModalWidget
+            template:
+              ordered:
+                - buttonBackgroundColor: '#3c92dc'
+                - opened: false
+                - onModalClose: ''
+                - modalHeight: ''
+                - onModalOpen: ''
+                - modalWidth: 60%
+                - closeOnOutsideClick: false
+                - id: modal1
+                - loading: ''
+                - disabled: ''
+                - buttonText: Add Tickers
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: mainContainer
+                row: 9
+                col: 5
+                height: 1
+                width: 3
+                tabNum: 1
+            createdAt: 2021-01-25T07:43:56.724Z
+            updatedAt: 2021-01-25T20:45:56.776Z
+      - table4:
+          pluginTemplate:
+            id: table4
+            type: widget
+            subtype: TableWidget
+            template:
+              ordered:
+                - showCustomButton: false
+                - sortMappedValue:
+                    ordered: []
+                - normalizedData: null
+                - saveChangesDisabled: ''
+                - columnWidths: []
+                - columnWidthsMobile: []
+                - hasNextAfterCursor: ''
+                - columnTypeSpecificExtras:
+                    ordered: []
+                - onRowAdded: ''
+                - columnHeaderNames:
+                    ordered: []
+                - alwaysShowPaginator: false
+                - columnColors:
+                    ordered:
+                      - ea_snapshot_ids: ''
+                      - series_id: ''
+                      - ea_client_api: ''
+                      - ea_client_description: ''
+                      - name: ''
+                      - ea_identifier: ''
+                      - ea_client_source: ''
+                      - sales: ''
+                      - date_from_min: ''
+                      - date_to_max: ''
+                      - ea_category_ids: ''
+                      - id: ''
+                      - email: ''
+                - allowMultiRowSelect: false
+                - columnFormats:
+                    ordered: []
+                - columnRestrictedEditing:
+                    ordered: []
+                - showFilterButton: true
+                - nextBeforeCursor: ''
+                - columnVisibility:
+                    ordered:
+                      - ea_snapshot_ids: false
+                      - series_id: true
+                      - ea_client_api: false
+                      - ea_client_description: false
+                      - name: true
+                      - ea_identifier: true
+                      - ea_client_source: false
+                      - Sales: true
+                      - sales: true
+                      - date_from_min: false
+                      - date_to_max: false
+                      - Title: true
+                      - ea_category_ids: false
+                      - id: false
+                      - email: true
+                      - Description: true
+                - selectedPageIndex: '0'
+                - actionButtonColumnName: ''
+                - filterStackType: and
+                - downloadRawData: false
+                - showFetchingIndicator: true
+                - serverPaginated: false
+                - data: '{{ get_sids_to_add.data }}'
+                - displayedData: null
+                - actionButtons:
+                    - ordered:
+                        - actionButtonText: Add
+                        - actionButtonType: runQuery
+                        - actionButtonQuery: ''
+                        - actionButtonInternalUrlPath: ''
+                        - actionButtonInternalUrlQuery: ''
+                        - actionButtonUrl: ''
+                        - actionButtonNewWindow: false
+                        - actionButtonDisabled: >-
+                            {{table4.selectedRow.data.id in
+                            (get_series_for_dataset.data.id)}}
+                - actionButtonSelectsRow: true
+                - selectRowByDefault: true
+                - defaultSortByColumn: ''
+                - paginationOffset: 0
+                - columnAlignment:
+                    ordered: []
+                - sortedDesc: false
+                - customButtonName: ''
+                - columnMappersRenderAsHTML:
+                    ordered: []
+                - pageSize: 5
+                - useDynamicColumnSettings: false
+                - actionButtonPosition: right
+                - bulkUpdateAction: ''
+                - afterCursor: ''
+                - onCustomButtonPressQueryName: ''
+                - changeSet:
+                    object: {}
+                - sortedColumn: ''
+                - columnAllowOverflow:
+                    ordered: []
+                - beforeCursor: ''
+                - serverPaginationType: limitOffsetBased
+                - onRowSelect: ''
+                - showDownloadButton: true
+                - selectedIndex: ''
+                - defaultSortDescending: false
+                - dynamicColumnSettings: null
+                - totalRowCount: ''
+                - recordUpdates:
+                    array: []
+                - newRow: null
+                - columnEditable:
+                    ordered: []
+                - id: table4
+                - filters:
+                    array: []
+                - displayedDataIndices: null
+                - disableSorting:
+                    ordered: []
+                - columnMappers:
+                    ordered: []
+                - showClearSelection: false
+                - selectedCell:
+                    object:
+                      index: null
+                      data: null
+                      columnName: null
+                - columns:
+                    - Title
+                    - Description
+                    - Sales
+                    - id
+                    - name
+                    - email
+                    - sales
+                    - series_id
+                    - ea_identifier
+                    - ea_client_api
+                    - ea_category_ids
+                    - ea_snapshot_ids
+                    - date_from_min
+                    - date_to_max
+                    - ea_client_description
+                    - ea_client_source
+                - sort: null
+                - calculatedColumns: []
+                - selectedRow:
+                    object:
+                      index: null
+                      data: null
+                - showPaginationOnTop: false
+                - nextAfterCursor: ''
+                - useCompactMode: false
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: addTickers
+                row: 11
+                col: 1
+                height: 8
                 width: 10
-            createdAt: 2018-08-23T16:17:36.949Z
-            updatedAt: 2018-08-23T16:18:53.138Z
+            createdAt: 2021-01-25T07:44:43.486Z
+            updatedAt: 2021-01-25T07:57:15.960Z
+      - text18:
+          pluginTemplate:
+            id: text18
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |
+                    **TODO** Snapshot title shoud have no spaces
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+                - id: text18
+            style:
+              ordered:
+                - primary-text: '#ff0000ff'
+                - secondary-text: '#ff0000b3'
+                - tertiary-text: '#ff00007d'
+            position2:
+              position2:
+                container: mainContainer
+                row: 9
+                col: 8
+                height: 1
+                width: 3
+                tabNum: 1
+            createdAt: 2021-01-25T13:34:40.750Z
+            updatedAt: 2021-01-25T13:35:30.174Z
+      - text19:
+          pluginTemplate:
+            id: text19
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |
+                    **TODO** Series picker functionality
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+                - id: text19
+            style:
+              ordered:
+                - primary-text: '#ff0000ff'
+                - secondary-text: '#ff0000b3'
+                - tertiary-text: '#ff00007d'
+            position2:
+              position2:
+                container: mainContainer
+                row: 12
+                col: 8
+                height: 1
+                width: 3
+                tabNum: 1
+            createdAt: 2021-01-25T13:35:44.427Z
+            updatedAt: 2021-01-25T13:36:28.738Z
+      - text20:
+          pluginTemplate:
+            id: text20
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |+
+                    **TODO** Chat to jack in re cron -> date idea
+
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+                - id: text20
+            style:
+              ordered:
+                - primary-text: '#262626ff'
+                - secondary-text: '#262626b3'
+                - tertiary-text: '#2626267d'
+            position2:
+              position2:
+                container: mainContainer
+                row: 13
+                col: 8
+                height: 1
+                width: 3
+                tabNum: 1
+            createdAt: 2021-01-25T13:36:50.756Z
+            updatedAt: 2021-01-26T19:24:08.790Z
+      - text21:
+          pluginTemplate:
+            id: text21
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: '{{ build_sids_for_multi.data.obj[0]}}'
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+                - id: text21
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: mainContainer
+                row: 9
+                col: 5
+                height: 1
+                width: 3
+            createdAt: 2021-01-25T14:25:49.397Z
+            updatedAt: 2021-01-25T21:59:32.824Z
+      - mapping:
+          pluginTemplate:
+            id: mapping
+            type: state
+            subtype: State
+            template:
+              ordered:
+                - value: ''
+            createdAt: 2021-01-25T14:47:54.294Z
+            updatedAt: 2021-01-26T05:13:39.601Z
+      - getSnapshotPickerData:
+          pluginTemplate:
+            id: getSnapshotPickerData
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: return _.flatten(snapshotPicker.checked)
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-01-25T21:53:24.744Z
+            updatedAt: 2021-01-25T22:05:33.553Z
+      - build_sids_for_multi:
+          pluginTemplate:
+            id: build_sids_for_multi
+            type: datasource
+            subtype: SqlQueryUnified
+            resourceName: ea_2
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - records: ''
+                - databasePasswordOverride: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: "select jsonb_build_object(\n  \t\t\t'payload', jsonb_build_object(\n               'sids',  array_agg(sm.series_id)\n           )) as obj\nfrom config.tbl_snapshot_metadata sm join config.tbl_snapshot_series ss on ss.ea_series_id = sm.id where ss.snapshot_job_id =  ANY({{getSnapshotPickerData.data}})"
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - warningCodes: []
+                - data: null
+                - recordId: ''
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - dataArray: []
+                - cacheKeyTtl: ''
+                - filterBy: ''
+                - metadata: null
+                - editorMode: sql
+                - actionType: ''
+                - triggersOnFailure: []
+                - shouldUseLegacySql: false
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - databaseNameOverride: ''
+                - confirmationMessage: null
+                - isFetching: false
+                - changeset: ''
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - enableBulkUpdates: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - bulkUpdatePrimaryKey: ''
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - tableName: ''
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - databaseUsernameOverride: ''
+                - shouldEnableBatchQuerying: false
+                - doNotThrowOnNoOp: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-01-25T21:56:43.867Z
+            updatedAt: 2021-01-25T22:02:02.082Z
+      - state3:
+          pluginTemplate:
+            id: state3
+            type: state
+            subtype: State
+            template:
+              ordered:
+                - value: null
+            createdAt: 2021-01-26T05:13:29.359Z
+            updatedAt: 2021-01-26T05:13:29.359Z
+      - query16:
+          pluginTemplate:
+            id: query16
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: >
+                    var compiled = _.template('<b><%- value %></b>');
+
+
+                    yield _.each(get_jobs_http.data,(d =>compiled 
+                    compiled(d.next_run)));
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-01-26T05:13:43.214Z
+            updatedAt: 2021-01-26T05:19:52.844Z
   urlFragmentDefinitions: []
-  appThemeId: null
+  appThemeId: 23
   pageLoadValueOverrides: []
   customDocumentTitle: ''
   isGlobalWidget: false
