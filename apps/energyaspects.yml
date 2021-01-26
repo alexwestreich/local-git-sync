@@ -1,0 +1,193 @@
+version: 43.0.9
+pageUuid: bd266fb2-600c-11eb-b6e3-7365f0a0a87a
+appTemplate:
+  plugins:
+    ordered:
+      - pod:
+          pluginTemplate:
+            id: pod
+            type: datasource
+            subtype: SqlQuery
+            resourceName: PG Live (read)
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - query: >-
+                    select cubbies, online, location_host, autofill_limit from
+                    pods where id = 'eacfc9c1-1012-4423-8891-e60f49c9c471';
+                - privateParams: []
+                - triggersOnSuccess: []
+                - data: null
+                - showSuccessToaster: true
+                - triggersOnFailure: []
+                - confirmationMessage: null
+                - watchedParams: []
+                - timestamp: 0
+                - runWhenPageLoads: false
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryThrottleTime: '750'
+            createdAt: 2018-08-16T02:20:05.421Z
+            updatedAt: 2018-08-23T16:17:06.492Z
+      - autofill_limit:
+          pluginTemplate:
+            id: autofill_limit
+            type: widget
+            subtype: SliderWidget
+            template:
+              ordered:
+                - label: Autofill
+                - labelMaxWidth: ''
+                - value: '{{pod.data.autofill_limit[0]}}'
+                - min: '0'
+                - max: '{{pod.data.cubbies[0]}}'
+                - step: 1
+                - type: number
+            position2:
+              position2:
+                container: pod_update_form
+                height: 2
+                width: 12
+            createdAt: 2018-08-22T15:53:48.267Z
+            updatedAt: 2018-08-23T16:17:06.492Z
+      - title:
+          pluginTemplate:
+            id: title
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - value: '<h2>Pod @{{pod.data.location_host}}</h2>'
+                - html: true
+                - scrollOverflow: false
+                - truncateOverflow: false
+            position2:
+              position2:
+                height: 2
+                width: 6
+            createdAt: 2018-08-23T15:44:33.496Z
+            updatedAt: 2018-08-23T16:17:06.492Z
+      - pod_update_form:
+          pluginTemplate:
+            id: pod_update_form
+            type: widget
+            subtype: FormWidget
+            template:
+              ordered:
+                - clearFormAfterSubmit: false
+                - borderless: false
+                - data: ''
+                - submitButtonFullWidth: true
+                - submitDisabled: ''
+                - submitButtonText: Update Pod
+                - onSubmit: update_pod
+                - requiredFormControls: []
+                - loading: ''
+                - disabled: ''
+            position2:
+              position2:
+                row: 2
+                height: 7
+                width: 6
+            createdAt: 2018-08-23T15:46:18.065Z
+            updatedAt: 2018-08-23T16:17:06.493Z
+      - update_pod:
+          pluginTemplate:
+            id: update_pod
+            type: datasource
+            subtype: RetoolTableQuery
+            resourceName: PG Live (edit)
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - records: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - privateParams: []
+                - triggersOnSuccess: []
+                - data: null
+                - recordId: ''
+                - showSuccessToaster: true
+                - filterBy: >-
+                    [{"key":"id","value":"eacfc9c1-1012-4423-8891-e60f49c9c471","operation":"="}]
+                - actionType: UPDATE_BY
+                - triggersOnFailure: []
+                - confirmationMessage: null
+                - changeset: >-
+                    [{"key":"autofill_limit","value":"{{
+                    pod_update_form.data.autofill_limit
+                    }}"},{"key":"online","value":"{{
+                    pod_update_form.data.toggle_online }}"}]
+                - watchedParams: []
+                - enableBulkUpdates: false
+                - timestamp: 0
+                - bulkUpdatePrimaryKey: ''
+                - runWhenPageLoads: false
+                - tableName: pods
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryThrottleTime: '750'
+            createdAt: 2018-08-23T15:48:03.224Z
+            updatedAt: 2018-08-23T16:17:06.493Z
+      - toggle_online:
+          pluginTemplate:
+            id: toggle_online
+            type: widget
+            subtype: ToggleWidget
+            template:
+              ordered:
+                - label: Online?
+                - labelMaxWidth: ''
+                - value: '{{pod.data.online[0]}}'
+                - toggleOnQuery: ''
+                - toggleOffQuery: ''
+            position2:
+              position2:
+                container: pod_update_form
+                row: 2
+                col: 10
+                height: 2
+                width: 2
+            createdAt: 2018-08-23T16:00:35.900Z
+            updatedAt: 2018-08-23T16:17:06.493Z
+      - text2:
+          pluginTemplate:
+            id: text2
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - value: >-
+                    <p><b>Danger!</b> Only use this to force a data sync. The
+                    pod is configured to be 
+                - html: true
+                - scrollOverflow: false
+                - truncateOverflow: false
+            position2:
+              position2:
+                container: pod_update_form
+                row: 2
+                height: 2
+                width: 10
+            createdAt: 2018-08-23T16:17:36.949Z
+            updatedAt: 2018-08-23T16:18:53.138Z
+  urlFragmentDefinitions: []
+  appThemeId: null
+  pageLoadValueOverrides: []
+  customDocumentTitle: ''
+  isGlobalWidget: false
+  isFetching: false
+  instrumentationEnabled: false
+  customDocumentTitleEnabled: false
+  version: 2.28.1
+  responsiveLayoutDisabled: false
+  createdAt: null
+  loadingIndicatorsDisabled: false
