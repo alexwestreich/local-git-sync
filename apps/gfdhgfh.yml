@@ -4707,7 +4707,7 @@ appTemplate:
                 - customButtonName: ''
                 - columnMappersRenderAsHTML:
                     ordered: []
-                - pageSize: 18
+                - pageSize: 16
                 - useDynamicColumnSettings: false
                 - actionButtonPosition: left
                 - bulkUpdateAction: updateProgramAttendance
@@ -4815,7 +4815,7 @@ appTemplate:
                 width: 12
                 tabNum: 2
             createdAt: 2020-03-13T07:06:06.801Z
-            updatedAt: 2020-07-22T01:53:47.532Z
+            updatedAt: 2021-03-17T01:26:38.668Z
       - getProgramsAttendanceDates:
           pluginTemplate:
             id: getProgramsAttendanceDates
