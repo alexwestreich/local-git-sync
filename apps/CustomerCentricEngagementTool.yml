@@ -7449,37 +7449,6 @@ appTemplate:
                 tabNum: 7
             createdAt: 2020-06-25T01:55:34.721Z
             updatedAt: 2020-06-25T01:58:19.474Z
-      - tabbedcontainer_CustomfsfdsderFeeback:
-          pluginTemplate:
-            id: tabbedcontainer_CustomfsfdsderFeeback
-            type: widget
-            subtype: TabbedContainerWidget
-            template:
-              ordered:
-                - disabled: ''
-                - selectedTab: '"0"'
-                - selectedTabIndex: 0
-                - showTabBar: true
-                - tabNames: '["Input Customer Feedback", "Label Customer Feedback"]'
-                - spinWhenChildrenAreFetching: true
-                - disableAnimation: false
-                - scroll: false
-            style:
-              ordered: []
-            position2:
-              position2:
-                row: 39
-                col: 3
-                height: 7
-                width: 8
-            mobilePosition2:
-              position2:
-                container: tabbedcontainer_EngagementType
-                height: 22
-                width: 12
-                tabNum: 3
-            createdAt: 2020-06-25T02:10:02.694Z
-            updatedAt: 2020-07-22T09:13:18.988Z
       - container_UI_Examples:
           pluginTemplate:
             id: container_UI_Examples
