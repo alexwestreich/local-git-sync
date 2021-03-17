@@ -3468,7 +3468,7 @@ appTemplate:
                 - customButtonName: ''
                 - columnMappersRenderAsHTML:
                     ordered: []
-                - pageSize: 11
+                - pageSize: 9
                 - useDynamicColumnSettings: false
                 - actionButtonPosition: left
                 - bulkUpdateAction: ''
@@ -3551,7 +3551,7 @@ appTemplate:
                 width: 12
                 tabNum: 2
             createdAt: 2020-03-11T09:21:43.001Z
-            updatedAt: 2020-07-01T18:03:25.137Z
+            updatedAt: 2021-03-17T01:04:34.363Z
       - button_Enquiry_Other_DariusTenants:
           pluginTemplate:
             id: button_Enquiry_Other_DariusTenants
