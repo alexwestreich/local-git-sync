@@ -18,6 +18,7 @@ appTemplate:
                 - playgroundQuerySaveId: 0
                 - resourceNameOverride: ''
                 - runWhenModelUpdates: false
+                - showFailureToaster: true
                 - query: |-
                     if (time_Enquiry.isRunning == false) {
                       time_Enquiry.start()
@@ -64,8 +65,10 @@ appTemplate:
                     return data
                 - queryTimeout: '10000'
                 - requireConfirmation: false
+                - queryFailureConditions: ''
                 - enableCaching: false
                 - queryThrottleTime: '750'
+                - notificationDuration: ''
             createdAt: 2020-03-11T07:43:20.434Z
             updatedAt: 2020-03-11T09:09:01.982Z
       - updateProgramAttendance:
@@ -85,7 +88,9 @@ appTemplate:
                 - resourceNameOverride: ''
                 - useRawSpreadsheetId: false
                 - runWhenModelUpdates: false
+                - showFailureToaster: true
                 - spreadsheetId: 18bMf0_cU5tbaVmES01LKbl4WyySaw6zvxTT7r_7v2-0
+                - query: ''
                 - playgroundQueryUuid: c8b414a5-3cc0-439a-97cb-7f989a4d72a2
                 - playgroundQueryId: 14069
                 - sheetUpdate: >-
@@ -104,6 +109,7 @@ appTemplate:
                 - sheetIdToCopy: ''
                 - sheetName: Programs
                 - runWhenPageLoadsDelay: ''
+                - doNotThrowOnDeleteNoOp: false
                 - data: null
                 - importedQueryInputs:
                     ordered:
@@ -146,13 +152,16 @@ appTemplate:
                 - offset: ''
                 - queryTriggerDelay: '0'
                 - watchedParams: []
+                - bulkUpdateRows: ''
                 - enableErrorTransformer: false
                 - useRawCopyToSpreadsheetId: false
                 - timestamp: 0
                 - importedQueryDefaults:
                     ordered: []
                 - enableTransformer: false
+                - valueFormatting: formatted
                 - copyToSpreadsheetId: ''
+                - bulkUpdatePrimaryKey: ''
                 - runWhenPageLoads: false
                 - sheetTitle: ''
                 - transformer: >-
@@ -164,10 +173,12 @@ appTemplate:
                     return data
                 - queryTimeout: '10000'
                 - requireConfirmation: false
+                - queryFailureConditions: ''
                 - limit: ''
                 - enableCaching: false
                 - sheetRange: ''
                 - queryThrottleTime: '750'
+                - notificationDuration: ''
             createdAt: 2020-03-06T06:18:39.467Z
             updatedAt: 2020-07-21T06:58:05.627Z
       - runjscode_SaveEnquiryRecord:
@@ -185,6 +196,7 @@ appTemplate:
                 - playgroundQuerySaveId: 0
                 - resourceNameOverride: ''
                 - runWhenModelUpdates: false
+                - showFailureToaster: true
                 - query: >-
                     // AN IN-DEVELOPMENT SCRIPT: create a data structure that
                     can be saved into Azure CosmosDB, or MS SQL instead of
@@ -288,8 +300,10 @@ appTemplate:
                     return data
                 - queryTimeout: '10000'
                 - requireConfirmation: false
+                - queryFailureConditions: ''
                 - enableCaching: false
                 - queryThrottleTime: '750'
+                - notificationDuration: ''
             createdAt: 2020-03-06T06:41:20.568Z
             updatedAt: 2020-07-14T08:56:18.679Z
       - addCustomerFeedback:
@@ -309,7 +323,9 @@ appTemplate:
                 - resourceNameOverride: ''
                 - useRawSpreadsheetId: false
                 - runWhenModelUpdates: false
+                - showFailureToaster: true
                 - spreadsheetId: 1YwNc0ZkH7eoS8gYxLXD9Xd48Xt7EspNwpmTrQSAay8Y
+                - query: ''
                 - playgroundQueryUuid: 6a26fc75-6d35-475f-bffd-4c6df99046f0
                 - playgroundQueryId: 19710
                 - sheetUpdate: |-
@@ -337,6 +353,7 @@ appTemplate:
                 - sheetIdToCopy: ''
                 - sheetName: CustomerFeedback
                 - runWhenPageLoadsDelay: ''
+                - doNotThrowOnDeleteNoOp: false
                 - data: null
                 - retoolVersion: 2.59.22
                 - importedQueryInputs:
@@ -374,13 +391,16 @@ appTemplate:
                 - offset: ''
                 - queryTriggerDelay: '0'
                 - watchedParams: []
+                - bulkUpdateRows: ''
                 - enableErrorTransformer: false
                 - useRawCopyToSpreadsheetId: false
                 - timestamp: 0
                 - importedQueryDefaults:
                     ordered: []
                 - enableTransformer: false
+                - valueFormatting: formatted
                 - copyToSpreadsheetId: ''
+                - bulkUpdatePrimaryKey: ''
                 - runWhenPageLoads: false
                 - sheetTitle: ''
                 - transformer: >-
@@ -392,10 +412,12 @@ appTemplate:
                     return data
                 - queryTimeout: '10000'
                 - requireConfirmation: false
+                - queryFailureConditions: ''
                 - limit: ''
                 - enableCaching: false
                 - sheetRange: ''
                 - queryThrottleTime: '750'
+                - notificationDuration: ''
             createdAt: 2020-03-06T06:30:45.492Z
             updatedAt: 2020-07-14T05:48:42.388Z
       - getUsers:
@@ -415,7 +437,9 @@ appTemplate:
                 - resourceNameOverride: ''
                 - useRawSpreadsheetId: false
                 - runWhenModelUpdates: true
+                - showFailureToaster: true
                 - spreadsheetId: 14wy8agI904FQytDIUcmQy70v0R7nCJxv0qxs0_tjIt4
+                - query: ''
                 - playgroundQueryUuid: ''
                 - playgroundQueryId: 0
                 - sheetUpdate: ''
@@ -424,6 +448,7 @@ appTemplate:
                 - sheetIdToCopy: ''
                 - sheetName: users
                 - runWhenPageLoadsDelay: ''
+                - doNotThrowOnDeleteNoOp: false
                 - data: null
                 - importedQueryInputs:
                     ordered: []
@@ -445,13 +470,16 @@ appTemplate:
                 - offset: ''
                 - queryTriggerDelay: '0'
                 - watchedParams: []
+                - bulkUpdateRows: ''
                 - enableErrorTransformer: false
                 - useRawCopyToSpreadsheetId: false
                 - timestamp: 0
                 - importedQueryDefaults:
                     ordered: []
                 - enableTransformer: true
+                - valueFormatting: formatted
                 - copyToSpreadsheetId: ''
+                - bulkUpdatePrimaryKey: ''
                 - runWhenPageLoads: false
                 - sheetTitle: ''
                 - transformer: >
@@ -472,10 +500,12 @@ appTemplate:
                     return users
                 - queryTimeout: '10000'
                 - requireConfirmation: false
+                - queryFailureConditions: ''
                 - limit: ''
                 - enableCaching: false
                 - sheetRange: ''
                 - queryThrottleTime: '750'
+                - notificationDuration: ''
             createdAt: 2020-03-06T07:13:05.441Z
             updatedAt: 2020-07-22T06:30:31.657Z
       - clearEnquiryForm:
@@ -493,6 +523,7 @@ appTemplate:
                 - playgroundQuerySaveId: 0
                 - resourceNameOverride: ''
                 - runWhenModelUpdates: false
+                - showFailureToaster: true
                 - query: |
                     buttongroup_EnquiryMethod.setValue();
                     toggle_IsInternalEnquiry.setValue(false);
@@ -543,8 +574,10 @@ appTemplate:
                     return data
                 - queryTimeout: '10000'
                 - requireConfirmation: false
+                - queryFailureConditions: ''
                 - enableCaching: false
                 - queryThrottleTime: '750'
+                - notificationDuration: ''
             createdAt: 2020-03-06T07:17:45.549Z
             updatedAt: 2020-07-15T03:30:34.105Z
       - addEnquiry:
@@ -564,7 +597,9 @@ appTemplate:
                 - resourceNameOverride: ''
                 - useRawSpreadsheetId: false
                 - runWhenModelUpdates: false
+                - showFailureToaster: true
                 - spreadsheetId: 1eQYHe--evqRrpdln_uwp1XcBWOLGYms_tzuwKSZgsOs
+                - query: ''
                 - playgroundQueryUuid: 4d5ec21e-22f1-44fe-b2d7-851f5a08d98a
                 - playgroundQueryId: 19637
                 - sheetUpdate: |
@@ -597,6 +632,7 @@ appTemplate:
                 - sheetIdToCopy: ''
                 - sheetName: libStats
                 - runWhenPageLoadsDelay: ''
+                - doNotThrowOnDeleteNoOp: false
                 - data: null
                 - retoolVersion: 2.59.22
                 - importedQueryInputs:
@@ -646,13 +682,16 @@ appTemplate:
                 - offset: ''
                 - queryTriggerDelay: '0'
                 - watchedParams: []
+                - bulkUpdateRows: ''
                 - enableErrorTransformer: false
                 - useRawCopyToSpreadsheetId: false
                 - timestamp: 0
                 - importedQueryDefaults:
                     ordered: []
                 - enableTransformer: false
+                - valueFormatting: formatted
                 - copyToSpreadsheetId: ''
+                - bulkUpdatePrimaryKey: ''
                 - runWhenPageLoads: false
                 - sheetTitle: ''
                 - transformer: >-
@@ -664,10 +703,12 @@ appTemplate:
                     return data
                 - queryTimeout: '10000'
                 - requireConfirmation: false
+                - queryFailureConditions: ''
                 - limit: ''
                 - enableCaching: false
                 - sheetRange: ''
                 - queryThrottleTime: '750'
+                - notificationDuration: ''
             createdAt: 2020-03-06T08:52:13.221Z
             updatedAt: 2020-07-15T01:35:08.245Z
       - gsheets_get_programs:
@@ -687,7 +728,9 @@ appTemplate:
                 - resourceNameOverride: ''
                 - useRawSpreadsheetId: false
                 - runWhenModelUpdates: true
+                - showFailureToaster: true
                 - spreadsheetId: 14wy8agI904FQytDIUcmQy70v0R7nCJxv0qxs0_tjIt4
+                - query: ''
                 - playgroundQueryUuid: ''
                 - playgroundQueryId: 0
                 - sheetUpdate: ''
@@ -696,6 +739,7 @@ appTemplate:
                 - sheetIdToCopy: ''
                 - sheetName: programs
                 - runWhenPageLoadsDelay: ''
+                - doNotThrowOnDeleteNoOp: false
                 - data: null
                 - importedQueryInputs:
                     ordered: []
@@ -717,13 +761,16 @@ appTemplate:
                 - offset: ''
                 - queryTriggerDelay: '0'
                 - watchedParams: []
+                - bulkUpdateRows: ''
                 - enableErrorTransformer: false
                 - useRawCopyToSpreadsheetId: false
                 - timestamp: 0
                 - importedQueryDefaults:
                     ordered: []
                 - enableTransformer: false
+                - valueFormatting: formatted
                 - copyToSpreadsheetId: ''
+                - bulkUpdatePrimaryKey: ''
                 - runWhenPageLoads: false
                 - sheetTitle: ''
                 - transformer: >-
@@ -735,10 +782,12 @@ appTemplate:
                     return data
                 - queryTimeout: '10000'
                 - requireConfirmation: false
+                - queryFailureConditions: ''
                 - limit: ''
                 - enableCaching: false
                 - sheetRange: ''
                 - queryThrottleTime: '750'
+                - notificationDuration: ''
             createdAt: 2019-04-20T04:49:38.684Z
             updatedAt: 2020-03-12T01:33:35.554Z
       - gsheets_get_resources:
@@ -758,7 +807,9 @@ appTemplate:
                 - resourceNameOverride: ''
                 - useRawSpreadsheetId: false
                 - runWhenModelUpdates: true
+                - showFailureToaster: true
                 - spreadsheetId: 14wy8agI904FQytDIUcmQy70v0R7nCJxv0qxs0_tjIt4
+                - query: ''
                 - playgroundQueryUuid: ''
                 - playgroundQueryId: 0
                 - sheetUpdate: ''
@@ -767,6 +818,7 @@ appTemplate:
                 - sheetIdToCopy: ''
                 - sheetName: '{{state_QueryType.value}}'
                 - runWhenPageLoadsDelay: ''
+                - doNotThrowOnDeleteNoOp: false
                 - data: null
                 - importedQueryInputs:
                     ordered: []
@@ -788,13 +840,16 @@ appTemplate:
                 - offset: ''
                 - queryTriggerDelay: '0'
                 - watchedParams: []
+                - bulkUpdateRows: ''
                 - enableErrorTransformer: false
                 - useRawCopyToSpreadsheetId: false
                 - timestamp: 0
                 - importedQueryDefaults:
                     ordered: []
                 - enableTransformer: false
+                - valueFormatting: formatted
                 - copyToSpreadsheetId: ''
+                - bulkUpdatePrimaryKey: ''
                 - runWhenPageLoads: false
                 - sheetTitle: ''
                 - transformer: >-
@@ -815,10 +870,12 @@ appTemplate:
                     item.Library_eResources_Category == "Career assistance")
                 - queryTimeout: '10000'
                 - requireConfirmation: false
+                - queryFailureConditions: ''
                 - limit: ''
                 - enableCaching: false
                 - sheetRange: ''
                 - queryThrottleTime: '750'
+                - notificationDuration: ''
             createdAt: 2020-03-11T08:34:38.701Z
             updatedAt: 2020-06-19T01:36:55.385Z
       - container_HeaderPanel:
@@ -838,6 +895,9 @@ appTemplate:
                 - hidden: >-
                     {{(select_user.value!=null && select_location.value!=null)
                     && toggle_HideHeader.value == false}}
+            style:
+              ordered:
+                - primary-surface: '#fafafa'
             position2:
               position2:
                 height: 2
@@ -862,6 +922,9 @@ appTemplate:
                 - showDropShadow: true
                 - backgroundColor: blue
                 - scroll: false
+            style:
+              ordered:
+                - primary-surface: '#ecf5fd'
             position2:
               position2:
                 container: tabbedcontainer_EngagementType
@@ -894,6 +957,8 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_CommonButtons
@@ -924,6 +989,9 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered:
+                - accent-background: '#e9ab11'
             position2:
               position2:
                 container: container_CommonButtons
@@ -981,14 +1049,18 @@ appTemplate:
                 - maxResults: '50'
                 - placeholder: Select your staff username...
                 - label: User
+                - clearValueOnFocus: true
                 - labelMaxWidth: ''
                 - labelPlacedOnLeft: false
                 - validationState: ''
                 - onSelect: ''
+                - allowCustomValues: false
                 - disabled: ''
                 - hideClearButton: false
                 - required: true
                 - labels: '{{getUsersPreferredNames.value}}'
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_HeaderPanel
@@ -1041,6 +1113,10 @@ appTemplate:
                 - tabNames: >-
                     ["LibStats","LibChat","Programs","Bookings","Facilities","Crèche","Volunteer","Other"]
                 - spinWhenChildrenAreFetching: true
+                - disableAnimation: false
+                - scroll: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: form_Enquiry
@@ -1073,6 +1149,8 @@ appTemplate:
                     "Staff"] }}
                 - tags: ''
                 - onTagChange: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_CustomerFeeback
@@ -1090,6 +1168,7 @@ appTemplate:
               ordered:
                 - spinWhenChildrenAreFetching: true
                 - clearFormAfterSubmit: false
+                - requireValidFormForSubmit: true
                 - showBorder: true
                 - data: ''
                 - showDropShadow: true
@@ -1099,8 +1178,11 @@ appTemplate:
                 - submitButtonText: Submit
                 - onSubmit: ''
                 - requiredFormControls: []
+                - hideSubmit: false
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_WiFi
@@ -1118,6 +1200,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - validatonType: ''
@@ -1135,11 +1218,13 @@ appTemplate:
                 - label: 'Error message / Device behaviour:'
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: false
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -1147,6 +1232,8 @@ appTemplate:
                 - type: text
                 - allowedRegex: ''
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: form_LibraryWiFi
@@ -1181,10 +1268,12 @@ appTemplate:
                 - maxResults: 50
                 - placeholder: ''
                 - label: Where WiFi problem?
+                - clearValueOnFocus: true
                 - labelMaxWidth: ''
                 - labelPlacedOnLeft: false
                 - validationState: ''
                 - onSelect: ''
+                - allowCustomValues: false
                 - disabled: ''
                 - hideClearButton: false
                 - required: false
@@ -1193,6 +1282,8 @@ appTemplate:
                     Middle","Library Rear", "Library Blue Room", "Library Green
                     Room", "Library Kids Zone", "Library Activity Room",
                     "Library Staff Kitchen","Library Staff Workroom"]
+            style:
+              ordered: []
             position2:
               position2:
                 container: form_LibraryWiFi
@@ -1217,6 +1308,9 @@ appTemplate:
                 - hidden: >-
                     {{location.value != 'Darius-Library' && location.value !=
                     'Darius-CMR'}}
+            style:
+              ordered:
+                - primary-surface: '#fafafa'
             position2:
               position2:
                 row: 345
@@ -1245,6 +1339,8 @@ appTemplate:
                 - format: 'HH:mm:ss'
                 - disabled: ''
                 - useLocalTimezone: true
+            style:
+              ordered: []
             position2:
               position2:
                 container: form_LibraryWiFi
@@ -1279,6 +1375,8 @@ appTemplate:
 
                     "<p style='background-color: #FF8FA0; padding:0.25em 0.75em;
                     margin:0.1em 0'>In-<b>Person</b></p>"]
+            style:
+              ordered: []
             position2:
               position2:
                 container: form_Enquiry
@@ -1311,6 +1409,8 @@ appTemplate:
                 - labelPlacedOnLeft: false
                 - disabled: ''
                 - labels: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -1416,6 +1516,8 @@ appTemplate:
                 - checkStrictly: false
                 - leafPathStrings:
                     array: []
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -1448,6 +1550,9 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered:
+                - accent-background: '#cc5248'
             position2:
               position2:
                 container: container_CommonButtons
@@ -1480,6 +1585,8 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_UI_Examples
@@ -1520,6 +1627,9 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered:
+                - accent-background: '#d87b1f'
             position2:
               position2:
                 container: container_UI_Examples
@@ -1561,6 +1671,9 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered:
+                - accent-background: '#478b60'
             position2:
               position2:
                 container: container_UI_Examples
@@ -1601,6 +1714,9 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered:
+                - accent-background: '#cc5248'
             position2:
               position2:
                 container: container_UI_Examples
@@ -1641,6 +1757,9 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered:
+                - accent-background: '#e9ab11'
             position2:
               position2:
                 container: container_UI_Examples
@@ -1664,6 +1783,7 @@ appTemplate:
               ordered:
                 - spinWhenChildrenAreFetching: true
                 - clearFormAfterSubmit: true
+                - requireValidFormForSubmit: true
                 - showBorder: true
                 - data: ''
                 - showDropShadow: true
@@ -1675,8 +1795,11 @@ appTemplate:
                 - submitButtonText: SUBMIT ENQUIRY RECORD
                 - onSubmit: addEnquiry
                 - requiredFormControls: []
+                - hideSubmit: false
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EngagementType
@@ -1696,16 +1819,20 @@ appTemplate:
             subtype: TabbedContainerWidget
             template:
               ordered:
+                - spinWhenChildrenAreFetching: true
+                - hidden: ''
+                - scroll: false
+                - tabNames: '["Enquiry","Observation","Attendance","Feedback","Values"]'
+                - selectedTabIndex: 0
+                - selectedTab: >-
+                    {{tabbedcontainer_EngagementType.tabNames.indexOf(urlparams.hash.tab)}}
+                - showTabBar: true
+                - disableAnimation: false
                 - disabled: >-
                     {{(urlparams.hash.tab == 'Observation') &&
                     toggle_DevMode.value==false}}
-                - selectedTab: >-
-                    {{tabbedcontainer_EngagementType.tabNames.indexOf(urlparams.hash.tab)}}
-                - selectedTabIndex: 0
-                - showTabBar: true
-                - tabNames: '["Enquiry","Observation","Attendance","Feedback","Values"]'
-                - spinWhenChildrenAreFetching: true
-                - hidden: ''
+            style:
+              ordered: []
             position2:
               position2:
                 row: 2
@@ -1742,6 +1869,8 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_CommonButtons
@@ -1774,6 +1903,8 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_CommonButtons
@@ -1806,6 +1937,9 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered:
+                - accent-background: '#cc5248'
             position2:
               position2:
                 container: container_CommonButtons
@@ -1839,6 +1973,9 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered:
+                - accent-background: '#cc5248'
             position2:
               position2:
                 container: container_CommonButtons
@@ -1871,6 +2008,9 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered:
+                - accent-background: '#478b60'
             position2:
               position2:
                 container: container_CommonButtons
@@ -1903,6 +2043,9 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered:
+                - accent-background: '#9C76C1'
             position2:
               position2:
                 container: container_CommonButtons
@@ -1936,6 +2079,9 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered:
+                - accent-background: '#9C76C1'
             position2:
               position2:
                 container: container_CommonButtons
@@ -1967,6 +2113,9 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered:
+                - accent-background: '#5b9dab'
             position2:
               position2:
                 container: container_CommonButtons
@@ -2000,6 +2149,8 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_CommonButtons
@@ -2036,6 +2187,8 @@ appTemplate:
                 - disabled: ''
                 - allowMultiButtonSelect: true
                 - labels: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_UI_Examples
@@ -2060,6 +2213,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - validatonType: ''
@@ -2082,11 +2236,13 @@ appTemplate:
                 - label: ''
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: true
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -2094,6 +2250,8 @@ appTemplate:
                 - type: text
                 - allowedRegex: ''
                 - required: true
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_CustomerFeeback
@@ -2117,6 +2275,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - validatonType: ''
@@ -2137,11 +2296,13 @@ appTemplate:
                 - label: ''
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: true
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -2149,6 +2310,8 @@ appTemplate:
                 - type: email
                 - allowedRegex: ''
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_CustomerFeedback_DoFollowUp
@@ -2173,6 +2336,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - validatonType: ''
@@ -2191,11 +2355,13 @@ appTemplate:
                 - label: ''
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: true
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -2203,6 +2369,8 @@ appTemplate:
                 - type: tel
                 - allowedRegex: ''
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_CustomerFeedback_DoFollowUp
@@ -2227,6 +2395,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - validatonType: ''
@@ -2244,11 +2413,13 @@ appTemplate:
                 - label: ''
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: false
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -2256,6 +2427,8 @@ appTemplate:
                 - type: search
                 - allowedRegex: ''
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -2281,6 +2454,8 @@ appTemplate:
                 - labelMaxWidth: ''
                 - labelPlacedOnLeft: false
                 - disabled: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: form_Enquiry
@@ -2321,6 +2496,9 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered:
+                - accent-background: '#9C76C1'
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -2339,6 +2517,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - currencyType: USD
@@ -2355,11 +2534,13 @@ appTemplate:
                 - label: Location/file name of photo if available?
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: false
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -2367,6 +2548,8 @@ appTemplate:
                 - type: text
                 - allowedRegex: ''
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: form_LibraryWiFi
@@ -2458,6 +2641,8 @@ appTemplate:
                 - disabled: ''
                 - hideClearButton: false
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -2484,6 +2669,8 @@ appTemplate:
                 - labelPlacedOnLeft: false
                 - disabled: ''
                 - onFilePick: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: form_LibraryWiFi
@@ -2513,6 +2700,9 @@ appTemplate:
                 - backgroundColor: '#0000'
                 - textColor: '#3c92dc'
                 - renderAsMarkdown: true
+            style:
+              ordered:
+                - primary-text: '#3c92dc'
             position2:
               position2:
                 container: container_Settings
@@ -2552,6 +2742,9 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered:
+                - accent-background: '#cc5248'
             position2:
               position2:
                 container: container_ObserveLibrary
@@ -2588,6 +2781,8 @@ appTemplate:
                 - labelPlacedOnLeft: false
                 - disabled: ''
                 - labels: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_UI_Examples
@@ -2611,6 +2806,8 @@ appTemplate:
                 - backgroundColor: white
                 - scroll: false
                 - hidden: '{{select_location.value != ''Darius-Library-Floor''}}'
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_CommonButtons
@@ -2644,6 +2841,9 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered:
+                - accent-background: '#cc5248'
             position2:
               position2:
                 container: container_ObserveLibrary
@@ -2675,6 +2875,9 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered:
+                - accent-background: '#9C76C1'
             position2:
               position2:
                 container: container_ObserveLibrary
@@ -2706,6 +2909,8 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_ObserveLibrary
@@ -2736,6 +2941,8 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_ObserveLibrary
@@ -2767,6 +2974,8 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_ObserveLibrary
@@ -2785,6 +2994,11 @@ appTemplate:
                 - elapsedTimeMs: 0
                 - isRunning: false
                 - interval: '1000'
+                - timeElapsedSinceEnabled: false
+                - timeElapsedSince: ''
+                - format: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_Settings
@@ -2823,14 +3037,18 @@ appTemplate:
                 - maxResults: 50
                 - placeholder: 'Which mobile device? Phone, Tablet, Laptop, etc'
                 - label: Device?
+                - clearValueOnFocus: true
                 - labelMaxWidth: ''
                 - labelPlacedOnLeft: false
                 - validationState: ''
                 - onSelect: ''
+                - allowCustomValues: false
                 - disabled: ''
                 - hideClearButton: false
                 - required: false
                 - labels: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: form_LibraryWiFi
@@ -2876,6 +3094,8 @@ appTemplate:
                 - editEventsEnabled: true
                 - selectedEvent: null
                 - onCreateEvent: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -2892,9 +3112,11 @@ appTemplate:
             subtype: TableWidget
             template:
               ordered:
+                - showCustomButton: false
                 - sortMappedValue:
                     ordered: []
                 - normalizedData: null
+                - saveChangesDisabled: ''
                 - columnWidths:
                     - object:
                         id: Library_eResources_Category
@@ -2964,6 +3186,7 @@ appTemplate:
                 - columnAlignment:
                     ordered: []
                 - sortedDesc: false
+                - customButtonName: ''
                 - columnMappersRenderAsHTML:
                     ordered: []
                 - pageSize: 11
@@ -2971,6 +3194,7 @@ appTemplate:
                 - actionButtonPosition: left
                 - bulkUpdateAction: ''
                 - afterCursor: ''
+                - onCustomButtonPressQueryName: ''
                 - changeSet:
                     object: {}
                 - sortedColumn: ''
@@ -3016,6 +3240,8 @@ appTemplate:
                 - showPaginationOnTop: true
                 - nextAfterCursor: ''
                 - useCompactMode: true
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -3044,6 +3270,8 @@ appTemplate:
                 - showDropShadow: true
                 - backgroundColor: white
                 - scroll: false
+            style:
+              ordered: []
             position2:
               position2:
                 row: 25
@@ -3075,6 +3303,8 @@ appTemplate:
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
                 - renderAsMarkdown: true
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_Settings
@@ -3105,6 +3335,8 @@ appTemplate:
                 - labelMaxWidth: ''
                 - labelPlacedOnLeft: false
                 - disabled: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_Settings
@@ -3126,10 +3358,12 @@ appTemplate:
             subtype: TableWidget
             template:
               ordered:
+                - showCustomButton: false
                 - sortMappedValue:
                     ordered:
                       - Calculated Column 2: false
                 - normalizedData: null
+                - saveChangesDisabled: ''
                 - columnWidths:
                     - object:
                         id: Term
@@ -3231,6 +3465,7 @@ appTemplate:
                 - columnAlignment:
                     ordered: []
                 - sortedDesc: false
+                - customButtonName: ''
                 - columnMappersRenderAsHTML:
                     ordered: []
                 - pageSize: 11
@@ -3238,6 +3473,7 @@ appTemplate:
                 - actionButtonPosition: left
                 - bulkUpdateAction: ''
                 - afterCursor: ''
+                - onCustomButtonPressQueryName: ''
                 - changeSet:
                     object: {}
                 - sortedColumn: ''
@@ -3305,6 +3541,8 @@ appTemplate:
                 - showPaginationOnTop: false
                 - nextAfterCursor: ''
                 - useCompactMode: true
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -3340,6 +3578,9 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered:
+                - accent-background: '#9C76C1'
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -3409,6 +3650,8 @@ appTemplate:
                 - disabled: ''
                 - hideClearButton: false
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -3484,6 +3727,8 @@ appTemplate:
                 - disabled: ''
                 - hideClearButton: false
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -3513,6 +3758,8 @@ appTemplate:
                 - disabled: ''
                 - allowMultiButtonSelect: true
                 - labels: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -3548,6 +3795,8 @@ appTemplate:
                 - disabled: ''
                 - allowMultiButtonSelect: true
                 - labels: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -3583,6 +3832,8 @@ appTemplate:
                 - disabled: ''
                 - allowMultiButtonSelect: true
                 - labels: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -3621,6 +3872,8 @@ appTemplate:
                 - labels: >
                     ["City of Kwinana", "Com.Groups", "Centrelink", "Banks",
                     "Visas",  "Police Report", "Insurance", "Employment"]
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -3662,6 +3915,8 @@ appTemplate:
                     ["Activity Room", "JP", "Local History",
                     "Blue Room", "Green Room", "ToyLib", 
                     "Directions", "HomeLib"]
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -3693,6 +3948,8 @@ appTemplate:
                 - onChangeQuery: ''
                 - disabled: ''
                 - labels: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -3728,6 +3985,9 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: '{{toggle_DevMode.value==false}}'
+            style:
+              ordered:
+                - accent-background: '#33bb33'
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -3759,6 +4019,8 @@ appTemplate:
                 - labelMaxWidth: ''
                 - labelPlacedOnLeft: true
                 - disabled: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: form_CustomerFeedback
@@ -3781,9 +4043,11 @@ appTemplate:
             subtype: TableWidget
             template:
               ordered:
+                - showCustomButton: false
                 - sortMappedValue:
                     ordered: []
                 - normalizedData: null
+                - saveChangesDisabled: ''
                 - columnWidths:
                     - object:
                         id: Staff Values
@@ -3865,6 +4129,7 @@ appTemplate:
                 - columnAlignment:
                     ordered: []
                 - sortedDesc: false
+                - customButtonName: ''
                 - columnMappersRenderAsHTML:
                     ordered: []
                 - pageSize: 30
@@ -3872,6 +4137,7 @@ appTemplate:
                 - actionButtonPosition: left
                 - bulkUpdateAction: ''
                 - afterCursor: ''
+                - onCustomButtonPressQueryName: ''
                 - changeSet:
                     object: {}
                 - sortedColumn: ''
@@ -3924,6 +4190,8 @@ appTemplate:
                 - showPaginationOnTop: false
                 - nextAfterCursor: ''
                 - useCompactMode: true
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EngagementType
@@ -3957,7 +4225,9 @@ appTemplate:
                 - resourceNameOverride: ''
                 - useRawSpreadsheetId: false
                 - runWhenModelUpdates: true
+                - showFailureToaster: true
                 - spreadsheetId: 14wy8agI904FQytDIUcmQy70v0R7nCJxv0qxs0_tjIt4
+                - query: ''
                 - playgroundQueryUuid: ''
                 - playgroundQueryId: 0
                 - sheetUpdate: ''
@@ -3966,6 +4236,7 @@ appTemplate:
                 - sheetIdToCopy: ''
                 - sheetName: Values
                 - runWhenPageLoadsDelay: ''
+                - doNotThrowOnDeleteNoOp: false
                 - data: null
                 - importedQueryInputs:
                     ordered: []
@@ -3987,13 +4258,16 @@ appTemplate:
                 - offset: ''
                 - queryTriggerDelay: '0'
                 - watchedParams: []
+                - bulkUpdateRows: ''
                 - enableErrorTransformer: false
                 - useRawCopyToSpreadsheetId: false
                 - timestamp: 0
                 - importedQueryDefaults:
                     ordered: []
                 - enableTransformer: false
+                - valueFormatting: formatted
                 - copyToSpreadsheetId: ''
+                - bulkUpdatePrimaryKey: ''
                 - runWhenPageLoads: false
                 - sheetTitle: ''
                 - transformer: >-
@@ -4005,10 +4279,12 @@ appTemplate:
                     return data
                 - queryTimeout: '10000'
                 - requireConfirmation: false
+                - queryFailureConditions: ''
                 - limit: ''
                 - enableCaching: false
                 - sheetRange: ''
                 - queryThrottleTime: '750'
+                - notificationDuration: ''
             createdAt: 2020-03-13T02:24:23.061Z
             updatedAt: 2020-03-13T02:27:13.639Z
       - ColourStaffValues:
@@ -4041,6 +4317,8 @@ appTemplate:
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
                 - renderAsMarkdown: true
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EngagementType
@@ -4122,6 +4400,8 @@ appTemplate:
                 - disabled: ''
                 - hideClearButton: false
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EngagementType
@@ -4153,7 +4433,9 @@ appTemplate:
                 - resourceNameOverride: ''
                 - useRawSpreadsheetId: false
                 - runWhenModelUpdates: true
+                - showFailureToaster: true
                 - spreadsheetId: 18bMf0_cU5tbaVmES01LKbl4WyySaw6zvxTT7r_7v2-0
+                - query: ''
                 - playgroundQueryUuid: ''
                 - playgroundQueryId: 0
                 - sheetUpdate: ''
@@ -4162,6 +4444,7 @@ appTemplate:
                 - sheetIdToCopy: ''
                 - sheetName: Programs
                 - runWhenPageLoadsDelay: ''
+                - doNotThrowOnDeleteNoOp: false
                 - data: null
                 - importedQueryInputs:
                     ordered: []
@@ -4183,13 +4466,16 @@ appTemplate:
                 - offset: ''
                 - queryTriggerDelay: '0'
                 - watchedParams: []
+                - bulkUpdateRows: ''
                 - enableErrorTransformer: false
                 - useRawCopyToSpreadsheetId: false
                 - timestamp: 0
                 - importedQueryDefaults:
                     ordered: []
                 - enableTransformer: false
+                - valueFormatting: formatted
                 - copyToSpreadsheetId: ''
+                - bulkUpdatePrimaryKey: ''
                 - runWhenPageLoads: false
                 - sheetTitle: ''
                 - transformer: >-
@@ -4201,10 +4487,12 @@ appTemplate:
                     return data
                 - queryTimeout: '10000'
                 - requireConfirmation: false
+                - queryFailureConditions: ''
                 - limit: ''
                 - enableCaching: false
                 - sheetRange: ''
                 - queryThrottleTime: '750'
+                - notificationDuration: ''
             createdAt: 2020-03-13T06:58:08.549Z
             updatedAt: 2020-03-13T07:02:17.209Z
       - table_ProgramAttendance:
@@ -4214,9 +4502,11 @@ appTemplate:
             subtype: TableWidget
             template:
               ordered:
+                - showCustomButton: false
                 - sortMappedValue:
                     ordered: []
                 - normalizedData: null
+                - saveChangesDisabled: ''
                 - columnWidths:
                     - object:
                         id: ProgramName
@@ -4414,6 +4704,7 @@ appTemplate:
                 - columnAlignment:
                     ordered: []
                 - sortedDesc: false
+                - customButtonName: ''
                 - columnMappersRenderAsHTML:
                     ordered: []
                 - pageSize: 18
@@ -4421,6 +4712,7 @@ appTemplate:
                 - actionButtonPosition: left
                 - bulkUpdateAction: updateProgramAttendance
                 - afterCursor: ''
+                - onCustomButtonPressQueryName: ''
                 - changeSet:
                     object: {}
                 - sortedColumn: ''
@@ -4508,6 +4800,8 @@ appTemplate:
                 - showPaginationOnTop: false
                 - nextAfterCursor: ''
                 - useCompactMode: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EngagementType
@@ -4539,7 +4833,9 @@ appTemplate:
                 - resourceNameOverride: ''
                 - useRawSpreadsheetId: false
                 - runWhenModelUpdates: true
+                - showFailureToaster: true
                 - spreadsheetId: 18bMf0_cU5tbaVmES01LKbl4WyySaw6zvxTT7r_7v2-0
+                - query: ''
                 - playgroundQueryUuid: ''
                 - playgroundQueryId: 0
                 - sheetUpdate: ''
@@ -4548,6 +4844,7 @@ appTemplate:
                 - sheetIdToCopy: ''
                 - sheetName: Dates
                 - runWhenPageLoadsDelay: ''
+                - doNotThrowOnDeleteNoOp: false
                 - data: null
                 - importedQueryInputs:
                     ordered: []
@@ -4569,13 +4866,16 @@ appTemplate:
                 - offset: ''
                 - queryTriggerDelay: '0'
                 - watchedParams: []
+                - bulkUpdateRows: ''
                 - enableErrorTransformer: false
                 - useRawCopyToSpreadsheetId: false
                 - timestamp: 0
                 - importedQueryDefaults:
                     ordered: []
                 - enableTransformer: false
+                - valueFormatting: formatted
                 - copyToSpreadsheetId: ''
+                - bulkUpdatePrimaryKey: ''
                 - runWhenPageLoads: false
                 - sheetTitle: ''
                 - transformer: >-
@@ -4587,10 +4887,12 @@ appTemplate:
                     return data
                 - queryTimeout: '10000'
                 - requireConfirmation: false
+                - queryFailureConditions: ''
                 - limit: ''
                 - enableCaching: false
                 - sheetRange: ''
                 - queryThrottleTime: '750'
+                - notificationDuration: ''
             createdAt: 2020-03-13T07:29:06.009Z
             updatedAt: 2020-03-13T07:52:54.824Z
       - getProgramsForAttendance:
@@ -4608,6 +4910,7 @@ appTemplate:
                 - playgroundQuerySaveId: 0
                 - resourceNameOverride: ''
                 - runWhenModelUpdates: true
+                - showFailureToaster: true
                 - query: "select *\nfrom {{getProgramsAttendanceList.data}} as programs\n-- join from {{getProgramsAttendanceDates.data}} as dates\n--\ton programs.ProgramName = dates.userid"
                 - playgroundQueryUuid: ''
                 - playgroundQueryId: 0
@@ -4647,8 +4950,10 @@ appTemplate:
                     return data
                 - queryTimeout: '10000'
                 - requireConfirmation: false
+                - queryFailureConditions: ''
                 - enableCaching: false
                 - queryThrottleTime: '750'
+                - notificationDuration: ''
             createdAt: 2020-03-13T07:48:09.482Z
             updatedAt: 2020-07-21T06:44:27.884Z
       - textinput7:
@@ -4661,6 +4966,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - currencyType: USD
@@ -4677,11 +4983,13 @@ appTemplate:
                 - label: Registered
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: false
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -4689,6 +4997,8 @@ appTemplate:
                 - type: text
                 - allowedRegex: ''
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_Attendance_Age0to12
@@ -4706,6 +5016,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - currencyType: USD
@@ -4722,11 +5033,13 @@ appTemplate:
                 - label: Cancelled
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: false
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -4734,6 +5047,8 @@ appTemplate:
                 - type: text
                 - allowedRegex: ''
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_Attendance_Age0to12
@@ -4752,6 +5067,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - currencyType: USD
@@ -4768,11 +5084,13 @@ appTemplate:
                 - label: No-Show
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: false
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -4780,6 +5098,8 @@ appTemplate:
                 - type: text
                 - allowedRegex: ''
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_Attendance_Age0to12
@@ -4798,6 +5118,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - currencyType: USD
@@ -4814,11 +5135,13 @@ appTemplate:
                 - label: Walk In
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: false
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -4826,6 +5149,8 @@ appTemplate:
                 - type: text
                 - allowedRegex: ''
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_Attendance_Age0to12
@@ -4844,6 +5169,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - currencyType: USD
@@ -4862,11 +5188,13 @@ appTemplate:
                 - label: Email Address
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: false
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -4874,6 +5202,8 @@ appTemplate:
                 - type: email
                 - allowedRegex: ''
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_ProgramEnquiry_Followup
@@ -4900,6 +5230,8 @@ appTemplate:
                 - disabled: ''
                 - allowMultiButtonSelect: true
                 - labels: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -4936,6 +5268,8 @@ appTemplate:
                 - disabled: ''
                 - allowMultiButtonSelect: true
                 - labels: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -4961,6 +5295,8 @@ appTemplate:
                 - labelMaxWidth: ''
                 - labelPlacedOnLeft: false
                 - disabled: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: modal_EnquiryLibrary_Order
@@ -4985,6 +5321,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - hidden: '{{toggle_LibraryOrder_CustomerIsMember.value == true}}'
@@ -5002,11 +5339,13 @@ appTemplate:
                 - label: Phone
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: false
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -5014,6 +5353,8 @@ appTemplate:
                 - type: tel
                 - allowedRegex: ''
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: modal_EnquiryLibrary_Order
@@ -5038,6 +5379,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - hidden: '{{toggle_LibraryOrder_CustomerIsMember.value == true}}'
@@ -5055,11 +5397,13 @@ appTemplate:
                 - label: Email
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: false
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -5067,6 +5411,8 @@ appTemplate:
                 - type: email
                 - allowedRegex: ''
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: modal_EnquiryLibrary_Order
@@ -5091,6 +5437,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - hidden: '{{toggle_LibraryOrder_CustomerIsMember.value == false}}'
@@ -5108,11 +5455,13 @@ appTemplate:
                 - label: Membership Number
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: false
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -5120,6 +5469,8 @@ appTemplate:
                 - type: text
                 - allowedRegex: ''
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: modal_EnquiryLibrary_Order
@@ -5149,14 +5500,18 @@ appTemplate:
                 - maxResults: 50
                 - placeholder: Select from drop down
                 - label: How did you hear about home delivery service?
+                - clearValueOnFocus: true
                 - labelMaxWidth: ''
                 - labelPlacedOnLeft: false
                 - validationState: ''
                 - onSelect: ''
+                - allowCustomValues: false
                 - disabled: ''
                 - hideClearButton: false
                 - required: false
                 - labels: '["Library","Word of Mouth","City Website"]'
+            style:
+              ordered: []
             position2:
               position2:
                 container: modal_EnquiryLibrary_Order
@@ -5181,6 +5536,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - currencyType: USD
@@ -5197,11 +5553,13 @@ appTemplate:
                 - label: Is there anything else we can help with?
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: false
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -5209,6 +5567,8 @@ appTemplate:
                 - type: text
                 - allowedRegex: ''
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -5228,6 +5588,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - currencyType: USD
@@ -5244,11 +5605,13 @@ appTemplate:
                 - label: Customers Name
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: false
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -5256,6 +5619,8 @@ appTemplate:
                 - type: text
                 - allowedRegex: ''
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: modal_EnquiryLibrary_Order
@@ -5283,6 +5648,10 @@ appTemplate:
                     ["Familiar with","Their Interests","You Recommended","Book
                     Selections"]
                 - spinWhenChildrenAreFetching: true
+                - disableAnimation: false
+                - scroll: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -5316,6 +5685,8 @@ appTemplate:
                     ["Endurance Sports","Team Sports","Art","Volunteer
                     Work","Travel","Blogging & Video Production" ,"Foreign
                     Languages","Gaming","Music"]
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryLibrary_DiscussionTypes
@@ -5356,6 +5727,8 @@ appTemplate:
                     romance","Picture Book","Poetry","Political
                     thriller","Romance","Satire","Science fiction","Short
                     Story","Suspense","Thriller","Young Adult"]
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryLibrary_DiscussionTypes
@@ -5394,6 +5767,8 @@ appTemplate:
                     spirituality and new
                     age","Textbook","Review","Science","Self
                     Help","Travel","True Crime"]
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryLibrary_DiscussionTypes
@@ -5427,10 +5802,12 @@ appTemplate:
                 - maxResults: 50
                 - placeholder: Select customer age group
                 - label: Age range?
+                - clearValueOnFocus: true
                 - labelMaxWidth: ''
                 - labelPlacedOnLeft: false
                 - validationState: ''
                 - onSelect: ''
+                - allowCustomValues: false
                 - disabled: ''
                 - hideClearButton: false
                 - required: false
@@ -5438,6 +5815,8 @@ appTemplate:
                     ["Junior Kindy","Junior primary","Young
                     Adults-(13-15)","Young Adults-(15-17)", "Adult", "Senior
                     65+"]
+            style:
+              ordered: []
             position2:
               position2:
                 container: modal_EnquiryLibrary_Order
@@ -5486,10 +5865,12 @@ appTemplate:
                 - maxResults: 50
                 - placeholder: Select Customer Ethnicity
                 - label: Ethnicity?
+                - clearValueOnFocus: true
                 - labelMaxWidth: ''
                 - labelPlacedOnLeft: false
                 - validationState: ''
                 - onSelect: ''
+                - allowCustomValues: false
                 - disabled: ''
                 - hideClearButton: false
                 - required: false
@@ -5507,6 +5888,8 @@ appTemplate:
                     African","Spanish","Sudanese","Swedish","Swiss","Syrian","Taiwanese","Tamil","Thai","Timorese","Tongan","Turkish","Ukrainian","Vietnamese","Welsh","Zimbabwean
 
                     "]
+            style:
+              ordered: []
             position2:
               position2:
                 container: modal_EnquiryLibrary_Order
@@ -5548,10 +5931,12 @@ appTemplate:
                 - maxResults: 50
                 - placeholder: Select Suburb
                 - label: Suburb?
+                - clearValueOnFocus: true
                 - labelMaxWidth: ''
                 - labelPlacedOnLeft: false
                 - validationState: ''
                 - onSelect: ''
+                - allowCustomValues: false
                 - disabled: ''
                 - hideClearButton: false
                 - required: false
@@ -5561,6 +5946,8 @@ appTemplate:
                     Centre","Leda","Mandogalup","Medina","Naval
                     Base","Orelia","Parmelia","Postans","The
                     Spectacles","Wandi","Wellard"]
+            style:
+              ordered: []
             position2:
               position2:
                 container: modal_EnquiryLibrary_Order
@@ -5597,14 +5984,18 @@ appTemplate:
                 - maxResults: 50
                 - placeholder: Select contact method
                 - label: Preferred Contact Method?
+                - clearValueOnFocus: true
                 - labelMaxWidth: ''
                 - labelPlacedOnLeft: false
                 - validationState: ''
                 - onSelect: ''
+                - allowCustomValues: false
                 - disabled: ''
                 - hideClearButton: false
                 - required: false
                 - labels: '["Email","Phone","Post","Text"]'
+            style:
+              ordered: []
             position2:
               position2:
                 container: modal_EnquiryLibrary_Order
@@ -5640,14 +6031,18 @@ appTemplate:
                 - maxResults: 50
                 - placeholder: Select number of Children
                 - label: Number of Children?
+                - clearValueOnFocus: true
                 - labelMaxWidth: ''
                 - labelPlacedOnLeft: false
                 - validationState: ''
                 - onSelect: ''
+                - allowCustomValues: false
                 - disabled: ''
                 - hideClearButton: false
                 - required: false
                 - labels: '["0","1","2","3","4","5","6","7","8","9","10+"]'
+            style:
+              ordered: []
             position2:
               position2:
                 container: modal_EnquiryLibrary_Order
@@ -5683,14 +6078,18 @@ appTemplate:
                 - maxResults: 50
                 - placeholder: Select number of People
                 - label: How many people is the order for?
+                - clearValueOnFocus: true
                 - labelMaxWidth: ''
                 - labelPlacedOnLeft: false
                 - validationState: ''
                 - onSelect: ''
+                - allowCustomValues: false
                 - disabled: ''
                 - hideClearButton: false
                 - required: false
                 - labels: '["1","2","3","4","5"]'
+            style:
+              ordered: []
             position2:
               position2:
                 container: modal_EnquiryLibrary_Order
@@ -5723,6 +6122,8 @@ appTemplate:
                 - labelPlacedOnLeft: false
                 - disabled: ''
                 - labels: '["Yes","No","Maybe"]'
+            style:
+              ordered: []
             position2:
               position2:
                 container: modal_EnquiryLibrary_Order
@@ -5744,9 +6145,11 @@ appTemplate:
             subtype: TableWidget
             template:
               ordered:
+                - showCustomButton: false
                 - sortMappedValue:
                     ordered: []
                 - normalizedData: null
+                - saveChangesDisabled: ''
                 - columnWidths:
                     - object:
                         id: email
@@ -5855,6 +6258,7 @@ appTemplate:
                 - columnAlignment:
                     ordered: []
                 - sortedDesc: false
+                - customButtonName: ''
                 - columnMappersRenderAsHTML:
                     ordered: []
                 - pageSize: 7
@@ -5862,6 +6266,7 @@ appTemplate:
                 - actionButtonPosition: left
                 - bulkUpdateAction: ''
                 - afterCursor: ''
+                - onCustomButtonPressQueryName: ''
                 - changeSet:
                     object: {}
                 - sortedColumn: ''
@@ -5915,6 +6320,8 @@ appTemplate:
                 - showPaginationOnTop: false
                 - nextAfterCursor: ''
                 - useCompactMode: true
+            style:
+              ordered: []
             position2:
               position2:
                 container: modal_EnquiryLibrary_Order
@@ -5930,9 +6337,11 @@ appTemplate:
             subtype: TableWidget
             template:
               ordered:
+                - showCustomButton: false
                 - sortMappedValue:
                     ordered: []
                 - normalizedData: null
+                - saveChangesDisabled: ''
                 - columnWidths:
                     - object:
                         id: name
@@ -6016,6 +6425,7 @@ appTemplate:
                 - columnAlignment:
                     ordered: []
                 - sortedDesc: false
+                - customButtonName: ''
                 - columnMappersRenderAsHTML:
                     ordered: []
                 - pageSize: 7
@@ -6023,6 +6433,7 @@ appTemplate:
                 - actionButtonPosition: left
                 - bulkUpdateAction: ''
                 - afterCursor: ''
+                - onCustomButtonPressQueryName: ''
                 - changeSet:
                     object: {}
                 - sortedColumn: ''
@@ -6070,6 +6481,8 @@ appTemplate:
                 - showPaginationOnTop: false
                 - nextAfterCursor: ''
                 - useCompactMode: true
+            style:
+              ordered: []
             position2:
               position2:
                 container: modal_EnquiryLibrary_Order
@@ -6098,6 +6511,8 @@ appTemplate:
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
                 - renderAsMarkdown: true
+            style:
+              ordered: []
             position2:
               position2:
                 container: table_EnquiryPrograms
@@ -6129,6 +6544,9 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered:
+                - accent-background: '#9C76C1'
             position2:
               position2:
                 container: container_ProgramEnquiry_Followup
@@ -6158,14 +6576,18 @@ appTemplate:
                 - maxResults: 50
                 - placeholder: ''
                 - label: Request to Re-establish Past Programs
+                - clearValueOnFocus: true
                 - labelMaxWidth: ''
                 - labelPlacedOnLeft: false
                 - validationState: ''
                 - onSelect: ''
+                - allowCustomValues: false
                 - disabled: ''
                 - hideClearButton: false
                 - required: false
                 - labels: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -6186,6 +6608,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - currencyType: USD
@@ -6202,11 +6625,13 @@ appTemplate:
                 - label: What programs do they want to see?
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: false
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -6214,6 +6639,8 @@ appTemplate:
                 - type: text
                 - allowedRegex: ''
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: modal_Programs_New
@@ -6244,6 +6671,8 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -6358,6 +6787,8 @@ appTemplate:
                 - checkStrictly: false
                 - leafPathStrings:
                     array: []
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -6454,10 +6885,12 @@ appTemplate:
                 - maxResults: 50
                 - placeholder: ''
                 - label: Location
+                - clearValueOnFocus: true
                 - labelMaxWidth: ''
                 - labelPlacedOnLeft: false
                 - validationState: ''
                 - onSelect: ''
+                - allowCustomValues: false
                 - disabled: ''
                 - hideClearButton: false
                 - required: true
@@ -6466,6 +6899,8 @@ appTemplate:
                     "Darius Reception", "Library Floor", "Library Workroom",
                     "Requatic Creche", "Toddler Town", "Volunteer Centre",
                     "Wellard Office", "Wellard Roaming", "Working from Home"]
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_HeaderPanel
@@ -6501,6 +6936,8 @@ appTemplate:
                     ["Bertram Community Centre","Creche Programs","Darius
                     Community Centre","Library","Programs","Requatic
                     Creche","Toddler Town","Wellard Community Centre"]
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryLibrary_DiscussionTypes
@@ -6525,6 +6962,8 @@ appTemplate:
                 - labelPlacedOnLeft: false
                 - disabled: ''
                 - labels: '{{getResourcesCategories.value}}'
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_EnquiryLibrary_FamiliarWith_eResources
@@ -6558,6 +6997,8 @@ appTemplate:
                 - labelPlacedOnLeft: false
                 - disabled: ''
                 - labels: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryLibrary_DiscussionTypes
@@ -6580,6 +7021,9 @@ appTemplate:
                 - showDropShadow: false
                 - backgroundColor: blue
                 - scroll: false
+            style:
+              ordered:
+                - primary-surface: '#ecf5fd'
             position2:
               position2:
                 container: tabbedcontainer_EnquiryLibrary_DiscussionTypes
@@ -6605,6 +7049,8 @@ appTemplate:
                 - labelPlacedOnLeft: false
                 - disabled: ''
                 - labels: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryLibrary_DiscussionTypes
@@ -6640,6 +7086,8 @@ appTemplate:
                     Club","Toy Library","WAYRBA","World eBooks"
 
                     ]
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryLibrary_DiscussionTypes
@@ -6675,6 +7123,8 @@ appTemplate:
                 - labelPlacedOnLeft: false
                 - disabled: ''
                 - labels: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryLibrary_DiscussionTypes
@@ -6708,6 +7158,7 @@ appTemplate:
                 - maxResults: 50
                 - placeholder: ''
                 - label: Which Children's eResources?
+                - clearValueOnFocus: true
                 - labelMaxWidth: ''
                 - labelPlacedOnLeft: false
                 - validationState: ''
@@ -6724,6 +7175,8 @@ appTemplate:
                     Club","Toy Library","WAYRBA","World eBooks"
 
                     ]
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_EnquiryLibrary_FamiliarWith_eResources
@@ -6749,6 +7202,9 @@ appTemplate:
                 - loading: ''
                 - disabled: ''
                 - buttonText: Click HERE if customer wants a new program?
+            style:
+              ordered:
+                - accent-background: '#478b60'
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -6781,6 +7237,8 @@ appTemplate:
                     ["Core Literacies", "Digital Literacy", "Health Literacy",
                     "Financial Literacy", "Information Literacy", "Skill
                     Development (General)"]
+            style:
+              ordered: []
             position2:
               position2:
                 container: modal_Programs_New
@@ -6808,6 +7266,8 @@ appTemplate:
                 - labelPlacedOnLeft: false
                 - disabled: ''
                 - labels: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: modal_Programs_New
@@ -6851,6 +7311,8 @@ appTemplate:
 
                     "Attend if Crèche", "Programs Coming up", "Eventbrite Link",
                     "Culture Counts Link","Unable to attend"]
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -6880,6 +7342,8 @@ appTemplate:
                     {{checkboxgroup_ProgramEnquiry_Type.value.includes("Unable-to-attend")
                     != true}}
                 - labels: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -6909,6 +7373,8 @@ appTemplate:
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
                 - renderAsMarkdown: true
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -6938,6 +7404,8 @@ appTemplate:
                 - loading: ''
                 - disabled: ''
                 - buttonText: Order Home Delivery or Click-n-Collect
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -6969,6 +7437,9 @@ appTemplate:
                 - showDropShadow: true
                 - backgroundColor: blue
                 - scroll: false
+            style:
+              ordered:
+                - primary-surface: '#ecf5fd'
             position2:
               position2:
                 container: tabbedcontainer_EngagementType
@@ -6991,6 +7462,10 @@ appTemplate:
                 - showTabBar: true
                 - tabNames: '["Input Customer Feedback", "Label Customer Feedback"]'
                 - spinWhenChildrenAreFetching: true
+                - disableAnimation: false
+                - scroll: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: form_CustomerFeedback
@@ -7020,6 +7495,8 @@ appTemplate:
                 - backgroundColor: white
                 - scroll: false
                 - hidden: '{{toggle_DevMode.value==false}}'
+            style:
+              ordered: []
             position2:
               position2:
                 row: 27
@@ -7053,6 +7530,9 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered:
+                - accent-background: '#9C76C1'
             position2:
               position2:
                 container: modal_Enquiry_Other_StaffMember
@@ -7078,6 +7558,9 @@ appTemplate:
                 - loading: ''
                 - disabled: ''
                 - buttonText: Contact a Staff Member
+            style:
+              ordered:
+                - accent-background: '#9C76C1'
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -7108,6 +7591,8 @@ appTemplate:
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
                 - renderAsMarkdown: true
+            style:
+              ordered: []
             position2:
               position2:
                 container: modal_Enquiry_Other_StaffMember
@@ -7125,6 +7610,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - currencyType: USD
@@ -7141,11 +7627,13 @@ appTemplate:
                 - label: Name
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: false
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -7153,6 +7641,8 @@ appTemplate:
                 - type: text
                 - allowedRegex: ''
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: modal_Enquiry_Other_StaffMember
@@ -7180,6 +7670,8 @@ appTemplate:
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
                 - renderAsMarkdown: true
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -7206,6 +7698,8 @@ appTemplate:
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
                 - renderAsMarkdown: true
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -7231,6 +7725,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - currencyType: USD
@@ -7247,11 +7742,13 @@ appTemplate:
                 - label: ''
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: false
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -7259,6 +7756,8 @@ appTemplate:
                 - type: text
                 - allowedRegex: ''
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -7417,6 +7916,8 @@ appTemplate:
                 - checkStrictly: false
                 - leafPathStrings:
                     array: []
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -7441,6 +7942,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - currencyType: USD
@@ -7457,11 +7959,13 @@ appTemplate:
                 - label: Name
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: false
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -7469,6 +7973,8 @@ appTemplate:
                 - type: text
                 - allowedRegex: ''
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_VolunteerServicesEnquiry_ContactDetails
@@ -7491,6 +7997,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - currencyType: USD
@@ -7507,11 +8014,13 @@ appTemplate:
                 - label: Email
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: false
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -7519,6 +8028,8 @@ appTemplate:
                 - type: email
                 - allowedRegex: ''
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_VolunteerServicesEnquiry_ContactDetails
@@ -7543,6 +8054,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - currencyType: USD
@@ -7559,11 +8071,13 @@ appTemplate:
                 - label: Phone
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: false
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -7571,6 +8085,8 @@ appTemplate:
                 - type: text
                 - allowedRegex: ''
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_VolunteerServicesEnquiry_ContactDetails
@@ -7599,6 +8115,9 @@ appTemplate:
                 - showDropShadow: true
                 - backgroundColor: blue
                 - scroll: false
+            style:
+              ordered:
+                - primary-surface: '#ecf5fd'
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -7625,6 +8144,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - currencyType: USD
@@ -7641,11 +8161,13 @@ appTemplate:
                 - label: Other Type of Enquiry
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: false
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -7653,6 +8175,8 @@ appTemplate:
                 - type: text
                 - allowedRegex: ''
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -7688,6 +8212,8 @@ appTemplate:
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
                 - renderAsMarkdown: true
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -7723,6 +8249,8 @@ appTemplate:
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
                 - renderAsMarkdown: true
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -7747,6 +8275,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - currencyType: USD
@@ -7763,11 +8292,13 @@ appTemplate:
                 - label: Name
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: false
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -7775,6 +8306,8 @@ appTemplate:
                 - type: text
                 - allowedRegex: ''
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_ProgramEnquiry_Followup
@@ -7796,6 +8329,9 @@ appTemplate:
                 - showDropShadow: true
                 - backgroundColor: blue
                 - scroll: false
+            style:
+              ordered:
+                - primary-surface: '#ecf5fd'
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -7815,6 +8351,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - currencyType: USD
@@ -7831,11 +8368,13 @@ appTemplate:
                 - label: ''
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: true
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -7843,6 +8382,8 @@ appTemplate:
                 - type: text
                 - allowedRegex: ''
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -7867,6 +8408,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - currencyType: USD
@@ -7883,11 +8425,13 @@ appTemplate:
                 - label: Name
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: true
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -7895,6 +8439,8 @@ appTemplate:
                 - type: email
                 - allowedRegex: ''
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EnquiryType
@@ -7920,6 +8466,7 @@ appTemplate:
               ordered:
                 - spinWhenChildrenAreFetching: true
                 - clearFormAfterSubmit: true
+                - requireValidFormForSubmit: true
                 - showBorder: true
                 - data: ''
                 - showDropShadow: true
@@ -7933,8 +8480,11 @@ appTemplate:
                 - submitButtonText: SAVE CUSTOMER FEEDBACK
                 - onSubmit: addCustomerFeedback
                 - requiredFormControls: []
+                - hideSubmit: false
                 - loading: ''
                 - disabled: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_EngagementType
@@ -7958,6 +8508,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - currencyType: USD
@@ -7974,11 +8525,13 @@ appTemplate:
                 - label: Customer Name
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: true
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -7986,6 +8539,8 @@ appTemplate:
                 - type: text
                 - allowedRegex: ''
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: form_CustomerFeedback
@@ -8019,6 +8574,8 @@ appTemplate:
                 - labelMaxWidth: ''
                 - labelPlacedOnLeft: false
                 - disabled: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_Settings
@@ -8050,6 +8607,8 @@ appTemplate:
                 - labelPlacedOnLeft: true
                 - disabled: ''
                 - labels: '["Complaint","Compliment","OHS Issue","Suggestion","Other"]'
+            style:
+              ordered: []
             position2:
               position2:
                 container: form_CustomerFeedback
@@ -8080,6 +8639,8 @@ appTemplate:
                 - disabled: ''
                 - allowMultiButtonSelect: false
                 - labels: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: form_CustomerFeedback
@@ -8116,6 +8677,7 @@ appTemplate:
                 - maxResults: '100'
                 - placeholder: Who does a customer have feedback about...
                 - label: Staff member(s)
+                - clearValueOnFocus: true
                 - labelMaxWidth: ''
                 - labelPlacedOnLeft: false
                 - validationState: ''
@@ -8125,6 +8687,8 @@ appTemplate:
                 - hideClearButton: false
                 - required: false
                 - labels: '{{getUsersPreferredNames.value}}'
+            style:
+              ordered: []
             position2:
               position2:
                 container: form_CustomerFeedback
@@ -8155,6 +8719,8 @@ appTemplate:
                 - labelMaxWidth: ''
                 - labelPlacedOnLeft: false
                 - disabled: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: form_CustomerFeedback
@@ -8189,6 +8755,8 @@ appTemplate:
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
                 - renderAsMarkdown: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: form_Enquiry
@@ -8255,6 +8823,8 @@ appTemplate:
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
                 - renderAsMarkdown: true
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_CustomerFeedback_DoFollowUp
@@ -8288,6 +8858,8 @@ appTemplate:
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
                 - renderAsMarkdown: true
+            style:
+              ordered: []
             position2:
               position2:
                 container: form_CustomerFeedback
@@ -8316,6 +8888,8 @@ appTemplate:
                 - labelMaxWidth: ''
                 - labelPlacedOnLeft: false
                 - disabled: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_CustomerFeedback_HomeLibrary
@@ -8346,6 +8920,8 @@ appTemplate:
                 - labelMaxWidth: ''
                 - labelPlacedOnLeft: false
                 - disabled: ''
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_CustomerFeedback_HomeLibrary
@@ -8371,6 +8947,9 @@ appTemplate:
                 - loading: ''
                 - disabled: ''
                 - buttonText: Home Library
+            style:
+              ordered:
+                - accent-background: '#555555'
             position2:
               position2:
                 container: container_UI_Examples
@@ -8390,6 +8969,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - currencyType: USD
@@ -8406,11 +8986,13 @@ appTemplate:
                 - label: Name
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: false
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -8418,6 +9000,8 @@ appTemplate:
                 - type: text
                 - allowedRegex: ''
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: modal_CustomerFeedback
@@ -8436,6 +9020,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - hidden: >-
@@ -8457,11 +9042,13 @@ appTemplate:
                 - label: ''
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: false
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -8469,6 +9056,8 @@ appTemplate:
                 - type: text
                 - allowedRegex: ''
                 - required: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_CustomerFeedback_HomeLibrary
@@ -8498,6 +9087,10 @@ appTemplate:
                     "Programs",
                     "Volunteering"]
                 - spinWhenChildrenAreFetching: true
+                - disableAnimation: false
+                - scroll: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: form_CustomerFeedback
@@ -8530,6 +9123,8 @@ appTemplate:
                     "Library",
                     "Programs",
                     "Volunteering"]
+            style:
+              ordered: []
             position2:
               position2:
                 container: form_CustomerFeedback
@@ -8554,6 +9149,8 @@ appTemplate:
                 - backgroundColor: white
                 - scroll: false
                 - hidden: '{{toggle_CustomerFeedback_DoFollowUp.value == false}}'
+            style:
+              ordered: []
             position2:
               position2:
                 container: form_CustomerFeedback
@@ -8573,6 +9170,7 @@ appTemplate:
                 - validationMaxlengthValue: ''
                 - readonly: ''
                 - disabledKeyCodes: ''
+                - showNumberCommas: false
                 - validationMaxValue: ''
                 - onBlur: ''
                 - currencyType: USD
@@ -8591,11 +9189,13 @@ appTemplate:
                 - label: Summary
                 - currencyMajorOnly: false
                 - formattedValue: ''
+                - allowedInputsRegex: ''
                 - labelMaxWidth: ''
                 - enableValidationType: false
                 - labelPlacedOnLeft: false
                 - onSubmit: ''
                 - validationMinValue: ''
+                - lastSubmittedAt: ''
                 - validationState:
                     object:
                       required: ''
@@ -8603,6 +9203,8 @@ appTemplate:
                 - type: text
                 - allowedRegex: ''
                 - required: true
+            style:
+              ordered: []
             position2:
               position2:
                 container: form_CustomerFeedback
@@ -8625,6 +9227,8 @@ appTemplate:
                 - showDropShadow: true
                 - backgroundColor: white
                 - scroll: false
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_CustomerFeedback_SelectServices
@@ -8652,6 +9256,8 @@ appTemplate:
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
                 - renderAsMarkdown: true
+            style:
+              ordered: []
             position2:
               position2:
                 container: container_UI_Examples
@@ -8677,6 +9283,8 @@ appTemplate:
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
                 - renderAsMarkdown: true
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_CustomerFeedback_SelectServices
@@ -8701,6 +9309,8 @@ appTemplate:
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
                 - renderAsMarkdown: true
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_CustomerFeedback_SelectServices
@@ -8726,6 +9336,8 @@ appTemplate:
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
                 - renderAsMarkdown: true
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_CustomerFeedback_SelectServices
@@ -8751,6 +9363,8 @@ appTemplate:
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
                 - renderAsMarkdown: true
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_CustomerFeedback_SelectServices
@@ -8776,6 +9390,8 @@ appTemplate:
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
                 - renderAsMarkdown: true
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_CustomerFeedback_SelectServices
@@ -8801,6 +9417,8 @@ appTemplate:
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
                 - renderAsMarkdown: true
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_CustomerFeedback_SelectServices
@@ -8826,6 +9444,8 @@ appTemplate:
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
                 - renderAsMarkdown: true
+            style:
+              ordered: []
             position2:
               position2:
                 container: tabbedcontainer_CustomerFeedback_SelectServices
@@ -8852,7 +9472,7 @@ appTemplate:
   isFetching: false
   instrumentationEnabled: false
   customDocumentTitleEnabled: false
-  version: 2.60.20
+  version: 2.64.73
   responsiveLayoutDisabled: false
   createdAt: null
   loadingIndicatorsDisabled: false
