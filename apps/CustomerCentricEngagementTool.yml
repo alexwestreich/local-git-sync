@@ -9448,9 +9448,9 @@ appTemplate:
                 width: 6
             createdAt: 2021-03-17T01:10:53.520Z
             updatedAt: 2021-03-17T01:11:37.032Z
-      - tabbedcontainer7:
+      - tabbedcontainer_CustomerFeeback:
           pluginTemplate:
-            id: tabbedcontainer7
+            id: tabbedcontainer_CustomerFeeback
             type: widget
             subtype: TabbedContainerWidget
             template:
