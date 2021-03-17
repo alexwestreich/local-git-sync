@@ -2254,7 +2254,7 @@ appTemplate:
               ordered: []
             position2:
               position2:
-                container: tabbedcontainer_CusrFeeback
+                container: tabbedcontainer_CustomerFeeback
                 height: 5
                 width: 12
             mobilePosition2:
