@@ -9474,7 +9474,8 @@ appTemplate:
               ordered: []
             position2:
               position2:
-                row: 29
+                row: 58
+                col: 1
                 height: 8
                 width: 6
             createdAt: 2021-03-17T01:10:53.520Z
