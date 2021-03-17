@@ -9454,6 +9454,31 @@ appTemplate:
                 tabNum: 6
             createdAt: 2020-07-23T09:28:27.171Z
             updatedAt: 2020-07-23T09:28:30.545Z
+      - tabbedcontainer6:
+          pluginTemplate:
+            id: tabbedcontainer6
+            type: widget
+            subtype: TabbedContainerWidget
+            template:
+              ordered:
+                - spinWhenChildrenAreFetching: true
+                - scroll: false
+                - tabNames: '["Tab One", "Tab Two"]'
+                - selectedTabIndex: 0
+                - selectedTab: '"0"'
+                - id: tabbedcontainer6
+                - showTabBar: true
+                - disableAnimation: false
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                row: 29
+                height: 8
+                width: 6
+            createdAt: 2021-03-17T01:10:53.520Z
+            updatedAt: 2021-03-17T01:10:53.520Z
   urlFragmentDefinitions:
     - ordered:
         - name: location
