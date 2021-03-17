@@ -1153,7 +1153,7 @@ appTemplate:
               ordered: []
             position2:
               position2:
-                container: tabbedcontainer_CustomerFeeback
+                container: tabbedcontainer6
                 height: 5
                 width: 12
                 tabNum: 1
