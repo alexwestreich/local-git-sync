@@ -1153,7 +1153,7 @@ appTemplate:
               ordered: []
             position2:
               position2:
-                container: tabbedcontainer6
+                container: tabbedcontainer_CustomerFeeback
                 height: 5
                 width: 12
                 tabNum: 1
@@ -2254,7 +2254,7 @@ appTemplate:
               ordered: []
             position2:
               position2:
-                container: tabbedcontainer6
+                container: tabbedcontainer_CustomerFeeback
                 height: 5
                 width: 12
             mobilePosition2:
@@ -9423,9 +9423,9 @@ appTemplate:
                 tabNum: 6
             createdAt: 2020-07-23T09:28:27.171Z
             updatedAt: 2020-07-23T09:28:30.545Z
-      - tabbedcontainer6:
+      - tabbedcontainer_CustomerFeeback:
           pluginTemplate:
-            id: tabbedcontainer6
+            id: tabbedcontainer_CustomerFeeback
             type: widget
             subtype: TabbedContainerWidget
             template:
