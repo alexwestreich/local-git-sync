@@ -1,0 +1,278 @@
+version: 43.0.9
+pageUuid: eea15600-883f-11eb-817e-1bec3e6140c1
+appTemplate:
+  plugins:
+    ordered:
+      - query1:
+          pluginTemplate:
+            id: query1
+            type: datasource
+            subtype: SqlQuery
+            resourceName: ecommerce
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - databasePasswordOverride: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: ''
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - dataArray: []
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - shouldUseLegacySql: false
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - databaseNameOverride: ''
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10001'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - databaseUsernameOverride: ''
+                - shouldEnableBatchQuerying: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-03-18T23:16:13.651Z
+      - datetimepicker1:
+          pluginTemplate:
+            id: datetimepicker1
+            type: widget
+            subtype: DateTimePickerWidget
+            template:
+              ordered:
+                - minDate: ''
+                - showTime: false
+                - formattedString: null
+                - tooltipText: ''
+                - value: 3/22/2021
+                - maxDate: ''
+                - placeholder: ''
+                - label: ''
+                - labelMaxWidth: ''
+                - labelPlacedOnLeft: false
+                - format: MM/DD/YYYY
+                - validationState: ''
+                - id: datetimepicker1
+                - onSelect: ''
+                - disabled: ''
+                - useLocalTimezone: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                row: 3
+                col: 7
+                height: 1
+                width: 2
+            createdAt: 2021-03-18T23:16:17.023Z
+      - daterangepicker1:
+          pluginTemplate:
+            id: daterangepicker1
+            type: widget
+            subtype: DateRangePickerWidget
+            template:
+              ordered:
+                - minDate: ''
+                - startFormattedString: null
+                - formattedString: null
+                - startValue: 3/22/2021
+                - tooltipText: ''
+                - startPlaceholder: ''
+                - endFormattedString: null
+                - maxDate: ''
+                - label: ''
+                - endValue: 3/22/2021
+                - labelMaxWidth: ''
+                - labelPlacedOnLeft: false
+                - format: MM/DD/YYYY
+                - endPlaceholder: ''
+                - id: daterangepicker1
+                - onSelect: ''
+                - disabled: ''
+                - useLocalTimezone: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                row: 4
+                col: 7
+                height: 1
+                width: 3
+            createdAt: 2021-03-18T23:16:20.065Z
+      - datetimepicker2:
+          pluginTemplate:
+            id: datetimepicker2
+            type: widget
+            subtype: DateTimePickerWidget
+            template:
+              ordered:
+                - minDate: ''
+                - showTime: false
+                - formattedString: null
+                - tooltipText: ''
+                - value: null
+                - maxDate: ''
+                - placeholder: ''
+                - label: ''
+                - labelMaxWidth: ''
+                - labelPlacedOnLeft: false
+                - format: MM/DD/YYYY
+                - validationState: ''
+                - id: datetimepicker2
+                - onSelect: ''
+                - disabled: ''
+                - useLocalTimezone: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                row: 3
+                col: 2
+                height: 1
+                width: 2
+            createdAt: 2021-03-18T23:16:25.287Z
+      - daterangepicker2:
+          pluginTemplate:
+            id: daterangepicker2
+            type: widget
+            subtype: DateRangePickerWidget
+            template:
+              ordered:
+                - minDate: ''
+                - startFormattedString: null
+                - formattedString: null
+                - startValue: null
+                - tooltipText: ''
+                - startPlaceholder: ''
+                - endFormattedString: null
+                - maxDate: ''
+                - label: ''
+                - endValue: null
+                - labelMaxWidth: ''
+                - labelPlacedOnLeft: false
+                - format: MM/DD/YYYY
+                - endPlaceholder: ''
+                - id: daterangepicker2
+                - onSelect: ''
+                - disabled: ''
+                - useLocalTimezone: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                row: 4
+                col: 2
+                height: 1
+                width: 3
+            createdAt: 2021-03-18T23:16:28.487Z
+      - text1:
+          pluginTemplate:
+            id: text1
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |
+                    Can navigate months in the popover when the value is null
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+                - id: text1
+            style:
+              ordered: []
+            position2:
+              position2:
+                row: 2
+                col: 2
+                height: 1
+                width: 3
+            createdAt: 2021-03-18T23:16:31.039Z
+      - text2:
+          pluginTemplate:
+            id: text2
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: >
+                    Cannot navigate to select a date in a different month once a
+                    value is selected
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+                - id: text1
+            style:
+              ordered: []
+            position2:
+              position2:
+                row: 2
+                col: 7
+                height: 1
+                width: 3
+            createdAt: 2021-03-18T23:16:46.811Z
+  urlFragmentDefinitions: []
+  appThemeId: null
+  preloadedAppJavaScript: null
+  pageLoadValueOverrides: []
+  customDocumentTitle: ''
+  isGlobalWidget: false
+  isFetching: false
+  instrumentationEnabled: false
+  customDocumentTitleEnabled: false
+  preloadedAppJSLinks:
+    array: []
+  version: 2.66.55
+  responsiveLayoutDisabled: false
+  createdAt: null
+  loadingIndicatorsDisabled: false
