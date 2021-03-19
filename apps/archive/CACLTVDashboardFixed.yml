@@ -239,7 +239,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-12-23T23:15:47.975Z
-            updatedAt: 2021-01-06T15:24:22.389Z
       - channel_spend:
           pluginTemplate:
             id: channel_spend
@@ -322,7 +321,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-12-24T00:17:35.959Z
-            updatedAt: 2020-12-24T03:42:21.038Z
       - channel_spend_update_row:
           pluginTemplate:
             id: channel_spend_update_row
@@ -409,7 +407,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-12-24T03:51:14.647Z
-            updatedAt: 2020-12-24T06:09:20.431Z
       - channel_spend_bulk_update:
           pluginTemplate:
             id: channel_spend_bulk_update
@@ -474,7 +471,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-12-24T04:15:48.444Z
-            updatedAt: 2020-12-24T05:52:38.625Z
       - agg_month:
           pluginTemplate:
             id: agg_month
@@ -587,7 +583,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-12-24T04:46:32.576Z
-            updatedAt: 2021-01-06T15:55:07.352Z
       - cac_ltv_state:
           pluginTemplate:
             id: cac_ltv_state
@@ -830,7 +825,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-12-29T05:37:28.779Z
-            updatedAt: 2020-12-30T17:53:20.644Z
       - grp_channel:
           pluginTemplate:
             id: grp_channel
@@ -926,7 +920,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-12-29T05:47:19.525Z
-            updatedAt: 2021-01-06T15:54:19.234Z
       - grp_state:
           pluginTemplate:
             id: grp_state
@@ -1025,7 +1018,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-12-29T05:57:53.115Z
-            updatedAt: 2021-01-13T23:11:10.235Z
       - query_dates:
           pluginTemplate:
             id: query_dates
@@ -1093,7 +1085,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-12-29T18:16:52.104Z
-            updatedAt: 2020-12-29T18:34:11.427Z
       - sql_audit:
           pluginTemplate:
             id: sql_audit
@@ -1209,7 +1200,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-12-30T16:07:54.314Z
-            updatedAt: 2021-01-13T23:26:35.005Z
       - query_states:
           pluginTemplate:
             id: query_states
@@ -1276,7 +1266,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-12-30T16:11:28.813Z
-            updatedAt: 2020-12-30T16:14:36.064Z
       - q_audit_state:
           pluginTemplate:
             id: q_audit_state
@@ -1350,7 +1339,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2021-01-12T19:58:59.413Z
-            updatedAt: 2021-01-12T20:28:12.247Z
       - q_audit_state_raw_filter:
           pluginTemplate:
             id: q_audit_state_raw_filter
@@ -1424,7 +1412,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2021-01-12T20:29:59.035Z
-            updatedAt: 2021-01-12T20:45:10.788Z
       - table1:
           pluginTemplate:
             id: table1
@@ -1474,6 +1461,8 @@ appTemplate:
                       - clinical_pay: ''
                       - email: ''
                       - spend: ''
+                - columnFrozenAlignments:
+                    ordered: []
                 - allowMultiRowSelect: false
                 - columnFormats:
                     ordered:
@@ -1547,6 +1536,7 @@ appTemplate:
                 - customButtonName: ''
                 - columnMappersRenderAsHTML:
                     ordered: []
+                - showRefreshButton: true
                 - pageSize: 9
                 - useDynamicColumnSettings: false
                 - actionButtonPosition: left
@@ -1628,7 +1618,6 @@ appTemplate:
                 height: 12
                 width: 12
             createdAt: 2020-12-23T23:15:55.995Z
-            updatedAt: 2020-12-29T15:40:50.409Z
       - textinput_therapy_hours:
           pluginTemplate:
             id: textinput_therapy_hours
@@ -1681,7 +1670,6 @@ appTemplate:
                 height: 1
                 width: 4
             createdAt: 2020-12-23T23:16:27.069Z
-            updatedAt: 2020-12-23T23:17:31.465Z
       - tabbedcontainer1:
           pluginTemplate:
             id: tabbedcontainer1
@@ -1689,8 +1677,8 @@ appTemplate:
             subtype: TabbedContainerWidget
             template:
               ordered:
+                - heightType: fixed
                 - spinWhenChildrenAreFetching: true
-                - scroll: false
                 - tabNames: >-
                     ["CACLTV", "View Channel Spend", "Edit Channel Spend Google
                     Sheet"]
@@ -1699,6 +1687,7 @@ appTemplate:
                 - id: tabbedcontainer1
                 - showTabBar: true
                 - disableAnimation: false
+                - overflowType: hidden
                 - disabled: ''
             style:
               ordered: []
@@ -1707,7 +1696,6 @@ appTemplate:
                 height: 18
                 width: 12
             createdAt: 2020-12-24T03:33:58.841Z
-            updatedAt: 2020-12-24T16:56:57.158Z
       - table2:
           pluginTemplate:
             id: table2
@@ -1745,6 +1733,8 @@ appTemplate:
                       - call_converted_cnt: ''
                       - clinical_pay: ''
                       - spend: ''
+                - columnFrozenAlignments:
+                    ordered: []
                 - allowMultiRowSelect: false
                 - columnFormats:
                     ordered: []
@@ -1790,6 +1780,7 @@ appTemplate:
                 - customButtonName: ''
                 - columnMappersRenderAsHTML:
                     ordered: []
+                - showRefreshButton: true
                 - pageSize: 11
                 - useDynamicColumnSettings: false
                 - actionButtonPosition: left
@@ -1868,7 +1859,6 @@ appTemplate:
                 width: 12
                 tabNum: 1
             createdAt: 2020-12-24T03:36:22.374Z
-            updatedAt: 2020-12-24T16:54:01.838Z
       - state1:
           pluginTemplate:
             id: state1
@@ -1878,7 +1868,6 @@ appTemplate:
               ordered:
                 - value: null
             createdAt: 2020-12-24T05:09:12.367Z
-            updatedAt: 2020-12-24T05:09:12.367Z
       - state2:
           pluginTemplate:
             id: state2
@@ -1888,7 +1877,6 @@ appTemplate:
               ordered:
                 - value: null
             createdAt: 2020-12-24T05:09:41.125Z
-            updatedAt: 2020-12-24T05:09:41.125Z
       - state3:
           pluginTemplate:
             id: state3
@@ -1898,7 +1886,6 @@ appTemplate:
               ordered:
                 - value: null
             createdAt: 2020-12-24T05:09:43.505Z
-            updatedAt: 2020-12-24T05:09:43.505Z
       - button1:
           pluginTemplate:
             id: button1
@@ -1933,7 +1920,6 @@ appTemplate:
                 width: 2
                 tabNum: 1
             createdAt: 2020-12-24T06:13:54.901Z
-            updatedAt: 2020-12-29T18:06:11.868Z
       - iframe1:
           pluginTemplate:
             id: iframe1
@@ -1954,7 +1940,6 @@ appTemplate:
                 width: 12
                 tabNum: 2
             createdAt: 2020-12-24T16:58:22.219Z
-            updatedAt: 2020-12-24T16:59:48.845Z
       - textinput_conv:
           pluginTemplate:
             id: textinput_conv
@@ -2009,7 +1994,6 @@ appTemplate:
                 height: 1
                 width: 4
             createdAt: 2020-12-28T19:20:46.725Z
-            updatedAt: 2020-12-28T19:27:29.072Z
       - textinput_overhead:
           pluginTemplate:
             id: textinput_overhead
@@ -2063,7 +2047,6 @@ appTemplate:
                 height: 1
                 width: 4
             createdAt: 2020-12-28T19:20:53.943Z
-            updatedAt: 2020-12-28T19:26:48.051Z
       - textinput_pay:
           pluginTemplate:
             id: textinput_pay
@@ -2120,7 +2103,6 @@ appTemplate:
                 height: 1
                 width: 4
             createdAt: 2020-12-28T21:18:21.571Z
-            updatedAt: 2021-01-14T15:27:54.019Z
       - tabbedcontainer2:
           pluginTemplate:
             id: tabbedcontainer2
@@ -2128,8 +2110,8 @@ appTemplate:
             subtype: TabbedContainerWidget
             template:
               ordered:
+                - heightType: fixed
                 - spinWhenChildrenAreFetching: true
-                - scroll: false
                 - tabNames: >-
                     ["Channel", "Totals","State", "Audit Clinical Rate","Audit
                     State Raw"]
@@ -2138,6 +2120,7 @@ appTemplate:
                 - id: tabbedcontainer2
                 - showTabBar: true
                 - disableAnimation: false
+                - overflowType: hidden
                 - disabled: ''
             style:
               ordered: []
@@ -2148,7 +2131,6 @@ appTemplate:
                 height: 6
                 width: 8
             createdAt: 2020-12-29T02:28:15.767Z
-            updatedAt: 2020-12-30T17:58:45.143Z
       - table3:
           pluginTemplate:
             id: table3
@@ -2194,6 +2176,8 @@ appTemplate:
                       - calendar_converted_cnt: ''
                       - clinical_pay: ''
                       - spend: ''
+                - columnFrozenAlignments:
+                    ordered: []
                 - allowMultiRowSelect: false
                 - columnFormats:
                     ordered:
@@ -2256,6 +2240,7 @@ appTemplate:
                 - customButtonName: ''
                 - columnMappersRenderAsHTML:
                     ordered: []
+                - showRefreshButton: true
                 - pageSize: 9
                 - useDynamicColumnSettings: false
                 - actionButtonPosition: left
@@ -2327,7 +2312,6 @@ appTemplate:
                 width: 12
                 tabNum: 1
             createdAt: 2020-12-29T02:35:23.949Z
-            updatedAt: 2020-12-29T17:44:29.138Z
       - table4:
           pluginTemplate:
             id: table4
@@ -2370,6 +2354,8 @@ appTemplate:
                       - call_completed_cnt: ''
                       - call_converted_cnt: ''
                       - spend: ''
+                - columnFrozenAlignments:
+                    ordered: []
                 - allowMultiRowSelect: false
                 - columnFormats:
                     ordered:
@@ -2433,6 +2419,7 @@ appTemplate:
                 - customButtonName: ''
                 - columnMappersRenderAsHTML:
                     ordered: []
+                - showRefreshButton: true
                 - pageSize: 8
                 - useDynamicColumnSettings: false
                 - actionButtonPosition: left
@@ -2505,7 +2492,6 @@ appTemplate:
                 width: 12
                 tabNum: 2
             createdAt: 2020-12-29T05:56:38.381Z
-            updatedAt: 2021-01-12T20:07:31.966Z
       - select_startdate:
           pluginTemplate:
             id: select_startdate
@@ -2547,7 +2533,6 @@ appTemplate:
                 width: 4
                 tabNum: 2
             createdAt: 2020-12-29T18:29:15.694Z
-            updatedAt: 2021-01-13T23:12:00.667Z
       - table5:
           pluginTemplate:
             id: table5
@@ -2585,6 +2570,8 @@ appTemplate:
                       - call_completed_cnt: ''
                       - call_converted_cnt: ''
                       - email: ''
+                - columnFrozenAlignments:
+                    ordered: []
                 - allowMultiRowSelect: false
                 - columnFormats:
                     ordered: []
@@ -2630,6 +2617,7 @@ appTemplate:
                 - customButtonName: ''
                 - columnMappersRenderAsHTML:
                     ordered: []
+                - showRefreshButton: true
                 - pageSize: 8
                 - useDynamicColumnSettings: false
                 - actionButtonPosition: left
@@ -2707,7 +2695,6 @@ appTemplate:
                 width: 12
                 tabNum: 3
             createdAt: 2020-12-30T16:07:39.445Z
-            updatedAt: 2021-01-13T23:59:18.179Z
       - select_audit_date:
           pluginTemplate:
             id: select_audit_date
@@ -2749,7 +2736,6 @@ appTemplate:
                 width: 4
                 tabNum: 3
             createdAt: 2020-12-30T16:09:18.220Z
-            updatedAt: 2020-12-30T16:24:21.929Z
       - select_audit_state:
           pluginTemplate:
             id: select_audit_state
@@ -2792,7 +2778,6 @@ appTemplate:
                 width: 4
                 tabNum: 3
             createdAt: 2020-12-30T16:09:33.744Z
-            updatedAt: 2020-12-30T16:23:49.707Z
       - table6:
           pluginTemplate:
             id: table6
@@ -2830,6 +2815,8 @@ appTemplate:
                       - call_converted_cnt: ''
                       - clinical_pay: ''
                       - spend: ''
+                - columnFrozenAlignments:
+                    ordered: []
                 - allowMultiRowSelect: false
                 - columnFormats:
                     ordered:
@@ -2891,6 +2878,7 @@ appTemplate:
                 - customButtonName: ''
                 - columnMappersRenderAsHTML:
                     ordered: []
+                - showRefreshButton: true
                 - pageSize: 8
                 - useDynamicColumnSettings: false
                 - actionButtonPosition: left
@@ -2968,7 +2956,6 @@ appTemplate:
                 width: 12
                 tabNum: 4
             createdAt: 2020-12-30T17:58:58.565Z
-            updatedAt: 2021-01-12T20:34:57.627Z
       - select_audit_date_raw:
           pluginTemplate:
             id: select_audit_date_raw
@@ -3010,7 +2997,6 @@ appTemplate:
                 width: 4
                 tabNum: 4
             createdAt: 2021-01-12T20:17:41.265Z
-            updatedAt: 2021-01-12T20:43:01.589Z
       - select_audit_state_raw:
           pluginTemplate:
             id: select_audit_state_raw
@@ -3053,16 +3039,18 @@ appTemplate:
                 width: 4
                 tabNum: 4
             createdAt: 2021-01-12T20:17:50.861Z
-            updatedAt: 2021-01-12T20:42:35.471Z
   urlFragmentDefinitions: []
   appThemeId: null
+  preloadedAppJavaScript: null
   pageLoadValueOverrides: []
   customDocumentTitle: ''
   isGlobalWidget: false
   isFetching: false
   instrumentationEnabled: false
   customDocumentTitleEnabled: false
-  version: 2.64.74
+  preloadedAppJSLinks:
+    array: []
+  version: 2.66.45
   responsiveLayoutDisabled: false
   createdAt: null
   loadingIndicatorsDisabled: false
