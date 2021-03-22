@@ -3054,7 +3054,7 @@ appTemplate:
                 - tooltipText: ''
                 - value: "**Hello** friend! \U0001F603\n\n"
                 - renderAsHtml: false
-                - backgroundColor: '#0000'
+                - backgroundColor: '#cc5248'
                 - textColor: '#312929'
                 - renderAsMarkdown: true
                 - id: text1
@@ -3062,8 +3062,8 @@ appTemplate:
               ordered: []
             position2:
               position2:
-                row: 14
-                col: 9
+                row: 5
+                col: 7
                 height: 1
                 width: 3
             createdAt: 2021-03-19T20:37:47.281Z
