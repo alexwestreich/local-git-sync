@@ -1,0 +1,299 @@
+version: 43.0.9
+pageUuid: 38da0960-90f6-11eb-b827-c7e81155f69f
+appTemplate:
+  plugins:
+    ordered:
+      - query1:
+          pluginTemplate:
+            id: query1
+            type: datasource
+            subtype: SqlQuery
+            resourceName: ecommerce
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - databasePasswordOverride: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: ''
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - dataArray: []
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - shouldUseLegacySql: false
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - databaseNameOverride: ''
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10001'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - databaseUsernameOverride: ''
+                - shouldEnableBatchQuerying: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-03-30T01:21:16.043Z
+      - dropdown1:
+          pluginTemplate:
+            id: dropdown1
+            type: widget
+            subtype: SelectWidget
+            template:
+              ordered:
+                - enableClientSideMatching: true
+                - values: '[1,2,3]'
+                - allowOutOfRangeValues: false
+                - enableFuzzyMatching: true
+                - searchValue: ''
+                - showFetchingIndicator: true
+                - enableCaseSensitivity: false
+                - validationMessage: ''
+                - displayValue: ''
+                - tooltipText: ''
+                - value: ''
+                - maxResults: 50
+                - placeholder: Select a value
+                - label: Numbers
+                - clearValueOnFocus: true
+                - labelMaxWidth: ''
+                - labelPlacedOnLeft: false
+                - validationState: ''
+                - onSelect: ''
+                - allowCustomValues: false
+                - disabled: ''
+                - hideClearButton: false
+                - required: false
+                - labels: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                row: 5
+                height: 1
+                width: 4
+            createdAt: 2021-03-30T01:21:20.322Z
+      - text1:
+          pluginTemplate:
+            id: text1
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |
+                    custom CSS
+
+                    <style>
+                      #retool-widget-text1 p, #retool-widget-dropdown1 div.input-control-component__label > span {
+                        color: red;
+                        font-size: 30px;
+                      }
+                - renderAsHtml: true
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                row: 3
+                height: 1
+                width: 3
+            createdAt: 2021-03-30T01:21:23.699Z
+      - image1:
+          pluginTemplate:
+            id: image1
+            type: widget
+            subtype: ImageWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - isFile: false
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - exportQuery: ''
+                - imageUrl: 'https://placekitten.com/g/200/300'
+                - action: ''
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - imageFile: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                row: 9
+                col: 5
+                height: 3
+                width: 2
+            createdAt: 2021-03-30T16:58:14.828Z
+      - text2:
+          pluginTemplate:
+            id: text2
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |+
+                    css to hide image
+                    <style>
+                      ._retool-image1 {
+                      display: none;
+                      }
+                    </style>
+
+                - renderAsHtml: true
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: false
+            style:
+              ordered: []
+            position2:
+              position2:
+                row: 8
+                col: 4
+                height: 1
+                width: 3
+            createdAt: 2021-03-30T16:58:17.798Z
+      - text3:
+          pluginTemplate:
+            id: text3
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |
+                    custom CSS
+
+                    <style>
+                      ._retool-text3 p, ._retool-dropdown2 div.input-control-component__label > span {
+                        color: red;
+                        font-size: 30px;
+                      }
+                - renderAsHtml: true
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                row: 3
+                col: 8
+                height: 1
+                width: 3
+            createdAt: 2021-03-30T17:03:08.621Z
+      - dropdown2:
+          pluginTemplate:
+            id: dropdown2
+            type: widget
+            subtype: SelectWidget
+            template:
+              ordered:
+                - enableClientSideMatching: true
+                - values: '[1,2,3]'
+                - allowOutOfRangeValues: false
+                - enableFuzzyMatching: true
+                - searchValue: ''
+                - showFetchingIndicator: true
+                - enableCaseSensitivity: false
+                - validationMessage: ''
+                - displayValue: ''
+                - tooltipText: ''
+                - value: ''
+                - maxResults: 50
+                - placeholder: Select a value
+                - label: Numbers
+                - clearValueOnFocus: true
+                - labelMaxWidth: ''
+                - labelPlacedOnLeft: false
+                - validationState: ''
+                - onSelect: ''
+                - allowCustomValues: false
+                - disabled: ''
+                - hideClearButton: false
+                - required: false
+                - labels: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                row: 5
+                col: 8
+                height: 1
+                width: 4
+            createdAt: 2021-03-30T17:03:27.709Z
+  urlFragmentDefinitions: []
+  appThemeId: -1
+  preloadedAppJavaScript: null
+  pageLoadValueOverrides: []
+  customDocumentTitle: ''
+  isGlobalWidget: false
+  isFetching: false
+  instrumentationEnabled: false
+  customDocumentTitleEnabled: false
+  preloadedAppJSLinks:
+    array: []
+  version: 2.66.67
+  responsiveLayoutDisabled: false
+  createdAt: null
+  loadingIndicatorsDisabled: false
