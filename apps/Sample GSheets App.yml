@@ -1,7 +1,6 @@
 version: 43.0.9
 pageUuid: e9fac9f0-46eb-11eb-a14c-53c0763931f9
 appTemplate:
-  isFetching: false
   plugins:
     ordered:
       - companiesQuery:
@@ -41,7 +40,6 @@ appTemplate:
                 - sheetRange: 'A3:Z'
                 - queryThrottleTime: '750'
             createdAt: 2018-09-17T20:07:05.926Z
-            updatedAt: 2018-09-20T08:10:29.924Z
       - companiesTable:
           pluginTemplate:
             id: companiesTable
@@ -179,7 +177,6 @@ appTemplate:
                 height: 9
                 width: 12
             createdAt: 2018-08-06T18:01:25.280Z
-            updatedAt: 2018-09-20T08:59:14.957Z
       - toInput:
           pluginTemplate:
             id: toInput
@@ -212,7 +209,6 @@ appTemplate:
                 height: 2
                 width: 12
             createdAt: 2018-09-17T23:58:47.568Z
-            updatedAt: 2018-09-20T08:10:29.927Z
       - bccInput:
           pluginTemplate:
             id: bccInput
@@ -245,7 +241,6 @@ appTemplate:
                 height: 2
                 width: 12
             createdAt: 2018-09-18T00:01:06.012Z
-            updatedAt: 2018-09-20T08:10:29.927Z
       - personalizedInput:
           pluginTemplate:
             id: personalizedInput
@@ -278,7 +273,6 @@ appTemplate:
                 height: 3
                 width: 12
             createdAt: 2018-09-18T00:03:50.869Z
-            updatedAt: 2018-09-20T08:10:29.928Z
       - sendEmailButton:
           pluginTemplate:
             id: sendEmailButton
@@ -312,7 +306,6 @@ appTemplate:
                 height: 1
                 width: 12
             createdAt: 2018-09-18T00:06:17.145Z
-            updatedAt: 2018-09-20T08:10:29.928Z
       - text2:
           pluginTemplate:
             id: text2
@@ -344,7 +337,6 @@ appTemplate:
                 height: 1
                 width: 12
             createdAt: 2018-09-18T00:26:47.046Z
-            updatedAt: 2018-09-20T08:51:04.778Z
       - emailPreview:
           pluginTemplate:
             id: emailPreview
@@ -385,7 +377,6 @@ appTemplate:
                 height: 4
                 width: 12
             createdAt: 2018-09-18T00:58:49.496Z
-            updatedAt: 2018-09-20T08:10:29.929Z
       - sendEmail:
           pluginTemplate:
             id: sendEmail
@@ -427,7 +418,6 @@ appTemplate:
                 - bodyType: json
                 - queryThrottleTime: '750'
             createdAt: 2018-09-19T05:51:17.389Z
-            updatedAt: 2018-09-20T08:10:29.929Z
       - multiselect1:
           pluginTemplate:
             id: multiselect1
@@ -456,7 +446,6 @@ appTemplate:
                 height: 2
                 width: 12
             createdAt: 2018-09-20T08:07:10.344Z
-            updatedAt: 2018-09-20T08:10:29.929Z
       - filteredCompanies:
           pluginTemplate:
             id: filteredCompanies
@@ -489,10 +478,18 @@ appTemplate:
                 - requireConfirmation: false
                 - queryThrottleTime: '750'
             createdAt: 2018-09-20T08:08:33.866Z
-            updatedAt: 2018-09-20T08:10:29.929Z
-  createdAt: null
+  urlFragmentDefinitions: []
+  appThemeId: null
+  preloadedAppJavaScript: null
+  pageLoadValueOverrides: []
+  customDocumentTitle: ''
+  isGlobalWidget: false
+  isFetching: false
+  instrumentationEnabled: false
+  customDocumentTitleEnabled: false
+  preloadedAppJSLinks:
+    array: []
   version: 2.29.11
   responsiveLayoutDisabled: false
-  urlFragmentDefinitions: []
-  pageLoadValueOverrides: []
-  isGlobalWidget: false
+  createdAt: null
+  loadingIndicatorsDisabled: false
