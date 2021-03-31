@@ -63,7 +63,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-07-22T08:06:11.123Z
-            updatedAt: 2020-07-24T06:42:24.938Z
       - query2:
           pluginTemplate:
             id: query2
@@ -122,7 +121,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-07-23T10:24:58.913Z
-            updatedAt: 2020-07-24T06:39:59.348Z
       - query3:
           pluginTemplate:
             id: query3
@@ -229,7 +227,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-07-23T14:30:15.419Z
-            updatedAt: 2020-07-24T06:43:40.726Z
       - query4:
           pluginTemplate:
             id: query4
@@ -289,7 +286,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-07-23T12:25:13.865Z
-            updatedAt: 2020-07-24T06:45:32.684Z
       - tabbedcontainer1:
           pluginTemplate:
             id: tabbedcontainer1
@@ -314,7 +310,6 @@ appTemplate:
                 height: 2
                 width: 10
             createdAt: 2020-07-22T12:47:52.138Z
-            updatedAt: 2020-09-22T18:15:20.609Z
       - textinput1:
           pluginTemplate:
             id: textinput1
@@ -370,7 +365,6 @@ appTemplate:
                 height: 1
                 width: 9
             createdAt: 2020-07-22T13:37:07.569Z
-            updatedAt: 2020-07-23T10:40:04.832Z
       - textinput2:
           pluginTemplate:
             id: textinput2
@@ -419,7 +413,6 @@ appTemplate:
                 height: 1
                 width: 3
             createdAt: 2020-07-22T13:39:01.343Z
-            updatedAt: 2020-07-23T10:40:14.630Z
       - textinput3:
           pluginTemplate:
             id: textinput3
@@ -467,7 +460,6 @@ appTemplate:
                 height: 1
                 width: 3
             createdAt: 2020-07-22T13:39:21.182Z
-            updatedAt: 2020-07-23T10:40:11.429Z
       - plotlychart2:
           pluginTemplate:
             id: plotlychart2
@@ -526,7 +518,6 @@ appTemplate:
                 height: 11
                 width: 6
             createdAt: 2020-07-23T07:10:26.272Z
-            updatedAt: 2020-07-23T09:11:42.686Z
       - textinput4:
           pluginTemplate:
             id: textinput4
@@ -581,7 +572,6 @@ appTemplate:
                 height: 1
                 width: 3
             createdAt: 2020-07-23T08:12:32.209Z
-            updatedAt: 2020-07-23T10:40:08.909Z
       - button1:
           pluginTemplate:
             id: button1
@@ -613,7 +603,6 @@ appTemplate:
                 height: 1
                 width: 1
             createdAt: 2020-07-23T08:40:46.569Z
-            updatedAt: 2020-09-23T13:14:32.784Z
       - state1:
           pluginTemplate:
             id: state1
@@ -623,7 +612,6 @@ appTemplate:
               ordered:
                 - value: null
             createdAt: 2020-07-23T08:42:56.661Z
-            updatedAt: 2020-07-23T08:42:56.661Z
       - tabbedcontainer2:
           pluginTemplate:
             id: tabbedcontainer2
@@ -655,7 +643,6 @@ appTemplate:
                 width: 6
                 tabNum: 1
             createdAt: 2020-07-23T09:23:19.369Z
-            updatedAt: 2020-07-23T11:33:41.936Z
       - plotlychart3:
           pluginTemplate:
             id: plotlychart3
@@ -733,7 +720,6 @@ appTemplate:
                 width: 6
                 tabNum: 1
             createdAt: 2020-07-23T09:23:56.270Z
-            updatedAt: 2020-09-12T17:13:22.589Z
       - button2:
           pluginTemplate:
             id: button2
@@ -765,7 +751,6 @@ appTemplate:
                 height: 1
                 width: 3
             createdAt: 2020-07-23T09:44:03.841Z
-            updatedAt: 2020-09-14T12:02:24.479Z
       - textinput5:
           pluginTemplate:
             id: textinput5
@@ -813,7 +798,6 @@ appTemplate:
                 height: 1
                 width: 9
             createdAt: 2020-07-23T09:58:39.663Z
-            updatedAt: 2020-07-23T10:29:44.023Z
       - textinput6:
           pluginTemplate:
             id: textinput6
@@ -861,7 +845,6 @@ appTemplate:
                 height: 1
                 width: 8
             createdAt: 2020-07-23T10:01:26.134Z
-            updatedAt: 2020-07-23T12:21:28.068Z
       - button3:
           pluginTemplate:
             id: button3
@@ -893,7 +876,6 @@ appTemplate:
                 height: 1
                 width: 3
             createdAt: 2020-07-23T10:55:24.322Z
-            updatedAt: 2020-09-23T13:14:36.413Z
       - textinput7:
           pluginTemplate:
             id: textinput7
@@ -942,7 +924,6 @@ appTemplate:
                 width: 8
                 tabNum: 1
             createdAt: 2020-07-23T11:08:26.019Z
-            updatedAt: 2020-07-23T12:32:13.836Z
       - select1:
           pluginTemplate:
             id: select1
@@ -981,7 +962,6 @@ appTemplate:
                 width: 5
                 tabNum: 1
             createdAt: 2020-07-23T11:18:14.788Z
-            updatedAt: 2020-07-23T12:24:25.121Z
       - select2:
           pluginTemplate:
             id: select2
@@ -1021,7 +1001,6 @@ appTemplate:
                 width: 5
                 tabNum: 1
             createdAt: 2020-07-23T11:29:20.179Z
-            updatedAt: 2020-07-23T12:24:22.423Z
       - button4:
           pluginTemplate:
             id: button4
@@ -1054,7 +1033,6 @@ appTemplate:
                 width: 3
                 tabNum: 1
             createdAt: 2020-07-23T11:32:57.515Z
-            updatedAt: 2020-09-23T03:55:56.327Z
       - radiogroup1:
           pluginTemplate:
             id: radiogroup1
@@ -1080,7 +1058,6 @@ appTemplate:
                 width: 2
                 tabNum: 2
             createdAt: 2020-07-23T13:59:29.408Z
-            updatedAt: 2020-07-23T17:43:41.875Z
       - textinput8:
           pluginTemplate:
             id: textinput8
@@ -1129,7 +1106,6 @@ appTemplate:
                 width: 3
                 tabNum: 2
             createdAt: 2020-07-23T14:22:59.127Z
-            updatedAt: 2020-07-23T14:23:49.534Z
       - button5:
           pluginTemplate:
             id: button5
@@ -1162,7 +1138,6 @@ appTemplate:
                 width: 2
                 tabNum: 2
             createdAt: 2020-07-23T14:31:34.713Z
-            updatedAt: 2020-09-23T13:14:56.973Z
       - query5:
           pluginTemplate:
             id: query5
@@ -1260,7 +1235,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-07-23T15:36:56.515Z
-            updatedAt: 2020-07-23T16:36:09.010Z
       - plotlychart4:
           pluginTemplate:
             id: plotlychart4
@@ -1327,7 +1301,6 @@ appTemplate:
                 width: 6
                 tabNum: 2
             createdAt: 2020-07-23T16:17:07.661Z
-            updatedAt: 2020-09-07T10:54:14.350Z
       - plotlychart5:
           pluginTemplate:
             id: plotlychart5
@@ -1394,7 +1367,6 @@ appTemplate:
                 width: 7
                 tabNum: 3
             createdAt: 2020-07-23T17:19:42.405Z
-            updatedAt: 2020-09-10T12:42:31.316Z
       - statistic1:
           pluginTemplate:
             id: statistic1
@@ -1417,7 +1389,6 @@ appTemplate:
                 width: 3
                 tabNum: 2
             createdAt: 2020-07-23T17:39:07.098Z
-            updatedAt: 2020-07-24T08:21:27.215Z
       - statistic2:
           pluginTemplate:
             id: statistic2
@@ -1440,7 +1411,6 @@ appTemplate:
                 width: 3
                 tabNum: 2
             createdAt: 2020-07-23T17:40:26.356Z
-            updatedAt: 2020-07-24T08:21:42.696Z
       - radiogroup2:
           pluginTemplate:
             id: radiogroup2
@@ -1468,7 +1438,6 @@ appTemplate:
                 width: 2
                 tabNum: 3
             createdAt: 2020-07-23T17:46:50.379Z
-            updatedAt: 2020-07-23T18:44:18.071Z
       - statistic3:
           pluginTemplate:
             id: statistic3
@@ -1491,7 +1460,6 @@ appTemplate:
                 width: 2
                 tabNum: 3
             createdAt: 2020-07-23T17:51:02.256Z
-            updatedAt: 2020-07-23T17:51:57.533Z
       - statistic4:
           pluginTemplate:
             id: statistic4
@@ -1514,7 +1482,6 @@ appTemplate:
                 width: 2
                 tabNum: 3
             createdAt: 2020-07-23T17:52:04.019Z
-            updatedAt: 2020-07-23T17:52:44.751Z
       - statistic5:
           pluginTemplate:
             id: statistic5
@@ -1537,7 +1504,6 @@ appTemplate:
                 width: 2
                 tabNum: 3
             createdAt: 2020-07-23T17:54:13.285Z
-            updatedAt: 2020-07-23T17:54:50.451Z
       - statistic6:
           pluginTemplate:
             id: statistic6
@@ -1560,7 +1526,6 @@ appTemplate:
                 width: 3
                 tabNum: 3
             createdAt: 2020-07-23T17:55:38.097Z
-            updatedAt: 2020-07-23T18:52:24.704Z
       - statistic7:
           pluginTemplate:
             id: statistic7
@@ -1583,7 +1548,6 @@ appTemplate:
                 width: 3
                 tabNum: 3
             createdAt: 2020-07-23T17:55:56.706Z
-            updatedAt: 2020-07-23T18:51:42.873Z
       - statistic8:
           pluginTemplate:
             id: statistic8
@@ -1606,7 +1570,6 @@ appTemplate:
                 width: 3
                 tabNum: 3
             createdAt: 2020-07-23T17:57:32.344Z
-            updatedAt: 2020-07-23T18:50:40.869Z
       - statistic9:
           pluginTemplate:
             id: statistic9
@@ -1629,7 +1592,6 @@ appTemplate:
                 width: 3
                 tabNum: 3
             createdAt: 2020-07-23T17:58:21.049Z
-            updatedAt: 2020-07-23T18:51:25.890Z
       - button6:
           pluginTemplate:
             id: button6
@@ -1662,7 +1624,6 @@ appTemplate:
                 width: 2
                 tabNum: 3
             createdAt: 2020-07-23T18:00:22.129Z
-            updatedAt: 2020-09-23T13:15:19.488Z
       - query6:
           pluginTemplate:
             id: query6
@@ -1722,7 +1683,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-07-23T18:02:18.564Z
-            updatedAt: 2020-07-24T08:18:36.532Z
       - query7:
           pluginTemplate:
             id: query7
@@ -1820,7 +1780,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-07-23T18:18:06.153Z
-            updatedAt: 2020-07-23T18:19:51.891Z
       - query8:
           pluginTemplate:
             id: query8
@@ -1879,7 +1838,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-07-23T18:55:23.250Z
-            updatedAt: 2020-07-23T18:55:47.324Z
       - statistic10:
           pluginTemplate:
             id: statistic10
@@ -1902,7 +1860,6 @@ appTemplate:
                 width: 2
                 tabNum: 1
             createdAt: 2020-07-23T18:58:11.284Z
-            updatedAt: 2020-07-23T19:07:53.042Z
       - statistic11:
           pluginTemplate:
             id: statistic11
@@ -1925,7 +1882,6 @@ appTemplate:
                 width: 2
                 tabNum: 1
             createdAt: 2020-07-23T18:58:55.862Z
-            updatedAt: 2020-07-23T19:08:33.000Z
       - statistic12:
           pluginTemplate:
             id: statistic12
@@ -1948,7 +1904,6 @@ appTemplate:
                 width: 2
                 tabNum: 1
             createdAt: 2020-07-23T18:59:01.560Z
-            updatedAt: 2020-07-23T19:08:49.031Z
       - query9:
           pluginTemplate:
             id: query9
@@ -2029,7 +1984,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-07-23T18:59:19.760Z
-            updatedAt: 2020-07-23T19:09:52.675Z
       - customcomponent2:
           pluginTemplate:
             id: customcomponent2
@@ -2050,7 +2004,6 @@ appTemplate:
                 width: 11
                 tabNum: 4
             createdAt: 2020-09-07T10:43:27.634Z
-            updatedAt: 2020-09-10T10:31:18.340Z
       - customcomponent3:
           pluginTemplate:
             id: customcomponent3
@@ -2072,7 +2025,6 @@ appTemplate:
                 width: 7
                 tabNum: 4
             createdAt: 2020-09-09T11:48:32.194Z
-            updatedAt: 2020-09-10T05:41:24.896Z
       - plotlychart6:
           pluginTemplate:
             id: plotlychart6
@@ -2152,7 +2104,6 @@ appTemplate:
                 width: 9
                 tabNum: 5
             createdAt: 2020-09-11T06:41:33.187Z
-            updatedAt: 2020-09-16T07:51:04.042Z
       - plotlychart7:
           pluginTemplate:
             id: plotlychart7
@@ -2314,7 +2265,6 @@ appTemplate:
                 width: 5
                 tabNum: 5
             createdAt: 2020-09-11T07:09:09.868Z
-            updatedAt: 2020-09-16T03:53:59.281Z
       - statistic14:
           pluginTemplate:
             id: statistic14
@@ -2336,7 +2286,6 @@ appTemplate:
                 width: 2
                 tabNum: 5
             createdAt: 2020-09-11T08:28:38.424Z
-            updatedAt: 2020-09-22T08:40:16.511Z
       - plotlychart8:
           pluginTemplate:
             id: plotlychart8
@@ -2515,7 +2464,6 @@ appTemplate:
                 width: 8
                 tabNum: 6
             createdAt: 2020-09-12T16:56:13.807Z
-            updatedAt: 2020-09-23T03:57:17.816Z
       - statistic25:
           pluginTemplate:
             id: statistic25
@@ -2539,7 +2487,6 @@ appTemplate:
                 width: 2
                 tabNum: 5
             createdAt: 2020-09-14T10:09:26.044Z
-            updatedAt: 2020-09-16T15:06:15.296Z
       - statistic35:
           pluginTemplate:
             id: statistic35
@@ -2562,7 +2509,6 @@ appTemplate:
                 width: 2
                 tabNum: 5
             createdAt: 2020-09-15T04:26:30.901Z
-            updatedAt: 2020-09-17T13:17:37.434Z
       - statistic36:
           pluginTemplate:
             id: statistic36
@@ -2586,7 +2532,6 @@ appTemplate:
                 width: 2
                 tabNum: 5
             createdAt: 2020-09-15T04:26:56.485Z
-            updatedAt: 2020-09-17T13:17:42.027Z
       - table1:
           pluginTemplate:
             id: table1
@@ -2748,7 +2693,6 @@ appTemplate:
                 width: 12
                 tabNum: 6
             createdAt: 2020-09-15T06:20:15.114Z
-            updatedAt: 2020-09-22T14:18:47.156Z
       - statistic22:
           pluginTemplate:
             id: statistic22
@@ -2770,7 +2714,6 @@ appTemplate:
                 width: 2
                 tabNum: 6
             createdAt: 2020-09-16T03:54:14.868Z
-            updatedAt: 2020-09-22T07:16:36.054Z
       - statistic23:
           pluginTemplate:
             id: statistic23
@@ -2793,7 +2736,6 @@ appTemplate:
                 width: 1
                 tabNum: 6
             createdAt: 2020-09-16T03:54:26.609Z
-            updatedAt: 2020-09-23T13:38:01.702Z
       - statistic27:
           pluginTemplate:
             id: statistic27
@@ -2816,7 +2758,6 @@ appTemplate:
                 width: 2
                 tabNum: 6
             createdAt: 2020-09-16T03:56:40.804Z
-            updatedAt: 2020-09-22T12:31:12.507Z
       - container2:
           pluginTemplate:
             id: container2
@@ -2840,7 +2781,6 @@ appTemplate:
                 width: 3
                 tabNum: 8
             createdAt: 2020-09-16T05:37:13.319Z
-            updatedAt: 2020-09-16T08:30:34.463Z
       - container3:
           pluginTemplate:
             id: container3
@@ -2864,7 +2804,6 @@ appTemplate:
                 width: 3
                 tabNum: 8
             createdAt: 2020-09-16T05:37:23.899Z
-            updatedAt: 2020-09-16T07:04:12.881Z
       - statistic28:
           pluginTemplate:
             id: statistic28
@@ -2885,7 +2824,6 @@ appTemplate:
                 height: 2
                 width: 6
             createdAt: 2020-09-16T05:39:03.151Z
-            updatedAt: 2020-09-23T15:21:48.473Z
       - statistic30:
           pluginTemplate:
             id: statistic30
@@ -2906,7 +2844,6 @@ appTemplate:
                 height: 2
                 width: 11
             createdAt: 2020-09-16T05:40:31.633Z
-            updatedAt: 2020-09-16T06:45:45.599Z
       - statistic31:
           pluginTemplate:
             id: statistic31
@@ -2926,7 +2863,6 @@ appTemplate:
                 height: 2
                 width: 11
             createdAt: 2020-09-16T05:40:50.024Z
-            updatedAt: 2020-09-16T07:02:21.786Z
       - statistic33:
           pluginTemplate:
             id: statistic33
@@ -2946,7 +2882,6 @@ appTemplate:
                 height: 2
                 width: 11
             createdAt: 2020-09-16T05:41:54.984Z
-            updatedAt: 2020-09-16T06:46:00.084Z
       - container4:
           pluginTemplate:
             id: container4
@@ -2970,7 +2905,6 @@ appTemplate:
                 width: 5
                 tabNum: 8
             createdAt: 2020-09-16T07:00:34.322Z
-            updatedAt: 2020-09-23T15:24:09.124Z
       - statistic34:
           pluginTemplate:
             id: statistic34
@@ -2990,7 +2924,6 @@ appTemplate:
                 height: 2
                 width: 6
             createdAt: 2020-09-16T07:00:34.620Z
-            updatedAt: 2020-09-16T08:20:44.208Z
       - statistic37:
           pluginTemplate:
             id: statistic37
@@ -3011,7 +2944,6 @@ appTemplate:
                 height: 2
                 width: 6
             createdAt: 2020-09-16T07:00:34.930Z
-            updatedAt: 2020-09-16T07:33:16.226Z
       - plotlychart11:
           pluginTemplate:
             id: plotlychart11
@@ -4271,7 +4203,6 @@ appTemplate:
                 width: 12
                 tabNum: 8
             createdAt: 2020-09-16T07:11:43.189Z
-            updatedAt: 2020-09-21T13:05:11.590Z
       - statistic38:
           pluginTemplate:
             id: statistic38
@@ -4293,7 +4224,6 @@ appTemplate:
                 height: 2
                 width: 6
             createdAt: 2020-09-16T07:32:14.532Z
-            updatedAt: 2020-09-16T07:32:24.038Z
       - button7:
           pluginTemplate:
             id: button7
@@ -4326,7 +4256,6 @@ appTemplate:
                 width: 1
                 tabNum: 8
             createdAt: 2020-09-16T09:46:20.011Z
-            updatedAt: 2020-09-23T15:29:50.754Z
       - button8:
           pluginTemplate:
             id: button8
@@ -4359,7 +4288,6 @@ appTemplate:
                 width: 1
                 tabNum: 8
             createdAt: 2020-09-16T09:48:31.597Z
-            updatedAt: 2020-09-16T11:11:03.465Z
       - button9:
           pluginTemplate:
             id: button9
@@ -4392,7 +4320,6 @@ appTemplate:
                 width: 1
                 tabNum: 8
             createdAt: 2020-09-16T09:49:53.153Z
-            updatedAt: 2020-09-17T11:00:56.604Z
       - plotlychart14:
           pluginTemplate:
             id: plotlychart14
@@ -4547,7 +4474,6 @@ appTemplate:
                 width: 5
                 tabNum: 8
             createdAt: 2020-09-16T10:38:14.142Z
-            updatedAt: 2020-09-17T07:36:54.451Z
       - statistic39:
           pluginTemplate:
             id: statistic39
@@ -4570,7 +4496,6 @@ appTemplate:
                 width: 2
                 tabNum: 8
             createdAt: 2020-09-16T11:07:57.658Z
-            updatedAt: 2020-09-16T16:10:44.637Z
       - plotlychart12:
           pluginTemplate:
             id: plotlychart12
@@ -4783,7 +4708,6 @@ appTemplate:
                 width: 6
                 tabNum: 8
             createdAt: 2020-09-16T12:00:25.671Z
-            updatedAt: 2020-11-24T17:49:04.938Z
       - plotlychart15:
           pluginTemplate:
             id: plotlychart15
@@ -4955,7 +4879,6 @@ appTemplate:
                 width: 6
                 tabNum: 9
             createdAt: 2020-09-16T14:28:24.051Z
-            updatedAt: 2020-11-24T17:49:05.087Z
       - plotlychart13:
           pluginTemplate:
             id: plotlychart13
@@ -5110,7 +5033,6 @@ appTemplate:
                 width: 6
                 tabNum: 9
             createdAt: 2020-09-16T14:35:28.290Z
-            updatedAt: 2020-09-17T07:36:11.913Z
       - plotlychart16:
           pluginTemplate:
             id: plotlychart16
@@ -5367,7 +5289,6 @@ appTemplate:
                 width: 5
                 tabNum: 9
             createdAt: 2020-09-16T14:35:37.548Z
-            updatedAt: 2020-09-21T16:41:13.983Z
       - text2:
           pluginTemplate:
             id: text2
@@ -5404,7 +5325,6 @@ appTemplate:
                 width: 2
                 tabNum: 5
             createdAt: 2020-09-16T14:46:59.620Z
-            updatedAt: 2020-09-23T13:18:02.265Z
       - statistic41:
           pluginTemplate:
             id: statistic41
@@ -5427,7 +5347,6 @@ appTemplate:
                 width: 2
                 tabNum: 5
             createdAt: 2020-09-16T14:47:13.312Z
-            updatedAt: 2020-09-22T08:38:46.401Z
       - toggle2:
           pluginTemplate:
             id: toggle2
@@ -5453,7 +5372,6 @@ appTemplate:
                 width: 1
                 tabNum: 5
             createdAt: 2020-09-16T14:51:15.997Z
-            updatedAt: 2020-09-17T08:50:35.030Z
       - text3:
           pluginTemplate:
             id: text3
@@ -5488,7 +5406,6 @@ appTemplate:
                 width: 2
                 tabNum: 5
             createdAt: 2020-09-16T14:58:20.698Z
-            updatedAt: 2020-09-23T13:21:12.718Z
       - text4:
           pluginTemplate:
             id: text4
@@ -5524,7 +5441,6 @@ appTemplate:
                 width: 2
                 tabNum: 5
             createdAt: 2020-09-16T15:03:55.420Z
-            updatedAt: 2020-09-23T13:20:14.084Z
       - text5:
           pluginTemplate:
             id: text5
@@ -5558,7 +5474,6 @@ appTemplate:
                 width: 2
                 tabNum: 5
             createdAt: 2020-09-16T15:09:26.009Z
-            updatedAt: 2020-09-23T13:18:36.283Z
       - text6:
           pluginTemplate:
             id: text6
@@ -5594,7 +5509,6 @@ appTemplate:
                 width: 2
                 tabNum: 5
             createdAt: 2020-09-16T15:11:30.579Z
-            updatedAt: 2020-09-23T13:21:21.546Z
       - toggle3:
           pluginTemplate:
             id: toggle3
@@ -5620,7 +5534,6 @@ appTemplate:
                 width: 1
                 tabNum: 6
             createdAt: 2020-09-16T15:14:23.680Z
-            updatedAt: 2020-09-17T17:36:00.679Z
       - text11:
           pluginTemplate:
             id: text11
@@ -5656,7 +5569,6 @@ appTemplate:
                 width: 1
                 tabNum: 8
             createdAt: 2020-09-16T16:09:16.996Z
-            updatedAt: 2020-09-23T15:29:39.711Z
       - text13:
           pluginTemplate:
             id: text13
@@ -5693,7 +5605,6 @@ appTemplate:
                 width: 2
                 tabNum: 8
             createdAt: 2020-09-17T05:21:08.439Z
-            updatedAt: 2020-09-23T15:29:43.305Z
       - statistic43:
           pluginTemplate:
             id: statistic43
@@ -5716,7 +5627,6 @@ appTemplate:
                 width: 2
                 tabNum: 8
             createdAt: 2020-09-17T05:21:47.260Z
-            updatedAt: 2020-09-17T05:22:13.193Z
       - text14:
           pluginTemplate:
             id: text14
@@ -5752,7 +5662,6 @@ appTemplate:
                 width: 2
                 tabNum: 8
             createdAt: 2020-09-17T05:22:19.158Z
-            updatedAt: 2020-09-23T15:29:45.659Z
       - statistic44:
           pluginTemplate:
             id: statistic44
@@ -5775,7 +5684,6 @@ appTemplate:
                 width: 2
                 tabNum: 8
             createdAt: 2020-09-17T05:24:29.044Z
-            updatedAt: 2020-09-17T05:24:38.413Z
       - plotlychart17:
           pluginTemplate:
             id: plotlychart17
@@ -6003,7 +5911,6 @@ appTemplate:
                 width: 6
                 tabNum: 8
             createdAt: 2020-09-17T05:34:05.371Z
-            updatedAt: 2020-11-24T17:49:05.254Z
       - text21:
           pluginTemplate:
             id: text21
@@ -6035,7 +5942,6 @@ appTemplate:
                 width: 3
                 tabNum: 9
             createdAt: 2020-09-17T06:01:41.550Z
-            updatedAt: 2020-09-22T07:13:45.409Z
       - text22:
           pluginTemplate:
             id: text22
@@ -6062,7 +5968,6 @@ appTemplate:
                 width: 1
                 tabNum: 9
             createdAt: 2020-09-17T06:02:16.952Z
-            updatedAt: 2020-09-23T02:35:43.577Z
       - text23:
           pluginTemplate:
             id: text23
@@ -6091,7 +5996,6 @@ appTemplate:
                 width: 1
                 tabNum: 9
             createdAt: 2020-09-17T06:03:24.150Z
-            updatedAt: 2020-09-17T06:09:11.485Z
       - statistic47:
           pluginTemplate:
             id: statistic47
@@ -6114,7 +6018,6 @@ appTemplate:
                 width: 2
                 tabNum: 9
             createdAt: 2020-09-17T06:04:08.932Z
-            updatedAt: 2020-09-21T16:40:31.991Z
       - text24:
           pluginTemplate:
             id: text24
@@ -6142,7 +6045,6 @@ appTemplate:
                 width: 1
                 tabNum: 9
             createdAt: 2020-09-17T06:05:11.997Z
-            updatedAt: 2020-09-17T06:09:20.042Z
       - statistic48:
           pluginTemplate:
             id: statistic48
@@ -6165,7 +6067,6 @@ appTemplate:
                 width: 2
                 tabNum: 9
             createdAt: 2020-09-17T06:05:44.064Z
-            updatedAt: 2020-09-21T16:40:49.066Z
       - text27:
           pluginTemplate:
             id: text27
@@ -6200,7 +6101,6 @@ appTemplate:
                 width: 5
                 tabNum: 8
             createdAt: 2020-09-17T06:25:23.153Z
-            updatedAt: 2020-09-23T15:30:40.653Z
       - text30:
           pluginTemplate:
             id: text30
@@ -6236,7 +6136,6 @@ appTemplate:
                 width: 1
                 tabNum: 6
             createdAt: 2020-09-17T06:29:17.536Z
-            updatedAt: 2020-09-23T15:12:24.675Z
       - text32:
           pluginTemplate:
             id: text32
@@ -6271,7 +6170,6 @@ appTemplate:
                 width: 2
                 tabNum: 6
             createdAt: 2020-09-17T06:31:14.849Z
-            updatedAt: 2020-09-22T14:49:53.906Z
       - plotlychart18:
           pluginTemplate:
             id: plotlychart18
@@ -6421,7 +6319,6 @@ appTemplate:
                 width: 5
                 tabNum: 11
             createdAt: 2020-09-17T06:39:51.303Z
-            updatedAt: 2020-09-17T10:22:07.923Z
       - text33:
           pluginTemplate:
             id: text33
@@ -6448,7 +6345,6 @@ appTemplate:
                 width: 3
                 tabNum: 11
             createdAt: 2020-09-17T06:43:48.336Z
-            updatedAt: 2020-09-21T08:35:02.621Z
       - statistic50:
           pluginTemplate:
             id: statistic50
@@ -6470,7 +6366,6 @@ appTemplate:
                 width: 2
                 tabNum: 11
             createdAt: 2020-09-17T06:45:36.934Z
-            updatedAt: 2020-09-21T08:39:44.184Z
       - text36:
           pluginTemplate:
             id: text36
@@ -6499,7 +6394,6 @@ appTemplate:
                 width: 2
                 tabNum: 11
             createdAt: 2020-09-17T06:50:08.290Z
-            updatedAt: 2020-09-21T08:34:37.750Z
       - statistic52:
           pluginTemplate:
             id: statistic52
@@ -6522,7 +6416,6 @@ appTemplate:
                 width: 2
                 tabNum: 11
             createdAt: 2020-09-17T06:50:41.759Z
-            updatedAt: 2020-09-21T08:39:34.979Z
       - statistic46:
           pluginTemplate:
             id: statistic46
@@ -6544,7 +6437,6 @@ appTemplate:
                 width: 2
                 tabNum: 9
             createdAt: 2020-09-17T06:52:31.617Z
-            updatedAt: 2020-09-21T16:40:26.914Z
       - text41:
           pluginTemplate:
             id: text41
@@ -6583,7 +6475,6 @@ appTemplate:
                 width: 2
                 tabNum: 5
             createdAt: 2020-09-17T08:45:07.776Z
-            updatedAt: 2020-09-23T13:20:05.052Z
       - text42:
           pluginTemplate:
             id: text42
@@ -6618,7 +6509,6 @@ appTemplate:
                 width: 2
                 tabNum: 5
             createdAt: 2020-09-17T08:50:46.985Z
-            updatedAt: 2020-09-23T13:20:36.457Z
       - text43:
           pluginTemplate:
             id: text43
@@ -6654,7 +6544,6 @@ appTemplate:
                 width: 2
                 tabNum: 6
             createdAt: 2020-09-17T08:52:31.958Z
-            updatedAt: 2020-09-22T16:29:29.053Z
       - table5:
           pluginTemplate:
             id: table5
@@ -6834,7 +6723,6 @@ appTemplate:
                 width: 7
                 tabNum: 11
             createdAt: 2020-09-17T10:10:57.098Z
-            updatedAt: 2020-09-17T13:55:25.115Z
       - plotlychart19:
           pluginTemplate:
             id: plotlychart19
@@ -6914,7 +6802,6 @@ appTemplate:
                 width: 9
                 tabNum: 5
             createdAt: 2020-09-17T13:17:05.914Z
-            updatedAt: 2020-09-22T18:12:34.261Z
       - plotlychart20:
           pluginTemplate:
             id: plotlychart20
@@ -7027,7 +6914,6 @@ appTemplate:
                 width: 8
                 tabNum: 6
             createdAt: 2020-09-17T13:28:45.130Z
-            updatedAt: 2020-09-17T13:28:45.130Z
       - plotlychart21:
           pluginTemplate:
             id: plotlychart21
@@ -7206,7 +7092,6 @@ appTemplate:
                 width: 8
                 tabNum: 6
             createdAt: 2020-09-17T13:29:43.840Z
-            updatedAt: 2020-09-17T13:29:43.840Z
       - text47:
           pluginTemplate:
             id: text47
@@ -7240,7 +7125,6 @@ appTemplate:
                 width: 3
                 tabNum: 6
             createdAt: 2020-09-17T13:33:40.620Z
-            updatedAt: 2020-09-23T15:14:41.137Z
       - text48:
           pluginTemplate:
             id: text48
@@ -7277,7 +7161,6 @@ appTemplate:
                 width: 2
                 tabNum: 6
             createdAt: 2020-09-17T13:34:45.100Z
-            updatedAt: 2020-09-23T15:15:24.463Z
       - plotlychart22:
           pluginTemplate:
             id: plotlychart22
@@ -7390,7 +7273,6 @@ appTemplate:
                 width: 8
                 tabNum: 6
             createdAt: 2020-09-17T13:41:55.375Z
-            updatedAt: 2020-09-23T03:57:53.121Z
       - text52:
           pluginTemplate:
             id: text52
@@ -7417,7 +7299,6 @@ appTemplate:
                 width: 3
                 tabNum: 11
             createdAt: 2020-09-17T13:54:40.533Z
-            updatedAt: 2020-09-21T09:01:21.981Z
       - table6:
           pluginTemplate:
             id: table6
@@ -7595,7 +7476,6 @@ appTemplate:
                 width: 4
                 tabNum: 11
             createdAt: 2020-09-17T13:55:44.559Z
-            updatedAt: 2020-09-17T13:56:54.644Z
       - text53:
           pluginTemplate:
             id: text53
@@ -7623,7 +7503,6 @@ appTemplate:
                 width: 3
                 tabNum: 11
             createdAt: 2020-09-17T13:55:57.718Z
-            updatedAt: 2020-09-17T13:55:57.718Z
       - table7:
           pluginTemplate:
             id: table7
@@ -7790,7 +7669,6 @@ appTemplate:
                 width: 4
                 tabNum: 11
             createdAt: 2020-09-17T13:58:01.690Z
-            updatedAt: 2020-09-17T13:58:01.690Z
       - text54:
           pluginTemplate:
             id: text54
@@ -7819,7 +7697,6 @@ appTemplate:
                 width: 3
                 tabNum: 11
             createdAt: 2020-09-17T13:58:41.020Z
-            updatedAt: 2020-09-21T08:30:15.308Z
       - plotlychart23:
           pluginTemplate:
             id: plotlychart23
@@ -8017,7 +7894,6 @@ appTemplate:
                 width: 5
                 tabNum: 11
             createdAt: 2020-09-21T07:25:03.924Z
-            updatedAt: 2020-09-21T08:36:42.745Z
       - text39:
           pluginTemplate:
             id: text39
@@ -8052,7 +7928,6 @@ appTemplate:
                 width: 3
                 tabNum: 5
             createdAt: 2020-09-21T08:33:25.987Z
-            updatedAt: 2020-09-23T13:21:24.081Z
       - plotlychart24:
           pluginTemplate:
             id: plotlychart24
@@ -8141,7 +8016,6 @@ appTemplate:
                 width: 12
                 tabNum: 10
             createdAt: 2020-09-21T09:13:48.624Z
-            updatedAt: 2020-11-24T17:49:05.493Z
       - text38:
           pluginTemplate:
             id: text38
@@ -8168,7 +8042,6 @@ appTemplate:
                 width: 3
                 tabNum: 10
             createdAt: 2020-09-21T09:14:04.144Z
-            updatedAt: 2020-09-21T09:14:47.249Z
       - text44:
           pluginTemplate:
             id: text44
@@ -8196,7 +8069,6 @@ appTemplate:
                 width: 3
                 tabNum: 10
             createdAt: 2020-09-21T09:15:43.148Z
-            updatedAt: 2020-09-21T15:57:54.230Z
       - text45:
           pluginTemplate:
             id: text45
@@ -8222,7 +8094,6 @@ appTemplate:
                 height: 1
                 width: 3
             createdAt: 2020-09-21T10:51:47.748Z
-            updatedAt: 2020-09-21T12:08:49.736Z
       - table9:
           pluginTemplate:
             id: table9
@@ -8371,7 +8242,6 @@ appTemplate:
                 height: 3
                 width: 12
             createdAt: 2020-09-21T11:09:18.802Z
-            updatedAt: 2020-09-21T12:00:05.829Z
       - container5:
           pluginTemplate:
             id: container5
@@ -8394,7 +8264,6 @@ appTemplate:
                 width: 12
                 tabNum: 7
             createdAt: 2020-09-21T11:44:36.726Z
-            updatedAt: 2020-09-22T03:58:37.931Z
       - text55:
           pluginTemplate:
             id: text55
@@ -8421,7 +8290,6 @@ appTemplate:
                 height: 1
                 width: 5
             createdAt: 2020-09-21T11:49:17.074Z
-            updatedAt: 2020-09-21T16:02:09.315Z
       - text56:
           pluginTemplate:
             id: text56
@@ -8448,7 +8316,6 @@ appTemplate:
                 height: 3
                 width: 8
             createdAt: 2020-09-21T11:49:31.748Z
-            updatedAt: 2020-09-21T16:01:59.057Z
       - progress1:
           pluginTemplate:
             id: progress1
@@ -8472,7 +8339,6 @@ appTemplate:
                 height: 3
                 width: 3
             createdAt: 2020-09-21T11:51:53.265Z
-            updatedAt: 2020-09-21T12:04:35.127Z
       - text46:
           pluginTemplate:
             id: text46
@@ -8508,7 +8374,6 @@ appTemplate:
                 width: 3
                 tabNum: 7
             createdAt: 2020-09-21T12:00:29.123Z
-            updatedAt: 2020-09-22T17:30:45.198Z
       - table10:
           pluginTemplate:
             id: table10
@@ -8661,7 +8526,6 @@ appTemplate:
                 width: 12
                 tabNum: 7
             createdAt: 2020-09-21T12:00:29.362Z
-            updatedAt: 2020-09-22T03:54:47.171Z
       - text57:
           pluginTemplate:
             id: text57
@@ -8698,7 +8562,6 @@ appTemplate:
                 width: 5
                 tabNum: 7
             createdAt: 2020-09-21T12:00:29.710Z
-            updatedAt: 2020-09-22T17:02:50.458Z
       - text58:
           pluginTemplate:
             id: text58
@@ -8733,7 +8596,6 @@ appTemplate:
                 width: 2
                 tabNum: 7
             createdAt: 2020-09-21T12:00:30.004Z
-            updatedAt: 2020-09-22T17:33:42.006Z
       - text59:
           pluginTemplate:
             id: text59
@@ -8761,7 +8623,6 @@ appTemplate:
                 height: 1
                 width: 3
             createdAt: 2020-09-21T12:04:48.148Z
-            updatedAt: 2020-09-21T16:02:31.257Z
       - text61:
           pluginTemplate:
             id: text61
@@ -8795,7 +8656,6 @@ appTemplate:
                 width: 2
                 tabNum: 7
             createdAt: 2020-09-21T12:08:04.003Z
-            updatedAt: 2020-09-22T17:30:53.034Z
       - table11:
           pluginTemplate:
             id: table11
@@ -8966,7 +8826,6 @@ appTemplate:
                 width: 12
                 tabNum: 7
             createdAt: 2020-09-21T12:08:04.304Z
-            updatedAt: 2020-09-21T12:11:56.640Z
       - text62:
           pluginTemplate:
             id: text62
@@ -9003,7 +8862,6 @@ appTemplate:
                 width: 5
                 tabNum: 7
             createdAt: 2020-09-21T12:08:04.693Z
-            updatedAt: 2020-09-22T17:03:22.586Z
       - text63:
           pluginTemplate:
             id: text63
@@ -9037,7 +8895,6 @@ appTemplate:
                 width: 2
                 tabNum: 7
             createdAt: 2020-09-21T12:08:05.002Z
-            updatedAt: 2020-09-22T17:33:54.698Z
       - table8:
           pluginTemplate:
             id: table8
@@ -9235,7 +9092,6 @@ appTemplate:
                 width: 7
                 tabNum: 10
             createdAt: 2020-09-21T16:00:32.066Z
-            updatedAt: 2020-09-21T16:23:09.265Z
       - text65:
           pluginTemplate:
             id: text65
@@ -9270,7 +9126,6 @@ appTemplate:
                 width: 2
                 tabNum: 7
             createdAt: 2020-09-21T16:02:00.835Z
-            updatedAt: 2020-09-23T03:58:32.829Z
       - text66:
           pluginTemplate:
             id: text66
@@ -9307,7 +9162,6 @@ appTemplate:
                 width: 5
                 tabNum: 7
             createdAt: 2020-09-21T16:02:11.109Z
-            updatedAt: 2020-09-22T17:33:06.276Z
       - text68:
           pluginTemplate:
             id: text68
@@ -9341,7 +9195,6 @@ appTemplate:
                 width: 3
                 tabNum: 7
             createdAt: 2020-09-21T16:02:49.023Z
-            updatedAt: 2020-09-22T17:37:43.481Z
       - table12:
           pluginTemplate:
             id: table12
@@ -9494,7 +9347,6 @@ appTemplate:
                 width: 12
                 tabNum: 7
             createdAt: 2020-09-21T16:04:03.370Z
-            updatedAt: 2020-09-22T03:54:27.835Z
       - text69:
           pluginTemplate:
             id: text69
@@ -9521,7 +9373,6 @@ appTemplate:
                 width: 1
                 tabNum: 10
             createdAt: 2020-09-21T16:23:56.030Z
-            updatedAt: 2020-09-21T16:34:55.152Z
       - text70:
           pluginTemplate:
             id: text70
@@ -9548,7 +9399,6 @@ appTemplate:
                 width: 1
                 tabNum: 10
             createdAt: 2020-09-21T16:25:10.502Z
-            updatedAt: 2020-09-21T16:35:08.786Z
       - table13:
           pluginTemplate:
             id: table13
@@ -9742,7 +9592,6 @@ appTemplate:
                 width: 6
                 tabNum: 10
             createdAt: 2020-09-21T16:26:08.406Z
-            updatedAt: 2020-09-21T16:32:37.583Z
       - text71:
           pluginTemplate:
             id: text71
@@ -9770,7 +9619,6 @@ appTemplate:
                 width: 1
                 tabNum: 10
             createdAt: 2020-09-21T16:32:48.762Z
-            updatedAt: 2020-09-21T16:35:13.270Z
       - table14:
           pluginTemplate:
             id: table14
@@ -9957,7 +9805,6 @@ appTemplate:
                 width: 6
                 tabNum: 10
             createdAt: 2020-09-21T16:33:03.001Z
-            updatedAt: 2020-09-21T16:38:04.282Z
       - text73:
           pluginTemplate:
             id: text73
@@ -9993,7 +9840,6 @@ appTemplate:
                 width: 3
                 tabNum: 5
             createdAt: 2020-09-22T09:17:57.725Z
-            updatedAt: 2020-09-23T13:21:18.546Z
       - text74:
           pluginTemplate:
             id: text74
@@ -10029,7 +9875,6 @@ appTemplate:
                 width: 2
                 tabNum: 6
             createdAt: 2020-09-22T14:10:55.398Z
-            updatedAt: 2020-09-23T15:16:35.534Z
       - text60:
           pluginTemplate:
             id: text60
@@ -10067,7 +9912,6 @@ appTemplate:
                 width: 4
                 tabNum: 6
             createdAt: 2020-09-22T16:46:46.200Z
-            updatedAt: 2020-09-23T15:17:31.866Z
       - text64:
           pluginTemplate:
             id: text64
@@ -10106,7 +9950,6 @@ appTemplate:
                 width: 8
                 tabNum: 7
             createdAt: 2020-09-22T17:06:13.515Z
-            updatedAt: 2020-09-23T03:59:02.736Z
       - text67:
           pluginTemplate:
             id: text67
@@ -10145,7 +9988,6 @@ appTemplate:
                 width: 8
                 tabNum: 7
             createdAt: 2020-09-22T17:13:00.949Z
-            updatedAt: 2020-09-22T17:33:46.643Z
       - text75:
           pluginTemplate:
             id: text75
@@ -10182,7 +10024,6 @@ appTemplate:
                 width: 8
                 tabNum: 7
             createdAt: 2020-09-22T17:16:23.995Z
-            updatedAt: 2020-09-22T17:33:58.229Z
       - plotlychart25:
           pluginTemplate:
             id: plotlychart25
@@ -10409,7 +10250,6 @@ appTemplate:
                 width: 7
                 tabNum: 9
             createdAt: 2020-09-23T02:36:57.923Z
-            updatedAt: 2020-11-24T17:49:05.663Z
       - text76:
           pluginTemplate:
             id: text76
@@ -10445,7 +10285,6 @@ appTemplate:
                 width: 2
                 tabNum: 9
             createdAt: 2020-09-23T03:58:38.375Z
-            updatedAt: 2020-09-23T04:00:04.360Z
       - text77:
           pluginTemplate:
             id: text77
@@ -10483,7 +10322,6 @@ appTemplate:
                 width: 4
                 tabNum: 9
             createdAt: 2020-09-23T03:59:10.060Z
-            updatedAt: 2020-09-23T04:05:32.931Z
       - text72:
           pluginTemplate:
             id: text72
@@ -10518,7 +10356,6 @@ appTemplate:
                 width: 3
                 tabNum: 5
             createdAt: 2020-09-23T13:16:09.311Z
-            updatedAt: 2020-09-23T13:21:32.202Z
       - text78:
           pluginTemplate:
             id: text78
@@ -10557,7 +10394,6 @@ appTemplate:
                 width: 2
                 tabNum: 5
             createdAt: 2020-09-23T13:17:13.581Z
-            updatedAt: 2020-09-23T13:19:31.950Z
       - text79:
           pluginTemplate:
             id: text79
@@ -10594,7 +10430,6 @@ appTemplate:
                 width: 2
                 tabNum: 5
             createdAt: 2020-09-23T13:18:06.906Z
-            updatedAt: 2020-09-23T13:19:04.632Z
       - text80:
           pluginTemplate:
             id: text80
@@ -10631,7 +10466,6 @@ appTemplate:
                 width: 2
                 tabNum: 5
             createdAt: 2020-09-23T13:19:06.541Z
-            updatedAt: 2020-09-23T13:19:17.645Z
       - statistic40:
           pluginTemplate:
             id: statistic40
@@ -10653,7 +10487,6 @@ appTemplate:
                 width: 2
                 tabNum: 5
             createdAt: 2020-09-23T13:19:22.664Z
-            updatedAt: 2020-09-23T13:19:22.664Z
       - text81:
           pluginTemplate:
             id: text81
@@ -10688,7 +10521,6 @@ appTemplate:
                 width: 1
                 tabNum: 6
             createdAt: 2020-09-23T13:25:25.514Z
-            updatedAt: 2020-09-23T15:16:45.675Z
       - statistic42:
           pluginTemplate:
             id: statistic42
@@ -10710,7 +10542,6 @@ appTemplate:
                 width: 1
                 tabNum: 6
             createdAt: 2020-09-23T13:25:54.958Z
-            updatedAt: 2020-09-23T13:37:55.254Z
       - text82:
           pluginTemplate:
             id: text82
@@ -10745,7 +10576,6 @@ appTemplate:
                 width: 3
                 tabNum: 6
             createdAt: 2020-09-23T13:27:18.467Z
-            updatedAt: 2020-09-23T15:16:39.953Z
       - text83:
           pluginTemplate:
             id: text83
@@ -10780,7 +10610,6 @@ appTemplate:
                 width: 3
                 tabNum: 6
             createdAt: 2020-09-23T13:34:29.337Z
-            updatedAt: 2020-09-23T15:14:08.953Z
       - text84:
           pluginTemplate:
             id: text84
@@ -10817,7 +10646,6 @@ appTemplate:
                 width: 2
                 tabNum: 6
             createdAt: 2020-09-23T13:34:55.779Z
-            updatedAt: 2020-09-23T15:16:50.140Z
       - text85:
           pluginTemplate:
             id: text85
@@ -10853,7 +10681,6 @@ appTemplate:
                 width: 1
                 tabNum: 6
             createdAt: 2020-09-23T15:09:23.738Z
-            updatedAt: 2020-09-23T15:14:32.728Z
       - text86:
           pluginTemplate:
             id: text86
@@ -10888,7 +10715,6 @@ appTemplate:
                 width: 2
                 tabNum: 6
             createdAt: 2020-09-23T15:09:57.724Z
-            updatedAt: 2020-09-23T15:12:54.907Z
       - statistic45:
           pluginTemplate:
             id: statistic45
@@ -10910,7 +10736,6 @@ appTemplate:
                 width: 2
                 tabNum: 6
             createdAt: 2020-09-23T15:12:24.241Z
-            updatedAt: 2020-09-23T15:12:37.920Z
       - statistic49:
           pluginTemplate:
             id: statistic49
@@ -10933,7 +10758,6 @@ appTemplate:
                 width: 2
                 tabNum: 6
             createdAt: 2020-09-23T15:12:59.652Z
-            updatedAt: 2020-09-23T15:13:06.206Z
       - text87:
           pluginTemplate:
             id: text87
@@ -10970,7 +10794,6 @@ appTemplate:
                 width: 2
                 tabNum: 6
             createdAt: 2020-09-23T15:15:26.094Z
-            updatedAt: 2020-09-23T15:16:42.169Z
       - container6:
           pluginTemplate:
             id: container6
@@ -10993,7 +10816,6 @@ appTemplate:
                 width: 6
                 tabNum: 8
             createdAt: 2020-09-23T15:18:15.209Z
-            updatedAt: 2020-09-23T15:28:21.603Z
       - statistic51:
           pluginTemplate:
             id: statistic51
@@ -11015,7 +10837,6 @@ appTemplate:
                 height: 1
                 width: 5
             createdAt: 2020-09-23T15:18:15.603Z
-            updatedAt: 2020-09-23T15:21:55.519Z
       - statistic53:
           pluginTemplate:
             id: statistic53
@@ -11036,7 +10857,6 @@ appTemplate:
                 height: 1
                 width: 6
             createdAt: 2020-09-23T15:18:15.940Z
-            updatedAt: 2020-09-23T15:18:15.940Z
       - statistic54:
           pluginTemplate:
             id: statistic54
@@ -11058,7 +10878,6 @@ appTemplate:
                 height: 1
                 width: 5
             createdAt: 2020-09-23T15:18:16.354Z
-            updatedAt: 2020-09-23T15:22:24.368Z
       - text88:
           pluginTemplate:
             id: text88
@@ -11093,7 +10912,6 @@ appTemplate:
                 height: 1
                 width: 5
             createdAt: 2020-09-23T15:20:42.160Z
-            updatedAt: 2020-09-23T15:26:20.689Z
       - text89:
           pluginTemplate:
             id: text89
@@ -11127,7 +10945,6 @@ appTemplate:
                 height: 1
                 width: 5
             createdAt: 2020-09-23T15:22:28.983Z
-            updatedAt: 2020-09-23T15:26:07.026Z
       - text91:
           pluginTemplate:
             id: text91
@@ -11161,7 +10978,6 @@ appTemplate:
                 height: 1
                 width: 5
             createdAt: 2020-09-23T15:24:55.301Z
-            updatedAt: 2020-09-23T15:27:50.500Z
       - statistic55:
           pluginTemplate:
             id: statistic55
@@ -11182,7 +10998,6 @@ appTemplate:
                 height: 1
                 width: 6
             createdAt: 2020-09-23T15:25:09.109Z
-            updatedAt: 2020-09-23T15:25:09.109Z
       - statistic56:
           pluginTemplate:
             id: statistic56
@@ -11204,7 +11019,6 @@ appTemplate:
                 height: 1
                 width: 5
             createdAt: 2020-09-23T15:25:49.645Z
-            updatedAt: 2020-09-23T15:25:49.645Z
       - text92:
           pluginTemplate:
             id: text92
@@ -11238,7 +11052,6 @@ appTemplate:
                 height: 1
                 width: 5
             createdAt: 2020-09-23T15:26:22.109Z
-            updatedAt: 2020-09-23T16:35:33.281Z
       - text93:
           pluginTemplate:
             id: text93
@@ -11273,7 +11086,6 @@ appTemplate:
                 height: 1
                 width: 5
             createdAt: 2020-09-23T15:26:26.753Z
-            updatedAt: 2020-09-23T15:26:47.735Z
       - text94:
           pluginTemplate:
             id: text94
@@ -11306,7 +11118,6 @@ appTemplate:
                 height: 1
                 width: 5
             createdAt: 2020-09-23T15:26:53.958Z
-            updatedAt: 2020-09-23T15:26:53.958Z
       - text95:
           pluginTemplate:
             id: text95
@@ -11340,7 +11151,6 @@ appTemplate:
                 height: 1
                 width: 5
             createdAt: 2020-09-23T15:26:55.494Z
-            updatedAt: 2020-09-23T15:28:18.353Z
       - statistic57:
           pluginTemplate:
             id: statistic57
@@ -11361,7 +11171,6 @@ appTemplate:
                 height: 1
                 width: 6
             createdAt: 2020-09-23T15:27:15.675Z
-            updatedAt: 2020-09-23T15:27:15.675Z
       - text90:
           pluginTemplate:
             id: text90
@@ -11394,7 +11203,6 @@ appTemplate:
                 height: 1
                 width: 5
             createdAt: 2020-09-23T15:27:53.035Z
-            updatedAt: 2020-09-23T15:29:27.197Z
       - container7:
           pluginTemplate:
             id: container7
@@ -11417,7 +11225,6 @@ appTemplate:
                 width: 6
                 tabNum: 8
             createdAt: 2020-09-23T15:28:23.238Z
-            updatedAt: 2020-09-23T15:28:40.578Z
       - statistic58:
           pluginTemplate:
             id: statistic58
@@ -11439,7 +11246,6 @@ appTemplate:
                 height: 1
                 width: 5
             createdAt: 2020-09-23T15:28:23.696Z
-            updatedAt: 2020-09-23T15:28:23.696Z
       - statistic59:
           pluginTemplate:
             id: statistic59
@@ -11460,7 +11266,6 @@ appTemplate:
                 height: 1
                 width: 6
             createdAt: 2020-09-23T15:28:24.068Z
-            updatedAt: 2020-09-23T15:28:24.068Z
       - statistic60:
           pluginTemplate:
             id: statistic60
@@ -11482,7 +11287,6 @@ appTemplate:
                 height: 1
                 width: 5
             createdAt: 2020-09-23T15:28:24.394Z
-            updatedAt: 2020-09-23T15:28:24.394Z
       - text96:
           pluginTemplate:
             id: text96
@@ -11517,7 +11321,6 @@ appTemplate:
                 height: 1
                 width: 5
             createdAt: 2020-09-23T15:28:24.722Z
-            updatedAt: 2020-09-23T15:28:24.722Z
       - text97:
           pluginTemplate:
             id: text97
@@ -11551,7 +11354,6 @@ appTemplate:
                 height: 1
                 width: 5
             createdAt: 2020-09-23T15:28:25.244Z
-            updatedAt: 2020-09-23T15:28:25.244Z
       - text98:
           pluginTemplate:
             id: text98
@@ -11585,7 +11387,6 @@ appTemplate:
                 height: 1
                 width: 5
             createdAt: 2020-09-23T15:28:25.595Z
-            updatedAt: 2020-09-23T15:28:25.595Z
       - statistic61:
           pluginTemplate:
             id: statistic61
@@ -11606,7 +11407,6 @@ appTemplate:
                 height: 1
                 width: 6
             createdAt: 2020-09-23T15:28:25.961Z
-            updatedAt: 2020-09-23T15:28:25.961Z
       - statistic62:
           pluginTemplate:
             id: statistic62
@@ -11628,7 +11428,6 @@ appTemplate:
                 height: 1
                 width: 5
             createdAt: 2020-09-23T15:28:26.356Z
-            updatedAt: 2020-09-23T15:28:26.356Z
       - text99:
           pluginTemplate:
             id: text99
@@ -11663,7 +11462,6 @@ appTemplate:
                 height: 1
                 width: 5
             createdAt: 2020-09-23T15:28:26.686Z
-            updatedAt: 2020-09-23T15:28:26.686Z
       - text100:
           pluginTemplate:
             id: text100
@@ -11697,7 +11495,6 @@ appTemplate:
                 height: 1
                 width: 5
             createdAt: 2020-09-23T15:28:27.076Z
-            updatedAt: 2020-09-23T15:28:27.076Z
       - statistic63:
           pluginTemplate:
             id: statistic63
@@ -11718,7 +11515,6 @@ appTemplate:
                 height: 1
                 width: 6
             createdAt: 2020-09-23T15:28:27.440Z
-            updatedAt: 2020-09-23T15:28:27.440Z
       - text101:
           pluginTemplate:
             id: text101
@@ -11751,7 +11547,6 @@ appTemplate:
                 height: 1
                 width: 5
             createdAt: 2020-09-23T15:28:27.858Z
-            updatedAt: 2020-09-23T15:28:28.563Z
       - query10:
           pluginTemplate:
             id: query10
@@ -11810,15 +11605,17 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-11-24T17:49:09.511Z
-            updatedAt: 2020-11-24T17:49:19.661Z
   urlFragmentDefinitions: []
   appThemeId: null
+  preloadedAppJavaScript: null
   pageLoadValueOverrides: []
   customDocumentTitle: ''
   isGlobalWidget: false
   isFetching: false
   instrumentationEnabled: false
   customDocumentTitleEnabled: false
+  preloadedAppJSLinks:
+    array: []
   version: 2.63.23
   responsiveLayoutDisabled: false
   createdAt: null
