@@ -1978,14 +1978,14 @@ appTemplate:
             subtype: ContainerWidget
             template:
               ordered:
-                - heightType: fixed
+                - title: ''
+                - disabled: ''
                 - spinWhenChildrenAreFetching: true
                 - showBorder: true
                 - showDropShadow: true
                 - backgroundColor: white
-                - title: ''
+                - heightType: fixed
                 - overflowType: visible
-                - disabled: ''
             style:
               ordered: []
             position2:
@@ -3382,14 +3382,14 @@ appTemplate:
             subtype: ContainerWidget
             template:
               ordered:
-                - heightType: fixed
+                - title: ''
+                - disabled: ''
                 - spinWhenChildrenAreFetching: false
                 - showBorder: true
                 - showDropShadow: true
                 - backgroundColor: white
-                - title: ''
+                - heightType: fixed
                 - overflowType: visible
-                - disabled: ''
             style:
               ordered: []
             position2:
@@ -4916,7 +4916,7 @@ appTemplate:
   customDocumentTitleEnabled: false
   preloadedAppJSLinks:
     array: []
-  version: 2.66.52
+  version: 2.66.65
   responsiveLayoutDisabled: false
   createdAt: null
   loadingIndicatorsDisabled: false
