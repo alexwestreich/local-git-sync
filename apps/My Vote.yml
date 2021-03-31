@@ -85,7 +85,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-07-29T17:15:00.081Z
-            updatedAt: 2020-09-12T04:31:05.753Z
       - getDocuments:
           pluginTemplate:
             id: getDocuments
@@ -167,7 +166,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2019-02-20T04:02:23.318Z
-            updatedAt: 2020-09-12T04:31:34.279Z
       - updateDocument:
           pluginTemplate:
             id: updateDocument
@@ -250,7 +248,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2019-02-20T06:29:09.218Z
-            updatedAt: 2020-09-12T04:32:16.865Z
       - deleteDocument:
           pluginTemplate:
             id: deleteDocument
@@ -333,7 +330,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2019-02-20T06:40:56.257Z
-            updatedAt: 2020-09-12T04:32:31.150Z
       - insertDocument:
           pluginTemplate:
             id: insertDocument
@@ -417,7 +413,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2019-02-20T06:06:12.222Z
-            updatedAt: 2020-09-14T21:44:06.297Z
       - filterText:
           pluginTemplate:
             id: filterText
@@ -444,7 +439,6 @@ appTemplate:
                 height: 1
                 width: 3
             createdAt: 2020-07-29T18:14:05.634Z
-            updatedAt: 2020-09-18T01:01:19.620Z
       - limit:
           pluginTemplate:
             id: limit
@@ -454,7 +448,6 @@ appTemplate:
               ordered:
                 - value: 'null'
             createdAt: 2020-07-29T18:31:05.031Z
-            updatedAt: 2020-07-29T18:31:21.396Z
       - updateLimitState:
           pluginTemplate:
             id: updateLimitState
@@ -513,7 +506,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-07-29T18:31:49.503Z
-            updatedAt: 2020-07-29T22:51:32.493Z
       - closeModal:
           pluginTemplate:
             id: closeModal
@@ -572,7 +564,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-08-05T23:00:00.328Z
-            updatedAt: 2020-08-05T23:00:21.506Z
       - filepicker2:
           pluginTemplate:
             id: filepicker2
@@ -599,7 +590,6 @@ appTemplate:
                 height: 1
                 width: 3
             createdAt: 2020-09-12T04:15:42.518Z
-            updatedAt: 2020-09-17T20:36:04.410Z
       - bulkLoadModal:
           pluginTemplate:
             id: bulkLoadModal
@@ -627,7 +617,6 @@ appTemplate:
                 height: 1
                 width: 2
             createdAt: 2020-09-12T17:07:39.942Z
-            updatedAt: 2020-09-18T20:31:48.878Z
       - candidateUploadTable:
           pluginTemplate:
             id: candidateUploadTable
@@ -832,7 +821,6 @@ appTemplate:
                 height: 8
                 width: 12
             createdAt: 2020-09-12T17:08:54.266Z
-            updatedAt: 2020-09-17T20:33:10.468Z
       - candidateAddForm:
           pluginTemplate:
             id: candidateAddForm
@@ -895,7 +883,6 @@ appTemplate:
                 height: 11
                 width: 3
             createdAt: 2020-09-12T17:39:23.443Z
-            updatedAt: 2020-09-15T22:40:38.099Z
       - transformer1:
           pluginTemplate:
             id: transformer1
@@ -1141,7 +1128,6 @@ appTemplate:
 
                 - value: ''
             createdAt: 2020-09-12T23:00:37.809Z
-            updatedAt: 2020-09-12T23:08:39.412Z
       - getCandidates:
           pluginTemplate:
             id: getCandidates
@@ -1199,7 +1185,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-09-13T03:56:01.316Z
-            updatedAt: 2020-09-13T04:17:38.417Z
       - text12:
           pluginTemplate:
             id: text12
@@ -1225,7 +1210,6 @@ appTemplate:
                 height: 1
                 width: 7
             createdAt: 2020-09-14T20:05:57.233Z
-            updatedAt: 2020-09-17T20:35:13.543Z
       - text13:
           pluginTemplate:
             id: text13
@@ -1257,7 +1241,6 @@ appTemplate:
                 height: 1
                 width: 7
             createdAt: 2020-09-14T20:07:21.085Z
-            updatedAt: 2020-09-17T20:37:49.760Z
       - insertCandidates:
           pluginTemplate:
             id: insertCandidates
@@ -1341,7 +1324,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-09-14T20:50:49.011Z
-            updatedAt: 2020-09-14T20:50:49.011Z
       - insertCandidate:
           pluginTemplate:
             id: insertCandidate
@@ -1430,7 +1412,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-09-14T21:44:09.365Z
-            updatedAt: 2020-09-16T00:05:20.754Z
       - tabbedcontainer1:
           pluginTemplate:
             id: tabbedcontainer1
@@ -1450,7 +1431,6 @@ appTemplate:
                 height: 23
                 width: 12
             createdAt: 2020-09-15T20:52:06.936Z
-            updatedAt: 2020-09-15T20:52:32.420Z
       - candidatesTableMain:
           pluginTemplate:
             id: candidatesTableMain
@@ -1688,7 +1668,6 @@ appTemplate:
                 height: 8
                 width: 12
             createdAt: 2020-09-15T20:54:29.849Z
-            updatedAt: 2020-11-03T19:02:20.999Z
       - getCandidatesMainView:
           pluginTemplate:
             id: getCandidatesMainView
@@ -1770,7 +1749,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-09-15T20:57:34.432Z
-            updatedAt: 2020-09-16T06:24:24.111Z
       - getPoliciesMainView:
           pluginTemplate:
             id: getPoliciesMainView
@@ -1852,7 +1830,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-09-15T21:00:07.741Z
-            updatedAt: 2020-09-15T21:00:32.165Z
       - policiesTableMain:
           pluginTemplate:
             id: policiesTableMain
@@ -1989,7 +1966,6 @@ appTemplate:
                 width: 12
                 tabNum: 1
             createdAt: 2020-09-15T21:01:11.275Z
-            updatedAt: 2020-09-17T23:59:51.247Z
       - deleteCandidateButton:
           pluginTemplate:
             id: deleteCandidateButton
@@ -2021,7 +1997,6 @@ appTemplate:
                 height: 1
                 width: 4
             createdAt: 2020-09-15T22:20:03.224Z
-            updatedAt: 2020-09-17T20:29:22.992Z
       - deleteCandidate:
           pluginTemplate:
             id: deleteCandidate
@@ -2106,7 +2081,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-09-15T22:20:34.488Z
-            updatedAt: 2020-09-15T23:14:17.696Z
       - deletePolicy:
           pluginTemplate:
             id: deletePolicy
@@ -2189,7 +2163,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-09-15T22:44:30.205Z
-            updatedAt: 2020-09-15T22:45:33.587Z
       - text10:
           pluginTemplate:
             id: text10
@@ -2216,7 +2189,6 @@ appTemplate:
                 height: 1
                 width: 10
             createdAt: 2020-09-15T23:06:30.795Z
-            updatedAt: 2020-09-17T19:35:12.494Z
       - addCandidateModal:
           pluginTemplate:
             id: addCandidateModal
@@ -2243,7 +2215,6 @@ appTemplate:
                 height: 1
                 width: 3
             createdAt: 2020-09-15T23:54:21.512Z
-            updatedAt: 2020-09-18T01:01:23.847Z
       - closeAddCandidateModal:
           pluginTemplate:
             id: closeAddCandidateModal
@@ -2302,7 +2273,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-09-16T00:03:44.234Z
-            updatedAt: 2020-09-16T00:04:14.462Z
       - updateCandidateModal:
           pluginTemplate:
             id: updateCandidateModal
@@ -2328,7 +2298,6 @@ appTemplate:
                 height: 1
                 width: 4
             createdAt: 2020-09-16T02:00:31.182Z
-            updatedAt: 2020-09-18T23:41:11.969Z
       - nameInput:
           pluginTemplate:
             id: nameInput
@@ -2375,7 +2344,6 @@ appTemplate:
                 height: 1
                 width: 6
             createdAt: 2020-09-16T02:04:14.219Z
-            updatedAt: 2020-09-17T20:19:18.182Z
       - container2:
           pluginTemplate:
             id: container2
@@ -2397,7 +2365,6 @@ appTemplate:
                 height: 16
                 width: 6
             createdAt: 2020-09-16T03:55:28.296Z
-            updatedAt: 2020-09-18T20:13:57.855Z
       - levelSelect:
           pluginTemplate:
             id: levelSelect
@@ -2434,7 +2401,6 @@ appTemplate:
                 height: 1
                 width: 6
             createdAt: 2020-09-16T03:56:55.782Z
-            updatedAt: 2020-09-16T05:44:32.487Z
       - partySelect:
           pluginTemplate:
             id: partySelect
@@ -2472,7 +2438,6 @@ appTemplate:
                 height: 1
                 width: 6
             createdAt: 2020-09-16T04:24:33.328Z
-            updatedAt: 2020-09-18T19:44:44.899Z
       - officeInput:
           pluginTemplate:
             id: officeInput
@@ -2519,7 +2484,6 @@ appTemplate:
                 height: 1
                 width: 6
             createdAt: 2020-09-16T04:29:15.182Z
-            updatedAt: 2020-09-16T16:54:21.504Z
       - districtInput:
           pluginTemplate:
             id: districtInput
@@ -2567,7 +2531,6 @@ appTemplate:
                 height: 1
                 width: 4
             createdAt: 2020-09-16T04:37:18.599Z
-            updatedAt: 2020-09-17T23:42:25.692Z
       - circuitInput:
           pluginTemplate:
             id: circuitInput
@@ -2615,7 +2578,6 @@ appTemplate:
                 height: 1
                 width: 4
             createdAt: 2020-09-16T04:38:30.940Z
-            updatedAt: 2020-09-17T23:42:21.308Z
       - countyInput:
           pluginTemplate:
             id: countyInput
@@ -2663,7 +2625,6 @@ appTemplate:
                 height: 1
                 width: 4
             createdAt: 2020-09-16T04:39:24.576Z
-            updatedAt: 2020-09-16T04:40:00.231Z
       - imageInput:
           pluginTemplate:
             id: imageInput
@@ -2712,7 +2673,6 @@ appTemplate:
                 height: 1
                 width: 11
             createdAt: 2020-09-16T04:40:38.885Z
-            updatedAt: 2020-09-18T22:10:26.035Z
       - websiteInput:
           pluginTemplate:
             id: websiteInput
@@ -2761,7 +2721,6 @@ appTemplate:
                 height: 1
                 width: 11
             createdAt: 2020-09-16T04:43:13.316Z
-            updatedAt: 2020-09-18T22:10:15.235Z
       - youtubeInput:
           pluginTemplate:
             id: youtubeInput
@@ -2810,7 +2769,6 @@ appTemplate:
                 height: 1
                 width: 11
             createdAt: 2020-09-16T04:45:08.871Z
-            updatedAt: 2020-09-18T22:10:04.738Z
       - facebookInput:
           pluginTemplate:
             id: facebookInput
@@ -2859,7 +2817,6 @@ appTemplate:
                 height: 1
                 width: 11
             createdAt: 2020-09-16T04:45:11.990Z
-            updatedAt: 2020-09-18T22:10:09.752Z
       - twitterInput:
           pluginTemplate:
             id: twitterInput
@@ -2908,7 +2865,6 @@ appTemplate:
                 height: 1
                 width: 11
             createdAt: 2020-09-16T04:47:12.577Z
-            updatedAt: 2020-09-18T22:09:59.513Z
       - linkedinInput:
           pluginTemplate:
             id: linkedinInput
@@ -2957,7 +2913,6 @@ appTemplate:
                 height: 1
                 width: 11
             createdAt: 2020-09-16T04:48:32.045Z
-            updatedAt: 2020-09-18T22:09:30.888Z
       - instagramInput:
           pluginTemplate:
             id: instagramInput
@@ -3006,7 +2961,6 @@ appTemplate:
                 height: 1
                 width: 11
             createdAt: 2020-09-16T04:48:34.304Z
-            updatedAt: 2020-09-18T22:09:56.123Z
       - container3:
           pluginTemplate:
             id: container3
@@ -3029,7 +2983,6 @@ appTemplate:
                 height: 16
                 width: 6
             createdAt: 2020-09-16T04:51:54.156Z
-            updatedAt: 2020-09-16T06:13:11.154Z
       - overviewInput:
           pluginTemplate:
             id: overviewInput
@@ -3078,7 +3031,6 @@ appTemplate:
                 height: 3
                 width: 12
             createdAt: 2020-09-16T05:00:32.400Z
-            updatedAt: 2020-09-16T05:48:01.389Z
       - legislationInput:
           pluginTemplate:
             id: legislationInput
@@ -3136,7 +3088,6 @@ appTemplate:
                 height: 3
                 width: 12
             createdAt: 2020-09-16T05:29:26.372Z
-            updatedAt: 2020-09-16T05:30:44.389Z
       - articlesInput:
           pluginTemplate:
             id: articlesInput
@@ -3190,7 +3141,6 @@ appTemplate:
                 height: 3
                 width: 12
             createdAt: 2020-09-16T05:35:38.284Z
-            updatedAt: 2020-09-18T23:35:47.792Z
       - zipcodesInput:
           pluginTemplate:
             id: zipcodesInput
@@ -3242,7 +3192,6 @@ appTemplate:
                 height: 3
                 width: 11
             createdAt: 2020-09-16T05:38:58.146Z
-            updatedAt: 2020-09-17T21:04:52.851Z
       - text15:
           pluginTemplate:
             id: text15
@@ -3268,7 +3217,6 @@ appTemplate:
                 height: 1
                 width: 4
             createdAt: 2020-09-16T05:45:00.531Z
-            updatedAt: 2020-09-18T19:34:20.871Z
       - policiesInput:
           pluginTemplate:
             id: policiesInput
@@ -3321,7 +3269,6 @@ appTemplate:
                 height: 3
                 width: 12
             createdAt: 2020-09-16T05:48:33.545Z
-            updatedAt: 2020-09-16T06:02:09.174Z
       - otherPoliciesInput:
           pluginTemplate:
             id: otherPoliciesInput
@@ -3377,7 +3324,6 @@ appTemplate:
                 height: 3
                 width: 12
             createdAt: 2020-09-16T05:57:55.411Z
-            updatedAt: 2020-09-16T06:01:17.121Z
       - button4:
           pluginTemplate:
             id: button4
@@ -3428,7 +3374,6 @@ appTemplate:
                 height: 1
                 width: 2
             createdAt: 2020-09-16T06:07:31.355Z
-            updatedAt: 2020-09-18T22:11:41.994Z
       - container4:
           pluginTemplate:
             id: container4
@@ -3451,7 +3396,6 @@ appTemplate:
                 height: 7
                 width: 5
             createdAt: 2020-09-16T14:33:48.786Z
-            updatedAt: 2020-09-17T23:54:38.858Z
       - image2:
           pluginTemplate:
             id: image2
@@ -3482,7 +3426,6 @@ appTemplate:
                 height: 3
                 width: 3
             createdAt: 2020-09-16T14:34:06.976Z
-            updatedAt: 2020-09-17T22:39:48.333Z
       - text17:
           pluginTemplate:
             id: text17
@@ -3508,7 +3451,6 @@ appTemplate:
                 height: 3
                 width: 8
             createdAt: 2020-09-16T14:36:58.751Z
-            updatedAt: 2020-09-17T20:21:56.438Z
       - container5:
           pluginTemplate:
             id: container5
@@ -3532,7 +3474,6 @@ appTemplate:
                 width: 5
                 tabNum: 1
             createdAt: 2020-09-16T15:13:17.157Z
-            updatedAt: 2020-09-17T23:59:37.246Z
       - text14:
           pluginTemplate:
             id: text14
@@ -3558,7 +3499,6 @@ appTemplate:
                 height: 1
                 width: 7
             createdAt: 2020-09-16T15:13:28.743Z
-            updatedAt: 2020-09-16T15:13:54.420Z
       - text19:
           pluginTemplate:
             id: text19
@@ -3585,7 +3525,6 @@ appTemplate:
                 height: 2
                 width: 12
             createdAt: 2020-09-16T15:14:24.866Z
-            updatedAt: 2020-09-16T15:16:37.592Z
       - updatePolicyModal:
           pluginTemplate:
             id: updatePolicyModal
@@ -3612,7 +3551,6 @@ appTemplate:
                 height: 1
                 width: 3
             createdAt: 2020-09-16T15:19:31.656Z
-            updatedAt: 2020-09-18T00:02:01.464Z
       - tabbedcontainer2:
           pluginTemplate:
             id: tabbedcontainer2
@@ -3637,7 +3575,6 @@ appTemplate:
                 height: 18
                 width: 12
             createdAt: 2020-09-16T15:22:33.447Z
-            updatedAt: 2020-09-16T15:35:44.665Z
       - button5:
           pluginTemplate:
             id: button5
@@ -3669,7 +3606,6 @@ appTemplate:
                 height: 1
                 width: 2
             createdAt: 2020-09-16T15:23:33.432Z
-            updatedAt: 2020-09-17T20:53:35.805Z
       - policyNameInput:
           pluginTemplate:
             id: policyNameInput
@@ -3716,7 +3652,6 @@ appTemplate:
                 height: 1
                 width: 6
             createdAt: 2020-09-16T15:24:58.151Z
-            updatedAt: 2020-09-16T15:27:17.894Z
       - policyOverviewEditor:
           pluginTemplate:
             id: policyOverviewEditor
@@ -3734,7 +3669,6 @@ appTemplate:
                 height: 7
                 width: 7
             createdAt: 2020-09-16T15:25:27.118Z
-            updatedAt: 2020-09-16T15:26:42.989Z
       - policyOverviewInput:
           pluginTemplate:
             id: policyOverviewInput
@@ -3761,7 +3695,6 @@ appTemplate:
                 height: 1
                 width: 3
             createdAt: 2020-09-16T15:27:51.698Z
-            updatedAt: 2020-09-16T21:34:00.446Z
       - text22:
           pluginTemplate:
             id: text22
@@ -3789,7 +3722,6 @@ appTemplate:
                 height: 1
                 width: 7
             createdAt: 2020-09-16T15:32:38.716Z
-            updatedAt: 2020-09-17T20:53:29.446Z
       - st1NameInput:
           pluginTemplate:
             id: st1NameInput
@@ -3836,7 +3768,6 @@ appTemplate:
                 height: 1
                 width: 7
             createdAt: 2020-09-16T15:50:38.243Z
-            updatedAt: 2020-09-16T22:09:19.159Z
       - st1PosAInput:
           pluginTemplate:
             id: st1PosAInput
@@ -3884,7 +3815,6 @@ appTemplate:
                 height: 4
                 width: 5
             createdAt: 2020-09-16T15:53:42.956Z
-            updatedAt: 2020-09-16T16:31:28.678Z
       - st1PosBInput:
           pluginTemplate:
             id: st1PosBInput
@@ -3932,7 +3862,6 @@ appTemplate:
                 height: 4
                 width: 5
             createdAt: 2020-09-16T15:54:57.675Z
-            updatedAt: 2020-09-16T16:30:55.845Z
       - st1PosOtherInput:
           pluginTemplate:
             id: st1PosOtherInput
@@ -3980,7 +3909,6 @@ appTemplate:
                 height: 4
                 width: 5
             createdAt: 2020-09-16T15:56:15.787Z
-            updatedAt: 2020-09-16T16:33:09.521Z
       - st1DescLinksInput:
           pluginTemplate:
             id: st1DescLinksInput
@@ -4029,7 +3957,6 @@ appTemplate:
                 height: 3
                 width: 6
             createdAt: 2020-09-16T16:16:05.198Z
-            updatedAt: 2020-09-16T22:07:12.899Z
       - st1PosBLinksInput:
           pluginTemplate:
             id: st1PosBLinksInput
@@ -4079,7 +4006,6 @@ appTemplate:
                 height: 4
                 width: 6
             createdAt: 2020-09-16T16:17:52.887Z
-            updatedAt: 2020-09-16T21:03:11.510Z
       - st1PosALinksInput:
           pluginTemplate:
             id: st1PosALinksInput
@@ -4128,7 +4054,6 @@ appTemplate:
                 height: 4
                 width: 6
             createdAt: 2020-09-16T16:17:54.767Z
-            updatedAt: 2020-09-16T21:03:05.520Z
       - updateCandidate:
           pluginTemplate:
             id: updateCandidate
@@ -4209,7 +4134,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-09-16T16:50:33.905Z
-            updatedAt: 2020-09-17T21:01:45.573Z
       - updateCandidateTransformer:
           pluginTemplate:
             id: updateCandidateTransformer
@@ -4220,7 +4144,6 @@ appTemplate:
                 - funcBody: "\n//var data = {{updateCandidate.data}}\nvar newData = {\n  \"name\": {{ _.trim(nameInput.value)}},\n  \"inactive\": {{activeSelect.value}},\n  \"partyId\": {{partySelect.value}},\n  \"party\": {{partySelect.displayValue}},\n\t\"state\": {{stateSelect.value}},\n  \"level\": {{levelSelect.value}},\n  \"office\": {{officeInput.value}},\n  \"district\": {{districtInput.value}},\n  \"county\": {{countyInput.value}},\n  \"circuit\": {{circuitInput.value}},\n  \"zipcodes\": _.split({{zipcodesInput.value}}, \",\"),\n  \"image\": {{imageInput.value}}, // TODO: validate\n  \"website\": {{websiteInput.value}}, // TODO: validate\n  \"social\": {\n        \"facebook\": {{facebookInput.value}},   // TODO: validate\n        \"youtube\": {{youtubeInput.value}},     // TODO: validate\n        \"twitter\": {{twitterInput.value}},     // TODO: validate\n        \"linkedin\": {{linkedinInput.value}},   // TODO: validate\n        \"instagram\": {{instagramInput.value}}, // TODO: validate\n        },\n  \"overview\": {{overviewInput.value}},\n  \"articles\": {{_.split(articlesInput.value,\"\\n\")}},        // TODO: validate\n  \"legislation\": {{_.split(legislationInput.value, \"\\n\")}}, // TODO: validate\n  \"policies\": {{_.split(policiesInput.value, \"\\n\")}},\n  \"other_policies\": {{_.split(otherPoliciesInput.value, \"\\n\")}},\n  \"modifiedBy\": {{current_user.email}},\n  \"modifiedAt\": {{moment()}},\n}                       \nreturn newData"
                 - value: ''
             createdAt: 2020-09-16T16:55:08.458Z
-            updatedAt: 2020-09-18T20:56:35.895Z
       - closeUpdateCandidateModal:
           pluginTemplate:
             id: closeUpdateCandidateModal
@@ -4279,7 +4202,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-09-16T19:08:30.797Z
-            updatedAt: 2020-09-16T19:08:51.225Z
       - container6:
           pluginTemplate:
             id: container6
@@ -4301,7 +4223,6 @@ appTemplate:
                 width: 12
                 tabNum: 1
             createdAt: 2020-09-16T20:55:35.633Z
-            updatedAt: 2020-09-16T22:49:52.880Z
       - container7:
           pluginTemplate:
             id: container7
@@ -4323,7 +4244,6 @@ appTemplate:
                 width: 12
                 tabNum: 2
             createdAt: 2020-09-16T21:03:29.061Z
-            updatedAt: 2020-09-16T22:35:33.735Z
       - st2InfoInput:
           pluginTemplate:
             id: st2InfoInput
@@ -4370,7 +4290,6 @@ appTemplate:
                 height: 3
                 width: 5
             createdAt: 2020-09-16T21:03:29.375Z
-            updatedAt: 2020-09-16T21:08:07.030Z
       - st2PosAInput:
           pluginTemplate:
             id: st2PosAInput
@@ -4418,7 +4337,6 @@ appTemplate:
                 height: 4
                 width: 5
             createdAt: 2020-09-16T21:03:29.869Z
-            updatedAt: 2020-09-16T21:08:23.718Z
       - st2PosBInput:
           pluginTemplate:
             id: st2PosBInput
@@ -4466,7 +4384,6 @@ appTemplate:
                 height: 4
                 width: 5
             createdAt: 2020-09-16T21:03:30.494Z
-            updatedAt: 2020-09-16T21:08:53.862Z
       - st2PosOtherInput:
           pluginTemplate:
             id: st2PosOtherInput
@@ -4514,7 +4431,6 @@ appTemplate:
                 height: 4
                 width: 5
             createdAt: 2020-09-16T21:03:30.799Z
-            updatedAt: 2020-09-16T21:09:12.384Z
       - st2InfoLinksInput:
           pluginTemplate:
             id: st2InfoLinksInput
@@ -4563,7 +4479,6 @@ appTemplate:
                 height: 3
                 width: 6
             createdAt: 2020-09-16T21:03:31.104Z
-            updatedAt: 2020-09-16T21:09:19.524Z
       - st2PosBLinksInput:
           pluginTemplate:
             id: st2PosBLinksInput
@@ -4613,7 +4528,6 @@ appTemplate:
                 height: 4
                 width: 6
             createdAt: 2020-09-16T21:03:31.446Z
-            updatedAt: 2020-09-16T21:09:56.610Z
       - st2PosALinksInput:
           pluginTemplate:
             id: st2PosALinksInput
@@ -4662,7 +4576,6 @@ appTemplate:
                 height: 4
                 width: 6
             createdAt: 2020-09-16T21:03:31.844Z
-            updatedAt: 2020-09-16T21:09:42.155Z
       - container8:
           pluginTemplate:
             id: container8
@@ -4684,7 +4597,6 @@ appTemplate:
                 width: 12
                 tabNum: 3
             createdAt: 2020-09-16T21:05:08.751Z
-            updatedAt: 2020-09-16T22:42:11.823Z
       - st3InfoInput:
           pluginTemplate:
             id: st3InfoInput
@@ -4731,7 +4643,6 @@ appTemplate:
                 height: 3
                 width: 5
             createdAt: 2020-09-16T21:05:09.068Z
-            updatedAt: 2020-09-16T21:10:12.734Z
       - st3PosAInput:
           pluginTemplate:
             id: st3PosAInput
@@ -4779,7 +4690,6 @@ appTemplate:
                 height: 4
                 width: 5
             createdAt: 2020-09-16T21:05:09.546Z
-            updatedAt: 2020-09-16T21:10:46.246Z
       - st3PosBInput:
           pluginTemplate:
             id: st3PosBInput
@@ -4827,7 +4737,6 @@ appTemplate:
                 height: 4
                 width: 5
             createdAt: 2020-09-16T21:05:10.110Z
-            updatedAt: 2020-09-16T21:11:13.445Z
       - st3PosOtherInput:
           pluginTemplate:
             id: st3PosOtherInput
@@ -4875,7 +4784,6 @@ appTemplate:
                 height: 4
                 width: 5
             createdAt: 2020-09-16T21:05:10.379Z
-            updatedAt: 2020-09-16T21:12:49.324Z
       - st3InfoLinksInput:
           pluginTemplate:
             id: st3InfoLinksInput
@@ -4924,7 +4832,6 @@ appTemplate:
                 height: 3
                 width: 6
             createdAt: 2020-09-16T21:05:10.688Z
-            updatedAt: 2020-09-16T21:12:57.221Z
       - st3PosBLinksInput:
           pluginTemplate:
             id: st3PosBLinksInput
@@ -4974,7 +4881,6 @@ appTemplate:
                 height: 4
                 width: 6
             createdAt: 2020-09-16T21:05:10.955Z
-            updatedAt: 2020-09-16T21:13:11.089Z
       - st3PosALinksInput:
           pluginTemplate:
             id: st3PosALinksInput
@@ -5023,7 +4929,6 @@ appTemplate:
                 height: 4
                 width: 6
             createdAt: 2020-09-16T21:05:11.313Z
-            updatedAt: 2020-09-16T21:13:03.451Z
       - container9:
           pluginTemplate:
             id: container9
@@ -5045,7 +4950,6 @@ appTemplate:
                 width: 12
                 tabNum: 4
             createdAt: 2020-09-16T21:05:58.497Z
-            updatedAt: 2020-09-16T22:35:42.762Z
       - st4InfoInput:
           pluginTemplate:
             id: st4InfoInput
@@ -5092,7 +4996,6 @@ appTemplate:
                 height: 3
                 width: 5
             createdAt: 2020-09-16T21:05:58.811Z
-            updatedAt: 2020-09-16T21:21:41.092Z
       - st4PosAInput:
           pluginTemplate:
             id: st4PosAInput
@@ -5140,7 +5043,6 @@ appTemplate:
                 height: 4
                 width: 5
             createdAt: 2020-09-16T21:05:59.280Z
-            updatedAt: 2020-09-16T21:21:47.911Z
       - st4PosBInput:
           pluginTemplate:
             id: st4PosBInput
@@ -5188,7 +5090,6 @@ appTemplate:
                 height: 4
                 width: 5
             createdAt: 2020-09-16T21:05:59.809Z
-            updatedAt: 2020-09-16T21:22:17.443Z
       - st4PosOtherInput:
           pluginTemplate:
             id: st4PosOtherInput
@@ -5236,7 +5137,6 @@ appTemplate:
                 height: 4
                 width: 5
             createdAt: 2020-09-16T21:06:00.176Z
-            updatedAt: 2020-09-16T21:22:23.758Z
       - st4InfoLinksInput:
           pluginTemplate:
             id: st4InfoLinksInput
@@ -5285,7 +5185,6 @@ appTemplate:
                 height: 3
                 width: 6
             createdAt: 2020-09-16T21:06:00.507Z
-            updatedAt: 2020-09-16T21:24:49.421Z
       - st4PosBLinksInput:
           pluginTemplate:
             id: st4PosBLinksInput
@@ -5335,7 +5234,6 @@ appTemplate:
                 height: 4
                 width: 6
             createdAt: 2020-09-16T21:06:00.872Z
-            updatedAt: 2020-09-16T21:23:42.480Z
       - st4PosALinksInput:
           pluginTemplate:
             id: st4PosALinksInput
@@ -5384,7 +5282,6 @@ appTemplate:
                 height: 4
                 width: 6
             createdAt: 2020-09-16T21:06:01.294Z
-            updatedAt: 2020-09-16T21:23:21.557Z
       - updatePolicy:
           pluginTemplate:
             id: updatePolicy
@@ -5468,7 +5365,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-09-16T21:25:16.355Z
-            updatedAt: 2020-09-16T21:28:28.863Z
       - closeUpdatePolicyModal:
           pluginTemplate:
             id: closeUpdatePolicyModal
@@ -5527,7 +5423,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-09-16T21:27:37.342Z
-            updatedAt: 2020-09-16T21:27:58.749Z
       - policyTransformer:
           pluginTemplate:
             id: policyTransformer
@@ -5594,7 +5489,6 @@ appTemplate:
                     return newData
                 - value: ''
             createdAt: 2020-09-16T21:28:46.437Z
-            updatedAt: 2020-09-17T20:58:02.281Z
       - textinput48:
           pluginTemplate:
             id: textinput48
@@ -5641,7 +5535,6 @@ appTemplate:
                 height: 3
                 width: 5
             createdAt: 2020-09-16T22:05:29.897Z
-            updatedAt: 2020-09-16T22:05:29.897Z
       - textinput49:
           pluginTemplate:
             id: textinput49
@@ -5690,7 +5583,6 @@ appTemplate:
                 height: 3
                 width: 6
             createdAt: 2020-09-16T22:05:39.824Z
-            updatedAt: 2020-09-16T22:05:39.824Z
       - st1DescInput:
           pluginTemplate:
             id: st1DescInput
@@ -5738,7 +5630,6 @@ appTemplate:
                 height: 3
                 width: 5
             createdAt: 2020-09-16T22:05:56.123Z
-            updatedAt: 2020-09-16T22:06:54.547Z
       - st2NameInput:
           pluginTemplate:
             id: st2NameInput
@@ -5785,7 +5676,6 @@ appTemplate:
                 height: 1
                 width: 7
             createdAt: 2020-09-16T22:13:04.369Z
-            updatedAt: 2020-09-16T22:13:15.474Z
       - st3NameInput:
           pluginTemplate:
             id: st3NameInput
@@ -5832,7 +5722,6 @@ appTemplate:
                 height: 1
                 width: 7
             createdAt: 2020-09-16T22:13:33.547Z
-            updatedAt: 2020-09-16T22:13:46.896Z
       - st4NameInput:
           pluginTemplate:
             id: st4NameInput
@@ -5879,7 +5768,6 @@ appTemplate:
                 height: 1
                 width: 7
             createdAt: 2020-09-16T22:14:00.379Z
-            updatedAt: 2020-09-16T22:14:15.326Z
       - st2DescInput:
           pluginTemplate:
             id: st2DescInput
@@ -5927,7 +5815,6 @@ appTemplate:
                 height: 3
                 width: 5
             createdAt: 2020-09-16T22:14:28.958Z
-            updatedAt: 2020-09-16T22:51:28.631Z
       - st3DescInput:
           pluginTemplate:
             id: st3DescInput
@@ -5975,7 +5862,6 @@ appTemplate:
                 height: 3
                 width: 5
             createdAt: 2020-09-16T22:14:36.274Z
-            updatedAt: 2020-09-16T22:52:13.142Z
       - st4DescInput:
           pluginTemplate:
             id: st4DescInput
@@ -6023,7 +5909,6 @@ appTemplate:
                 height: 3
                 width: 5
             createdAt: 2020-09-16T22:14:41.178Z
-            updatedAt: 2020-09-16T22:53:48.160Z
       - st2DescLinksInput:
           pluginTemplate:
             id: st2DescLinksInput
@@ -6072,7 +5957,6 @@ appTemplate:
                 height: 3
                 width: 6
             createdAt: 2020-09-16T22:14:55.135Z
-            updatedAt: 2020-09-16T22:51:50.645Z
       - st3DescLinksInput:
           pluginTemplate:
             id: st3DescLinksInput
@@ -6121,7 +6005,6 @@ appTemplate:
                 height: 3
                 width: 6
             createdAt: 2020-09-16T22:15:00.136Z
-            updatedAt: 2020-09-16T22:53:02.390Z
       - st4DescLinksInput:
           pluginTemplate:
             id: st4DescLinksInput
@@ -6170,7 +6053,6 @@ appTemplate:
                 height: 3
                 width: 6
             createdAt: 2020-09-16T22:15:05.303Z
-            updatedAt: 2020-09-16T22:54:05.320Z
       - text11:
           pluginTemplate:
             id: text11
@@ -6197,7 +6079,6 @@ appTemplate:
                 height: 5
                 width: 6
             createdAt: 2020-09-17T20:33:36.276Z
-            updatedAt: 2020-09-17T20:35:55.644Z
       - button6:
           pluginTemplate:
             id: button6
@@ -6229,7 +6110,6 @@ appTemplate:
                 height: 1
                 width: 2
             createdAt: 2020-09-17T20:38:16.183Z
-            updatedAt: 2020-09-17T23:55:35.876Z
       - deletePolicyButton:
           pluginTemplate:
             id: deletePolicyButton
@@ -6261,7 +6141,6 @@ appTemplate:
                 height: 1
                 width: 3
             createdAt: 2020-09-18T00:01:02.091Z
-            updatedAt: 2020-09-18T00:02:05.533Z
       - stateSelect:
           pluginTemplate:
             id: stateSelect
@@ -6298,7 +6177,6 @@ appTemplate:
                 height: 1
                 width: 4
             createdAt: 2020-09-18T19:33:58.106Z
-            updatedAt: 2020-09-18T20:20:36.326Z
       - activeSelect:
           pluginTemplate:
             id: activeSelect
@@ -6337,7 +6215,6 @@ appTemplate:
                 height: 1
                 width: 5
             createdAt: 2020-09-18T20:03:48.501Z
-            updatedAt: 2020-09-18T20:14:23.658Z
       - linkValidator:
           pluginTemplate:
             id: linkValidator
@@ -6396,15 +6273,17 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2020-09-18T20:58:55.814Z
-            updatedAt: 2020-09-18T20:59:47.972Z
   urlFragmentDefinitions: []
   appThemeId: null
+  preloadedAppJavaScript: null
   pageLoadValueOverrides: []
   customDocumentTitle: ''
   isGlobalWidget: false
   isFetching: false
   instrumentationEnabled: false
   customDocumentTitleEnabled: false
+  preloadedAppJSLinks:
+    array: []
   version: 2.63.23
   responsiveLayoutDisabled: true
   createdAt: null
