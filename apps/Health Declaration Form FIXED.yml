@@ -1,0 +1,4922 @@
+version: 43.0.9
+pageUuid: 34ae9400-8836-11eb-b60a-6f6aa5fcbb60
+appTemplate:
+  plugins:
+    ordered:
+      - RetrievePatientID:
+          pluginTemplate:
+            id: RetrievePatientID
+            type: datasource
+            subtype: SqlQuery
+            resourceName: covid-read
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - databasePasswordOverride: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: >-
+                    Select "id" from "Patient" where "EID" =
+                    {{textinput2.value}}
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess:
+                    - GetScreeningTestResults
+                - runWhenPageLoadsDelay: ''
+                - warningCodes: []
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - dataArray: []
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - shouldUseLegacySql: false
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - databaseNameOverride: ''
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - databaseUsernameOverride: ''
+                - shouldEnableBatchQuerying: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-04T06:27:56.924Z
+      - CreateNewDeclaration:
+          pluginTemplate:
+            id: CreateNewDeclaration
+            type: datasource
+            subtype: RetoolTableQuery
+            resourceName: covid-edit
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - records: ''
+                - databasePasswordOverride: ''
+                - queryDisabledMessage: ''
+                - successMessage: New Declaration Added!
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: ''
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess:
+                    - NewDeclaration
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - recordId: ''
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: true
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - filterBy: ''
+                - metadata: null
+                - actionType: INSERT
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - databaseNameOverride: ''
+                - confirmationMessage: Please verify declaration details before proceeding
+                - isFetching: false
+                - changeset: >-
+                    [{"key":"RecentExposure","value":"{{isRecentExposed.value}}"},{"key":"temperate","value":"{{Temperature.value}}"},{"key":"VehicleType","value":"{{TransportMode.value}}"},{"key":"PrivateVehicle","value":"{{TransportMode.value
+                    == \"Car\" || TransportMode.value == \"Bicycle\" ||
+                    TransportMode.value ==
+                    \"Motorcyle\"}}"},{"key":"DeclarationDate","value":"{{moment.tz('Asia/Manila').format()}}"},{"key":"Fever","value":"{{isFever.value}}"},{"key":"Cough","value":"{{isCough.value}}"},{"key":"Cold","value":"{{isCold.value}}"},{"key":"SoreThroat","value":"{{isSoreThroat.value}}"},{"key":"Diarrhea","value":"{{isDiarrhea.value}}"},{"key":"Breathing","value":"{{isBreathing.value}}"},{"key":"DecreaseTaste","value":"{{isDecreaseTaste.value}}"},{"key":"DescreaseSmell","value":"{{isDecreasedSmell.value}}"},{"key":"MusclePain","value":"{{isMusclePain.value}}"},{"key":"PatientID","value":"{{RetrievePatientID.data.id[0]}}"},{"key":"DeclarationDateOnly","value":"{{moment.tz('Asia/Manila').format()}}"}]
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - enableBulkUpdates: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - bulkUpdatePrimaryKey: ''
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - tableName: HealthDeclaration
+                - queryTimeout: '10000'
+                - requireConfirmation: true
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - databaseUsernameOverride: ''
+                - doNotThrowOnNoOp: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-04T06:30:06.699Z
+      - UpdateDeclaration:
+          pluginTemplate:
+            id: UpdateDeclaration
+            type: datasource
+            subtype: RetoolTableQuery
+            resourceName: covid-edit
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - records: ''
+                - databasePasswordOverride: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: ''
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - recordId: ''
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - filterBy: >-
+                    [{"key":"id","value":"{{table1.selectedRow.data.id}}","operation":"="}]
+                - metadata: null
+                - actionType: UPDATE_BY
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - databaseNameOverride: ''
+                - confirmationMessage: null
+                - isFetching: false
+                - changeset: >-
+                    [{"key":"Fever","value":"{{table1.selectedRow.data.Fever}}"},{"key":"Cough","value":"{{table1.selectedRow.data.Cough}}"},{"key":"Cold","value":"{{table1.selectedRow.data.Cold}}"},{"key":"SoreThroat","value":"{{table1.selectedRow.data.SoreThroat}}"},{"key":"Breathing","value":"{{table1.selectedRow.data.Breathing}}"},{"key":"Diarrhea","value":"{{table1.selectedRow.data.Diarrhea}}"},{"key":"MusclePain","value":"{{table1.selectedRow.data.MusclePain}}"},{"key":"DecreaseTaste","value":"{{table1.selectedRow.data.DecreaseTaste}}"},{"key":"DescreaseSmell","value":"{{table1.selectedRow.data.DescreaseSmell}}"},{"key":"UpdatedDate","value":"{{moment.tz('Asia/Manila').format()}}"}]
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - enableBulkUpdates: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - bulkUpdatePrimaryKey: ''
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - tableName: HealthDeclaration
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - databaseUsernameOverride: ''
+                - doNotThrowOnNoOp: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-04T15:59:59.313Z
+      - GetScreeningTestResults:
+          pluginTemplate:
+            id: GetScreeningTestResults
+            type: datasource
+            subtype: SqlQuery
+            resourceName: covid-read
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - databasePasswordOverride: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: >-
+                    select * from "ScreeningResults"
+
+                    where "ScreeningResults"."PatientID" =
+                    {{RetrievePatientID.data.id[0]}} ORDER BY "Date" DESC
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - warningCodes: []
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - dataArray: []
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - shouldUseLegacySql: false
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - databaseNameOverride: ''
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - databaseUsernameOverride: ''
+                - shouldEnableBatchQuerying: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-09T13:01:16.136Z
+      - GetPatientName:
+          pluginTemplate:
+            id: GetPatientName
+            type: datasource
+            subtype: SqlQuery
+            resourceName: covid-read
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - databasePasswordOverride: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: >-
+                    select "Patient"."Fullname" FROM "Patient" where
+                    "Patient"."EID" = {{textinput2.value}}
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess:
+                    - OpenTemperatureTaking
+                - runWhenPageLoadsDelay: ''
+                - warningCodes: []
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - dataArray: []
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - shouldUseLegacySql: false
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - databaseNameOverride: ''
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - databaseUsernameOverride: ''
+                - shouldEnableBatchQuerying: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-12T07:58:45.368Z
+      - seven:
+          pluginTemplate:
+            id: seven
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: |-
+                    if
+                      (textinput5.value == "") {
+                    textinput5.setValue("7")
+                      }
+                    else {
+                      textinput5.setValue(textinput5.value + "7")
+                      
+                    }
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: false
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-16T11:12:15.904Z
+      - eight:
+          pluginTemplate:
+            id: eight
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: |-
+                    if
+                      (textinput5.value == "") {
+                    textinput5.setValue("8")
+                      }
+                    else {
+                      textinput5.setValue(textinput5.value + "8")
+                      
+                    }
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: false
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-16T11:15:00.440Z
+      - nine:
+          pluginTemplate:
+            id: nine
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: |-
+                    if
+                      (textinput5.value == "") {
+                    textinput5.setValue("9")
+                      }
+                    else {
+                      textinput5.setValue(textinput5.value + "9")
+                      
+                    }
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: false
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-16T11:23:30.418Z
+      - six:
+          pluginTemplate:
+            id: six
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: |-
+                    if
+                      (textinput5.value == "") {
+                    textinput5.setValue("6")
+                      }
+                    else {
+                      textinput5.setValue(textinput5.value + "6")
+                      
+                    }
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: false
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-16T11:24:26.330Z
+      - five:
+          pluginTemplate:
+            id: five
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: |-
+                    if
+                      (textinput5.value == "") {
+                    textinput5.setValue("5")
+                      }
+                    else {
+                      textinput5.setValue(textinput5.value + "5")
+                      
+                    }
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: false
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-16T11:24:54.683Z
+      - four:
+          pluginTemplate:
+            id: four
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: |-
+                    if
+                      (textinput5.value == "") {
+                    textinput5.setValue("4")
+                      }
+                    else {
+                      textinput5.setValue(textinput5.value + "4")
+                      
+                    }
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: false
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-16T11:25:22.167Z
+      - three:
+          pluginTemplate:
+            id: three
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: |-
+                    if
+                      (textinput5.value == "") {
+                    textinput5.setValue("3")
+                      }
+                    else {
+                      textinput5.setValue(textinput5.value + "3")
+                      
+                    }
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: false
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-16T11:25:38.062Z
+      - two:
+          pluginTemplate:
+            id: two
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: |-
+                    if
+                      (textinput5.value == "") {
+                    textinput5.setValue("2")
+                      }
+                    else {
+                      textinput5.setValue(textinput5.value + "2")
+                      
+                    }
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: false
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-16T11:25:39.143Z
+      - one:
+          pluginTemplate:
+            id: one
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: |-
+                    if
+                      (textinput5.value == "") {
+                    textinput5.setValue("1")
+                      }
+                    else {
+                      textinput5.setValue(textinput5.value + "1")
+                      
+                    }
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: false
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-16T11:25:39.590Z
+      - zero:
+          pluginTemplate:
+            id: zero
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: |-
+                    if
+                      (textinput5.value == "") {
+                    textinput5.setValue("0")
+                      }
+                    else {
+                      textinput5.setValue(textinput5.value + "0")
+                      
+                    }
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: false
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-16T11:25:40.022Z
+      - cleartmnum:
+          pluginTemplate:
+            id: cleartmnum
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: textinput5.setValue("")
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: false
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-16T11:28:46.610Z
+      - enterTMNo:
+          pluginTemplate:
+            id: enterTMNo
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: |-
+                    textinput2.setValue(textinput5.value)
+                    textinput5.setValue("");
+                    modal1.close()
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: false
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-16T11:31:47.412Z
+      - seventemp:
+          pluginTemplate:
+            id: seventemp
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: |-
+                    if
+                      (textinput6.value == "") {
+                    textinput6.setValue("7")
+                      }
+                    else {
+                      textinput6.setValue(textinput6.value + "7")
+                      
+                    }
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: false
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-16T11:49:29.145Z
+      - eighttemp:
+          pluginTemplate:
+            id: eighttemp
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: |-
+                    if
+                      (textinput6.value == "") {
+                    textinput6.setValue("8")
+                      }
+                    else {
+                      textinput6.setValue(textinput6.value + "8")
+                      
+                    }
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: false
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-16T11:50:54.926Z
+      - ninetemp:
+          pluginTemplate:
+            id: ninetemp
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: |-
+                    if
+                      (textinput6.value == "") {
+                    textinput6.setValue("9")
+                      }
+                    else {
+                      textinput6.setValue(textinput6.value + "9")
+                      
+                    }
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: false
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-16T12:12:08.808Z
+      - sixtemp:
+          pluginTemplate:
+            id: sixtemp
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: |-
+                    if
+                      (textinput6.value == "") {
+                    textinput6.setValue("6")
+                      }
+                    else {
+                      textinput6.setValue(textinput6.value + "6")
+                      
+                    }
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: false
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-16T12:13:52.616Z
+      - fivetemp:
+          pluginTemplate:
+            id: fivetemp
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: |-
+                    if
+                      (textinput6.value == "") {
+                    textinput6.setValue("5")
+                      }
+                    else {
+                      textinput6.setValue(textinput6.value + "5")
+                      
+                    }
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: false
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-16T12:14:18.087Z
+      - fourtemp:
+          pluginTemplate:
+            id: fourtemp
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: |-
+                    if
+                      (textinput6.value == "") {
+                    textinput6.setValue("4")
+                      }
+                    else {
+                      textinput6.setValue(textinput6.value + "4")
+                      
+                    }
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: false
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-16T12:14:57.992Z
+      - threetemp:
+          pluginTemplate:
+            id: threetemp
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: |-
+                    if
+                      (textinput6.value == "") {
+                    textinput6.setValue("3")
+                      }
+                    else {
+                      textinput6.setValue(textinput6.value + "3")
+                      
+                    }
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: false
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-16T12:15:21.032Z
+      - twotemp:
+          pluginTemplate:
+            id: twotemp
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: |-
+                    if
+                      (textinput6.value == "") {
+                    textinput6.setValue("2")
+                      }
+                    else {
+                      textinput6.setValue(textinput6.value + "2")
+                      
+                    }
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: false
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-16T12:15:48.176Z
+      - onetemp:
+          pluginTemplate:
+            id: onetemp
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: |-
+                    if
+                      (textinput6.value == "") {
+                    textinput6.setValue("1")
+                      }
+                    else {
+                      textinput6.setValue(textinput6.value + "1")
+                      
+                    }
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: false
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-16T12:16:11.642Z
+      - zerotemp:
+          pluginTemplate:
+            id: zerotemp
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: |-
+                    if
+                      (textinput6.value == "") {
+                    textinput6.setValue("0")
+                      }
+                    else {
+                      textinput6.setValue(textinput6.value + "0")
+                      
+                    }
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: false
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-16T12:16:43.208Z
+      - clearnumtemp:
+          pluginTemplate:
+            id: clearnumtemp
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: textinput6.setValue("")
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: false
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-16T12:17:10.537Z
+      - entertemp:
+          pluginTemplate:
+            id: entertemp
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: |-
+                    Temperature.setValue(textinput6.value);
+                    textinput6.setValue("");
+                    modal2.close();
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: false
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-16T12:17:35.081Z
+      - container1:
+          pluginTemplate:
+            id: container1
+            type: widget
+            subtype: ContainerWidget
+            template:
+              ordered:
+                - heightType: fixed
+                - spinWhenChildrenAreFetching: true
+                - showBorder: true
+                - showDropShadow: true
+                - backgroundColor: white
+                - title: ''
+                - overflowType: visible
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: form1
+                row: 1
+                col: 6
+                height: 15
+                width: 6
+            mobilePosition2:
+              position2:
+                row: 5
+                height: 8
+                width: 12
+            createdAt: 2020-05-31T10:19:03.812Z
+      - text1:
+          pluginTemplate:
+            id: text1
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: >
+                    <b>Have you been recently exposed to COVID positive
+                    PUI/PUM?</b>
+                - renderAsHtml: true
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container2
+                height: 1
+                width: 10
+            mobilePosition2:
+              position2:
+                container: form1
+                height: 1
+                width: 4
+            createdAt: 2020-05-31T10:33:31.802Z
+      - Temperature:
+          pluginTemplate:
+            id: Temperature
+            type: widget
+            subtype: TextInputWidget
+            template:
+              ordered:
+                - validationMaxlengthValue: ''
+                - readonly: '{{}}'
+                - disabledKeyCodes: ''
+                - showNumberCommas: false
+                - validationMaxValue: ''
+                - onBlur: ''
+                - currencyType: USD
+                - leftIconName: ''
+                - initialValue: ''
+                - validationMessage: ''
+                - tooltipText: ''
+                - value: ''
+                - suffix: ''
+                - validationMinlengthValue: ''
+                - validationLengthValue: ''
+                - placeholder: ''
+                - validationType: ''
+                - label: ''
+                - currencyMajorOnly: false
+                - formattedValue: ''
+                - allowedInputsRegex: ''
+                - labelMaxWidth: ''
+                - enableValidationType: false
+                - labelPlacedOnLeft: false
+                - onSubmit: ''
+                - validationMinValue: ''
+                - lastSubmittedAt: ''
+                - validationState:
+                    object:
+                      required: ''
+                      validationType: ''
+                - type: number
+                - allowedRegex: ''
+                - required: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container2
+                row: 2
+                col: 1
+                height: 1
+                width: 4
+            mobilePosition2:
+              position2:
+                container: form1
+                col: 6
+                height: 1
+                width: 4
+            createdAt: 2020-05-31T11:00:34.075Z
+      - text5:
+          pluginTemplate:
+            id: text5
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |
+                    <b>Have you experienced any of the following symptoms?</b>
+                - renderAsHtml: true
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container2
+                row: 3
+                height: 1
+                width: 12
+            createdAt: 2020-05-31T11:07:14.488Z
+      - text10:
+          pluginTemplate:
+            id: text10
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |
+                    Breathing Difficulty
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container2
+                row: 4
+                col: 6
+                height: 1
+                width: 4
+            createdAt: 2020-05-31T11:10:04.487Z
+      - text12:
+          pluginTemplate:
+            id: text12
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: Muscle Pain
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container2
+                row: 7
+                col: 6
+                height: 1
+                width: 4
+            createdAt: 2020-05-31T11:10:40.739Z
+      - text13:
+          pluginTemplate:
+            id: text13
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: Decreased Sense Smell
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container2
+                row: 6
+                col: 6
+                height: 1
+                width: 4
+            createdAt: 2020-05-31T11:10:50.452Z
+      - text14:
+          pluginTemplate:
+            id: text14
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: Decreased Sense of Taste
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container2
+                row: 5
+                col: 6
+                height: 1
+                width: 4
+            createdAt: 2020-05-31T11:11:10.837Z
+      - isBreathing:
+          pluginTemplate:
+            id: isBreathing
+            type: widget
+            subtype: ToggleWidget
+            template:
+              ordered:
+                - toggleOffQuery: ''
+                - toggleType: default
+                - tooltipText: ''
+                - value: false
+                - label: ''
+                - toggleOnQuery: ''
+                - labelMaxWidth: ''
+                - labelPlacedOnLeft: false
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container2
+                row: 4
+                col: 10
+                height: 1
+                width: 1
+            createdAt: 2020-05-31T11:12:15.421Z
+      - isDecreaseTaste:
+          pluginTemplate:
+            id: isDecreaseTaste
+            type: widget
+            subtype: ToggleWidget
+            template:
+              ordered:
+                - toggleOffQuery: ''
+                - toggleType: default
+                - tooltipText: ''
+                - value: false
+                - label: ''
+                - toggleOnQuery: ''
+                - labelMaxWidth: ''
+                - labelPlacedOnLeft: false
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container2
+                row: 5
+                col: 10
+                height: 1
+                width: 1
+            createdAt: 2020-05-31T11:12:19.881Z
+      - isDecreasedSmell:
+          pluginTemplate:
+            id: isDecreasedSmell
+            type: widget
+            subtype: ToggleWidget
+            template:
+              ordered:
+                - toggleOffQuery: ''
+                - toggleType: default
+                - tooltipText: ''
+                - value: false
+                - label: ''
+                - toggleOnQuery: ''
+                - labelMaxWidth: ''
+                - labelPlacedOnLeft: false
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container2
+                row: 6
+                col: 10
+                height: 1
+                width: 1
+            createdAt: 2020-05-31T11:12:21.881Z
+      - isMusclePain:
+          pluginTemplate:
+            id: isMusclePain
+            type: widget
+            subtype: ToggleWidget
+            template:
+              ordered:
+                - toggleOffQuery: ''
+                - toggleType: default
+                - tooltipText: ''
+                - value: false
+                - label: ''
+                - toggleOnQuery: ''
+                - labelMaxWidth: ''
+                - labelPlacedOnLeft: false
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container2
+                row: 7
+                col: 10
+                height: 1
+                width: 1
+            createdAt: 2020-05-31T11:12:23.196Z
+      - isDiarrhea:
+          pluginTemplate:
+            id: isDiarrhea
+            type: widget
+            subtype: ToggleWidget
+            template:
+              ordered:
+                - toggleOffQuery: ''
+                - toggleType: default
+                - tooltipText: ''
+                - value: false
+                - label: ''
+                - toggleOnQuery: ''
+                - labelMaxWidth: ''
+                - labelPlacedOnLeft: false
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container2
+                row: 6
+                col: 3
+                height: 1
+                width: 1
+            createdAt: 2020-05-31T11:12:26.977Z
+      - isCold:
+          pluginTemplate:
+            id: isCold
+            type: widget
+            subtype: ToggleWidget
+            template:
+              ordered:
+                - toggleOffQuery: ''
+                - toggleType: default
+                - tooltipText: ''
+                - value: false
+                - label: ''
+                - toggleOnQuery: ''
+                - labelMaxWidth: ''
+                - labelPlacedOnLeft: false
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container2
+                row: 5
+                col: 3
+                height: 1
+                width: 1
+            createdAt: 2020-05-31T11:12:39.419Z
+      - form1:
+          pluginTemplate:
+            id: form1
+            type: widget
+            subtype: FormWidget
+            template:
+              ordered:
+                - heightType: fixed
+                - spinWhenChildrenAreFetching: true
+                - clearFormAfterSubmit: true
+                - requireValidFormForSubmit: true
+                - showBorder: true
+                - data: ''
+                - showDropShadow: false
+                - submitButtonFullWidth: true
+                - submitDisabled: ''
+                - submitButtonText: Add new declaration
+                - onSubmit: CreateNewDeclaration
+                - requiredFormControls: []
+                - hideSubmit: false
+                - loading: ''
+                - overflowType: hidden
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                height: 18
+                width: 12
+            mobilePosition2:
+              position2:
+                container: container1
+                row: 7
+                height: 15
+                width: 12
+            createdAt: 2020-05-31T11:23:11.080Z
+      - table1:
+          pluginTemplate:
+            id: table1
+            type: widget
+            subtype: TableWidget
+            template:
+              ordered:
+                - showCustomButton: false
+                - sortMappedValue:
+                    ordered: []
+                - normalizedData: null
+                - saveChangesDisabled: ''
+                - columnWidths:
+                    - object:
+                        id: Diarrhea
+                        value: 83
+                    - object:
+                        id: temperate
+                        value: 56
+                    - object:
+                        id: Fever
+                        value: 66
+                    - object:
+                        id: Cough
+                        value: 74
+                    - object:
+                        id: Cold
+                        value: 62
+                    - object:
+                        id: Breathing
+                        value: 64
+                    - object:
+                        id: DecreaseTaste
+                        value: 89
+                    - object:
+                        id: DescreaseSmell
+                        value: 87
+                    - object:
+                        id: DeclarationDate
+                        value: 131.09375
+                - columnWidthsMobile: []
+                - hasNextAfterCursor: ''
+                - columnTypeSpecificExtras:
+                    ordered:
+                      - Fever:
+                          ordered:
+                            - dropdownValues: '["true","false"]'
+                            - dropdownLabels: '["True", "False"]'
+                - onRowAdded: ''
+                - columnHeaderNames:
+                    ordered:
+                      - DeclarationDate: Date
+                      - temperate: Temp
+                      - SoreThroat: Sore Throat
+                      - Breathing: DOB
+                      - MusclePain: Muscle Pain
+                      - DecreaseTaste: Taste
+                      - DescreaseSmell: '- in Smell'
+                      - DeclarationDateOnly: Date
+                - alwaysShowPaginator: false
+                - columnColors:
+                    ordered:
+                      - PatientID: ''
+                      - RecentExposure: ''
+                      - Breathing: ''
+                      - CommunityType: ''
+                      - Fever: ''
+                      - Cold: ''
+                      - VehicleType: ''
+                      - Origin: ''
+                      - MusclePain: ''
+                      - DeclarationDate: ''
+                      - Diarrhea: ''
+                      - PrivateVehicle: ''
+                      - Calculated Column 1: ''
+                      - UpdatedDate: ''
+                      - Cough: ''
+                      - Calculated Column 2: ''
+                      - Calculated Column 3: ''
+                      - Calculated Column 4: ''
+                      - Calculated Column 5: ''
+                      - NonPublicTransportType: ''
+                      - Destination: ''
+                      - temperate: '{{self >= ''38''? ''red'' : ''green''}}'
+                      - SoreThroat: ''
+                      - DeclarationDateOnly: ''
+                      - DecreaseTaste: ''
+                      - id: ''
+                      - DescreaseSmell: ''
+                      - PlateNumber: ''
+                - columnFrozenAlignments:
+                    ordered: []
+                - allowMultiRowSelect: false
+                - columnFormats:
+                    ordered:
+                      - Fever: default
+                      - DeclarationDate: default
+                - columnRestrictedEditing:
+                    ordered: []
+                - showFilterButton: false
+                - nextBeforeCursor: ''
+                - columnVisibility:
+                    ordered:
+                      - PatientID: false
+                      - RecentExposure: false
+                      - Breathing: false
+                      - CommunityType: false
+                      - Fever: true
+                      - Cold: true
+                      - VehicleType: false
+                      - Origin: false
+                      - MusclePain: true
+                      - DeclarationDate: true
+                      - Diarrhea: true
+                      - PrivateVehicle: false
+                      - Calculated Column 1: false
+                      - UpdatedDate: false
+                      - Cough: true
+                      - Calculated Column 2: false
+                      - Calculated Column 3: false
+                      - Sales: true
+                      - Calculated Column 4: false
+                      - Calculated Column 5: false
+                      - NonPublicTransportType: false
+                      - Destination: false
+                      - temperate: true
+                      - SoreThroat: true
+                      - DeclarationDateOnly: true
+                      - Title: true
+                      - DecreaseTaste: true
+                      - id: false
+                      - DescreaseSmell: true
+                      - Description: true
+                      - PlateNumber: false
+                - selectedPageIndex: '0'
+                - actionButtonColumnName: Actions
+                - filterStackType: and
+                - downloadRawData: true
+                - showFetchingIndicator: true
+                - serverPaginated: false
+                - data: '{{SearchDeclaration.data}}'
+                - displayedData: null
+                - actionButtons: []
+                - actionButtonSelectsRow: true
+                - selectRowByDefault: true
+                - defaultSortByColumn: DeclarationDate
+                - paginationOffset: 0
+                - columnAlignment:
+                    ordered: []
+                - sortedDesc: false
+                - customButtonName: ''
+                - columnMappersRenderAsHTML:
+                    ordered:
+                      - DeclarationDate: true
+                - showRefreshButton: true
+                - pageSize: 7
+                - useDynamicColumnSettings: false
+                - actionButtonPosition: left
+                - bulkUpdateAction: UpdateDeclaration
+                - afterCursor: ''
+                - onCustomButtonPressQueryName: ''
+                - changeSet:
+                    object: {}
+                - sortedColumn: ''
+                - columnAllowOverflow:
+                    ordered: []
+                - beforeCursor: ''
+                - serverPaginationType: limitOffsetBased
+                - onRowSelect: ''
+                - showDownloadButton: false
+                - selectedIndex: ''
+                - defaultSortDescending: true
+                - dynamicColumnSettings: null
+                - totalRowCount: ''
+                - recordUpdates:
+                    array: []
+                - newRow: null
+                - columnEditable:
+                    ordered:
+                      - Breathing: true
+                      - Fever: true
+                      - Cold: true
+                      - MusclePain: true
+                      - Diarrhea: true
+                      - Cough: true
+                      - SoreThroat: true
+                      - DecreaseTaste: true
+                      - DescreaseSmell: true
+                - filters:
+                    array: []
+                - displayedDataIndices: null
+                - disableSorting:
+                    ordered: []
+                - columnMappers:
+                    ordered:
+                      - DeclarationDate: '{{ moment(self).format(''MM/DD/YYYY, HH:mm'') }}'
+                - showClearSelection: false
+                - selectedCell:
+                    object:
+                      index: null
+                      data: null
+                      columnName: null
+                - columns:
+                    - DeclarationDateOnly
+                    - temperate
+                    - Fever
+                    - Cough
+                    - Cold
+                    - SoreThroat
+                    - Breathing
+                    - Diarrhea
+                    - MusclePain
+                    - DecreaseTaste
+                    - Calculated Column 1
+                    - Calculated Column 2
+                    - Calculated Column 3
+                    - Calculated Column 4
+                    - Calculated Column 5
+                - sort: null
+                - calculatedColumns:
+                    - Calculated Column 1
+                    - Calculated Column 2
+                    - Calculated Column 3
+                    - Calculated Column 4
+                    - Calculated Column 5
+                - selectedRow:
+                    object:
+                      index: null
+                      data: null
+                - showPaginationOnTop: false
+                - nextAfterCursor: ''
+                - useCompactMode: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container1
+                row: 1
+                height: 6
+                width: 12
+            createdAt: 2020-05-31T16:54:00.839Z
+      - TransportMode:
+          pluginTemplate:
+            id: TransportMode
+            type: widget
+            subtype: SelectWidget
+            template:
+              ordered:
+                - enableClientSideMatching: true
+                - values: '["Public Transport", "Private Transport - Car/Bike"]'
+                - allowOutOfRangeValues: false
+                - enableFuzzyMatching: true
+                - searchValue: ''
+                - showFetchingIndicator: true
+                - enableCaseSensitivity: false
+                - validationMessage: ''
+                - displayValue: ''
+                - tooltipText: ''
+                - value: '"Private Transport - Car/Bike"'
+                - maxResults: 50
+                - placeholder: ''
+                - label: Mode of Transport
+                - clearValueOnFocus: true
+                - labelMaxWidth: ''
+                - labelPlacedOnLeft: false
+                - validationState: ''
+                - onSelect: ''
+                - allowCustomValues: false
+                - disabled: ''
+                - hideClearButton: false
+                - required: true
+                - labels: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container2
+                row: 1
+                col: 5
+                height: 2
+                width: 7
+            createdAt: 2020-06-01T17:27:48.879Z
+      - table2:
+          pluginTemplate:
+            id: table2
+            type: widget
+            subtype: TableWidget
+            template:
+              ordered:
+                - showCustomButton: false
+                - sortMappedValue:
+                    ordered:
+                      - Date: false
+                - normalizedData: null
+                - saveChangesDisabled: ''
+                - columnWidths:
+                    - object:
+                        id: ScreeningResult
+                        value: 116.53125
+                    - object:
+                        id: RapidTestDetails
+                        value: 143.53125
+                    - object:
+                        id: Date
+                        value: 96
+                    - object:
+                        id: Site
+                        value: 108.03125
+                    - object:
+                        id: Details of Symptoms
+                        value: 80
+                    - object:
+                        id: Type
+                        value: 137.828125
+                - columnWidthsMobile: []
+                - hasNextAfterCursor: ''
+                - columnTypeSpecificExtras:
+                    ordered: []
+                - onRowAdded: ''
+                - columnHeaderNames:
+                    ordered:
+                      - ScreeningResult: Screening Result
+                      - RapidTestDetails: Rapid Test Details
+                      - TestKitsUsed: Test Kits Used
+                      - Date: Test Date
+                      - Details of Symptoms: Symptoms
+                      - IsSymptomatic: Symptomatic?
+                      - PcrResults: PCR Result
+                      - PcrLocation: PCR Location
+                - alwaysShowPaginator: false
+                - columnColors:
+                    ordered:
+                      - PatientID: ''
+                      - Site: ''
+                      - name: ''
+                      - TestKitsUsed: ''
+                      - sales: ''
+                      - IsSymptomatic: ''
+                      - Date: ''
+                      - Remarks: ''
+                      - ScreeningResult: ''
+                      - PcrLocation: ''
+                      - RapidTestDetails: ''
+                      - Details of Symptoms: ''
+                      - CreatedDate: ''
+                      - PcrResults: ''
+                      - Type: ''
+                      - Recommendations: ''
+                      - id: ''
+                      - email: ''
+                      - Result: ''
+                - columnFrozenAlignments:
+                    ordered: []
+                - allowMultiRowSelect: false
+                - columnFormats:
+                    ordered: []
+                - columnRestrictedEditing:
+                    ordered: []
+                - showFilterButton: false
+                - nextBeforeCursor: ''
+                - columnVisibility:
+                    ordered:
+                      - PatientID: false
+                      - Site: true
+                      - name: true
+                      - TestKitsUsed: true
+                      - Sales: true
+                      - sales: true
+                      - IsSymptomatic: true
+                      - Date: true
+                      - Remarks: true
+                      - ScreeningResult: true
+                      - PcrLocation: true
+                      - RapidTestDetails: true
+                      - Details of Symptoms: true
+                      - CreatedDate: true
+                      - PcrResults: true
+                      - Title: true
+                      - Type: true
+                      - Recommendations: true
+                      - id: false
+                      - email: true
+                      - Description: true
+                      - Result: false
+                - selectedPageIndex: '0'
+                - actionButtonColumnName: Actions
+                - filterStackType: and
+                - downloadRawData: false
+                - showFetchingIndicator: true
+                - serverPaginated: false
+                - data: |
+                    {{GetScreeningTestResults.data}} 
+                - displayedData: null
+                - actionButtons: []
+                - actionButtonSelectsRow: true
+                - selectRowByDefault: true
+                - defaultSortByColumn: Date
+                - paginationOffset: 0
+                - columnAlignment:
+                    ordered: []
+                - sortedDesc: false
+                - customButtonName: ''
+                - columnMappersRenderAsHTML:
+                    ordered:
+                      - Date: true
+                      - Calculated Column 4: true
+                - showRefreshButton: true
+                - pageSize: 7
+                - useDynamicColumnSettings: false
+                - actionButtonPosition: left
+                - bulkUpdateAction: ''
+                - afterCursor: ''
+                - onCustomButtonPressQueryName: ''
+                - changeSet:
+                    object: {}
+                - sortedColumn: ''
+                - columnAllowOverflow:
+                    ordered:
+                      - Date: false
+                - beforeCursor: ''
+                - serverPaginationType: limitOffsetBased
+                - onRowSelect: ''
+                - showDownloadButton: false
+                - selectedIndex: ''
+                - defaultSortDescending: true
+                - dynamicColumnSettings: ''
+                - totalRowCount: ''
+                - recordUpdates:
+                    array: []
+                - newRow: null
+                - columnEditable:
+                    ordered: []
+                - filters:
+                    array: []
+                - displayedDataIndices: null
+                - disableSorting:
+                    ordered: []
+                - columnMappers:
+                    ordered:
+                      - Date: ''
+                      - Calculated Column 4: ''
+                - showClearSelection: false
+                - selectedCell:
+                    object:
+                      index: null
+                      data: null
+                      columnName: null
+                - columns:
+                    - id
+                    - PatientID
+                    - Date
+                    - Type
+                    - Site
+                    - ScreeningResult
+                    - RapidTestDetails
+                    - TestKitsUsed
+                    - Result
+                    - Details of Symptoms
+                    - IsSymptomatic
+                    - Recommendations
+                    - Remarks
+                    - PcrResults
+                    - PcrLocation
+                    - CreatedDate
+                - sort: null
+                - calculatedColumns: []
+                - selectedRow:
+                    object:
+                      index: null
+                      data: null
+                - showPaginationOnTop: false
+                - nextAfterCursor: ''
+                - useCompactMode: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container1
+                row: 8
+                height: 6
+                width: 12
+            createdAt: 2020-06-02T09:05:19.973Z
+      - transformer1:
+          pluginTemplate:
+            id: transformer1
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: >-
+                    // Tip: Make sure to separate your dependencies into a
+                    variable. 
+
+
+                    // Correct 
+
+                    // const data = {{query1.data}}
+
+                    // data.map(...)
+
+
+                    // Incorrect 
+
+                    // {{query1.data}}.map(...) 
+
+
+                    return 5
+                - value: ''
+            createdAt: 2020-06-03T20:52:20.223Z
+      - textinput2:
+          pluginTemplate:
+            id: textinput2
+            type: widget
+            subtype: TextInputWidget
+            template:
+              ordered:
+                - validationMaxlengthValue: ''
+                - readonly: '{{}}'
+                - disabledKeyCodes: ''
+                - showNumberCommas: false
+                - validationMaxValue: ''
+                - onBlur: ''
+                - currencyType: USD
+                - leftIconName: ''
+                - initialValue: ''
+                - validationMessage: Ente
+                - tooltipText: ''
+                - value: ''
+                - suffix: ''
+                - validationMinlengthValue: ''
+                - validationLengthValue: ''
+                - placeholder: Search here...
+                - validationType: regexp
+                - label: ''
+                - currencyMajorOnly: false
+                - formattedValue: ''
+                - allowedInputsRegex: ''
+                - labelMaxWidth: ''
+                - enableValidationType: false
+                - labelPlacedOnLeft: false
+                - onSubmit: GetPatientName
+                - validationMinValue: ''
+                - lastSubmittedAt: ''
+                - validationState:
+                    object:
+                      required: ''
+                      validationType: ''
+                - type: number
+                - allowedRegex: ''
+                - required: false
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: form1
+                col: 2
+                height: 1
+                width: 3
+            createdAt: 2020-06-04T01:58:28.117Z
+      - text15:
+          pluginTemplate:
+            id: text15
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |
+                    <b>Screening Test Results</b>
+                - renderAsHtml: true
+                - backgroundColor: '#0000'
+                - textColor: '#555555'
+                - renderAsMarkdown: true
+            style:
+              ordered:
+                - primary-text: '#555555'
+            position2:
+              position2:
+                container: container1
+                row: 7
+                height: 1
+                width: 12
+            createdAt: 2020-06-04T02:58:01.415Z
+      - text17:
+          pluginTemplate:
+            id: text17
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: right
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: >
+                    <p style="font-size:20px" ><b>Health Declaration
+                    Form</b></p>
+                - renderAsHtml: true
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: form1
+                col: 8
+                height: 1
+                width: 4
+            createdAt: 2020-06-04T03:10:51.689Z
+      - text11:
+          pluginTemplate:
+            id: text11
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: >+
+
+                    <b> DECLARATION: </b>
+
+                    <p style="text-align:justify;"> 
+
+                    I certify that the above information is true and complete. I
+                    understand that my failure to answer, or any false or
+                    misleading information given by me may be used as a ground
+                    for the filing of cases against me under Articles 171 and
+                    172 of the Revised Penal Code of the Philippines, or
+                    Republic Act No. 11332, otherwise known as the "Law on
+                    Reporting of Communicable Disease".
+
+
+                    I hereby authorize Bloomberry Resorts and Hotels Inc.. to
+                    collect and process the data indicated herein for the
+                    purpose of effecting control of the COVID-19 infection. I
+                    understand that my personal information is protected by RA
+                    10173, Data Privacy Act of 2012, and that I am required by
+                    RA 11469, Bayanihan to Heal as One Act, to provide truthful
+                    information.</p>
+
+
+                - renderAsHtml: true
+                - backgroundColor: '#0000'
+                - textColor: '#cc5248'
+                - renderAsMarkdown: true
+            style:
+              ordered:
+                - primary-text: '#cc5248'
+            position2:
+              position2:
+                container: container2
+                row: 9
+                height: 5
+                width: 12
+            createdAt: 2020-06-04T07:19:10.891Z
+      - text16:
+          pluginTemplate:
+            id: text16
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |
+                    Fever
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container2
+                row: 4
+                col: 1
+                height: 1
+                width: 2
+            createdAt: 2020-06-04T07:24:43.939Z
+      - isFever:
+          pluginTemplate:
+            id: isFever
+            type: widget
+            subtype: ToggleWidget
+            template:
+              ordered:
+                - toggleOffQuery: ''
+                - toggleType: default
+                - tooltipText: ''
+                - value: false
+                - label: ''
+                - toggleOnQuery: ''
+                - labelMaxWidth: ''
+                - labelPlacedOnLeft: false
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container2
+                row: 4
+                col: 3
+                height: 1
+                width: 1
+            createdAt: 2020-06-04T07:25:13.479Z
+      - text18:
+          pluginTemplate:
+            id: text18
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |
+                    Cold
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container2
+                row: 5
+                col: 1
+                height: 1
+                width: 2
+            createdAt: 2020-06-04T07:26:04.767Z
+      - text19:
+          pluginTemplate:
+            id: text19
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |
+                    Diarrhea
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container2
+                row: 6
+                col: 1
+                height: 1
+                width: 2
+            createdAt: 2020-06-04T07:26:50.099Z
+      - text20:
+          pluginTemplate:
+            id: text20
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |
+                    Sore Throat
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container2
+                row: 7
+                col: 1
+                height: 1
+                width: 2
+            createdAt: 2020-06-04T07:27:31.995Z
+      - isSoreThroat:
+          pluginTemplate:
+            id: isSoreThroat
+            type: widget
+            subtype: ToggleWidget
+            template:
+              ordered:
+                - toggleOffQuery: ''
+                - toggleType: default
+                - tooltipText: ''
+                - value: false
+                - label: ''
+                - toggleOnQuery: ''
+                - labelMaxWidth: ''
+                - labelPlacedOnLeft: false
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container2
+                row: 7
+                col: 3
+                height: 1
+                width: 1
+            createdAt: 2020-06-04T07:28:12.036Z
+      - text21:
+          pluginTemplate:
+            id: text21
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: Cough
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container2
+                row: 8
+                col: 1
+                height: 1
+                width: 2
+            createdAt: 2020-06-04T07:28:40.021Z
+      - isCough:
+          pluginTemplate:
+            id: isCough
+            type: widget
+            subtype: ToggleWidget
+            template:
+              ordered:
+                - toggleOffQuery: ''
+                - toggleType: default
+                - tooltipText: ''
+                - value: false
+                - label: ''
+                - toggleOnQuery: ''
+                - labelMaxWidth: ''
+                - labelPlacedOnLeft: false
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container2
+                row: 8
+                col: 3
+                height: 1
+                width: 1
+            createdAt: 2020-06-04T07:29:11.392Z
+      - isRecentExposed:
+          pluginTemplate:
+            id: isRecentExposed
+            type: widget
+            subtype: ToggleWidget
+            template:
+              ordered:
+                - toggleOffQuery: ''
+                - toggleType: default
+                - tooltipText: ''
+                - value: false
+                - label: ''
+                - toggleOnQuery: ''
+                - labelMaxWidth: ''
+                - labelPlacedOnLeft: false
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container2
+                col: 10
+                height: 1
+                width: 1
+            createdAt: 2020-06-04T08:48:39.000Z
+      - EmployeeID:
+          pluginTemplate:
+            id: EmployeeID
+            type: widget
+            subtype: TextInputWidget
+            template:
+              ordered:
+                - validationMaxlengthValue: ''
+                - readonly: 'true'
+                - disabledKeyCodes: ''
+                - showNumberCommas: false
+                - validationMaxValue: ''
+                - onBlur: ''
+                - currencyType: USD
+                - leftIconName: ''
+                - initialValue: '{{textinput2.value}}'
+                - validationMessage: ''
+                - tooltipText: ''
+                - value: ''
+                - suffix: ''
+                - validationMinlengthValue: ''
+                - validationLengthValue: ''
+                - placeholder: Search here...
+                - validationType: ''
+                - label: Employee ID
+                - currencyMajorOnly: false
+                - formattedValue: ''
+                - allowedInputsRegex: ''
+                - labelMaxWidth: ''
+                - enableValidationType: false
+                - labelPlacedOnLeft: false
+                - onSubmit: ''
+                - validationMinValue: ''
+                - lastSubmittedAt: ''
+                - validationState:
+                    object:
+                      required: ''
+                      validationType: ''
+                - type: text
+                - allowedRegex: ''
+                - required: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                row: 31
+                col: 8
+                height: 1
+                width: 4
+            createdAt: 2020-06-04T11:47:25.287Z
+      - container2:
+          pluginTemplate:
+            id: container2
+            type: widget
+            subtype: ContainerWidget
+            template:
+              ordered:
+                - heightType: fixed
+                - spinWhenChildrenAreFetching: false
+                - showBorder: true
+                - showDropShadow: true
+                - backgroundColor: white
+                - title: ''
+                - overflowType: visible
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: form1
+                row: 1
+                height: 15
+                width: 6
+            createdAt: 2020-06-05T00:05:12.436Z
+      - text22:
+          pluginTemplate:
+            id: text22
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |
+                    <b>Health Declaration History </b>
+                - renderAsHtml: true
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container1
+                height: 1
+                width: 5
+            createdAt: 2020-06-05T00:48:42.019Z
+      - textinput4:
+          pluginTemplate:
+            id: textinput4
+            type: widget
+            subtype: TextInputWidget
+            template:
+              ordered:
+                - validationMaxlengthValue: ''
+                - readonly: '{{}}'
+                - disabledKeyCodes: ''
+                - showNumberCommas: false
+                - validationMaxValue: ''
+                - onBlur: ''
+                - currencyType: USD
+                - leftIconName: ''
+                - initialValue: '{{GetPatientName.data.Fullname}}'
+                - validationMessage: ''
+                - tooltipText: ''
+                - value: ''
+                - suffix: ''
+                - validationMinlengthValue: ''
+                - validationLengthValue: ''
+                - placeholder: Search here...
+                - validationType: ''
+                - label: ''
+                - currencyMajorOnly: false
+                - formattedValue: ''
+                - allowedInputsRegex: ''
+                - labelMaxWidth: ''
+                - enableValidationType: false
+                - labelPlacedOnLeft: false
+                - onSubmit: ''
+                - validationMinValue: ''
+                - lastSubmittedAt: ''
+                - validationState:
+                    object:
+                      required: ''
+                      validationType: ''
+                - type: text
+                - allowedRegex: ''
+                - required: false
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: form1
+                col: 5
+                height: 1
+                width: 3
+            createdAt: 2020-06-12T07:57:57.459Z
+      - modal1:
+          pluginTemplate:
+            id: modal1
+            type: widget
+            subtype: ModalWidget
+            template:
+              ordered:
+                - buttonBackgroundColor: '#3c92dc'
+                - opened: false
+                - modalOverflowType: visible
+                - onModalClose: cleartmnum
+                - modalHeightType: fixed
+                - modalHeight: ''
+                - onModalOpen: ''
+                - modalWidth: 40%
+                - closeOnOutsideClick: false
+                - loading: ''
+                - disabled: ''
+                - buttonText: Enter TM Number
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: form1
+                height: 1
+                width: 2
+            createdAt: 2020-06-16T10:41:47.627Z
+      - button1:
+          pluginTemplate:
+            id: button1
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#3c92dc'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: '1'
+                - exportQuery: ''
+                - action: one
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: modal1
+                row: 6
+                height: 2
+                width: 4
+            createdAt: 2020-06-16T10:42:34.646Z
+      - button2:
+          pluginTemplate:
+            id: button2
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#3c92dc'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: '2'
+                - exportQuery: ''
+                - action: two
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: modal1
+                row: 6
+                col: 4
+                height: 2
+                width: 4
+            createdAt: 2020-06-16T10:43:03.909Z
+      - button3:
+          pluginTemplate:
+            id: button3
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#3c92dc'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: '3'
+                - exportQuery: ''
+                - action: three
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: modal1
+                row: 6
+                col: 8
+                height: 2
+                width: 4
+            createdAt: 2020-06-16T10:43:13.887Z
+      - button4:
+          pluginTemplate:
+            id: button4
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#3c92dc'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: '4'
+                - exportQuery: ''
+                - action: four
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: modal1
+                row: 4
+                height: 2
+                width: 4
+            createdAt: 2020-06-16T10:43:53.564Z
+      - button5:
+          pluginTemplate:
+            id: button5
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#3c92dc'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: '5'
+                - exportQuery: ''
+                - action: five
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: modal1
+                row: 4
+                col: 4
+                height: 2
+                width: 4
+            createdAt: 2020-06-16T10:44:04.148Z
+      - button6:
+          pluginTemplate:
+            id: button6
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#3c92dc'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: '6'
+                - exportQuery: ''
+                - action: six
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: modal1
+                row: 4
+                col: 8
+                height: 2
+                width: 4
+            createdAt: 2020-06-16T10:44:13.644Z
+      - button7:
+          pluginTemplate:
+            id: button7
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#3c92dc'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: '7'
+                - exportQuery: ''
+                - action: seven
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: modal1
+                row: 2
+                height: 2
+                width: 4
+            createdAt: 2020-06-16T10:44:24.516Z
+      - button8:
+          pluginTemplate:
+            id: button8
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#3c92dc'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: '8'
+                - exportQuery: ''
+                - action: eight
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: modal1
+                row: 2
+                col: 4
+                height: 2
+                width: 4
+            createdAt: 2020-06-16T10:44:40.794Z
+      - button9:
+          pluginTemplate:
+            id: button9
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#3c92dc'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: '9'
+                - exportQuery: ''
+                - action: nine
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: modal1
+                row: 2
+                col: 8
+                height: 2
+                width: 4
+            createdAt: 2020-06-16T10:44:46.228Z
+      - button10:
+          pluginTemplate:
+            id: button10
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#3c92dc'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: '0'
+                - exportQuery: ''
+                - action: zero
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: modal1
+                row: 8
+                height: 2
+                width: 8
+            createdAt: 2020-06-16T10:45:17.970Z
+      - button11:
+          pluginTemplate:
+            id: button11
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#cc5248'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: CLR
+                - exportQuery: ''
+                - action: cleartmnum
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered:
+                - accent-background: '#cc5248'
+            position2:
+              position2:
+                container: modal1
+                row: 8
+                col: 8
+                height: 2
+                width: 4
+            createdAt: 2020-06-16T10:45:37.591Z
+      - textinput5:
+          pluginTemplate:
+            id: textinput5
+            type: widget
+            subtype: TextInputWidget
+            template:
+              ordered:
+                - validationMaxlengthValue: ''
+                - readonly: '{{}}'
+                - disabledKeyCodes: ''
+                - showNumberCommas: false
+                - validationMaxValue: ''
+                - onBlur: ''
+                - currencyType: USD
+                - leftIconName: ''
+                - initialValue: ''
+                - validationMessage: ''
+                - tooltipText: ''
+                - value: ''
+                - suffix: ''
+                - validationMinlengthValue: ''
+                - validationLengthValue: ''
+                - placeholder: Search here...
+                - validationType: ''
+                - label: ''
+                - currencyMajorOnly: false
+                - formattedValue: ''
+                - allowedInputsRegex: ''
+                - labelMaxWidth: ''
+                - enableValidationType: false
+                - labelPlacedOnLeft: false
+                - onSubmit: ''
+                - validationMinValue: ''
+                - lastSubmittedAt: ''
+                - validationState:
+                    object:
+                      required: ''
+                      validationType: ''
+                - type: text
+                - allowedRegex: ''
+                - required: false
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: modal1
+                row: 1
+                height: 1
+                width: 12
+            createdAt: 2020-06-16T11:07:12.409Z
+      - button12:
+          pluginTemplate:
+            id: button12
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#478b60'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: Enter
+                - exportQuery: ''
+                - action: enterTMNo
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered:
+                - accent-background: '#478b60'
+            position2:
+              position2:
+                container: modal1
+                row: 10
+                height: 2
+                width: 12
+            createdAt: 2020-06-16T11:08:14.231Z
+      - modal2:
+          pluginTemplate:
+            id: modal2
+            type: widget
+            subtype: ModalWidget
+            template:
+              ordered:
+                - buttonBackgroundColor: '#3c92dc'
+                - opened: false
+                - modalOverflowType: visible
+                - onModalClose: clearnumtemp
+                - modalHeightType: fixed
+                - modalHeight: ''
+                - onModalOpen: ''
+                - modalWidth: 40%
+                - closeOnOutsideClick: false
+                - loading: ''
+                - disabled: ''
+                - buttonText: Enter Temperature
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container2
+                row: 1
+                col: 1
+                height: 1
+                width: 4
+            createdAt: 2020-06-16T11:40:30.495Z
+      - textinput6:
+          pluginTemplate:
+            id: textinput6
+            type: widget
+            subtype: TextInputWidget
+            template:
+              ordered:
+                - validationMaxlengthValue: ''
+                - readonly: '{{}}'
+                - disabledKeyCodes: ''
+                - showNumberCommas: false
+                - validationMaxValue: ''
+                - onBlur: ''
+                - currencyType: USD
+                - leftIconName: ''
+                - initialValue: ''
+                - validationMessage: ''
+                - tooltipText: ''
+                - value: ''
+                - suffix: ''
+                - validationMinlengthValue: ''
+                - validationLengthValue: ''
+                - placeholder: Search here...
+                - validationType: ''
+                - label: ''
+                - currencyMajorOnly: false
+                - formattedValue: ''
+                - allowedInputsRegex: ''
+                - labelMaxWidth: ''
+                - enableValidationType: false
+                - labelPlacedOnLeft: false
+                - onSubmit: ''
+                - validationMinValue: ''
+                - lastSubmittedAt: ''
+                - validationState:
+                    object:
+                      required: ''
+                      validationType: ''
+                - type: text
+                - allowedRegex: ''
+                - required: false
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: modal2
+                row: 1
+                height: 1
+                width: 12
+            createdAt: 2020-06-16T11:41:25.433Z
+      - button13:
+          pluginTemplate:
+            id: button13
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#3c92dc'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: '7'
+                - exportQuery: ''
+                - action: seventemp
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: modal2
+                row: 2
+                height: 2
+                width: 4
+            createdAt: 2020-06-16T11:41:40.870Z
+      - button14:
+          pluginTemplate:
+            id: button14
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#3c92dc'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: '8'
+                - exportQuery: ''
+                - action: eighttemp
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: modal2
+                row: 2
+                col: 4
+                height: 2
+                width: 4
+            createdAt: 2020-06-16T11:44:45.465Z
+      - button15:
+          pluginTemplate:
+            id: button15
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#3c92dc'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: '9'
+                - exportQuery: ''
+                - action: ninetemp
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: modal2
+                row: 2
+                col: 8
+                height: 2
+                width: 4
+            createdAt: 2020-06-16T11:45:13.837Z
+      - button16:
+          pluginTemplate:
+            id: button16
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#3c92dc'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: '4'
+                - exportQuery: ''
+                - action: fourtemp
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: modal2
+                row: 4
+                height: 2
+                width: 4
+            createdAt: 2020-06-16T11:45:26.469Z
+      - button17:
+          pluginTemplate:
+            id: button17
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#3c92dc'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: '5'
+                - exportQuery: ''
+                - action: fivetemp
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: modal2
+                row: 4
+                col: 4
+                height: 2
+                width: 4
+            createdAt: 2020-06-16T11:45:29.967Z
+      - button18:
+          pluginTemplate:
+            id: button18
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#3c92dc'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: '6'
+                - exportQuery: ''
+                - action: sixtemp
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: modal2
+                row: 4
+                col: 8
+                height: 2
+                width: 4
+            createdAt: 2020-06-16T11:45:33.466Z
+      - button19:
+          pluginTemplate:
+            id: button19
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#3c92dc'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: '1'
+                - exportQuery: ''
+                - action: onetemp
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: modal2
+                row: 6
+                height: 2
+                width: 4
+            createdAt: 2020-06-16T11:46:05.916Z
+      - button20:
+          pluginTemplate:
+            id: button20
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#3c92dc'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: '2'
+                - exportQuery: ''
+                - action: twotemp
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: modal2
+                row: 6
+                col: 4
+                height: 2
+                width: 4
+            createdAt: 2020-06-16T11:46:09.640Z
+      - button21:
+          pluginTemplate:
+            id: button21
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#3c92dc'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: '3'
+                - exportQuery: ''
+                - action: threetemp
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: modal2
+                row: 6
+                col: 8
+                height: 2
+                width: 4
+            createdAt: 2020-06-16T11:46:13.101Z
+      - button22:
+          pluginTemplate:
+            id: button22
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#3c92dc'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: '0'
+                - exportQuery: ''
+                - action: zerotemp
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: modal2
+                row: 8
+                height: 2
+                width: 4
+            createdAt: 2020-06-16T11:46:50.530Z
+      - button23:
+          pluginTemplate:
+            id: button23
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#cc5248'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: CLR
+                - exportQuery: ''
+                - action: clearnumtemp
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered:
+                - accent-background: '#cc5248'
+            position2:
+              position2:
+                container: modal2
+                row: 8
+                col: 8
+                height: 2
+                width: 4
+            createdAt: 2020-06-16T11:47:10.497Z
+      - button24:
+          pluginTemplate:
+            id: button24
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#478b60'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: Submit
+                - exportQuery: ''
+                - action: entertemp
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered:
+                - accent-background: '#478b60'
+            position2:
+              position2:
+                container: modal2
+                row: 10
+                height: 2
+                width: 12
+            createdAt: 2020-06-16T11:47:22.958Z
+      - button25:
+          pluginTemplate:
+            id: button25
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#e9ab11'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: .
+                - exportQuery: ''
+                - action: period
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered:
+                - accent-background: '#e9ab11'
+            position2:
+              position2:
+                container: modal2
+                row: 8
+                col: 4
+                height: 2
+                width: 4
+            createdAt: 2020-06-16T12:22:05.710Z
+      - period:
+          pluginTemplate:
+            id: period
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: |-
+                    if
+                      (textinput6.value == "") {
+                    textinput6.setValue(".")
+                      }
+                    else {
+                      textinput6.setValue(textinput6.value + ".")
+                      
+                    }
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: false
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-16T12:22:35.194Z
+      - OpenTemperatureTaking:
+          pluginTemplate:
+            id: OpenTemperatureTaking
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: modal2.open();
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-18T10:07:24.301Z
+      - text23:
+          pluginTemplate:
+            id: text23
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: center
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |+
+                    <b>Enter Temperature
+
+                - renderAsHtml: true
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: modal2
+                col: 3
+                height: 1
+                width: 6
+            createdAt: 2020-06-18T10:11:32.136Z
+      - text24:
+          pluginTemplate:
+            id: text24
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: center
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |+
+                    **Enter TM Number**
+
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: modal1
+                col: 2
+                height: 1
+                width: 8
+            createdAt: 2020-06-18T10:19:07.631Z
+      - query33:
+          pluginTemplate:
+            id: query33
+            type: datasource
+            subtype: SqlQuery
+            resourceName: covid-read
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - databasePasswordOverride: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: ''
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - dataArray: []
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - shouldUseLegacySql: false
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - databaseNameOverride: ''
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - databaseUsernameOverride: ''
+                - shouldEnableBatchQuerying: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-19T04:48:19.185Z
+      - NewDeclaration:
+          pluginTemplate:
+            id: NewDeclaration
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: modal1.open()
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: |-
+                    // type your code here
+                    // example: return data.find(element => element.isError)
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-06-26T04:16:38.703Z
+      - SearchDeclaration:
+          pluginTemplate:
+            id: SearchDeclaration
+            type: datasource
+            subtype: SqlQuery
+            resourceName: covid-read
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - databasePasswordOverride: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: >-
+                    SELECT "DeclarationDateOnly", "temperate", "Cold",
+                    "DecreaseTaste", "Cough", "SoreThroat", "MusclePain",
+                    "Breathing", "Diarrhea", "Fever" from "HealthDeclaration"
+                    where "PatientID" = (select "id" from "Patient" where "EID"
+                    = {{textinput2.value}})
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - warningCodes: []
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - dataArray: []
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - shouldUseLegacySql: false
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - databaseNameOverride: ''
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - databaseUsernameOverride: ''
+                - shouldEnableBatchQuerying: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-10-26T02:30:13.698Z
+      - query35:
+          pluginTemplate:
+            id: query35
+            type: datasource
+            subtype: SqlQuery
+            resourceName: covid-read
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - databasePasswordOverride: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: ''
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: 0
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - dataArray: []
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - shouldUseLegacySql: false
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - databaseNameOverride: ''
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - databaseUsernameOverride: ''
+                - shouldEnableBatchQuerying: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2020-11-01T00:02:34.353Z
+  urlFragmentDefinitions: []
+  appThemeId: null
+  preloadedAppJavaScript: null
+  pageLoadValueOverrides: []
+  customDocumentTitle: ''
+  isGlobalWidget: false
+  isFetching: false
+  instrumentationEnabled: false
+  customDocumentTitleEnabled: false
+  preloadedAppJSLinks:
+    array: []
+  version: 2.66.52
+  responsiveLayoutDisabled: false
+  createdAt: null
+  loadingIndicatorsDisabled: false
