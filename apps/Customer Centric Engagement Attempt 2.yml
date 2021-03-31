@@ -8368,11 +8368,6 @@ appTemplate:
                 height: 21
                 width: 12
                 tabNum: 3
-            mobilePosition2:
-              position2:
-                container: tabbedcontainer_CustomerFeeback
-                height: 20
-                width: 12
             createdAt: 2020-07-02T04:09:58.879Z
       - textinput_CustomerFeedback_Name:
           pluginTemplate:
