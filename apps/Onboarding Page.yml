@@ -32,12 +32,15 @@ appTemplate:
                 - queryThrottleTime: '750'
   urlFragmentDefinitions: []
   appThemeId: null
+  preloadedAppJavaScript: null
   pageLoadValueOverrides: []
   customDocumentTitle: ''
   isGlobalWidget: false
   isFetching: false
   instrumentationEnabled: false
   customDocumentTitleEnabled: false
+  preloadedAppJSLinks:
+    array: []
   version: null
   responsiveLayoutDisabled: false
   createdAt: null
