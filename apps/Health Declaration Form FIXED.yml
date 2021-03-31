@@ -2411,12 +2411,6 @@ appTemplate:
               position2:
                 height: 18
                 width: 12
-            mobilePosition2:
-              position2:
-                container: container1
-                row: 7
-                height: 15
-                width: 12
             createdAt: 2020-05-31T11:23:11.080Z
       - table1:
           pluginTemplate:
