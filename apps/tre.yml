@@ -7,39 +7,42 @@ appTemplate:
           pluginTemplate:
             id: query1
             type: datasource
-            subtype: RESTQuery
-            resourceName: REST-WithoutResource
+            subtype: OpenAPIQuery
+            resourceName: 47c14d7d-6c28-4152-9617-fea85f5848a3
+            resourceDisplayName: openapi test
             template:
               ordered:
                 - queryRefreshTime: ''
-                - paginationLimit: ''
-                - body: ''
+                - method: ''
+                - operationId: ''
                 - queryDisabledMessage: ''
+                - server: ''
                 - successMessage: ''
                 - queryDisabled: ''
+                - path: ''
                 - playgroundQuerySaveId: 0
                 - resourceNameOverride: ''
-                - runWhenModelUpdates: true
-                - paginationPaginationField: ''
-                - headers: ''
+                - runWhenModelUpdates: false
                 - showFailureToaster: true
-                - paginationEnabled: false
-                - query: 'https://httpbin.org/get'
+                - query: ''
                 - playgroundQueryUuid: ''
                 - playgroundQueryId: null
                 - privateParams: []
                 - triggersOnSuccess: []
                 - runWhenPageLoadsDelay: ''
+                - parameters: ''
                 - data: null
+                - specPathOverride: ''
                 - importedQueryInputs:
                     ordered: []
                 - showSuccessConfetti: false
                 - isImported: false
                 - showSuccessToaster: true
                 - cacheKeyTtl: ''
-                - cookies: ''
                 - metadata: null
+                - requestBodyDynamicStates: ''
                 - triggersOnFailure: []
+                - requestBody: ''
                 - errorTransformer: >-
                     // The variable 'data' allows you to reference the request's
                     data in the transformer. 
@@ -47,17 +50,19 @@ appTemplate:
                     // example: return data.find(element => element.isError)
 
                     return data.error
+                - specBasePath: ''
                 - confirmationMessage: null
                 - isFetching: false
                 - rawData: null
                 - queryTriggerDelay: '0'
                 - watchedParams: []
+                - serverVariables: ''
                 - enableErrorTransformer: false
-                - paginationDataField: ''
                 - timestamp: 0
                 - importedQueryDefaults:
                     ordered: []
                 - enableTransformer: false
+                - parameterDynamicStates: ''
                 - runWhenPageLoads: false
                 - transformer: >-
                     // type your code here
@@ -66,12 +71,10 @@ appTemplate:
                     row.quantity > 20)
 
                     return data
-                - queryTimeout: '10001'
+                - queryTimeout: '10000'
                 - requireConfirmation: false
-                - type: GET
                 - queryFailureConditions: ''
                 - enableCaching: false
-                - bodyType: json
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2021-04-09T21:01:42.618Z
