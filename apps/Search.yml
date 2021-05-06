@@ -1,0 +1,933 @@
+version: 43.0.9
+pageUuid: ceea46c4-e36c-46b4-86fe-1f6914cb7f12
+appTemplate:
+  plugins:
+    ordered:
+      - moduleContainer:
+          pluginTemplate:
+            id: moduleContainer
+            type: widget
+            subtype: ModuleContainerWidget
+            template:
+              ordered:
+                - heightType: fixed
+                - spinWhenChildrenAreFetching: true
+                - showBorder: true
+                - showDropShadow: true
+                - isGlobalWidgetContainer: true
+                - style:
+                    ordered: []
+                - backgroundColor: white
+                - title: ''
+                - overflowType: hidden
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                height: 1
+                width: 7
+            mobilePosition2:
+              position2:
+                height: 12
+                width: 12
+            createdAt: 2021-04-20T21:45:37.611Z
+      - UserSearchFieldDropdown:
+          pluginTemplate:
+            id: UserSearchFieldDropdown
+            type: widget
+            subtype: SelectWidget
+            template:
+              ordered:
+                - enableClientSideMatching: true
+                - values: >-
+                    ["id", "email", "phoneNumber", "username", "document",
+                    "ims.whatsapp", "ims.telegram", "ims.telegramUsername",
+                    "idGroup"]
+                - allowOutOfRangeValues: false
+                - enableFuzzyMatching: true
+                - searchValue: ''
+                - showFetchingIndicator: true
+                - enableCaseSensitivity: false
+                - validationMessage: ''
+                - displayValue: ''
+                - tooltipText: ''
+                - value: '"id"'
+                - style:
+                    ordered: []
+                - maxResults: 50
+                - placeholder: Select a value
+                - label: Campo
+                - clearValueOnFocus: true
+                - labelMaxWidth: ''
+                - labelPlacedOnLeft: false
+                - validationState: ''
+                - id: select1
+                - onSelect: ''
+                - allowCustomValues: false
+                - disabled: ''
+                - hideClearButton: false
+                - required: false
+                - labels: >-
+                    ["ID", "Email", "Telefone", "Username", "CPF/CNPJ", "Id de
+                    Whatsapp", "Id de Telegram", "Username de Telegram",
+                    "IdGroup"]
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: moduleContainer
+                height: 1
+                width: 3
+            createdAt: 2021-04-20T22:42:27.992Z
+      - button1:
+          pluginTemplate:
+            id: button1
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#16C37B'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: SUBMIT
+                - style:
+                    ordered: []
+                - exportQuery: ''
+                - action: PreProcessInput
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - id: button3
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: moduleContainer
+                col: 10
+                height: 1
+                width: 2
+            createdAt: 2021-04-20T22:42:47.081Z
+      - PreProcessInput:
+          pluginTemplate:
+            id: PreProcessInput
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: |-
+                    const input = UserTextInputSearch.value.trim()
+                    const fieldType = UserSearchFieldDropdown.value
+                    if(fieldType === "phoneNumber") {
+                      let phone = input.replace(/[^+\d,]+/g, "")
+                      if (!phone.startsWith("+")) {
+                        phone = "+55" + phone
+                      }
+                      if (phone.startsWith("+55") && phone.length === 13) {
+                        phone = phone.slice(0, 5) + "9" + phone.slice(5)
+                      }
+                      return phone 
+                    }
+                    return input
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess:
+                    - GetUser
+                    - GetGroupMemberById
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-04-20T22:44:41.998Z
+            folder: Search
+      - UserTextInputSearch:
+          pluginTemplate:
+            id: UserTextInputSearch
+            type: widget
+            subtype: TextInputWidget
+            template:
+              ordered:
+                - validationMaxlengthValue: ''
+                - readonly: ''
+                - disabledKeyCodes: ''
+                - showNumberCommas: false
+                - validationMaxValue: ''
+                - onBlur: ''
+                - currencyType: USD
+                - leftIconName: user
+                - initialValue: ''
+                - validationMessage: ''
+                - tooltipText: ''
+                - value: ''
+                - suffix: ''
+                - validationMinlengthValue: ''
+                - validationLengthValue: ''
+                - placeholder: '{{UserSearchFieldDropdown.displayValue}}'
+                - validationType: ''
+                - label: '{{UserSearchFieldDropdown.displayValue}}'
+                - currencyMajorOnly: false
+                - formattedValue: ''
+                - allowedInputsRegex: ''
+                - labelMaxWidth: ''
+                - enableValidationType: false
+                - labelPlacedOnLeft: false
+                - onSubmit: PreProcessInput
+                - validationMinValue: ''
+                - lastSubmittedAt: ''
+                - validationState:
+                    object:
+                      required: ''
+                      validationType: ''
+                - type: text
+                - allowedRegex: ''
+                - required: false
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: moduleContainer
+                col: 3
+                height: 1
+                width: 7
+            mobilePosition2:
+              position2:
+                container: moduleContainer
+                col: 3
+                height: 1
+                width: 7
+            createdAt: 2021-04-20T22:49:45.148Z
+      - GetUser:
+          pluginTemplate:
+            id: GetUser
+            type: datasource
+            subtype: FirebaseQuery
+            resourceName: Internal Admin Dashboard
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: ''
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - firestoreCollection: User
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - endAt: ''
+                - firebaseService: firestore
+                - showSuccessToaster: true
+                - equalTo: ''
+                - cacheKeyTtl: ''
+                - metadata: null
+                - uid: ''
+                - editorMode: gui
+                - actionType: queryFirestore
+                - triggersOnFailure: []
+                - setDbValue: ''
+                - value: ''
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - filterType: ''
+                - rawData: null
+                - userOptions: ''
+                - docId: ''
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - ordering: ''
+                - startAt: ''
+                - limitType: ''
+                - dbRef: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: true
+                - phoneNumber: ''
+                - nextPageToken: ''
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data[0]
+                - queryTimeout: '10000'
+                - useRawCollectionId: false
+                - firestoreOrderBy: ''
+                - requireConfirmation: false
+                - orderByChildValue: ''
+                - queryFailureConditions: ''
+                - limit: ''
+                - enableCaching: false
+                - firestoreOrderDirection: ''
+                - firestoreWhere: >-
+                    [{"value":"{{PreProcessInput.data}}","key":"{{UserSearchFieldDropdown.value}}","operation":"=="}]
+                - email: ''
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-04-20T22:51:24.925Z
+            folder: Search
+      - GetGatewayByUserID:
+          pluginTemplate:
+            id: GetGatewayByUserID
+            type: datasource
+            subtype: FirebaseQuery
+            resourceName: Internal Admin Dashboard
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: ''
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - firestoreCollection: 'User/{{GetUser.data.id}}/Gateway'
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - endAt: ''
+                - firebaseService: firestore
+                - showSuccessToaster: true
+                - equalTo: ''
+                - cacheKeyTtl: ''
+                - metadata: null
+                - uid: ''
+                - editorMode: gui
+                - actionType: getByIdFirestore
+                - triggersOnFailure: []
+                - setDbValue: ''
+                - value: ''
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - filterType: ''
+                - rawData: null
+                - userOptions: ''
+                - docId: iugu
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - ordering: ''
+                - startAt: ''
+                - limitType: ''
+                - dbRef: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - phoneNumber: ''
+                - nextPageToken: ''
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - useRawCollectionId: true
+                - firestoreOrderBy: ''
+                - requireConfirmation: false
+                - orderByChildValue: ''
+                - queryFailureConditions: ''
+                - limit: ''
+                - enableCaching: false
+                - firestoreOrderDirection: ''
+                - firestoreWhere: ''
+                - email: ''
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-04-20T22:54:11.089Z
+            folder: Search
+      - CloseUserTextInputSearch:
+          pluginTemplate:
+            id: CloseUserTextInputSearch
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: UserTextInputSearch.setValue("");
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-04-20T22:56:12.256Z
+            folder: Search
+      - User:
+          pluginTemplate:
+            id: User
+            type: globalwidgetoutput
+            subtype: GlobalWidgetOutput
+            template:
+              ordered:
+                - value: '{{GetUser.data}}'
+            createdAt: 2021-04-22T15:11:39.189Z
+      - UserAccount:
+          pluginTemplate:
+            id: UserAccount
+            type: globalwidgetoutput
+            subtype: GlobalWidgetOutput
+            template:
+              ordered:
+                - value: '{{GetGatewayByUserID.data}}'
+            createdAt: 2021-04-22T15:12:34.112Z
+      - GetUserGroupsCreated:
+          pluginTemplate:
+            id: GetUserGroupsCreated
+            type: datasource
+            subtype: FirebaseQuery
+            resourceName: Internal Admin Dashboard
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: ''
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - firestoreCollection: Group
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - endAt: ''
+                - firebaseService: firestore
+                - showSuccessToaster: true
+                - equalTo: ''
+                - cacheKeyTtl: ''
+                - metadata: null
+                - uid: ''
+                - editorMode: gui
+                - actionType: queryFirestore
+                - triggersOnFailure: []
+                - setDbValue: ''
+                - value: ''
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - filterType: ''
+                - rawData: null
+                - userOptions: ''
+                - docId: ''
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - ordering: ''
+                - startAt: ''
+                - limitType: ''
+                - dbRef: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - phoneNumber: ''
+                - nextPageToken: ''
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - useRawCollectionId: false
+                - firestoreOrderBy: ''
+                - requireConfirmation: false
+                - orderByChildValue: ''
+                - queryFailureConditions: ''
+                - limit: ''
+                - enableCaching: false
+                - firestoreOrderDirection: ''
+                - firestoreWhere: >-
+                    [{"value":"{{GetUser.data.id}}","key":"owner","operation":"=="}]
+                - email: ''
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-04-24T17:19:22.280Z
+            folder: Search
+      - UserGroups:
+          pluginTemplate:
+            id: UserGroups
+            type: globalwidgetoutput
+            subtype: GlobalWidgetOutput
+            template:
+              ordered:
+                - value: '{{GetUserGroupsCreated.data}}'
+            createdAt: 2021-04-24T17:23:31.054Z
+      - UserSubscriptions:
+          pluginTemplate:
+            id: UserSubscriptions
+            type: globalwidgetoutput
+            subtype: GlobalWidgetOutput
+            template:
+              ordered:
+                - value: '{{GetUserOwnerSubscriptions.data}}'
+            createdAt: 2021-04-26T01:35:46.259Z
+      - GetUserOwnerSubscriptions:
+          pluginTemplate:
+            id: GetUserOwnerSubscriptions
+            type: datasource
+            subtype: FirebaseQuery
+            resourceName: Internal Admin Dashboard
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: ''
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - firestoreCollection: Subscription
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - endAt: ''
+                - firebaseService: firestore
+                - showSuccessToaster: true
+                - equalTo: ''
+                - cacheKeyTtl: ''
+                - metadata: null
+                - uid: ''
+                - editorMode: gui
+                - actionType: queryFirestore
+                - triggersOnFailure: []
+                - setDbValue: ''
+                - value: ''
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - filterType: ''
+                - rawData: null
+                - userOptions: ''
+                - docId: ''
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - ordering: ''
+                - startAt: ''
+                - limitType: ''
+                - dbRef: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: true
+                - phoneNumber: ''
+                - nextPageToken: ''
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data.map((it) => {
+                      return {
+                        id: it.id,
+                        "Expires at": it.expiresAt,
+                        "Group Id": it.item.id,
+                        "Group Name": it.item.name,
+                        "User Id": it.user.id,
+                        "User Name": it.user.name,
+                        "Subscription Id": it.subscriptionId,
+                        "Created at": it.createdAt,
+                        "Plan": it.plan.interval,
+                        "Status": it.status,
+                      }
+                    })
+                - queryTimeout: '10000'
+                - useRawCollectionId: false
+                - firestoreOrderBy: ''
+                - requireConfirmation: false
+                - orderByChildValue: ''
+                - queryFailureConditions: ''
+                - limit: ''
+                - enableCaching: false
+                - firestoreOrderDirection: ''
+                - firestoreWhere: >-
+                    [{"value":"{{GetUser.data.id}}","key":"item.userId","operation":"=="}]
+                - email: ''
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-04-26T01:36:24.452Z
+            folder: Search
+      - GetGroupMember:
+          pluginTemplate:
+            id: GetGroupMember
+            type: datasource
+            subtype: FirebaseQuery
+            resourceName: Internal Admin Dashboard
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: ''
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - firestoreCollection: GroupMember
+                - triggersOnSuccess:
+                    - GetUser
+                    - GetGatewayByUserID
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - endAt: ''
+                - firebaseService: firestore
+                - showSuccessToaster: true
+                - equalTo: ''
+                - cacheKeyTtl: ''
+                - metadata: null
+                - uid: ''
+                - editorMode: gui
+                - actionType: queryFirestore
+                - triggersOnFailure: []
+                - setDbValue: ''
+                - value: ''
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - filterType: ''
+                - rawData: null
+                - userOptions: ''
+                - docId: ''
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - ordering: ''
+                - startAt: ''
+                - limitType: ''
+                - dbRef: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: true
+                - phoneNumber: ''
+                - nextPageToken: ''
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data[0]
+                - queryTimeout: '10000'
+                - useRawCollectionId: false
+                - firestoreOrderBy: ''
+                - requireConfirmation: false
+                - orderByChildValue: ''
+                - queryFailureConditions: ''
+                - limit: ''
+                - enableCaching: false
+                - firestoreOrderDirection: ''
+                - firestoreWhere: >-
+                    [{"value":"{{PreProcessInput.data}}","key":"{{UserSearchFieldDropdown.value}}","operation":"=="}]
+                - email: ''
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-04-28T14:22:44.463Z
+            folder: Search
+      - GroupMember:
+          pluginTemplate:
+            id: GroupMember
+            type: globalwidgetoutput
+            subtype: GlobalWidgetOutput
+            template:
+              ordered:
+                - value: '{{GetGroupMemberById.data}}'
+            createdAt: 2021-04-29T00:32:05.048Z
+      - GetGroupMemberById:
+          pluginTemplate:
+            id: GetGroupMemberById
+            type: datasource
+            subtype: FirebaseQuery
+            resourceName: Internal Admin Dashboard
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: ''
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - firestoreCollection: 'GroupMember/{{GetGroupMember.data.group.id}}/'
+                - triggersOnSuccess:
+                    - GetUser
+                    - GetGatewayByUserID
+                    - GetGroupMember
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - endAt: ''
+                - firebaseService: firestore
+                - showSuccessToaster: true
+                - equalTo: ''
+                - cacheKeyTtl: ''
+                - metadata: null
+                - uid: ''
+                - editorMode: gui
+                - actionType: getByIdFirestore
+                - triggersOnFailure: []
+                - setDbValue: ''
+                - value: ''
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - filterType: ''
+                - rawData: null
+                - userOptions: ''
+                - docId: GroupMember
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - ordering: ''
+                - startAt: ''
+                - limitType: ''
+                - dbRef: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - phoneNumber: ''
+                - nextPageToken: ''
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - useRawCollectionId: true
+                - firestoreOrderBy: ''
+                - requireConfirmation: false
+                - orderByChildValue: ''
+                - queryFailureConditions: ''
+                - limit: ''
+                - enableCaching: false
+                - firestoreOrderDirection: ''
+                - firestoreWhere: ''
+                - email: ''
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-04-29T00:32:39.097Z
+            folder: Search
+  urlFragmentDefinitions: []
+  appStyles: ''
+  appThemeId: null
+  preloadedAppJavaScript: null
+  pageLoadValueOverrides: []
+  customDocumentTitle: ''
+  isGlobalWidget: true
+  isFetching: false
+  instrumentationEnabled: false
+  customDocumentTitleEnabled: false
+  preloadedAppJSLinks:
+    array: []
+  version: 2.67.8
+  responsiveLayoutDisabled: false
+  createdAt: null
+  loadingIndicatorsDisabled: false
