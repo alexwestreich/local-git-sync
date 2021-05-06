@@ -1,0 +1,190 @@
+version: 43.0.9
+pageUuid: 265f5feb-fc65-4e83-aa55-ee0b7447bdb4
+appTemplate:
+  plugins:
+    ordered:
+      - moduleContainer:
+          pluginTemplate:
+            id: moduleContainer
+            type: widget
+            subtype: ModuleContainerWidget
+            template:
+              ordered:
+                - heightType: fixed
+                - spinWhenChildrenAreFetching: true
+                - showBorder: true
+                - Name: ''
+                - showDropShadow: true
+                - isGlobalWidgetContainer: true
+                - style:
+                    ordered: []
+                - backgroundColor: white
+                - title: ''
+                - ID: ''
+                - overflowType: hidden
+                - disabled: ''
+                - Picture: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                height: 8
+                width: 3
+            mobilePosition2:
+              position2:
+                height: 12
+                width: 12
+            createdAt: 2021-04-19T23:29:05.553Z
+      - Picture:
+          pluginTemplate:
+            id: Picture
+            type: globalwidgetprop
+            subtype: GlobalWidgetProp
+            template:
+              ordered:
+                - value: ''
+                - defaultValue: ''
+            createdAt: 2021-04-19T23:29:19.906Z
+      - Name:
+          pluginTemplate:
+            id: Name
+            type: globalwidgetprop
+            subtype: GlobalWidgetProp
+            template:
+              ordered:
+                - value: ''
+                - defaultValue: ''
+            createdAt: 2021-04-19T23:29:20.367Z
+      - ID:
+          pluginTemplate:
+            id: ID
+            type: globalwidgetprop
+            subtype: GlobalWidgetProp
+            template:
+              ordered:
+                - value: ''
+                - defaultValue: ''
+            createdAt: 2021-04-19T23:29:20.799Z
+      - PictureImage:
+          pluginTemplate:
+            id: PictureImage
+            type: widget
+            subtype: ImageWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - isFile: false
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - exportQuery: ''
+                - imageUrl: '{{Picture.value}}'
+                - action: ''
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - imageFile: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: moduleContainer
+                col: 1
+                height: 6
+                width: 10
+            createdAt: 2021-04-19T23:29:57.118Z
+      - fieldNameText1:
+          pluginTemplate:
+            id: fieldNameText1
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - showFetchingIndicator: false
+                - name: FieldNameText
+                - pageUuid: d41f932b-0a4d-454b-a9f6-c31c81986e67
+                - Name: |-
+                    <p>
+                    <strong style=font-size:120%;
+                    >{{Name.value}} 
+                    </strong>
+                    </p>
+                - childNamespace: fieldNameText1
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: moduleContainer
+                row: 6
+                height: 1
+                width: 10
+            createdAt: 2021-04-19T23:31:08.365Z
+      - fieldValueText12:
+          pluginTemplate:
+            id: fieldValueText12
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - showFetchingIndicator: false
+                - name: FieldValueText
+                - pageUuid: 77a920cf-be0e-4fb2-8503-6381f7bf57c1
+                - Text: |-
+                    <p style=font-size:110%; >{{ID.value}}
+                    </strong>
+                    </p>
+                - Url: ''
+                - childNamespace: fieldValueText12
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: moduleContainer
+                row: 7
+                height: 1
+                width: 10
+            createdAt: 2021-04-19T23:31:15.896Z
+      - copyButton1:
+          pluginTemplate:
+            id: copyButton1
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - showFetchingIndicator: false
+                - name: CopyButton
+                - pageUuid: 4265d212-3a98-41f0-b611-d79067ca3175
+                - Text: '{{ID.value}}'
+                - childNamespace: copyButton1
+                - hidden: '{{!ID.value}}'
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: moduleContainer
+                row: 7
+                col: 10
+                height: 1
+                width: 2
+            createdAt: 2021-04-23T03:37:26.971Z
+  urlFragmentDefinitions: []
+  appStyles: ''
+  appThemeId: null
+  preloadedAppJavaScript: null
+  pageLoadValueOverrides: []
+  customDocumentTitle: ''
+  isGlobalWidget: true
+  isFetching: false
+  instrumentationEnabled: false
+  customDocumentTitleEnabled: false
+  preloadedAppJSLinks:
+    array: []
+  version: 2.67.4
+  responsiveLayoutDisabled: false
+  createdAt: null
+  loadingIndicatorsDisabled: false
