@@ -1,6 +1,7 @@
 version: 43.0.9
 pageUuid: aaadb451-3884-4fe1-8a03-ea260bef90b2
 appTemplate:
+  isFetching: false
   plugins:
     ordered:
       - moduleContainer:
@@ -21,8 +22,6 @@ appTemplate:
                 - title: ''
                 - overflowType: hidden
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 height: 22
@@ -54,8 +53,6 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 container: MenuContainer
@@ -96,8 +93,6 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 container: MenuContainer
@@ -129,8 +124,6 @@ appTemplate:
                 - id: container1
                 - overflowType: hidden
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 container: moduleContainer
@@ -170,8 +163,6 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 container: MenuContainer
@@ -211,8 +202,6 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 container: MenuContainer
@@ -252,8 +241,6 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 container: MenuContainer
@@ -352,8 +339,6 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 container: MenuContainer
@@ -387,8 +372,6 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 container: MenuContainer
@@ -422,8 +405,6 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 container: MenuContainer
@@ -431,19 +412,8 @@ appTemplate:
                 height: 1
                 width: 12
             createdAt: 2021-04-20T23:52:17.962Z
-  urlFragmentDefinitions: []
-  appStyles: ''
-  appThemeId: null
-  preloadedAppJavaScript: null
-  pageLoadValueOverrides: []
-  customDocumentTitle: ''
-  isGlobalWidget: true
-  isFetching: false
-  instrumentationEnabled: false
-  customDocumentTitleEnabled: false
-  preloadedAppJSLinks:
-    array: []
+  createdAt: null
   version: 2.67.8
   responsiveLayoutDisabled: false
-  createdAt: null
-  loadingIndicatorsDisabled: false
+  urlFragmentDefinitions: []
+  pageLoadValueOverrides: []
