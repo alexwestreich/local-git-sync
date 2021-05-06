@@ -1,0 +1,449 @@
+version: 43.0.9
+pageUuid: aaadb451-3884-4fe1-8a03-ea260bef90b2
+appTemplate:
+  plugins:
+    ordered:
+      - moduleContainer:
+          pluginTemplate:
+            id: moduleContainer
+            type: widget
+            subtype: ModuleContainerWidget
+            template:
+              ordered:
+                - heightType: fixed
+                - spinWhenChildrenAreFetching: true
+                - showBorder: true
+                - showDropShadow: true
+                - isGlobalWidgetContainer: true
+                - style:
+                    ordered: []
+                - backgroundColor: white
+                - title: ''
+                - overflowType: hidden
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                height: 22
+                width: 3
+            createdAt: 2021-03-15T18:05:01.918Z
+      - MenuButtonBots:
+          pluginTemplate:
+            id: MenuButtonBots
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#16C37B'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: internal-url
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: HEALTHCHECK BOTS
+                - style:
+                    ordered: []
+                - exportQuery: ''
+                - action: ''
+                - internalUrlQuery: ''
+                - internalUrlPath: ae2ef0a0-810a-11eb-a26c-83202700bda2
+                - id: button1
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: MenuContainer
+                row: 3
+                height: 1
+                width: 12
+            mobilePosition2:
+              position2:
+                container: container1
+                row: 3
+                height: 1
+                width: 12
+            createdAt: 2021-03-12T19:55:34.592Z
+      - button2:
+          pluginTemplate:
+            id: button2
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#16C37B'
+                - internalUrlHashParams: ''
+                - hidden: ''
+                - exportFileType: csv
+                - buttonType: internal-url
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: SEARCH FOR MEMBERS
+                - style:
+                    ordered: []
+                - exportQuery: ''
+                - action: ''
+                - internalUrlQuery: ''
+                - internalUrlPath: 70cc23c0-836e-11eb-9a9d-db13ee31de95
+                - id: button1
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: MenuContainer
+                row: 9
+                height: 1
+                width: 12
+            mobilePosition2:
+              position2:
+                container: container1
+                row: 4
+                height: 1
+                width: 12
+            createdAt: 2021-03-12T20:09:26.796Z
+      - MenuContainer:
+          pluginTemplate:
+            id: MenuContainer
+            type: widget
+            subtype: ContainerWidget
+            template:
+              ordered:
+                - heightType: fixed
+                - spinWhenChildrenAreFetching: true
+                - showBorder: true
+                - showDropShadow: true
+                - style:
+                    ordered: []
+                - backgroundColor: white
+                - title: ''
+                - id: container1
+                - overflowType: hidden
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: moduleContainer
+                height: 20
+                width: 12
+            mobilePosition2:
+              position2:
+                container: moduleContainer
+                height: 20
+                width: 12
+            createdAt: 2021-03-15T19:00:20.728Z
+      - MenuImage:
+          pluginTemplate:
+            id: MenuImage
+            type: widget
+            subtype: ImageWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - isFile: false
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - style:
+                    ordered: []
+                - exportQuery: ''
+                - imageUrl: >-
+                    https://theme.zdassets.com/theme_assets/9681380/0b4316df32a80570e6253213bebe7ffdbebbeb7a.png
+                - action: ''
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - imageFile: ''
+                - id: image1
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: MenuContainer
+                col: 3
+                height: 3
+                width: 6
+            mobilePosition2:
+              position2:
+                container: container1
+                col: 3
+                height: 3
+                width: 6
+            createdAt: 2021-03-15T19:10:37.895Z
+      - MenuButtonUser:
+          pluginTemplate:
+            id: MenuButtonUser
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#cc5248'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: internal-url
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: USER SETINGS
+                - style:
+                    ordered: []
+                - exportQuery: ''
+                - action: ''
+                - internalUrlQuery: ''
+                - internalUrlPath: c32fc600-8691-11eb-8949-4330bcd512cc
+                - id: button1
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: MenuContainer
+                row: 4
+                height: 1
+                width: 12
+            mobilePosition2:
+              position2:
+                container: container1
+                row: 5
+                height: 1
+                width: 12
+            createdAt: 2021-03-16T19:48:38.272Z
+      - GetWppImIdApp:
+          pluginTemplate:
+            id: GetWppImIdApp
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#16C37B'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: internal-url
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: WHATSAPP ID
+                - style:
+                    ordered: []
+                - exportQuery: ''
+                - action: ''
+                - internalUrlQuery: ''
+                - internalUrlPath: 8611c460-9237-11eb-a3a2-efd389645b95
+                - id: button1
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: MenuContainer
+                row: 8
+                height: 1
+                width: 12
+            createdAt: 2021-03-31T15:51:38.580Z
+      - User:
+          pluginTemplate:
+            id: User
+            type: globalwidgetprop
+            subtype: GlobalWidgetProp
+            resourceName: GlobalWidgetQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: ''
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - defaultValue: ''
+                - value: ''
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-04-06T21:22:10.174Z
+      - button3:
+          pluginTemplate:
+            id: button3
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#16C37B'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: internal-url
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: SUBSCRIPTIONS
+                - style:
+                    ordered: []
+                - exportQuery: ''
+                - action: ''
+                - internalUrlQuery: ''
+                - internalUrlPath: 78cd02c0-a235-11eb-9ad3-b3c9d49cf585
+                - id: button1
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: MenuContainer
+                row: 6
+                height: 1
+                width: 12
+            createdAt: 2021-04-20T23:49:51.549Z
+      - button4:
+          pluginTemplate:
+            id: button4
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#cc5248'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: internal-url
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: GROUPS
+                - style:
+                    ordered: []
+                - exportQuery: ''
+                - action: ''
+                - internalUrlQuery: ''
+                - internalUrlPath: af06f540-a234-11eb-924d-a30f38e0647c
+                - id: button1
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: MenuContainer
+                row: 5
+                height: 1
+                width: 12
+            createdAt: 2021-04-20T23:49:54.068Z
+      - button5:
+          pluginTemplate:
+            id: button5
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#e9ab11'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: internal-url
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: TRANSACTIONS
+                - style:
+                    ordered: []
+                - exportQuery: ''
+                - action: ''
+                - internalUrlQuery: ''
+                - internalUrlPath: ed4ac9c0-a235-11eb-bb95-83fc637e6aff
+                - id: button1
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: MenuContainer
+                row: 7
+                height: 1
+                width: 12
+            createdAt: 2021-04-20T23:52:17.962Z
+  urlFragmentDefinitions: []
+  appStyles: ''
+  appThemeId: null
+  preloadedAppJavaScript: null
+  pageLoadValueOverrides: []
+  customDocumentTitle: ''
+  isGlobalWidget: true
+  isFetching: false
+  instrumentationEnabled: false
+  customDocumentTitleEnabled: false
+  preloadedAppJSLinks:
+    array: []
+  version: 2.67.8
+  responsiveLayoutDisabled: false
+  createdAt: null
+  loadingIndicatorsDisabled: false
