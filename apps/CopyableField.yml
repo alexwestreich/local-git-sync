@@ -1,0 +1,159 @@
+version: 43.0.9
+pageUuid: 3fc5f906-4884-4c73-941b-e4c1ae762071
+appTemplate:
+  plugins:
+    ordered:
+      - moduleContainer:
+          pluginTemplate:
+            id: moduleContainer
+            type: widget
+            subtype: ModuleContainerWidget
+            template:
+              ordered:
+                - heightType: fixed
+                - spinWhenChildrenAreFetching: true
+                - showBorder: true
+                - showDropShadow: true
+                - isGlobalWidgetContainer: true
+                - style:
+                    ordered: []
+                - backgroundColor: white
+                - title: ''
+                - overflowType: hidden
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                height: 1
+                width: 12
+            mobilePosition2:
+              position2:
+                height: 12
+                width: 12
+            createdAt: 2021-04-15T17:23:01.934Z
+      - Name:
+          pluginTemplate:
+            id: Name
+            type: globalwidgetprop
+            subtype: GlobalWidgetProp
+            template:
+              ordered:
+                - value: ''
+                - defaultValue: ''
+            createdAt: 2021-04-15T17:23:13.109Z
+      - Value:
+          pluginTemplate:
+            id: Value
+            type: globalwidgetprop
+            subtype: GlobalWidgetProp
+            template:
+              ordered:
+                - value: ''
+                - defaultValue: ''
+            createdAt: 2021-04-15T17:23:26.094Z
+      - FieldPartial:
+          pluginTemplate:
+            id: FieldPartial
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - showFetchingIndicator: false
+                - name: Field
+                - pageUuid: e9e66bde-443f-4ff4-8cca-37962aad6348
+                - Name: '{{Name.value}}'
+                - Value: '{{Value.value}}'
+                - childNamespace: FieldPartial
+                - hidden: '{{!CanCopy.value}}'
+                - Url: '{{Url.value}}'
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: moduleContainer
+                height: 1
+                width: 9
+            createdAt: 2021-04-15T17:24:01.739Z
+      - CopyButton:
+          pluginTemplate:
+            id: CopyButton
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - showFetchingIndicator: false
+                - name: CopyButton
+                - pageUuid: 4265d212-3a98-41f0-b611-d79067ca3175
+                - Text: '{{Value.url || Value.value}}'
+                - childNamespace: CopyButton
+                - hidden: '{{!CanCopy.value}}'
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: moduleContainer
+                col: 9
+                height: 1
+                width: 3
+            createdAt: 2021-04-15T17:24:42.639Z
+      - FieldFull:
+          pluginTemplate:
+            id: FieldFull
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - showFetchingIndicator: false
+                - name: Field
+                - pageUuid: e9e66bde-443f-4ff4-8cca-37962aad6348
+                - Name: '{{Name.value}}'
+                - Value: '{{Value.value}}'
+                - childNamespace: FieldFull
+                - Url: '{{Url.value}}'
+                - hidden: '{{CanCopy.value}}'
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: moduleContainer
+                row: 1
+                height: 1
+                width: 12
+            createdAt: 2021-04-15T17:26:03.846Z
+      - Url:
+          pluginTemplate:
+            id: Url
+            type: globalwidgetprop
+            subtype: GlobalWidgetProp
+            template:
+              ordered:
+                - value: ''
+                - defaultValue: ''
+            createdAt: 2021-04-15T17:46:19.028Z
+      - CanCopy:
+          pluginTemplate:
+            id: CanCopy
+            type: globalwidgetprop
+            subtype: GlobalWidgetProp
+            template:
+              ordered:
+                - value: ''
+                - defaultValue: ''
+            createdAt: 2021-04-15T17:46:24.385Z
+  urlFragmentDefinitions: []
+  appStyles: ''
+  appThemeId: null
+  preloadedAppJavaScript: null
+  pageLoadValueOverrides: []
+  customDocumentTitle: ''
+  isGlobalWidget: true
+  isFetching: false
+  instrumentationEnabled: false
+  customDocumentTitleEnabled: false
+  preloadedAppJSLinks:
+    array: []
+  version: 2.67.4
+  responsiveLayoutDisabled: false
+  createdAt: null
+  loadingIndicatorsDisabled: false
