@@ -1,6 +1,7 @@
 version: 43.0.9
 pageUuid: 3fc5f906-4884-4c73-941b-e4c1ae762071
 appTemplate:
+  isFetching: false
   plugins:
     ordered:
       - moduleContainer:
@@ -21,8 +22,6 @@ appTemplate:
                 - title: ''
                 - overflowType: hidden
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 height: 1
@@ -67,8 +66,6 @@ appTemplate:
                 - childNamespace: FieldPartial
                 - hidden: '{{!CanCopy.value}}'
                 - Url: '{{Url.value}}'
-            style:
-              ordered: []
             position2:
               position2:
                 container: moduleContainer
@@ -88,8 +85,6 @@ appTemplate:
                 - Text: '{{Value.url || Value.value}}'
                 - childNamespace: CopyButton
                 - hidden: '{{!CanCopy.value}}'
-            style:
-              ordered: []
             position2:
               position2:
                 container: moduleContainer
@@ -112,8 +107,6 @@ appTemplate:
                 - childNamespace: FieldFull
                 - Url: '{{Url.value}}'
                 - hidden: '{{CanCopy.value}}'
-            style:
-              ordered: []
             position2:
               position2:
                 container: moduleContainer
@@ -141,19 +134,8 @@ appTemplate:
                 - value: ''
                 - defaultValue: ''
             createdAt: 2021-04-15T17:46:24.385Z
-  urlFragmentDefinitions: []
-  appStyles: ''
-  appThemeId: null
-  preloadedAppJavaScript: null
-  pageLoadValueOverrides: []
-  customDocumentTitle: ''
-  isGlobalWidget: true
-  isFetching: false
-  instrumentationEnabled: false
-  customDocumentTitleEnabled: false
-  preloadedAppJSLinks:
-    array: []
+  createdAt: null
   version: 2.67.4
   responsiveLayoutDisabled: false
-  createdAt: null
-  loadingIndicatorsDisabled: false
+  urlFragmentDefinitions: []
+  pageLoadValueOverrides: []
