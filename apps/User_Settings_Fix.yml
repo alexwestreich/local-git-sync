@@ -1,0 +1,4408 @@
+version: 43.0.9
+pageUuid: c32fc600-8691-11eb-8949-4330bcd512cc
+appTemplate:
+  plugins:
+    ordered:
+      - GetUser:
+          pluginTemplate:
+            id: GetUser
+            type: datasource
+            subtype: FirebaseQuery
+            resourceName: Internal Admin Dashboard
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: ''
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - firestoreCollection: User
+                - triggersOnSuccess:
+                    - GetGatewayByUserID
+                    - GetUserGroupsCreated
+                    - GetIdGroupsCreated
+                    - GetGroupMember
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - endAt: ''
+                - firebaseService: firestore
+                - showSuccessToaster: true
+                - equalTo: ''
+                - cacheKeyTtl: ''
+                - metadata: null
+                - uid: ''
+                - editorMode: gui
+                - actionType: queryFirestore
+                - triggersOnFailure:
+                    - CloseUserTextInputSearch
+                - setDbValue: ''
+                - value: ''
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - filterType: ''
+                - rawData: null
+                - userOptions: ''
+                - docId: '{{UserTextInputSearch.value}}'
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - ordering: ''
+                - startAt: ''
+                - limitType: ''
+                - dbRef: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: true
+                - phoneNumber: ''
+                - nextPageToken: ''
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data[0]
+                - queryTimeout: '10000'
+                - useRawCollectionId: false
+                - firestoreOrderBy: ''
+                - requireConfirmation: false
+                - orderByChildValue: ''
+                - queryFailureConditions: ''
+                - limit: ''
+                - enableCaching: false
+                - firestoreOrderDirection: ''
+                - firestoreWhere: >-
+                    [{"value":"{{PreProcessInput.data}}","key":"{{UserSearchFieldDropdown.value}}","operation":"=="}]
+                - email: ''
+                - queryThrottleTime: '750'
+                - updateSetValueDynamically: false
+                - notificationDuration: ''
+            createdAt: 2021-03-16T20:26:14.215Z
+            folder: UserSetings
+      - GetGatewayByUserID:
+          pluginTemplate:
+            id: GetGatewayByUserID
+            type: datasource
+            subtype: FirebaseQuery
+            resourceName: Internal Admin Dashboard
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: ''
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - firestoreCollection: 'User/{{GetUser.data.id}}/Gateway'
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - endAt: ''
+                - firebaseService: firestore
+                - showSuccessToaster: true
+                - equalTo: ''
+                - cacheKeyTtl: ''
+                - metadata: null
+                - uid: ''
+                - editorMode: gui
+                - actionType: getByIdFirestore
+                - triggersOnFailure:
+                    - CloseUserTextInputSearch
+                - setDbValue: ''
+                - value: ''
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - filterType: ''
+                - rawData: null
+                - userOptions: ''
+                - docId: iugu
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - ordering: ''
+                - startAt: ''
+                - limitType: ''
+                - dbRef: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - phoneNumber: ''
+                - nextPageToken: ''
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - useRawCollectionId: true
+                - firestoreOrderBy: ''
+                - requireConfirmation: false
+                - orderByChildValue: ''
+                - queryFailureConditions: ''
+                - limit: ''
+                - enableCaching: false
+                - firestoreOrderDirection: ''
+                - firestoreWhere: '[{"value":"","key":"id","operation":"=="}]'
+                - email: ''
+                - queryThrottleTime: '750'
+                - updateSetValueDynamically: false
+                - notificationDuration: ''
+            createdAt: 2021-03-17T19:17:27.576Z
+            folder: UserSetings
+      - UpdateFeePercent:
+          pluginTemplate:
+            id: UpdateFeePercent
+            type: datasource
+            subtype: FirebaseQuery
+            resourceName: Internal Admin Dashboard
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: ''
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - firestoreCollection: 'User/{{GetUser.data.id}}/Gateway/'
+                - triggersOnSuccess:
+                    - CloseModalUserModalAlterFee
+                    - GetUser
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - endAt: ''
+                - firebaseService: firestore
+                - showSuccessToaster: true
+                - equalTo: ''
+                - cacheKeyTtl: ''
+                - metadata: null
+                - uid: ''
+                - editorMode: gui
+                - actionType: updateFirestore
+                - triggersOnFailure: []
+                - setDbValue: ''
+                - value: >-
+                    {"account": { "config": { "fee": { "percent":
+                    {{parseFloat(AccountTextInputFee.value.replace(",", "."))}}
+                    } } } }
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - filterType: ''
+                - rawData: null
+                - userOptions: ''
+                - docId: iugu
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - ordering: ''
+                - startAt: ''
+                - limitType: ''
+                - dbRef: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - phoneNumber: ''
+                - nextPageToken: ''
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - useRawCollectionId: true
+                - firestoreOrderBy: ''
+                - requireConfirmation: false
+                - orderByChildValue: ''
+                - queryFailureConditions: ''
+                - limit: ''
+                - enableCaching: false
+                - firestoreOrderDirection: ''
+                - firestoreWhere: ''
+                - email: ''
+                - queryThrottleTime: '750'
+                - updateSetValueDynamically: false
+                - notificationDuration: ''
+            createdAt: 2021-03-17T19:52:42.274Z
+            folder: UserSetings
+      - OpenModalAlterFee:
+          pluginTemplate:
+            id: OpenModalAlterFee
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: UserModalAlterFee.open();
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - updateSetValueDynamically: false
+                - notificationDuration: ''
+            createdAt: 2021-03-17T21:49:41.689Z
+            folder: UserSetings
+      - CloseUserTextInputSearch:
+          pluginTemplate:
+            id: CloseUserTextInputSearch
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: UserTextInputSearch.setValue("");
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - updateSetValueDynamically: false
+                - notificationDuration: ''
+            createdAt: 2021-03-17T23:11:32.667Z
+            folder: UserSetings
+      - CloseModalUserModalAlterFee:
+          pluginTemplate:
+            id: CloseModalUserModalAlterFee
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: UserModalAlterFee.close();
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - updateSetValueDynamically: false
+                - notificationDuration: ''
+            createdAt: 2021-03-17T23:26:20.885Z
+            folder: UserSetings
+      - ValidationUserModalAlterFee:
+          pluginTemplate:
+            id: ValidationUserModalAlterFee
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: >-
+
+                    if(AccountTextInputFee.validationState.validationType ==
+                    "SUCCESS"){
+
+                    UserModalAlterFee.open();
+                        //TODO faz o caso sucesso
+                    }
+
+                    else{
+
+                    UserModalAlterFee.close();
+
+                    UserModalIncorrectValue.open();
+                        //Deu ruim
+                    }
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: '[]'
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - updateSetValueDynamically: false
+                - notificationDuration: ''
+            createdAt: 2021-03-19T01:36:11.235Z
+            folder: UserSetings
+      - CloseModalUserModalIncorrectValue:
+          pluginTemplate:
+            id: CloseModalUserModalIncorrectValue
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: UserModalIncorrectValue.close();
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - updateSetValueDynamically: false
+                - notificationDuration: ''
+            createdAt: 2021-03-23T03:05:39.445Z
+            folder: UserSetings
+      - OpenModalGroupsCreated:
+          pluginTemplate:
+            id: OpenModalGroupsCreated
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: GroupsCreatedModalSeeMore.open();
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - updateSetValueDynamically: false
+                - notificationDuration: ''
+            createdAt: 2021-03-30T17:29:16.269Z
+            folder: UserSetings
+      - GetIdGroupsCreated:
+          pluginTemplate:
+            id: GetIdGroupsCreated
+            type: datasource
+            subtype: FirebaseQuery
+            resourceName: Internal Admin Dashboard
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: ''
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - firestoreCollection: Group
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - endAt: ''
+                - firebaseService: firestore
+                - showSuccessToaster: true
+                - equalTo: ''
+                - cacheKeyTtl: ''
+                - metadata: null
+                - uid: ''
+                - editorMode: gui
+                - actionType: getByIdFirestore
+                - triggersOnFailure: []
+                - setDbValue: ''
+                - value: ''
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - filterType: ''
+                - rawData: null
+                - userOptions: ''
+                - docId: '{{GroupsCreatedTable.selectedRow.data.id}}'
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - ordering: ''
+                - startAt: ''
+                - limitType: ''
+                - dbRef: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - phoneNumber: ''
+                - nextPageToken: ''
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - useRawCollectionId: true
+                - firestoreOrderBy: ''
+                - requireConfirmation: false
+                - orderByChildValue: ''
+                - queryFailureConditions: ''
+                - limit: ''
+                - enableCaching: false
+                - firestoreOrderDirection: ''
+                - firestoreWhere: ''
+                - email: ''
+                - queryThrottleTime: '750'
+                - updateSetValueDynamically: false
+                - notificationDuration: ''
+            createdAt: 2021-03-30T19:49:20.936Z
+            folder: UserSetings
+      - PreProcessInput:
+          pluginTemplate:
+            id: PreProcessInput
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: |-
+                    const input = UserTextInputSearch.value.trim()
+                    const fieldType = UserSearchFieldDropdown.value
+                    if(fieldType === "phoneNumber") {
+                      let phone = input.replace(/[^+\d,]+/g, "")
+                      if (!phone.startsWith("+")) {
+                        phone = "+55" + phone
+                      }
+                      if (phone.startsWith("+55") && phone.length === 13) {
+                        phone = phone.slice(0, 5) + "9" + phone.slice(5)
+                      }
+                      return phone 
+                    }
+                    return input
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess:
+                    - GetUser
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - updateSetValueDynamically: false
+                - notificationDuration: ''
+            createdAt: 2021-03-23T14:30:30.228Z
+            folder: UserSetings
+      - GetUserGroupsCreated:
+          pluginTemplate:
+            id: GetUserGroupsCreated
+            type: datasource
+            subtype: FirebaseQuery
+            resourceName: Internal Admin Dashboard
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: ''
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - firestoreCollection: Group/
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - endAt: ''
+                - firebaseService: firestore
+                - showSuccessToaster: true
+                - equalTo: ''
+                - cacheKeyTtl: ''
+                - metadata: null
+                - uid: ''
+                - editorMode: gui
+                - actionType: queryFirestore
+                - triggersOnFailure: []
+                - setDbValue: ''
+                - value: ''
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - filterType: ''
+                - rawData: null
+                - userOptions: ''
+                - docId: ''
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - ordering: ''
+                - startAt: ''
+                - limitType: ''
+                - dbRef: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - phoneNumber: ''
+                - nextPageToken: ''
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - useRawCollectionId: true
+                - firestoreOrderBy: ''
+                - requireConfirmation: false
+                - orderByChildValue: ''
+                - queryFailureConditions: ''
+                - limit: ''
+                - enableCaching: false
+                - firestoreOrderDirection: ''
+                - firestoreWhere: >-
+                    [{"value":"{{GetUser.data.id}}","key":"owner","operation":"=="}]
+                - email: ''
+                - queryThrottleTime: '750'
+                - updateSetValueDynamically: false
+                - notificationDuration: ''
+            createdAt: 2021-03-23T15:06:14.797Z
+            folder: UserSetings
+      - GetAuthLink:
+          pluginTemplate:
+            id: GetAuthLink
+            type: datasource
+            subtype: RESTQuery
+            resourceName: REST-WithoutResource
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - paginationLimit: ''
+                - body: >-
+                    [{"key":"data","value":"{\"token\":
+                    \"g0jlyVe80ERdLGOokB01SYE9TXd1\", \"userId\":
+                    \"{{GetUser.data.id}}\", \"redirectUrl\":
+                    \"{{CPLink.value}}user_groups\"}"}]
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - paginationPaginationField: ''
+                - headers: ''
+                - showFailureToaster: true
+                - paginationEnabled: false
+                - query: '{{CPFunctionLink.value}}authCreateAuthLink'
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - cookies: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - paginationDataField: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - type: POST
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - bodyType: json
+                - queryThrottleTime: '750'
+                - updateSetValueDynamically: false
+                - notificationDuration: ''
+            createdAt: 2021-04-06T20:53:13.871Z
+            folder: UserSetings
+      - GetGroupMember:
+          pluginTemplate:
+            id: GetGroupMember
+            type: datasource
+            subtype: FirebaseQuery
+            resourceName: Internal Admin Dashboard
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: ''
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - firestoreCollection: GroupMember/
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - endAt: ''
+                - firebaseService: firestore
+                - showSuccessToaster: true
+                - equalTo: ''
+                - cacheKeyTtl: ''
+                - metadata: null
+                - uid: ''
+                - editorMode: gui
+                - actionType: queryFirestore
+                - triggersOnFailure: []
+                - setDbValue: ''
+                - value: ''
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - filterType: ''
+                - rawData: null
+                - userOptions: ''
+                - docId: '{{GroupsCreatedTable.selectedRow.data._id}}'
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - ordering: ''
+                - startAt: ''
+                - limitType: ''
+                - dbRef: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: true
+                - phoneNumber: ''
+                - nextPageToken: ''
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data[0]
+                - queryTimeout: '10000'
+                - useRawCollectionId: true
+                - firestoreOrderBy: ''
+                - requireConfirmation: false
+                - orderByChildValue: ''
+                - queryFailureConditions: ''
+                - limit: ''
+                - enableCaching: false
+                - firestoreOrderDirection: ''
+                - firestoreWhere: >-
+                    [{"value":"{{GetUser.data.id}}","key":"user.id","operation":"=="},{"value":"{{GroupsCreatedTable.selectedRow.data.id}}","key":"group.id","operation":"=="}]
+                - email: ''
+                - queryThrottleTime: '750'
+                - updateSetValueDynamically: false
+                - notificationDuration: ''
+            createdAt: 2021-04-06T21:30:11.389Z
+            folder: UserSetings
+      - GetUserOwnerSubscriptions:
+          pluginTemplate:
+            id: GetUserOwnerSubscriptions
+            type: datasource
+            subtype: FirebaseQuery
+            resourceName: Internal Admin Dashboard
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: true
+                - showFailureToaster: true
+                - query: ''
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - firestoreCollection: Subscription
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - endAt: ''
+                - firebaseService: firestore
+                - showSuccessToaster: true
+                - equalTo: ''
+                - cacheKeyTtl: ''
+                - metadata: null
+                - uid: ''
+                - editorMode: gui
+                - actionType: queryFirestore
+                - triggersOnFailure: []
+                - setDbValue: ''
+                - value: ''
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - filterType: ''
+                - rawData: null
+                - userOptions: ''
+                - docId: ''
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - ordering: ''
+                - startAt: ''
+                - limitType: ''
+                - dbRef: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: true
+                - phoneNumber: ''
+                - nextPageToken: ''
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data.map((it) => {
+                      return {
+                        id: it.id,
+                        "Expires at": it.expiresAt,
+                        "Group Id": it.item.id,
+                        "Group Name": it.item.name,
+                        "User Id": it.user.id,
+                        "User Name": it.user.name,
+                        "Subscription Id": it.subscriptionId,
+                        "Created at": it.createdAt,
+                        "Plan": it.plan.interval,
+                        "Status": it.status,
+                      }
+                    })
+                - queryTimeout: '10000'
+                - useRawCollectionId: false
+                - firestoreOrderBy: ''
+                - requireConfirmation: false
+                - orderByChildValue: ''
+                - queryFailureConditions: ''
+                - limit: ''
+                - enableCaching: false
+                - firestoreOrderDirection: ''
+                - firestoreWhere: >-
+                    [{"value":"{{GetUser.data.id}}","key":"item.userId","operation":"=="}]
+                - email: ''
+                - queryThrottleTime: '750'
+                - updateSetValueDynamically: false
+                - notificationDuration: ''
+            createdAt: 2021-04-08T01:57:35.632Z
+            folder: UserSetings
+      - GetIuguSubscriptionDetail:
+          pluginTemplate:
+            id: GetIuguSubscriptionDetail
+            type: datasource
+            subtype: RESTQuery
+            resourceName: REST-WithoutResource
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - paginationLimit: ''
+                - body: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - paginationPaginationField: ''
+                - headers: >-
+                    [{"key":"Authorization","value":"Basic
+                    {{btoa(GetGatewayByUserID.data.account.accessToken +
+                    \":\")}}"}]
+                - showFailureToaster: true
+                - paginationEnabled: false
+                - query: >-
+                    https://api.iugu.com/v1/subscriptions/{{UserOwnerSubscriptionsTable.selectedRow.data["Subscription
+                    Id"]}}
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - cookies: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - paginationDataField: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - type: GET
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - bodyType: json
+                - queryThrottleTime: '750'
+                - updateSetValueDynamically: false
+                - notificationDuration: ''
+            createdAt: 2021-04-08T02:01:10.410Z
+            folder: UserSetings
+      - UserOwnerSubscriptionsTableTrigger:
+          pluginTemplate:
+            id: UserOwnerSubscriptionsTableTrigger
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: |-
+                    SubscriptionDetailModal.open()
+                    GetIuguSubscriptionDetail.trigger()
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - updateSetValueDynamically: false
+                - notificationDuration: ''
+            createdAt: 2021-04-08T02:18:17.461Z
+            folder: UserSetings
+      - NextStateDataEditing:
+          pluginTemplate:
+            id: NextStateDataEditing
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: |-
+                    state2.setValue(dataEditing.NextState)
+                    return dataEditing.NextState
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - updateSetValueDynamically: false
+                - notificationDuration: ''
+            createdAt: 2021-04-09T21:16:11.900Z
+            folder: QueriesEditData
+      - global1:
+          pluginTemplate:
+            id: global1
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - showFetchingIndicator: false
+                - name: Menu
+                - pageUuid: aaadb451-3884-4fe1-8a03-ea260bef90b2
+                - id: global1
+                - childNamespace: global1
+                - User: ''
+                - style:
+                    ordered: []
+            style:
+              ordered: []
+            position2:
+              position2:
+                col: 1
+                height: 20
+                width: 2
+            mobilePosition2:
+              position2:
+                col: 1
+                height: 20
+                width: 2
+            createdAt: 2021-03-15T18:59:14.538Z
+      - UserContainerView:
+          pluginTemplate:
+            id: UserContainerView
+            type: widget
+            subtype: ContainerWidget
+            template:
+              ordered:
+                - heightType: fixed
+                - spinWhenChildrenAreFetching: true
+                - showBorder: true
+                - showDropShadow: true
+                - style:
+                    ordered: []
+                - backgroundColor: white
+                - title: ''
+                - id: container13
+                - overflowType: hidden
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                col: 3
+                height: 20
+                width: 8
+            mobilePosition2:
+              position2:
+                col: 3
+                height: 20
+                width: 8
+            createdAt: 2021-03-16T20:04:38.361Z
+      - UserModalAlterFee:
+          pluginTemplate:
+            id: UserModalAlterFee
+            type: widget
+            subtype: ModalWidget
+            template:
+              ordered:
+                - buttonBackgroundColor: '#3c92dc'
+                - opened: false
+                - modalOverflowType: hidden
+                - hidden: 'true'
+                - onModalClose: ''
+                - modalHeightType: fixed
+                - style:
+                    ordered: []
+                - modalHeight: 50%
+                - onModalOpen: ''
+                - modalWidth: 15%
+                - closeOnOutsideClick: false
+                - id: modal5
+                - loading: ''
+                - disabled: ''
+                - buttonText: UserModalAlterFee
+            style:
+              ordered: []
+            position2:
+              position2:
+                row: 21
+                col: 1
+                height: 1
+                width: 2
+            mobilePosition2:
+              position2:
+                row: 20
+                col: 5
+                height: 1
+                width: 1
+            createdAt: 2021-03-17T21:50:07.428Z
+      - text13:
+          pluginTemplate:
+            id: text13
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: center
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |+
+                    <p>
+                    <strong style=font-size:200%;
+                    > ARE YOU SURE?
+                    </strong>
+                    </p>
+
+
+                - style:
+                    ordered: []
+                - renderAsHtml: true
+                - backgroundColor: '#0000'
+                - textColor: '#cc5248'
+                - renderAsMarkdown: true
+                - id: text13
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserModalAlterFee
+                row: 2
+                col: 2
+                height: 3
+                width: 8
+            mobilePosition2:
+              position2:
+                container: modal5
+                row: 3
+                col: 2
+                height: 3
+                width: 8
+            createdAt: 2021-03-17T21:52:13.944Z
+      - button1:
+          pluginTemplate:
+            id: button1
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#16C37B'
+                - internalUrlHashParams: ''
+                - afterClickDisableTime: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: OK
+                - style:
+                    ordered: []
+                - exportQuery: ''
+                - action: UpdateFeePercent
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - events:
+                    - ordered:
+                        - event: click
+                        - method: trigger
+                        - type: datasource
+                        - pluginId: UpdateFeePercent
+                        - waitType: debounce
+                        - waitMs: '0'
+                - id: button1
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserModalAlterFee
+                row: 6
+                col: 6
+                height: 1
+                width: 4
+            mobilePosition2:
+              position2:
+                container: modal5
+                row: 7
+                col: 6
+                height: 1
+                width: 4
+            createdAt: 2021-03-17T22:00:16.550Z
+      - UserContainerInfo:
+          pluginTemplate:
+            id: UserContainerInfo
+            type: widget
+            subtype: ContainerWidget
+            template:
+              ordered:
+                - heightType: fixed
+                - spinWhenChildrenAreFetching: true
+                - showBorder: true
+                - showDropShadow: true
+                - style:
+                    ordered: []
+                - backgroundColor: white
+                - title: ''
+                - id: container11
+                - overflowType: hidden
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserTablecontainerView
+                height: 15
+                width: 5
+            mobilePosition2:
+              position2:
+                container: tabbedcontainer1
+                height: 14
+                width: 5
+            createdAt: 2021-03-17T22:37:47.227Z
+      - button2:
+          pluginTemplate:
+            id: button2
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#cc5248'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: CANCEL
+                - style:
+                    ordered: []
+                - exportQuery: ''
+                - action: CloseModalUserModalAlterFee
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - events:
+                    - ordered:
+                        - event: click
+                        - method: trigger
+                        - type: datasource
+                        - pluginId: CloseModalUserModalAlterFee
+                        - waitType: debounce
+                        - waitMs: '0'
+                - id: button1
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserModalAlterFee
+                row: 6
+                col: 2
+                height: 1
+                width: 4
+            mobilePosition2:
+              position2:
+                container: modal5
+                row: 7
+                col: 2
+                height: 1
+                width: 4
+            createdAt: 2021-03-17T23:25:25.068Z
+      - UserTextTelegramCode:
+          pluginTemplate:
+            id: UserTextTelegramCode
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |-
+                    <a Style="color:#16C37B"
+                       target="_blank" rel="noopener noreferrer" href="https://t.me/ChatPayBot?start={{GetUser.data.telegramCode}}">
+                      {{GetUser.data.telegramCode}}
+                    </a>
+                - style:
+                    ordered: []
+                - renderAsHtml: true
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+                - id: text27
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserContainerDetails
+                row: 7
+                height: 1
+                width: 12
+            createdAt: 2021-03-19T15:39:55.146Z
+      - UserTablecontainerView:
+          pluginTemplate:
+            id: UserTablecontainerView
+            type: widget
+            subtype: TabbedContainerWidget
+            template:
+              ordered:
+                - heightType: auto
+                - spinWhenChildrenAreFetching: true
+                - hidden: ''
+                - style:
+                    ordered: []
+                - tabNames: '["USUÁRIO","CONTA"]'
+                - selectedTabIndex: 0
+                - selectedTab: '"0"'
+                - id: tabbedcontainer1
+                - showTabBar: true
+                - disableAnimation: false
+                - overflowType: hidden
+                - disabled: '{{!GetUser.data}}'
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserContainerView
+                row: 2
+                height: 17
+                width: 12
+            mobilePosition2:
+              position2:
+                container: user_settings_container
+                row: 2
+                col: 1
+                height: 17
+                width: 10
+            createdAt: 2021-03-22T22:22:47.523Z
+      - UserImageStatus:
+          pluginTemplate:
+            id: UserImageStatus
+            type: widget
+            subtype: ImageWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - isFile: false
+                - internalUrlHashParams: ''
+                - hidden: '{{GetUser.data.gateways.carriers.iugu.status !== 3}}'
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - style:
+                    ordered: []
+                - exportQuery: ''
+                - imageUrl: >-
+                    https://play-lh.googleusercontent.com/K4oZnEfXtevJrCkMX0aq2ZBDLBkHCN7E-ZL59ljJvVloE3A3C5D-tj8JT3LfZJCZeA
+                - action: ''
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - imageFile: ''
+                - id: image10
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserContainerDetails
+                col: 11
+                height: 1
+                width: 1
+            mobilePosition2:
+              position2:
+                container: user_basic_info_container
+                col: 10
+                height: 1
+                width: 2
+            createdAt: 2021-03-22T23:30:15.312Z
+      - UserContainerDetails:
+          pluginTemplate:
+            id: UserContainerDetails
+            type: widget
+            subtype: ContainerWidget
+            template:
+              ordered:
+                - heightType: fixed
+                - spinWhenChildrenAreFetching: true
+                - showBorder: true
+                - showDropShadow: true
+                - style:
+                    ordered: []
+                - backgroundColor: white
+                - title: ''
+                - id: container10
+                - overflowType: hidden
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserTablecontainerView
+                row: 6
+                col: 5
+                height: 9
+                width: 7
+            mobilePosition2:
+              position2:
+                container: tabbedcontainer1
+                row: 6
+                col: 5
+                height: 8
+                width: 7
+            createdAt: 2021-03-22T23:43:02.905Z
+      - UserTextPage:
+          pluginTemplate:
+            id: UserTextPage
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: center
+                - truncateOverflow: false
+                - hidden: ''
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: "<p>\n  <strong style=font-size:90%;> \n  \t<a style=\"color:#16C37B\" target=\"_blank\" rel=\"noopener noreferrer\" \nhref=\"{{CPLink.value}}{{GetUser.data.username||GetUser.data._id}}\">\n    \tIR PARA PÁGINA DO USUÁRIO\n  \t</a>\n  </strong>\n</p>"
+                - style:
+                    ordered: []
+                - renderAsHtml: true
+                - backgroundColor: ''
+                - textColor: '#16C37B'
+                - renderAsMarkdown: true
+                - id: text43
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserContainerDetails
+                height: 1
+                width: 6
+            mobilePosition2:
+              position2:
+                container: container10
+                col: 5
+                height: 1
+                width: 7
+            createdAt: 2021-03-22T23:50:18.971Z
+      - UserModalIncorrectValue:
+          pluginTemplate:
+            id: UserModalIncorrectValue
+            type: widget
+            subtype: ModalWidget
+            template:
+              ordered:
+                - buttonBackgroundColor: '#3c92dc'
+                - opened: false
+                - modalOverflowType: hidden
+                - hidden: 'true'
+                - onModalClose: ''
+                - modalHeightType: fixed
+                - style:
+                    ordered: []
+                - modalHeight: 50%
+                - onModalOpen: ''
+                - modalWidth: 15%
+                - closeOnOutsideClick: false
+                - id: modal5
+                - loading: ''
+                - disabled: ''
+                - buttonText: UserModalIncorrectValue
+            style:
+              ordered: []
+            position2:
+              position2:
+                row: 22
+                col: 1
+                height: 1
+                width: 2
+            mobilePosition2:
+              position2:
+                row: 21
+                col: 7
+                height: 1
+                width: 1
+            createdAt: 2021-03-23T03:00:43.501Z
+      - text44:
+          pluginTemplate:
+            id: text44
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: center
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |+
+                    <p>
+                    <strong style=font-size:150%;
+                    > INVALID VALUE!  
+
+                      INSERT VALUES FROM 3 TO 20 NUMBERS.
+                    </strong>
+                    </p>
+
+
+                - style:
+                    ordered: []
+                - renderAsHtml: true
+                - backgroundColor: '#0000'
+                - textColor: '#cc5248'
+                - renderAsMarkdown: true
+                - id: text13
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserModalIncorrectValue
+                row: 1
+                height: 4
+                width: 12
+            mobilePosition2:
+              position2:
+                container: modal6
+                row: 2
+                col: 2
+                height: 3
+                width: 8
+            createdAt: 2021-03-23T03:00:43.772Z
+      - button5:
+          pluginTemplate:
+            id: button5
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#16C37B'
+                - internalUrlHashParams: ''
+                - afterClickDisableTime: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: OK
+                - style:
+                    ordered: []
+                - exportQuery: ''
+                - action: CloseModalUserModalIncorrectValue
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - events:
+                    - ordered:
+                        - event: click
+                        - method: trigger
+                        - type: datasource
+                        - pluginId: CloseModalUserModalIncorrectValue
+                        - waitType: debounce
+                        - waitMs: '0'
+                - id: button1
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserModalIncorrectValue
+                row: 5
+                col: 4
+                height: 1
+                width: 4
+            mobilePosition2:
+              position2:
+                container: modal6
+                row: 6
+                col: 6
+                height: 1
+                width: 4
+            createdAt: 2021-03-23T03:00:43.923Z
+      - AccountButtonAlterFee:
+          pluginTemplate:
+            id: AccountButtonAlterFee
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#16C37B'
+                - internalUrlHashParams: ''
+                - hidden: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: ALTER
+                - style:
+                    ordered: []
+                - exportQuery: ''
+                - action: ValidationUserModalAlterFee
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - events:
+                    - ordered:
+                        - event: click
+                        - method: trigger
+                        - type: datasource
+                        - pluginId: ValidationUserModalAlterFee
+                        - waitType: debounce
+                        - waitMs: '0'
+                - id: button3
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: AccountContainerInfo
+                row: 8
+                col: 7
+                height: 1
+                width: 5
+            mobilePosition2:
+              position2:
+                container: UserTablecontainerView
+                row: 4
+                col: 9
+                height: 1
+                width: 2
+                tabNum: 1
+            createdAt: 2021-03-24T01:23:58.183Z
+      - AccountTextInputFee:
+          pluginTemplate:
+            id: AccountTextInputFee
+            type: widget
+            subtype: TextInputWidget
+            template:
+              ordered:
+                - validationMaxlengthValue: ''
+                - readonly: ''
+                - disabledKeyCodes: ''
+                - showNumberCommas: false
+                - validationMaxValue: ''
+                - onBlur: ''
+                - currencyType: USD
+                - leftIconName: edit
+                - initialValue: ''
+                - validationMessage: |-
+                    Invalid value!
+                    Values from 3 to 20 numbers.
+                - tooltipText: ''
+                - value: ''
+                - style:
+                    ordered: []
+                - suffix: ''
+                - validationMinlengthValue: ''
+                - validationLengthValue: ''
+                - placeholder: ''
+                - validationType: regexp
+                - label: ''
+                - currencyMajorOnly: false
+                - formattedValue: ''
+                - allowedInputsRegex: ''
+                - labelMaxWidth: ''
+                - enableValidationType: true
+                - labelPlacedOnLeft: false
+                - onSubmit: ValidationUserModalAlterFee
+                - validationMinValue: ''
+                - lastSubmittedAt: ''
+                - validationState:
+                    object:
+                      required: ''
+                      validationType: ''
+                - events:
+                    - ordered:
+                        - event: submit
+                        - type: datasource
+                        - method: trigger
+                        - pluginId: ValidationUserModalAlterFee
+                        - params:
+                            ordered: []
+                        - waitType: debounce
+                        - waitMs: '0'
+                - type: text
+                - id: textinput3
+                - allowedRegex: '([3-9]|1\d|20)([,\.]\d\d?)?'
+                - required: false
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: AccountContainerInfo
+                row: 7
+                height: 1
+                width: 12
+            mobilePosition2:
+              position2:
+                container: UserTablecontainerView
+                row: 4
+                col: 7
+                height: 1
+                width: 2
+                tabNum: 1
+            createdAt: 2021-03-24T01:25:41.483Z
+      - AccountContainerInfo:
+          pluginTemplate:
+            id: AccountContainerInfo
+            type: widget
+            subtype: ContainerWidget
+            template:
+              ordered:
+                - heightType: fixed
+                - spinWhenChildrenAreFetching: true
+                - showBorder: true
+                - showDropShadow: true
+                - style:
+                    ordered: []
+                - backgroundColor: white
+                - title: ''
+                - id: container11
+                - overflowType: hidden
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserTablecontainerView
+                height: 15
+                width: 5
+                tabNum: 1
+            mobilePosition2:
+              position2:
+                container: tabbedcontainer1
+                height: 14
+                width: 5
+                tabNum: 1
+            createdAt: 2021-03-24T01:32:25.898Z
+      - AccountTextDescription:
+          pluginTemplate:
+            id: AccountTextDescription
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |+
+                    <p style=font-size:110%; >
+                    {{search.UserAccount.account.description}}
+
+                    </p>
+
+                - style:
+                    ordered: []
+                - renderAsHtml: true
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+                - id: text45
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: AccountContainerDescription
+                height: 3
+                width: 12
+            mobilePosition2:
+              position2:
+                container: GroupsCreatedContainerVerifications
+                height: 3
+                width: 12
+            createdAt: 2021-03-24T02:00:48.066Z
+      - AccountContainerDescription:
+          pluginTemplate:
+            id: AccountContainerDescription
+            type: widget
+            subtype: ContainerWidget
+            template:
+              ordered:
+                - heightType: fixed
+                - spinWhenChildrenAreFetching: true
+                - showBorder: true
+                - showDropShadow: true
+                - style:
+                    ordered: []
+                - backgroundColor: white
+                - title: ''
+                - id: container12
+                - overflowType: hidden
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: AccountContainerInfo
+                row: 10
+                height: 4
+                width: 12
+            mobilePosition2:
+              position2:
+                container: tabbedcontainer1
+                row: 6
+                col: 5
+                height: 4
+                width: 6
+                tabNum: 1
+            createdAt: 2021-03-25T01:51:39.548Z
+      - ContaContainerStatus:
+          pluginTemplate:
+            id: ContaContainerStatus
+            type: widget
+            subtype: ContainerWidget
+            template:
+              ordered:
+                - heightType: fixed
+                - spinWhenChildrenAreFetching: true
+                - showBorder: true
+                - showDropShadow: true
+                - style:
+                    ordered: []
+                - backgroundColor: white
+                - title: ''
+                - id: container10
+                - overflowType: hidden
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserTablecontainerView
+                row: 1
+                col: 5
+                height: 7
+                width: 5
+                tabNum: 1
+            mobilePosition2:
+              position2:
+                container: GroupsCreatedContainerOthers
+                row: 7
+                col: 1
+                height: 4
+                width: 10
+            createdAt: 2021-03-25T02:11:49.532Z
+      - GroupsCreatedTable:
+          pluginTemplate:
+            id: GroupsCreatedTable
+            type: widget
+            subtype: TableWidget
+            template:
+              ordered:
+                - showCustomButton: false
+                - sortMappedValue:
+                    ordered: []
+                - normalizedData: null
+                - saveChangesDisabled: ''
+                - columnWidths: []
+                - columnWidthsMobile: []
+                - hasNextAfterCursor: ''
+                - columnTypeSpecificExtras:
+                    ordered: []
+                - onRowAdded: ''
+                - columnHeaderNames:
+                    ordered: []
+                - alwaysShowPaginator: false
+                - columnColors:
+                    ordered:
+                      - IsAffiliationRestricted: ''
+                      - lastBotActionCheck: ''
+                      - isAffiliationRestricted: ''
+                      - botId: ''
+                      - migratedFrom: ''
+                      - clientRequest: ''
+                      - botTeam: ''
+                      - gateway: ''
+                      - log: ''
+                      - isPublished: ''
+                      - isAffiliateCycleProtectionEnabled: ''
+                      - welcomeMessage: ''
+                      - feedback: ''
+                      - isSelling: ''
+                      - fee: ''
+                      - paymentMethod: ''
+                      - isVisible: ''
+                      - price: ''
+                      - commission: ''
+                      - name: ''
+                      - hasMembersArea: ''
+                      - skipRemoval: ''
+                      - hasWhitelist: ''
+                      - hasWhiteList: ''
+                      - notificationSettings: ''
+                      - updatedAt: ''
+                      - endAt: ''
+                      - botLeft: ''
+                      - isAcceptingAutoAffiliate: ''
+                      - order: ''
+                      - invoiceDescription: ''
+                      - __metadata: ''
+                      - isDeleted: ''
+                      - welcomeText: ''
+                      - affiliation: ''
+                      - membershipFee: ''
+                      - hasPlans: ''
+                      - currency: ''
+                      - acceptsBankSlipReceipt: ''
+                      - maxMemberCount: ''
+                      - status: ''
+                      - owner: ''
+                      - rulesFile: ''
+                      - lastBotActionCheckAt: ''
+                      - migratedTo: ''
+                      - startAt: ''
+                      - memberCount: ''
+                      - biggerPrice: ''
+                      - parentGroup: ''
+                      - isAcceptingNewAffiliates: ''
+                      - trial: ''
+                      - lastBotCheck: ''
+                      - isDraft: ''
+                      - isEnabled: ''
+                      - subtitle: ''
+                      - _id: ''
+                      - installments: ''
+                      - type: ''
+                      - link: ''
+                      - trackers: ''
+                      - isAffiliationEnabled: ''
+                      - id: ''
+                      - IsAffiliationEnabled: ''
+                      - createdAt: ''
+                      - maxAutoScalingCount: ''
+                      - description: ''
+                      - picture: ''
+                      - plansForCreation: ''
+                      - linkedIds: ''
+                - columnFrozenAlignments:
+                    ordered: []
+                - allowMultiRowSelect: false
+                - columnFormats:
+                    ordered:
+                      - createdAt: date
+                - columnRestrictedEditing:
+                    ordered: []
+                - showFilterButton: false
+                - showAddRowButton: false
+                - nextBeforeCursor: ''
+                - columnVisibility:
+                    ordered:
+                      - IsAffiliationRestricted: false
+                      - lastBotActionCheck: false
+                      - isAffiliationRestricted: false
+                      - botId: true
+                      - migratedFrom: false
+                      - clientRequest: false
+                      - botTeam: false
+                      - gateway: false
+                      - log: false
+                      - isPublished: false
+                      - isAffiliateCycleProtectionEnabled: false
+                      - welcomeMessage: false
+                      - feedback: false
+                      - isSelling: false
+                      - fee: false
+                      - paymentMethod: false
+                      - isVisible: false
+                      - price: false
+                      - commission: false
+                      - name: true
+                      - sales: true
+                      - hasMembersArea: false
+                      - skipRemoval: false
+                      - hasWhitelist: false
+                      - hasWhiteList: true
+                      - notificationSettings: false
+                      - updatedAt: false
+                      - endAt: false
+                      - botLeft: true
+                      - isAcceptingAutoAffiliate: false
+                      - order: false
+                      - invoiceDescription: false
+                      - __metadata: false
+                      - isDeleted: false
+                      - welcomeText: false
+                      - affiliation: false
+                      - membershipFee: false
+                      - hasPlans: false
+                      - currency: false
+                      - acceptsBankSlipReceipt: false
+                      - maxMemberCount: false
+                      - status: false
+                      - owner: false
+                      - rulesFile: false
+                      - lastBotActionCheckAt: false
+                      - migratedTo: false
+                      - startAt: false
+                      - memberCount: false
+                      - biggerPrice: false
+                      - parentGroup: false
+                      - isAcceptingNewAffiliates: false
+                      - trial: false
+                      - lastBotCheck: false
+                      - isDraft: false
+                      - isEnabled: false
+                      - subtitle: false
+                      - _id: false
+                      - installments: false
+                      - type: false
+                      - link: false
+                      - trackers: false
+                      - isAffiliationEnabled: false
+                      - id: true
+                      - IsAffiliationEnabled: false
+                      - createdAt: true
+                      - maxAutoScalingCount: false
+                      - email: true
+                      - description: false
+                      - picture: false
+                      - plansForCreation: false
+                      - linkedIds: true
+                - selectedPageIndex: '0'
+                - actionButtonColumnName: ''
+                - filterStackType: and
+                - downloadRawData: false
+                - showFetchingIndicator: true
+                - serverPaginated: false
+                - data: '{{GetUserGroupsCreated.data}}'
+                - displayedData: null
+                - actionButtons:
+                    - ordered:
+                        - actionButtonText: SEE MORE
+                        - actionButtonType: runQuery
+                        - actionButtonQuery: OpenModalGroupsCreated
+                        - actionButtonInternalUrlPath: ''
+                        - actionButtonInternalUrlQuery: ''
+                        - actionButtonUrl: ''
+                        - actionButtonNewWindow: false
+                        - actionButtonDisabled: ''
+                - actionButtonSelectsRow: true
+                - selectRowByDefault: true
+                - defaultSortByColumn: ''
+                - paginationOffset: 0
+                - columnAlignment:
+                    ordered:
+                      - createdAt: right
+                - sortedDesc: false
+                - customButtonName: ''
+                - columnMappersRenderAsHTML:
+                    ordered: []
+                - showRefreshButton: true
+                - pageSize: 11
+                - useDynamicColumnSettings: false
+                - style:
+                    ordered: []
+                - actionButtonPosition: right
+                - bulkUpdateAction: ''
+                - afterCursor: ''
+                - onCustomButtonPressQueryName: ''
+                - changeSet:
+                    object: {}
+                - sortedColumn: ''
+                - columnAllowOverflow:
+                    ordered: []
+                - beforeCursor: ''
+                - serverPaginationType: limitOffsetBased
+                - onRowSelect: ''
+                - showDownloadButton: true
+                - selectedIndex: ''
+                - defaultSortDescending: false
+                - dynamicColumnSettings: null
+                - totalRowCount: ''
+                - recordUpdates:
+                    array: []
+                - newRow: null
+                - columnEditable:
+                    ordered: []
+                - filters:
+                    array: []
+                - displayedDataIndices: null
+                - disableSorting:
+                    ordered: []
+                - columnMappers:
+                    ordered: []
+                - showClearSelection: false
+                - selectedCell:
+                    object:
+                      index: null
+                      data: null
+                      columnName: null
+                - columns:
+                    - id
+                    - name
+                    - welcomeMessage
+                    - currency
+                    - feedback
+                    - paymentMethod
+                    - lastBotActionCheck
+                    - isDraft
+                    - memberCount
+                    - lastBotCheck
+                    - isEnabled
+                    - isVisible
+                    - isAffiliateCycleProtectionEnabled
+                    - hasWhitelist
+                    - linkedIds
+                    - isDeleted
+                    - status
+                    - updatedAt
+                    - invoiceDescription
+                    - type
+                    - migratedFrom
+                    - order
+                    - price
+                    - maxAutoScalingCount
+                    - commission
+                    - biggerPrice
+                    - welcomeText
+                    - hasPlans
+                    - maxMemberCount
+                    - skipRemoval
+                    - trackers
+                    - endAt
+                    - membershipFee
+                    - installments
+                    - plansForCreation
+                    - acceptsBankSlipReceipt
+                    - link
+                    - picture
+                    - isAcceptingNewAffiliates
+                    - botTeam
+                    - subtitle
+                    - botId
+                    - createdAt
+                    - hasMembersArea
+                    - isSelling
+                    - isAcceptingAutoAffiliate
+                    - trial
+                    - isAffiliationRestricted
+                    - rulesFile
+                    - isAffiliationEnabled
+                    - owner
+                    - gateway
+                    - description
+                    - lastBotActionCheckAt
+                    - parentGroup
+                    - isPublished
+                    - _id
+                    - __metadata
+                    - startAt
+                    - fee
+                    - migratedTo
+                    - notificationSettings
+                    - log
+                    - affiliation
+                    - clientRequest
+                    - hasWhiteList
+                    - botLeft
+                    - IsAffiliationEnabled
+                    - IsAffiliationRestricted
+                - sort: null
+                - calculatedColumns: []
+                - selectedRow:
+                    object:
+                      index: null
+                      data: null
+                - showPaginationOnTop: false
+                - nextAfterCursor: ''
+                - useCompactMode: false
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserTablecontainerView
+                height: 14
+                width: 12
+                tabNum: 2
+            createdAt: 2021-03-30T13:31:00.151Z
+      - CPLink:
+          pluginTemplate:
+            id: CPLink
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: >-
+                    return {{retoolContext.environment}} === 'production' ?
+                    'https://chatpay.com.br/' :
+                    'https://chatpay-dev.firebaseapp.com/'
+                - value: ''
+            createdAt: 2021-04-06T20:43:32.690Z
+            folder: UserSetings
+      - CPFunctionLink:
+          pluginTemplate:
+            id: CPFunctionLink
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: >-
+                    return {{retoolContext.environment}} === 'production' ?
+                    'https://us-central1-chatpay-cd120.cloudfunctions.net/' :
+                    'https://us-central1-chatpay-dev.cloudfunctions.net/'
+                - value: ''
+            createdAt: 2021-04-06T20:51:42.115Z
+            folder: UserSetings
+      - modal1:
+          pluginTemplate:
+            id: modal1
+            type: widget
+            subtype: ModalWidget
+            template:
+              ordered:
+                - buttonBackgroundColor: '#16C37B'
+                - opened: false
+                - modalOverflowType: hidden
+                - onModalClose: ''
+                - modalHeightType: fixed
+                - style:
+                    ordered: []
+                - modalHeight: 300px
+                - onModalOpen: GetAuthLink
+                - events:
+                    - ordered:
+                        - event: open
+                        - type: datasource
+                        - method: trigger
+                        - pluginId: GetAuthLink
+                        - params:
+                            ordered: []
+                        - waitType: debounce
+                        - waitMs: '0'
+                - modalWidth: 30%
+                - closeOnOutsideClick: false
+                - loading: ''
+                - disabled: ''
+                - buttonText: AUTH
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container21
+                row: 1
+                col: 2
+                height: 1
+                width: 8
+            createdAt: 2021-04-07T21:49:21.298Z
+      - container20:
+          pluginTemplate:
+            id: container20
+            type: widget
+            subtype: ContainerWidget
+            template:
+              ordered:
+                - heightType: fixed
+                - spinWhenChildrenAreFetching: true
+                - showBorder: true
+                - showDropShadow: true
+                - style:
+                    ordered: []
+                - backgroundColor: white
+                - title: ''
+                - overflowType: hidden
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: modal1
+                row: 2
+                height: 2
+                width: 12
+            createdAt: 2021-04-07T21:56:17.245Z
+      - text80:
+          pluginTemplate:
+            id: text80
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: "<p>\n  <strong style=font-size:110%;> \n  \t<a style=\"color:#16C37B\" target=\"_blank\" rel=\"noopener noreferrer\" \nhref=\"{{GetAuthLink.data.result}}\">\n   {{GetAuthLink.data.result}}\n  \t</a>\n  </strong>\n</p>\n"
+                - style:
+                    ordered: []
+                - renderAsHtml: true
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container20
+                height: 1
+                width: 11
+            createdAt: 2021-04-07T21:56:43.505Z
+      - text81:
+          pluginTemplate:
+            id: text81
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |+
+                    <p>
+                    <strong style=font-size:120%;
+                    >Click or copy
+                    </strong>
+                    </p>
+
+                - style:
+                    ordered: []
+                - renderAsHtml: true
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: modal1
+                row: 1
+                height: 1
+                width: 5
+            createdAt: 2021-04-08T01:22:54.182Z
+      - text82:
+          pluginTemplate:
+            id: text82
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: center
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |+
+                    <p>
+                    <strong style=font-size:120%;
+                    >Sign in to account
+                    </strong>
+                    </p>
+
+                - style:
+                    ordered: []
+                - renderAsHtml: true
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container21
+                height: 1
+                width: 12
+            createdAt: 2021-04-08T01:24:38.075Z
+      - container21:
+          pluginTemplate:
+            id: container21
+            type: widget
+            subtype: ContainerWidget
+            template:
+              ordered:
+                - heightType: fixed
+                - spinWhenChildrenAreFetching: true
+                - showBorder: true
+                - showDropShadow: true
+                - style:
+                    ordered: []
+                - backgroundColor: white
+                - title: ''
+                - overflowType: hidden
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserTablecontainerView
+                row: 2
+                col: 6
+                height: 3
+                width: 5
+            createdAt: 2021-04-08T01:25:44.297Z
+      - UserOwnerSubscriptionsTable:
+          pluginTemplate:
+            id: UserOwnerSubscriptionsTable
+            type: widget
+            subtype: TableWidget
+            template:
+              ordered:
+                - showCustomButton: false
+                - sortMappedValue:
+                    ordered: []
+                - normalizedData: null
+                - saveChangesDisabled: ''
+                - columnWidths:
+                    - object:
+                        id: id
+                        value: 199.00000762939453
+                    - object:
+                        id: expiresAt
+                        value: 155.00000762939453
+                    - object:
+                        id: Expires at
+                        value: 164.00000762939453
+                    - object:
+                        id: Group Id
+                        value: 203.00001525878906
+                - columnWidthsMobile: []
+                - hasNextAfterCursor: ''
+                - columnTypeSpecificExtras:
+                    ordered:
+                      - id:
+                          ordered:
+                            - buttonType: action
+                            - action: UserOwnerSubscriptionsTableTrigger
+                - onRowAdded: ''
+                - columnHeaderNames:
+                    ordered:
+                      - item: Group Id
+                      - user: User Id
+                      - expiresAt: Expires At
+                      - subscriptionId: Subscription Id
+                      - createdAt: Created At
+                      - cycledAt: Cycled At
+                      - paymentMethod: Payment Method
+                      - plan: Plan
+                - alwaysShowPaginator: false
+                - columnColors:
+                    ordered:
+                      - User Name: ''
+                      - cicledAt: ''
+                      - clientRequest: ''
+                      - gateway: ''
+                      - log: ''
+                      - statusAt: ''
+                      - coupon: ''
+                      - expiresAt: ''
+                      - paymentMethod: ''
+                      - cicleAt: ''
+                      - plan: ''
+                      - Plan: ''
+                      - isCancelRequested: ''
+                      - Created at: ''
+                      - notification: ''
+                      - user: ''
+                      - isTrial: ''
+                      - Group Name: ''
+                      - affiliate: ''
+                      - updatedAt: ''
+                      - __metadata: ''
+                      - isDeleted: ''
+                      - User Id: ''
+                      - cycledAt: ''
+                      - Status: ''
+                      - status: ''
+                      - item: ''
+                      - transactions: ''
+                      - isEnabled: ''
+                      - subscriptionId: ''
+                      - _id: ''
+                      - id: ''
+                      - createdAt: ''
+                      - Group Id: ''
+                      - Subscription Id: ''
+                      - Expires at: ''
+                - columnFrozenAlignments:
+                    ordered: []
+                - allowMultiRowSelect: false
+                - columnFormats:
+                    ordered:
+                      - id: button
+                - columnRestrictedEditing:
+                    ordered: []
+                - showFilterButton: true
+                - showAddRowButton: false
+                - nextBeforeCursor: ''
+                - columnVisibility:
+                    ordered:
+                      - User Name: true
+                      - cicledAt: true
+                      - clientRequest: true
+                      - gateway: false
+                      - log: true
+                      - statusAt: false
+                      - coupon: true
+                      - expiresAt: true
+                      - paymentMethod: true
+                      - cicleAt: true
+                      - plan: true
+                      - Plan: true
+                      - isCancelRequested: false
+                      - Created at: true
+                      - notification: false
+                      - name: true
+                      - user: true
+                      - isTrial: false
+                      - sales: true
+                      - Group Name: true
+                      - affiliate: false
+                      - updatedAt: true
+                      - __metadata: false
+                      - isDeleted: true
+                      - User Id: true
+                      - cycledAt: true
+                      - Status: true
+                      - status: true
+                      - item: true
+                      - transactions: false
+                      - isEnabled: false
+                      - subscriptionId: true
+                      - _id: false
+                      - id: true
+                      - createdAt: true
+                      - Group Id: true
+                      - email: true
+                      - Subscription Id: true
+                      - Expires at: true
+                - selectedPageIndex: '0'
+                - actionButtonColumnName: Actions
+                - filterStackType: and
+                - downloadRawData: false
+                - showFetchingIndicator: true
+                - serverPaginated: false
+                - data: '{{GetUserOwnerSubscriptions.data}}'
+                - displayedData: null
+                - actionButtons: []
+                - actionButtonSelectsRow: true
+                - selectRowByDefault: true
+                - defaultSortByColumn: ''
+                - paginationOffset: 0
+                - columnAlignment:
+                    ordered:
+                      - id: left
+                - sortedDesc: false
+                - customButtonName: ''
+                - columnMappersRenderAsHTML:
+                    ordered: []
+                - showRefreshButton: true
+                - pageSize: 10
+                - useDynamicColumnSettings: false
+                - style:
+                    ordered: []
+                - actionButtonPosition: left
+                - bulkUpdateAction: ''
+                - afterCursor: ''
+                - onCustomButtonPressQueryName: ''
+                - changeSet:
+                    object: {}
+                - sortedColumn: ''
+                - columnAllowOverflow:
+                    ordered: []
+                - beforeCursor: ''
+                - serverPaginationType: limitOffsetBased
+                - onRowSelect: ''
+                - showDownloadButton: true
+                - selectedIndex: ''
+                - defaultSortDescending: false
+                - dynamicColumnSettings: null
+                - totalRowCount: ''
+                - recordUpdates:
+                    array: []
+                - newRow: null
+                - columnEditable:
+                    ordered: []
+                - filters:
+                    array: []
+                - displayedDataIndices: null
+                - disableSorting:
+                    ordered: []
+                - columnMappers:
+                    ordered:
+                      - item: '{{self.id}}'
+                      - plan: '{{self.interval}}'
+                      - user: '{{self.id}}'
+                      - createdAt: '{{new Date(self).toLocaleString()}}'
+                      - expiresAt: '{{new Date(self).toLocaleString()}}'
+                      - cycledAt: '{{new Date(self).toLocaleString()}}'
+                      - Created at: '{{new Date(self).toLocaleString()}}'
+                      - Expires at: '{{new Date(self).toLocaleString()}}'
+                - showClearSelection: false
+                - selectedCell:
+                    object:
+                      index: null
+                      data: null
+                      columnName: null
+                - columns:
+                    - id
+                    - expiresAt
+                    - affiliate
+                    - isTrial
+                    - item
+                    - user
+                    - subscriptionId
+                    - createdAt
+                    - cycledAt
+                    - plan
+                    - paymentMethod
+                    - status
+                    - updatedAt
+                    - coupon
+                    - cicledAt
+                    - isEnabled
+                    - transactions
+                    - isDeleted
+                    - _id
+                    - __metadata
+                    - gateway
+                    - isCancelRequested
+                    - statusAt
+                    - notification
+                    - Expires at
+                    - Group Id
+                    - User Id
+                    - User Name
+                    - Subscription Id
+                    - Created at
+                    - Plan
+                    - Status
+                    - Group Name
+                - sort: null
+                - calculatedColumns: []
+                - selectedRow:
+                    object:
+                      index: null
+                      data: null
+                - showPaginationOnTop: false
+                - nextAfterCursor: ''
+                - useCompactMode: false
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserTablecontainerView
+                height: 13
+                width: 12
+                tabNum: 3
+            createdAt: 2021-04-08T01:51:39.959Z
+      - IuguSubscriptionDetails:
+          pluginTemplate:
+            id: IuguSubscriptionDetails
+            type: widget
+            subtype: TableWidget
+            template:
+              ordered:
+                - showCustomButton: false
+                - sortMappedValue:
+                    ordered: []
+                - normalizedData: null
+                - saveChangesDisabled: ''
+                - columnWidths:
+                    - object:
+                        id: created_at
+                        value: 157.00001525878906
+                - columnWidthsMobile: []
+                - hasNextAfterCursor: ''
+                - columnTypeSpecificExtras:
+                    ordered: []
+                - onRowAdded: ''
+                - columnHeaderNames:
+                    ordered:
+                      - notes: Logs
+                - alwaysShowPaginator: false
+                - columnColors:
+                    ordered:
+                      - id: ''
+                      - description: ''
+                      - notes: ''
+                      - subscription_changes: ''
+                      - created_at: ''
+                - columnFrozenAlignments:
+                    ordered: []
+                - allowMultiRowSelect: false
+                - columnFormats:
+                    ordered: []
+                - columnRestrictedEditing:
+                    ordered: []
+                - showFilterButton: true
+                - showAddRowButton: false
+                - nextBeforeCursor: ''
+                - columnVisibility:
+                    ordered:
+                      - id: false
+                      - description: false
+                      - notes: true
+                      - subscription_changes: false
+                      - created_at: false
+                      - name: true
+                      - email: true
+                      - sales: true
+                - selectedPageIndex: '0'
+                - actionButtonColumnName: Actions
+                - filterStackType: and
+                - downloadRawData: false
+                - showFetchingIndicator: true
+                - serverPaginated: false
+                - data: '{{GetIuguSubscriptionDetail.data.logs}}'
+                - displayedData: null
+                - actionButtons: []
+                - actionButtonSelectsRow: true
+                - selectRowByDefault: true
+                - defaultSortByColumn: ''
+                - paginationOffset: 0
+                - columnAlignment:
+                    ordered: []
+                - sortedDesc: false
+                - customButtonName: ''
+                - columnMappersRenderAsHTML:
+                    ordered: []
+                - showRefreshButton: false
+                - pageSize: 14
+                - useDynamicColumnSettings: false
+                - style:
+                    ordered: []
+                - actionButtonPosition: left
+                - bulkUpdateAction: ''
+                - afterCursor: ''
+                - onCustomButtonPressQueryName: ''
+                - changeSet:
+                    object: {}
+                - sortedColumn: ''
+                - columnAllowOverflow:
+                    ordered: []
+                - beforeCursor: ''
+                - serverPaginationType: limitOffsetBased
+                - onRowSelect: ''
+                - showDownloadButton: true
+                - selectedIndex: ''
+                - defaultSortDescending: false
+                - dynamicColumnSettings: null
+                - totalRowCount: ''
+                - recordUpdates:
+                    array: []
+                - newRow: null
+                - columnEditable:
+                    ordered: []
+                - filters:
+                    array: []
+                - displayedDataIndices: null
+                - disableSorting:
+                    ordered: []
+                - columnMappers:
+                    ordered:
+                      - created_at: '{{new Date(self).toLocaleString()}}'
+                      - notes: >-
+                          {{new Date(currentRow.created_at).toLocaleString()}} -
+                          {{self}}
+                - showClearSelection: false
+                - selectedCell:
+                    object:
+                      index: null
+                      data: null
+                      columnName: null
+                - columns:
+                    - id
+                    - description
+                    - created_at
+                    - notes
+                    - subscription_changes
+                - sort: null
+                - calculatedColumns: []
+                - selectedRow:
+                    object:
+                      index: null
+                      data: null
+                - showPaginationOnTop: false
+                - nextAfterCursor: ''
+                - useCompactMode: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserOwnerSubscriptionsTable
+                subcontainer: id
+                height: 11
+                width: 12
+            createdAt: 2021-04-08T02:11:29.505Z
+      - state2:
+          pluginTemplate:
+            id: state2
+            type: state
+            subtype: State
+            template:
+              ordered:
+                - value: 'false'
+            createdAt: 2021-04-09T21:20:54.896Z
+      - UserSteps:
+          pluginTemplate:
+            id: UserSteps
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: >-
+                    // Tip: assign your external references to variables instead
+                    of chaining off the curly brackets. 
+
+                    const data = {
+                      info: 0,
+                      profile: 1,
+                      currency: 2,
+                      segmentation: 3,
+                      groupCreation: 4,
+                      migrationPending: 5,
+                      completed: 6,
+                    }
+
+                    {{OnboardingCheckboxGroup.disabled = true}}
+
+                    const currentStep = {{GetUser.data.steps.gettingStarted ||
+                    "info"}}
+
+                    const currentStepNumber = data[currentStep]
+
+                    const keys = Object.keys(data).filter(key => key !==
+                    "completed")
+
+                    const checkedItems = keys.filter(key => data[key] <
+                    currentStepNumber)
+
+                    const uncheckedItems = keys.filter(key => data[key] >=
+                    currentStepNumber)
+
+                    return { checkedItems, uncheckedItems, keys }
+                - value: ''
+            createdAt: 2021-04-13T20:01:10.397Z
+            folder: UserSetings
+      - OnboardingCheckboxGroup:
+          pluginTemplate:
+            id: OnboardingCheckboxGroup
+            type: widget
+            subtype: CheckboxGroupWidget
+            template:
+              ordered:
+                - values: '{{UserSteps.value.keys}}'
+                - defaultValuesToDisable: ''
+                - verticalAligned: true
+                - onChange: OnboardingCheckboxGrouponChangeTrigger
+                - tooltipText: ''
+                - value: '{{UserSteps.value.checkedItems}}'
+                - label: |
+                    Onboarding Steps
+                - labelMaxWidth: ''
+                - labelPlacedOnLeft: false
+                - disabled: ''
+                - labels: >-
+                    ["User Info", "User Profile", "Currency", "Segmentation",
+                    "Group Creation", "Pending migration"]
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserContainerDetails
+                row: 1
+                col: 6
+                height: 5
+                width: 6
+            createdAt: 2021-04-13T20:03:38.731Z
+      - OnboardingCheckboxGrouponChangeTrigger:
+          pluginTemplate:
+            id: OnboardingCheckboxGrouponChangeTrigger
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: >-
+                    OnboardingCheckboxGroup.setValue(UserSteps.value.checkedItems)
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - updateSetValueDynamically: false
+                - notificationDuration: ''
+            createdAt: 2021-04-13T20:30:08.772Z
+      - UserCountry:
+          pluginTemplate:
+            id: UserCountry
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: 'false'
+                - FieldValueText: '{{GetUser.data.country}}'
+                - CanCopy: 'false'
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: ''
+                - Url: ''
+                - State: 'false'
+                - Value: '{{search.User.country}}'
+                - FieldNameText: ''
+                - HasIcon: 'true'
+                - HasLink: 'false'
+                - FieldUrl: ''
+                - Icon: >-
+                    https://cdn3.iconfinder.com/data/icons/contact-us-line/3/13-512.png
+                - EditorQuery: ChangeUserCountry
+                - FieldIconUrl: >-
+                    https://cdn3.iconfinder.com/data/icons/contact-us-line/3/13-512.png
+                - NextState: '{{NextState.value}}'
+                - childNamespace: UserCountry
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserContainerDetails
+                row: 1
+                height: 1
+                width: 6
+            createdAt: 2021-04-15T15:26:28.357Z
+      - ChangeUserCountry:
+          pluginTemplate:
+            id: ChangeUserCountry
+            type: datasource
+            subtype: FirebaseQuery
+            resourceName: Internal Admin Dashboard
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: ''
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - firestoreCollection: /User/
+                - triggersOnSuccess:
+                    - GetUser
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - endAt: ''
+                - firebaseService: firestore
+                - showSuccessToaster: true
+                - equalTo: ''
+                - cacheKeyTtl: ''
+                - metadata: null
+                - uid: ''
+                - editorMode: gui
+                - actionType: updateFirestore
+                - triggersOnFailure: []
+                - setDbValue: ''
+                - value: '{"country": {{UserCountry.NextState}} }'
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - filterType: ''
+                - rawData: null
+                - userOptions: ''
+                - docId: '{{GetUser.data.id}}'
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - ordering: ''
+                - startAt: ''
+                - limitType: ''
+                - dbRef: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - phoneNumber: ''
+                - nextPageToken: ''
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - useRawCollectionId: true
+                - firestoreOrderBy: ''
+                - requireConfirmation: false
+                - orderByChildValue: ''
+                - queryFailureConditions: ''
+                - limit: ''
+                - enableCaching: false
+                - firestoreOrderDirection: ''
+                - firestoreWhere: ''
+                - email: ''
+                - queryThrottleTime: '750'
+                - updateSetValueDynamically: false
+                - notificationDuration: ''
+            createdAt: 2021-04-15T15:48:03.112Z
+            folder: QueriesEditData
+      - UserCurrency:
+          pluginTemplate:
+            id: UserCurrency
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: ''
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: ''
+                - Url: ''
+                - Value: '{{search.User.currency}}'
+                - Icon: 'https://pngimg.com/uploads/dollar_sign/dollar_sign_PNG11.png'
+                - NextState: '{{NextState.value}}'
+                - childNamespace: UserCurrency
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserContainerDetails
+                row: 2
+                height: 1
+                width: 6
+            createdAt: 2021-04-15T18:15:42.362Z
+      - UserWhatsappId:
+          pluginTemplate:
+            id: UserWhatsappId
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: 'true'
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: ''
+                - Url: >-
+                    https://api.whatsapp.com/send?phone={{search.User.ims.whatsapp}}
+                - Value: '{{search.User.ims.whatsapp}}'
+                - Icon: >-
+                    https://i0.wp.com/www.multarte.com.br/wp-content/uploads/2018/10/logo-whatsapp-png-transparente.png?resize=696%2C696&ssl=1
+                - EditorQuery: ''
+                - NextState: '{{NextState.value}}'
+                - childNamespace: UserWhatsappId
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserContainerDetails
+                row: 3
+                height: 1
+                width: 6
+            createdAt: 2021-04-15T18:17:59.641Z
+      - ChangeIsAdmin:
+          pluginTemplate:
+            id: ChangeIsAdmin
+            type: datasource
+            subtype: FirebaseQuery
+            resourceName: Internal Admin Dashboard
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: ''
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - firestoreCollection: /User/
+                - triggersOnSuccess:
+                    - GetUser
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - endAt: ''
+                - firebaseService: firestore
+                - showSuccessToaster: true
+                - equalTo: ''
+                - cacheKeyTtl: ''
+                - metadata: null
+                - uid: ''
+                - editorMode: gui
+                - actionType: updateFirestore
+                - triggersOnFailure: []
+                - setDbValue: ''
+                - value: '{"isAdmin": {{UserIsAdmin.NextState || false}} }'
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - filterType: ''
+                - rawData: null
+                - userOptions: ''
+                - docId: '{{GetUser.data.id}}'
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - ordering: ''
+                - startAt: ''
+                - limitType: ''
+                - dbRef: ''
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - phoneNumber: ''
+                - nextPageToken: ''
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - useRawCollectionId: true
+                - firestoreOrderBy: ''
+                - requireConfirmation: false
+                - orderByChildValue: ''
+                - queryFailureConditions: ''
+                - limit: ''
+                - enableCaching: false
+                - firestoreOrderDirection: ''
+                - firestoreWhere: ''
+                - email: ''
+                - queryThrottleTime: '750'
+                - updateSetValueDynamically: false
+                - notificationDuration: ''
+            createdAt: 2021-04-18T05:07:10.331Z
+            folder: QueriesEditData
+      - UserIsAdmin:
+          pluginTemplate:
+            id: UserIsAdmin
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: 'true'
+                - FieldName: Is Admin
+                - showFetchingIndicator: false
+                - pageUuid: 23ebea4d-3a02-4db6-84ad-ba83bc392fda
+                - name: Data editing
+                - State: '{{GetUser.data.isAdmin}}'
+                - EditorQuery: ChangeIsAdmin
+                - NextState: '{{NextState.value}}'
+                - childNamespace: UserIsAdmin
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserContainerInfo
+                row: 13
+                height: 1
+                width: 12
+            createdAt: 2021-04-18T05:08:05.108Z
+      - entityHeader1:
+          pluginTemplate:
+            id: entityHeader1
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - showFetchingIndicator: false
+                - name: EntityHeader
+                - pageUuid: 265f5feb-fc65-4e83-aa55-ee0b7447bdb4
+                - Picture: >-
+                    {{search.User.picture ||
+                    "https://cdn2.iconfinder.com/data/icons/4web-3/139/header-account-image-line-512.png"}}
+                - Name: '{{search.User.firstName}} {{search.User.lastName}}'
+                - ID: '{{search.User.id}}'
+                - childNamespace: entityHeader1
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserContainerInfo
+                height: 8
+                width: 12
+            createdAt: 2021-04-19T23:44:10.177Z
+      - textEditing1:
+          pluginTemplate:
+            id: textEditing1
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: ''
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: UserName
+                - Url: ''
+                - Value: '{{search.User.username}}'
+                - Icon: ''
+                - NextState: '{{NextState.value}}'
+                - childNamespace: textEditing1
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserContainerInfo
+                row: 8
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T00:48:27.802Z
+      - textEditing2:
+          pluginTemplate:
+            id: textEditing2
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: ''
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: Telegram
+                - Url: ''
+                - Value: '{{search.User.ims.telegramUsername}}'
+                - Icon: ''
+                - NextState: '{{NextState.value}}'
+                - childNamespace: textEditing2
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserContainerInfo
+                row: 9
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T00:51:40.357Z
+      - textEditing3:
+          pluginTemplate:
+            id: textEditing3
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: ''
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: CPF
+                - Url: ''
+                - Value: '{{search.User.document}}'
+                - Icon: ''
+                - NextState: '{{NextState.value}}'
+                - childNamespace: textEditing3
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserContainerInfo
+                row: 10
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T00:52:39.149Z
+      - textEditing4:
+          pluginTemplate:
+            id: textEditing4
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: ''
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: CreatedAt
+                - Url: ''
+                - Value: '{{new Date (search.User.createdAt).toLocaleString()}}'
+                - Icon: ''
+                - NextState: '{{NextState.value}}'
+                - childNamespace: textEditing4
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserContainerInfo
+                row: 11
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T00:53:33.761Z
+      - textEditing5:
+          pluginTemplate:
+            id: textEditing5
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: ''
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: GroupCount
+                - Url: ''
+                - Value: '{{search.User.groupCount}}'
+                - Icon: ''
+                - NextState: '{{NextState.value}}'
+                - childNamespace: textEditing5
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserContainerInfo
+                row: 12
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T00:54:45.528Z
+      - textEditing6:
+          pluginTemplate:
+            id: textEditing6
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: 'true'
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: ''
+                - Url: ''
+                - Value: '{{search.User.ims.telegram}}'
+                - Icon: >-
+                    https://cdn.iconscout.com/icon/free/png-512/telegram-1867901-1580057.png
+                - NextState: '{{NextState.value}}'
+                - childNamespace: textEditing6
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserContainerDetails
+                row: 4
+                height: 1
+                width: 6
+            createdAt: 2021-04-23T01:04:36.702Z
+      - textEditing7:
+          pluginTemplate:
+            id: textEditing7
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: 'true'
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: ''
+                - Url: ''
+                - Value: '{{search.User.email}}'
+                - Icon: >-
+                    https://i.pinimg.com/originals/bb/18/bd/bb18bdbbef437b2d50518db5a8292c94.png
+                - NextState: '{{NextState.value}}'
+                - childNamespace: textEditing7
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserContainerDetails
+                row: 5
+                height: 1
+                width: 6
+            createdAt: 2021-04-23T01:26:29.404Z
+      - copyButton1:
+          pluginTemplate:
+            id: copyButton1
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - showFetchingIndicator: false
+                - name: CopyButton
+                - pageUuid: 4265d212-3a98-41f0-b611-d79067ca3175
+                - Text: '{{GetAuthLink.data.result}}'
+                - childNamespace: copyButton1
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container20
+                col: 11
+                height: 1
+                width: 1
+            createdAt: 2021-04-23T01:35:14.571Z
+      - textEditing8:
+          pluginTemplate:
+            id: textEditing8
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: ''
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: '{{search.User.firstName}}'
+                - Url: ''
+                - Value: ''
+                - Icon: >-
+                    https://cdn2.iconfinder.com/data/icons/4web-3/139/header-account-image-line-512.png
+                - NextState: '{{NextState.value}}'
+                - childNamespace: textEditing8
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: AccountContainerInfo
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T01:39:59.691Z
+      - textEditing9:
+          pluginTemplate:
+            id: textEditing9
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: ''
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: NameAccount
+                - Url: ''
+                - Value: '{{search.UserAccount.account.name}}'
+                - Icon: ''
+                - NextState: '{{NextState.value}}'
+                - childNamespace: textEditing9
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: AccountContainerInfo
+                row: 2
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T01:42:51.226Z
+      - textEditing10:
+          pluginTemplate:
+            id: textEditing10
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: ''
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: TypeAccount
+                - Url: ''
+                - Value: '{{search.UserAccount.account.type}}'
+                - Icon: ''
+                - NextState: '{{NextState.value}}'
+                - childNamespace: textEditing10
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: AccountContainerInfo
+                row: 3
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T01:46:01.183Z
+      - textEditing11:
+          pluginTemplate:
+            id: textEditing11
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: ''
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: CPF/CNPJ
+                - Url: ''
+                - Value: '{{search.UserAccount.account.document}}'
+                - Icon: ''
+                - NextState: '{{NextState.value}}'
+                - childNamespace: textEditing11
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: AccountContainerInfo
+                row: 4
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T01:48:49.056Z
+      - textEditing12:
+          pluginTemplate:
+            id: textEditing12
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: ''
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: Carrier
+                - Url: ''
+                - Value: '{{search.UserAccount.carrier}}'
+                - Icon: ''
+                - NextState: '{{NextState.value}}'
+                - childNamespace: textEditing12
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: AccountContainerInfo
+                row: 5
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T01:51:57.903Z
+      - textEditing13:
+          pluginTemplate:
+            id: textEditing13
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: ''
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: Fee
+                - Url: ''
+                - Value: '{{search.UserAccount.account.config.fee.percent}} %'
+                - Icon: ''
+                - NextState: '{{NextState.value}}'
+                - childNamespace: textEditing13
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: AccountContainerInfo
+                row: 6
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T01:54:45.483Z
+      - textEditing14:
+          pluginTemplate:
+            id: textEditing14
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: 'true'
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: IDCustomer
+                - Url: ''
+                - Value: '{{search.UserAccount.customerId}}'
+                - Icon: ''
+                - NextState: '{{NextState.value}}'
+                - childNamespace: textEditing14
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container22
+                row: 1
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T02:03:40.907Z
+      - textEditing15:
+          pluginTemplate:
+            id: textEditing15
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: 'true'
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: IDAccount
+                - Url: ''
+                - Value: '{{search.UserAccount.account.id}}'
+                - Icon: ''
+                - NextState: '{{NextState.value}}'
+                - childNamespace: textEditing15
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container22
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T02:08:23.042Z
+      - textEditing16:
+          pluginTemplate:
+            id: textEditing16
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: ''
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: Description
+                - Url: ''
+                - Value: ''
+                - Icon: ''
+                - NextState: '{{NextState.value}}'
+                - childNamespace: textEditing16
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: AccountContainerInfo
+                row: 9
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T02:12:14.252Z
+      - textEditing17:
+          pluginTemplate:
+            id: textEditing17
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: ''
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: BankAccount
+                - Url: ''
+                - Value: ''
+                - Icon: 'https://static.thenounproject.com/png/1783867-200.png'
+                - NextState: '{{NextState.value}}'
+                - childNamespace: textEditing17
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserTablecontainerView
+                col: 5
+                height: 1
+                width: 4
+                tabNum: 1
+            createdAt: 2021-04-23T02:16:35.612Z
+      - dataEditing1:
+          pluginTemplate:
+            id: dataEditing1
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - showFetchingIndicator: false
+                - name: dataEditing
+                - pageUuid: 23ebea4d-3a02-4db6-84ad-ba83bc392fda
+                - FieldName: Verified
+                - State: '{{search.UserAccount.bankAccount.isVerified}}'
+                - Editable: 'true'
+                - childNamespace: dataEditing1
+                - NextState: '{{NextState.value}}'
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: ContaContainerStatus
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T02:32:07.947Z
+      - dataEditing2:
+          pluginTemplate:
+            id: dataEditing2
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - showFetchingIndicator: false
+                - name: dataEditing
+                - pageUuid: 23ebea4d-3a02-4db6-84ad-ba83bc392fda
+                - FieldName: Account
+                - State: '{{search.UserAccount.bankAccount.account}}'
+                - Editable: 'true'
+                - childNamespace: dataEditing2
+                - NextState: '{{NextState.value}}'
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: ContaContainerStatus
+                row: 1
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T02:32:44.876Z
+      - dataEditing3:
+          pluginTemplate:
+            id: dataEditing3
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - showFetchingIndicator: false
+                - name: dataEditing
+                - pageUuid: 23ebea4d-3a02-4db6-84ad-ba83bc392fda
+                - FieldName: Agency
+                - State: '{{search.UserAccount.bankAccount.agency}}'
+                - Editable: 'true'
+                - childNamespace: dataEditing3
+                - NextState: '{{NextState.value}}'
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: ContaContainerStatus
+                row: 2
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T02:43:06.863Z
+      - dataEditing4:
+          pluginTemplate:
+            id: dataEditing4
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - showFetchingIndicator: false
+                - name: dataEditing
+                - pageUuid: 23ebea4d-3a02-4db6-84ad-ba83bc392fda
+                - FieldName: Bank
+                - State: '{{search.UserAccount.bankAccount.bank}}'
+                - Editable: 'true'
+                - childNamespace: dataEditing4
+                - NextState: '{{NextState.value}}'
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: ContaContainerStatus
+                row: 3
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T02:47:26.466Z
+      - dataEditing5:
+          pluginTemplate:
+            id: dataEditing5
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - showFetchingIndicator: false
+                - name: dataEditing
+                - pageUuid: 23ebea4d-3a02-4db6-84ad-ba83bc392fda
+                - FieldName: Status
+                - State: '{{search.UserAccount.bankAccount.status}}'
+                - Editable: 'true'
+                - childNamespace: dataEditing5
+                - NextState: '{{NextState.value}}'
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: ContaContainerStatus
+                row: 4
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T02:48:27.478Z
+      - dataEditing6:
+          pluginTemplate:
+            id: dataEditing6
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - showFetchingIndicator: false
+                - name: dataEditing
+                - pageUuid: 23ebea4d-3a02-4db6-84ad-ba83bc392fda
+                - FieldName: Type
+                - State: |
+                    {{search.UserAccount.bankAccount.type}}
+                - Editable: 'true'
+                - childNamespace: dataEditing6
+                - NextState: '{{NextState.value}}'
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: ContaContainerStatus
+                row: 5
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T02:49:55.941Z
+      - container22:
+          pluginTemplate:
+            id: container22
+            type: widget
+            subtype: ContainerWidget
+            template:
+              ordered:
+                - heightType: fixed
+                - spinWhenChildrenAreFetching: true
+                - showBorder: true
+                - showDropShadow: true
+                - style:
+                    ordered: []
+                - backgroundColor: white
+                - title: ''
+                - id: container12
+                - overflowType: hidden
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserTablecontainerView
+                row: 12
+                col: 5
+                height: 3
+                width: 7
+                tabNum: 1
+            createdAt: 2021-04-23T02:58:01.532Z
+      - search:
+          pluginTemplate:
+            id: search
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - UserAccount: '{{UserAccount.value}}'
+                - showFetchingIndicator: false
+                - pageUuid: ceea46c4-e36c-46b4-86fe-1f6914cb7f12
+                - UserSubscriptions: '{{UserSubscriptions.value}}'
+                - name: Search
+                - User: '{{User.value}}'
+                - GroupMember: '{{GroupMember.value}}'
+                - UserGroups: '{{UserGroups.value}}'
+                - childNamespace: search
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserContainerView
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T03:30:23.227Z
+  urlFragmentDefinitions: []
+  appStyles: ''
+  appThemeId: null
+  preloadedAppJavaScript: null
+  pageLoadValueOverrides: []
+  customDocumentTitle: ''
+  isGlobalWidget: false
+  isFetching: false
+  instrumentationEnabled: false
+  customDocumentTitleEnabled: false
+  preloadedAppJSLinks:
+    array: []
+  version: 2.68.3
+  responsiveLayoutDisabled: false
+  createdAt: null
+  loadingIndicatorsDisabled: false
