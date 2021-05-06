@@ -1,0 +1,147 @@
+version: 43.0.9
+pageUuid: e9e66bde-443f-4ff4-8cca-37962aad6348
+appTemplate:
+  plugins:
+    ordered:
+      - moduleContainer:
+          pluginTemplate:
+            id: moduleContainer
+            type: widget
+            subtype: ModuleContainerWidget
+            template:
+              ordered:
+                - heightType: fixed
+                - spinWhenChildrenAreFetching: true
+                - showBorder: true
+                - showDropShadow: true
+                - isGlobalWidgetContainer: true
+                - style:
+                    ordered: []
+                - backgroundColor: white
+                - title: ''
+                - overflowType: hidden
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                height: 1
+                width: 12
+            mobilePosition2:
+              position2:
+                height: 12
+                width: 12
+            createdAt: 2021-04-15T16:21:19.610Z
+      - Name:
+          pluginTemplate:
+            id: Name
+            type: globalwidgetprop
+            subtype: GlobalWidgetProp
+            template:
+              ordered:
+                - value: ''
+                - defaultValue: ''
+            createdAt: 2021-04-15T16:21:26.220Z
+      - Value:
+          pluginTemplate:
+            id: Value
+            type: globalwidgetprop
+            subtype: GlobalWidgetProp
+            template:
+              ordered:
+                - value: ''
+                - defaultValue: ''
+            createdAt: 2021-04-15T16:21:35.380Z
+      - NameText:
+          pluginTemplate:
+            id: NameText
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - showFetchingIndicator: false
+                - name: FieldNameText
+                - pageUuid: d41f932b-0a4d-454b-a9f6-c31c81986e67
+                - Name: '{{Name.value}}'
+                - childNamespace: NameText
+                - hidden: '{{!Name.value}}'
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: moduleContainer
+                height: 1
+                width: 5
+            createdAt: 2021-04-15T16:23:53.148Z
+      - ValuePartial:
+          pluginTemplate:
+            id: ValuePartial
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - showFetchingIndicator: false
+                - name: FieldValueText
+                - pageUuid: 77a920cf-be0e-4fb2-8503-6381f7bf57c1
+                - Text: '{{Value.value}}'
+                - childNamespace: ValuePartial
+                - hidden: '{{!Name.value}}'
+                - Url: '{{Url.value}}'
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: moduleContainer
+                col: 5
+                height: 1
+                width: 7
+            createdAt: 2021-04-15T16:24:36.915Z
+      - ValueFull:
+          pluginTemplate:
+            id: ValueFull
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - showFetchingIndicator: false
+                - name: FieldValueText
+                - pageUuid: 77a920cf-be0e-4fb2-8503-6381f7bf57c1
+                - Text: '{{Value.value}}'
+                - childNamespace: ValueFull
+                - hidden: '{{Name.value}}'
+                - Url: '{{Url.value}}'
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: moduleContainer
+                row: 1
+                height: 1
+                width: 12
+            createdAt: 2021-04-15T16:25:19.734Z
+      - Url:
+          pluginTemplate:
+            id: Url
+            type: globalwidgetprop
+            subtype: GlobalWidgetProp
+            template:
+              ordered:
+                - value: ''
+                - defaultValue: ''
+            createdAt: 2021-04-15T17:44:55.384Z
+  urlFragmentDefinitions: []
+  appStyles: ''
+  appThemeId: null
+  preloadedAppJavaScript: null
+  pageLoadValueOverrides: []
+  customDocumentTitle: ''
+  isGlobalWidget: true
+  isFetching: false
+  instrumentationEnabled: false
+  customDocumentTitleEnabled: false
+  preloadedAppJSLinks:
+    array: []
+  version: 2.66.90
+  responsiveLayoutDisabled: false
+  createdAt: null
+  loadingIndicatorsDisabled: false
