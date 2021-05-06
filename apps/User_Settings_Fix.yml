@@ -1,6 +1,7 @@
 version: 43.0.9
 pageUuid: c32fc600-8691-11eb-8949-4330bcd512cc
 appTemplate:
+  isFetching: false
   plugins:
     ordered:
       - GetUser:
@@ -50,9 +51,8 @@ appTemplate:
                 - value: ''
                 - errorTransformer: >-
                     // The variable 'data' allows you to reference the request's
-                    data in the transformer. 
-                    // example: return data.find(element => element.isError)
-                    return data.error
+                    data in the transformer.  // example: return
+                    data.find(element => element.isError) return data.error
                 - confirmationMessage: null
                 - isFetching: false
                 - filterType: ''
@@ -74,9 +74,8 @@ appTemplate:
                 - nextPageToken: ''
                 - runWhenPageLoads: false
                 - transformer: >-
-                    // type your code here
-                    // example: return formatDataAsArray(data).filter(row =>
-                    row.quantity > 20)
+                    // type your code here // example: return
+                    formatDataAsArray(data).filter(row => row.quantity > 20)
                     return data[0]
                 - queryTimeout: '10000'
                 - useRawCollectionId: false
@@ -94,7 +93,6 @@ appTemplate:
                 - updateSetValueDynamically: false
                 - notificationDuration: ''
             createdAt: 2021-03-16T20:26:14.215Z
-            folder: UserSetings
       - GetGatewayByUserID:
           pluginTemplate:
             id: GetGatewayByUserID
@@ -138,9 +136,8 @@ appTemplate:
                 - value: ''
                 - errorTransformer: >-
                     // The variable 'data' allows you to reference the request's
-                    data in the transformer. 
-                    // example: return data.find(element => element.isError)
-                    return data.error
+                    data in the transformer.  // example: return
+                    data.find(element => element.isError) return data.error
                 - confirmationMessage: null
                 - isFetching: false
                 - filterType: ''
@@ -162,9 +159,8 @@ appTemplate:
                 - nextPageToken: ''
                 - runWhenPageLoads: false
                 - transformer: >-
-                    // type your code here
-                    // example: return formatDataAsArray(data).filter(row =>
-                    row.quantity > 20)
+                    // type your code here // example: return
+                    formatDataAsArray(data).filter(row => row.quantity > 20)
                     return data
                 - queryTimeout: '10000'
                 - useRawCollectionId: true
@@ -181,7 +177,6 @@ appTemplate:
                 - updateSetValueDynamically: false
                 - notificationDuration: ''
             createdAt: 2021-03-17T19:17:27.576Z
-            folder: UserSetings
       - UpdateFeePercent:
           pluginTemplate:
             id: UpdateFeePercent
@@ -229,9 +224,8 @@ appTemplate:
                     } } } }
                 - errorTransformer: >-
                     // The variable 'data' allows you to reference the request's
-                    data in the transformer. 
-                    // example: return data.find(element => element.isError)
-                    return data.error
+                    data in the transformer.  // example: return
+                    data.find(element => element.isError) return data.error
                 - confirmationMessage: null
                 - isFetching: false
                 - filterType: ''
@@ -253,9 +247,8 @@ appTemplate:
                 - nextPageToken: ''
                 - runWhenPageLoads: false
                 - transformer: >-
-                    // type your code here
-                    // example: return formatDataAsArray(data).filter(row =>
-                    row.quantity > 20)
+                    // type your code here // example: return
+                    formatDataAsArray(data).filter(row => row.quantity > 20)
                     return data
                 - queryTimeout: '10000'
                 - useRawCollectionId: true
@@ -272,7 +265,6 @@ appTemplate:
                 - updateSetValueDynamically: false
                 - notificationDuration: ''
             createdAt: 2021-03-17T19:52:42.274Z
-            folder: UserSetings
       - OpenModalAlterFee:
           pluginTemplate:
             id: OpenModalAlterFee
@@ -306,9 +298,8 @@ appTemplate:
                 - triggersOnFailure: []
                 - errorTransformer: >-
                     // The variable 'data' allows you to reference the request's
-                    data in the transformer. 
-                    // example: return data.find(element => element.isError)
-                    return data.error
+                    data in the transformer.  // example: return
+                    data.find(element => element.isError) return data.error
                 - confirmationMessage: null
                 - isFetching: false
                 - rawData: null
@@ -321,9 +312,8 @@ appTemplate:
                 - enableTransformer: false
                 - runWhenPageLoads: false
                 - transformer: >-
-                    // type your code here
-                    // example: return formatDataAsArray(data).filter(row =>
-                    row.quantity > 20)
+                    // type your code here // example: return
+                    formatDataAsArray(data).filter(row => row.quantity > 20)
                     return data
                 - queryTimeout: '10000'
                 - requireConfirmation: false
@@ -333,7 +323,6 @@ appTemplate:
                 - updateSetValueDynamically: false
                 - notificationDuration: ''
             createdAt: 2021-03-17T21:49:41.689Z
-            folder: UserSetings
       - CloseUserTextInputSearch:
           pluginTemplate:
             id: CloseUserTextInputSearch
@@ -367,9 +356,8 @@ appTemplate:
                 - triggersOnFailure: []
                 - errorTransformer: >-
                     // The variable 'data' allows you to reference the request's
-                    data in the transformer. 
-                    // example: return data.find(element => element.isError)
-                    return data.error
+                    data in the transformer.  // example: return
+                    data.find(element => element.isError) return data.error
                 - confirmationMessage: null
                 - isFetching: false
                 - rawData: null
@@ -382,9 +370,8 @@ appTemplate:
                 - enableTransformer: false
                 - runWhenPageLoads: false
                 - transformer: >-
-                    // type your code here
-                    // example: return formatDataAsArray(data).filter(row =>
-                    row.quantity > 20)
+                    // type your code here // example: return
+                    formatDataAsArray(data).filter(row => row.quantity > 20)
                     return data
                 - queryTimeout: '10000'
                 - requireConfirmation: false
@@ -394,7 +381,6 @@ appTemplate:
                 - updateSetValueDynamically: false
                 - notificationDuration: ''
             createdAt: 2021-03-17T23:11:32.667Z
-            folder: UserSetings
       - CloseModalUserModalAlterFee:
           pluginTemplate:
             id: CloseModalUserModalAlterFee
@@ -428,9 +414,8 @@ appTemplate:
                 - triggersOnFailure: []
                 - errorTransformer: >-
                     // The variable 'data' allows you to reference the request's
-                    data in the transformer. 
-                    // example: return data.find(element => element.isError)
-                    return data.error
+                    data in the transformer.  // example: return
+                    data.find(element => element.isError) return data.error
                 - confirmationMessage: null
                 - isFetching: false
                 - rawData: null
@@ -443,9 +428,8 @@ appTemplate:
                 - enableTransformer: false
                 - runWhenPageLoads: false
                 - transformer: >-
-                    // type your code here
-                    // example: return formatDataAsArray(data).filter(row =>
-                    row.quantity > 20)
+                    // type your code here // example: return
+                    formatDataAsArray(data).filter(row => row.quantity > 20)
                     return data
                 - queryTimeout: '10000'
                 - requireConfirmation: false
@@ -455,7 +439,6 @@ appTemplate:
                 - updateSetValueDynamically: false
                 - notificationDuration: ''
             createdAt: 2021-03-17T23:26:20.885Z
-            folder: UserSetings
       - ValidationUserModalAlterFee:
           pluginTemplate:
             id: ValidationUserModalAlterFee
@@ -474,12 +457,9 @@ appTemplate:
                 - showFailureToaster: true
                 - query: >-
                     if(AccountTextInputFee.validationState.validationType ==
-                    "SUCCESS"){
-                    UserModalAlterFee.open();
+                    "SUCCESS"){ UserModalAlterFee.open();
                         //TODO faz o caso sucesso
-                    }
-                    else{
-                    UserModalAlterFee.close();
+                    } else{ UserModalAlterFee.close();
                     UserModalIncorrectValue.open();
                         //Deu ruim
                     }
@@ -499,9 +479,8 @@ appTemplate:
                 - triggersOnFailure: []
                 - errorTransformer: >-
                     // The variable 'data' allows you to reference the request's
-                    data in the transformer. 
-                    // example: return data.find(element => element.isError)
-                    return data.error
+                    data in the transformer.  // example: return
+                    data.find(element => element.isError) return data.error
                 - confirmationMessage: null
                 - isFetching: false
                 - rawData: null
@@ -514,9 +493,8 @@ appTemplate:
                 - enableTransformer: false
                 - runWhenPageLoads: false
                 - transformer: >-
-                    // type your code here
-                    // example: return formatDataAsArray(data).filter(row =>
-                    row.quantity > 20)
+                    // type your code here // example: return
+                    formatDataAsArray(data).filter(row => row.quantity > 20)
                     return data
                 - queryTimeout: '10000'
                 - requireConfirmation: false
@@ -526,7 +504,6 @@ appTemplate:
                 - updateSetValueDynamically: false
                 - notificationDuration: ''
             createdAt: 2021-03-19T01:36:11.235Z
-            folder: UserSetings
       - CloseModalUserModalIncorrectValue:
           pluginTemplate:
             id: CloseModalUserModalIncorrectValue
@@ -560,9 +537,8 @@ appTemplate:
                 - triggersOnFailure: []
                 - errorTransformer: >-
                     // The variable 'data' allows you to reference the request's
-                    data in the transformer. 
-                    // example: return data.find(element => element.isError)
-                    return data.error
+                    data in the transformer.  // example: return
+                    data.find(element => element.isError) return data.error
                 - confirmationMessage: null
                 - isFetching: false
                 - rawData: null
@@ -575,9 +551,8 @@ appTemplate:
                 - enableTransformer: false
                 - runWhenPageLoads: false
                 - transformer: >-
-                    // type your code here
-                    // example: return formatDataAsArray(data).filter(row =>
-                    row.quantity > 20)
+                    // type your code here // example: return
+                    formatDataAsArray(data).filter(row => row.quantity > 20)
                     return data
                 - queryTimeout: '10000'
                 - requireConfirmation: false
@@ -587,7 +562,6 @@ appTemplate:
                 - updateSetValueDynamically: false
                 - notificationDuration: ''
             createdAt: 2021-03-23T03:05:39.445Z
-            folder: UserSetings
       - OpenModalGroupsCreated:
           pluginTemplate:
             id: OpenModalGroupsCreated
@@ -621,9 +595,8 @@ appTemplate:
                 - triggersOnFailure: []
                 - errorTransformer: >-
                     // The variable 'data' allows you to reference the request's
-                    data in the transformer. 
-                    // example: return data.find(element => element.isError)
-                    return data.error
+                    data in the transformer.  // example: return
+                    data.find(element => element.isError) return data.error
                 - confirmationMessage: null
                 - isFetching: false
                 - rawData: null
@@ -636,9 +609,8 @@ appTemplate:
                 - enableTransformer: false
                 - runWhenPageLoads: false
                 - transformer: >-
-                    // type your code here
-                    // example: return formatDataAsArray(data).filter(row =>
-                    row.quantity > 20)
+                    // type your code here // example: return
+                    formatDataAsArray(data).filter(row => row.quantity > 20)
                     return data
                 - queryTimeout: '10000'
                 - requireConfirmation: false
@@ -648,7 +620,6 @@ appTemplate:
                 - updateSetValueDynamically: false
                 - notificationDuration: ''
             createdAt: 2021-03-30T17:29:16.269Z
-            folder: UserSetings
       - GetIdGroupsCreated:
           pluginTemplate:
             id: GetIdGroupsCreated
@@ -691,9 +662,8 @@ appTemplate:
                 - value: ''
                 - errorTransformer: >-
                     // The variable 'data' allows you to reference the request's
-                    data in the transformer. 
-                    // example: return data.find(element => element.isError)
-                    return data.error
+                    data in the transformer.  // example: return
+                    data.find(element => element.isError) return data.error
                 - confirmationMessage: null
                 - isFetching: false
                 - filterType: ''
@@ -715,9 +685,8 @@ appTemplate:
                 - nextPageToken: ''
                 - runWhenPageLoads: false
                 - transformer: >-
-                    // type your code here
-                    // example: return formatDataAsArray(data).filter(row =>
-                    row.quantity > 20)
+                    // type your code here // example: return
+                    formatDataAsArray(data).filter(row => row.quantity > 20)
                     return data
                 - queryTimeout: '10000'
                 - useRawCollectionId: true
@@ -734,7 +703,6 @@ appTemplate:
                 - updateSetValueDynamically: false
                 - notificationDuration: ''
             createdAt: 2021-03-30T19:49:20.936Z
-            folder: UserSetings
       - PreProcessInput:
           pluginTemplate:
             id: PreProcessInput
@@ -782,9 +750,8 @@ appTemplate:
                 - triggersOnFailure: []
                 - errorTransformer: >-
                     // The variable 'data' allows you to reference the request's
-                    data in the transformer. 
-                    // example: return data.find(element => element.isError)
-                    return data.error
+                    data in the transformer.  // example: return
+                    data.find(element => element.isError) return data.error
                 - confirmationMessage: null
                 - isFetching: false
                 - rawData: null
@@ -797,9 +764,8 @@ appTemplate:
                 - enableTransformer: false
                 - runWhenPageLoads: false
                 - transformer: >-
-                    // type your code here
-                    // example: return formatDataAsArray(data).filter(row =>
-                    row.quantity > 20)
+                    // type your code here // example: return
+                    formatDataAsArray(data).filter(row => row.quantity > 20)
                     return data
                 - queryTimeout: '10000'
                 - requireConfirmation: false
@@ -809,7 +775,6 @@ appTemplate:
                 - updateSetValueDynamically: false
                 - notificationDuration: ''
             createdAt: 2021-03-23T14:30:30.228Z
-            folder: UserSetings
       - GetUserGroupsCreated:
           pluginTemplate:
             id: GetUserGroupsCreated
@@ -852,9 +817,8 @@ appTemplate:
                 - value: ''
                 - errorTransformer: >-
                     // The variable 'data' allows you to reference the request's
-                    data in the transformer. 
-                    // example: return data.find(element => element.isError)
-                    return data.error
+                    data in the transformer.  // example: return
+                    data.find(element => element.isError) return data.error
                 - confirmationMessage: null
                 - isFetching: false
                 - filterType: ''
@@ -876,9 +840,8 @@ appTemplate:
                 - nextPageToken: ''
                 - runWhenPageLoads: false
                 - transformer: >-
-                    // type your code here
-                    // example: return formatDataAsArray(data).filter(row =>
-                    row.quantity > 20)
+                    // type your code here // example: return
+                    formatDataAsArray(data).filter(row => row.quantity > 20)
                     return data
                 - queryTimeout: '10000'
                 - useRawCollectionId: true
@@ -896,7 +859,6 @@ appTemplate:
                 - updateSetValueDynamically: false
                 - notificationDuration: ''
             createdAt: 2021-03-23T15:06:14.797Z
-            folder: UserSetings
       - GetAuthLink:
           pluginTemplate:
             id: GetAuthLink
@@ -940,9 +902,8 @@ appTemplate:
                 - triggersOnFailure: []
                 - errorTransformer: >-
                     // The variable 'data' allows you to reference the request's
-                    data in the transformer. 
-                    // example: return data.find(element => element.isError)
-                    return data.error
+                    data in the transformer.  // example: return
+                    data.find(element => element.isError) return data.error
                 - confirmationMessage: null
                 - isFetching: false
                 - rawData: null
@@ -956,9 +917,8 @@ appTemplate:
                 - enableTransformer: false
                 - runWhenPageLoads: false
                 - transformer: >-
-                    // type your code here
-                    // example: return formatDataAsArray(data).filter(row =>
-                    row.quantity > 20)
+                    // type your code here // example: return
+                    formatDataAsArray(data).filter(row => row.quantity > 20)
                     return data
                 - queryTimeout: '10000'
                 - requireConfirmation: false
@@ -970,7 +930,6 @@ appTemplate:
                 - updateSetValueDynamically: false
                 - notificationDuration: ''
             createdAt: 2021-04-06T20:53:13.871Z
-            folder: UserSetings
       - GetGroupMember:
           pluginTemplate:
             id: GetGroupMember
@@ -1013,9 +972,8 @@ appTemplate:
                 - value: ''
                 - errorTransformer: >-
                     // The variable 'data' allows you to reference the request's
-                    data in the transformer. 
-                    // example: return data.find(element => element.isError)
-                    return data.error
+                    data in the transformer.  // example: return
+                    data.find(element => element.isError) return data.error
                 - confirmationMessage: null
                 - isFetching: false
                 - filterType: ''
@@ -1037,9 +995,8 @@ appTemplate:
                 - nextPageToken: ''
                 - runWhenPageLoads: false
                 - transformer: >-
-                    // type your code here
-                    // example: return formatDataAsArray(data).filter(row =>
-                    row.quantity > 20)
+                    // type your code here // example: return
+                    formatDataAsArray(data).filter(row => row.quantity > 20)
                     return data[0]
                 - queryTimeout: '10000'
                 - useRawCollectionId: true
@@ -1057,7 +1014,6 @@ appTemplate:
                 - updateSetValueDynamically: false
                 - notificationDuration: ''
             createdAt: 2021-04-06T21:30:11.389Z
-            folder: UserSetings
       - GetUserOwnerSubscriptions:
           pluginTemplate:
             id: GetUserOwnerSubscriptions
@@ -1100,9 +1056,8 @@ appTemplate:
                 - value: ''
                 - errorTransformer: >-
                     // The variable 'data' allows you to reference the request's
-                    data in the transformer. 
-                    // example: return data.find(element => element.isError)
-                    return data.error
+                    data in the transformer.  // example: return
+                    data.find(element => element.isError) return data.error
                 - confirmationMessage: null
                 - isFetching: false
                 - filterType: ''
@@ -1124,9 +1079,8 @@ appTemplate:
                 - nextPageToken: ''
                 - runWhenPageLoads: false
                 - transformer: >-
-                    // type your code here
-                    // example: return formatDataAsArray(data).filter(row =>
-                    row.quantity > 20)
+                    // type your code here // example: return
+                    formatDataAsArray(data).filter(row => row.quantity > 20)
                     return data.map((it) => {
                       return {
                         id: it.id,
@@ -1157,7 +1111,6 @@ appTemplate:
                 - updateSetValueDynamically: false
                 - notificationDuration: ''
             createdAt: 2021-04-08T01:57:35.632Z
-            folder: UserSetings
       - GetIuguSubscriptionDetail:
           pluginTemplate:
             id: GetIuguSubscriptionDetail
@@ -1202,9 +1155,8 @@ appTemplate:
                 - triggersOnFailure: []
                 - errorTransformer: >-
                     // The variable 'data' allows you to reference the request's
-                    data in the transformer. 
-                    // example: return data.find(element => element.isError)
-                    return data.error
+                    data in the transformer.  // example: return
+                    data.find(element => element.isError) return data.error
                 - confirmationMessage: null
                 - isFetching: false
                 - rawData: null
@@ -1218,9 +1170,8 @@ appTemplate:
                 - enableTransformer: false
                 - runWhenPageLoads: false
                 - transformer: >-
-                    // type your code here
-                    // example: return formatDataAsArray(data).filter(row =>
-                    row.quantity > 20)
+                    // type your code here // example: return
+                    formatDataAsArray(data).filter(row => row.quantity > 20)
                     return data
                 - queryTimeout: '10000'
                 - requireConfirmation: false
@@ -1232,7 +1183,6 @@ appTemplate:
                 - updateSetValueDynamically: false
                 - notificationDuration: ''
             createdAt: 2021-04-08T02:01:10.410Z
-            folder: UserSetings
       - UserOwnerSubscriptionsTableTrigger:
           pluginTemplate:
             id: UserOwnerSubscriptionsTableTrigger
@@ -1268,9 +1218,8 @@ appTemplate:
                 - triggersOnFailure: []
                 - errorTransformer: >-
                     // The variable 'data' allows you to reference the request's
-                    data in the transformer. 
-                    // example: return data.find(element => element.isError)
-                    return data.error
+                    data in the transformer.  // example: return
+                    data.find(element => element.isError) return data.error
                 - confirmationMessage: null
                 - isFetching: false
                 - rawData: null
@@ -1283,9 +1232,8 @@ appTemplate:
                 - enableTransformer: false
                 - runWhenPageLoads: false
                 - transformer: >-
-                    // type your code here
-                    // example: return formatDataAsArray(data).filter(row =>
-                    row.quantity > 20)
+                    // type your code here // example: return
+                    formatDataAsArray(data).filter(row => row.quantity > 20)
                     return data
                 - queryTimeout: '10000'
                 - requireConfirmation: false
@@ -1295,7 +1243,6 @@ appTemplate:
                 - updateSetValueDynamically: false
                 - notificationDuration: ''
             createdAt: 2021-04-08T02:18:17.461Z
-            folder: UserSetings
       - NextStateDataEditing:
           pluginTemplate:
             id: NextStateDataEditing
@@ -1331,9 +1278,8 @@ appTemplate:
                 - triggersOnFailure: []
                 - errorTransformer: >-
                     // The variable 'data' allows you to reference the request's
-                    data in the transformer. 
-                    // example: return data.find(element => element.isError)
-                    return data.error
+                    data in the transformer.  // example: return
+                    data.find(element => element.isError) return data.error
                 - confirmationMessage: null
                 - isFetching: false
                 - rawData: null
@@ -1346,9 +1292,8 @@ appTemplate:
                 - enableTransformer: false
                 - runWhenPageLoads: false
                 - transformer: >-
-                    // type your code here
-                    // example: return formatDataAsArray(data).filter(row =>
-                    row.quantity > 20)
+                    // type your code here // example: return
+                    formatDataAsArray(data).filter(row => row.quantity > 20)
                     return data
                 - queryTimeout: '10000'
                 - requireConfirmation: false
@@ -1358,7 +1303,6 @@ appTemplate:
                 - updateSetValueDynamically: false
                 - notificationDuration: ''
             createdAt: 2021-04-09T21:16:11.900Z
-            folder: QueriesEditData
       - global1:
           pluginTemplate:
             id: global1
@@ -1374,8 +1318,6 @@ appTemplate:
                 - User: ''
                 - style:
                     ordered: []
-            style:
-              ordered: []
             position2:
               position2:
                 col: 1
@@ -1405,8 +1347,6 @@ appTemplate:
                 - id: container13
                 - overflowType: hidden
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 col: 3
@@ -1441,8 +1381,6 @@ appTemplate:
                 - loading: ''
                 - disabled: ''
                 - buttonText: UserModalAlterFee
-            style:
-              ordered: []
             position2:
               position2:
                 row: 21
@@ -1468,7 +1406,7 @@ appTemplate:
                 - verticalAlign: center
                 - scrollOverflow: false
                 - tooltipText: ''
-                - value: |+
+                - value: |
                     <p>
                     <strong style=font-size:200%;
                     > ARE YOU SURE?
@@ -1481,8 +1419,6 @@ appTemplate:
                 - textColor: '#cc5248'
                 - renderAsMarkdown: true
                 - id: text13
-            style:
-              ordered: []
             position2:
               position2:
                 container: UserModalAlterFee
@@ -1533,8 +1469,6 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 container: UserModalAlterFee
@@ -1568,8 +1502,6 @@ appTemplate:
                 - id: container11
                 - overflowType: hidden
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 container: UserTablecontainerView
@@ -1615,8 +1547,6 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 container: UserModalAlterFee
@@ -1656,8 +1586,6 @@ appTemplate:
                 - textColor: '#312929'
                 - renderAsMarkdown: true
                 - id: text27
-            style:
-              ordered: []
             position2:
               position2:
                 container: UserContainerDetails
@@ -1685,8 +1613,6 @@ appTemplate:
                 - disableAnimation: false
                 - overflowType: hidden
                 - disabled: '{{!GetUser.data}}'
-            style:
-              ordered: []
             position2:
               position2:
                 container: UserContainerView
@@ -1730,8 +1656,6 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 container: UserContainerDetails
@@ -1763,8 +1687,6 @@ appTemplate:
                 - id: container10
                 - overflowType: hidden
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 container: UserTablecontainerView
@@ -1801,8 +1723,6 @@ appTemplate:
                 - textColor: '#16C37B'
                 - renderAsMarkdown: true
                 - id: text43
-            style:
-              ordered: []
             position2:
               position2:
                 container: UserContainerDetails
@@ -1838,8 +1758,6 @@ appTemplate:
                 - loading: ''
                 - disabled: ''
                 - buttonText: UserModalIncorrectValue
-            style:
-              ordered: []
             position2:
               position2:
                 row: 22
@@ -1865,7 +1783,7 @@ appTemplate:
                 - verticalAlign: center
                 - scrollOverflow: false
                 - tooltipText: ''
-                - value: |+
+                - value: |
                     <p>
                     <strong style=font-size:150%;
                     > INVALID VALUE!  
@@ -1879,8 +1797,6 @@ appTemplate:
                 - textColor: '#cc5248'
                 - renderAsMarkdown: true
                 - id: text13
-            style:
-              ordered: []
             position2:
               position2:
                 container: UserModalIncorrectValue
@@ -1930,8 +1846,6 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 container: UserModalIncorrectValue
@@ -1982,8 +1896,6 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 container: AccountContainerInfo
@@ -2056,8 +1968,6 @@ appTemplate:
                 - id: textinput3
                 - allowedRegex: '([3-9]|1\d|20)([,\.]\d\d?)?'
                 - required: false
-            style:
-              ordered: []
             position2:
               position2:
                 container: AccountContainerInfo
@@ -2091,8 +2001,6 @@ appTemplate:
                 - id: container11
                 - overflowType: hidden
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 container: UserTablecontainerView
@@ -2118,7 +2026,7 @@ appTemplate:
                 - verticalAlign: center
                 - scrollOverflow: false
                 - tooltipText: ''
-                - value: |+
+                - value: |
                     <p style=font-size:110%; >
                     {{search.UserAccount.account.description}}
                     </p>
@@ -2129,8 +2037,6 @@ appTemplate:
                 - textColor: '#312929'
                 - renderAsMarkdown: true
                 - id: text45
-            style:
-              ordered: []
             position2:
               position2:
                 container: AccountContainerDescription
@@ -2160,8 +2066,6 @@ appTemplate:
                 - id: container12
                 - overflowType: hidden
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 container: AccountContainerInfo
@@ -2195,8 +2099,6 @@ appTemplate:
                 - id: container10
                 - overflowType: hidden
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 container: UserTablecontainerView
@@ -2537,8 +2439,6 @@ appTemplate:
                 - showPaginationOnTop: false
                 - nextAfterCursor: ''
                 - useCompactMode: false
-            style:
-              ordered: []
             position2:
               position2:
                 container: UserTablecontainerView
@@ -2559,7 +2459,6 @@ appTemplate:
                     'https://chatpay-dev.firebaseapp.com/'
                 - value: ''
             createdAt: 2021-04-06T20:43:32.690Z
-            folder: UserSetings
       - CPFunctionLink:
           pluginTemplate:
             id: CPFunctionLink
@@ -2573,7 +2472,6 @@ appTemplate:
                     'https://us-central1-chatpay-dev.cloudfunctions.net/'
                 - value: ''
             createdAt: 2021-04-06T20:51:42.115Z
-            folder: UserSetings
       - modal1:
           pluginTemplate:
             id: modal1
@@ -2605,8 +2503,6 @@ appTemplate:
                 - loading: ''
                 - disabled: ''
                 - buttonText: AUTH
-            style:
-              ordered: []
             position2:
               position2:
                 container: container21
@@ -2632,8 +2528,6 @@ appTemplate:
                 - title: ''
                 - overflowType: hidden
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 container: modal1
@@ -2660,8 +2554,6 @@ appTemplate:
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
                 - renderAsMarkdown: true
-            style:
-              ordered: []
             position2:
               position2:
                 container: container20
@@ -2680,7 +2572,7 @@ appTemplate:
                 - verticalAlign: center
                 - scrollOverflow: false
                 - tooltipText: ''
-                - value: |+
+                - value: |
                     <p>
                     <strong style=font-size:120%;
                     >Click or copy
@@ -2692,8 +2584,6 @@ appTemplate:
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
                 - renderAsMarkdown: true
-            style:
-              ordered: []
             position2:
               position2:
                 container: modal1
@@ -2713,7 +2603,7 @@ appTemplate:
                 - verticalAlign: center
                 - scrollOverflow: false
                 - tooltipText: ''
-                - value: |+
+                - value: |
                     <p>
                     <strong style=font-size:120%;
                     >Sign in to account
@@ -2725,8 +2615,6 @@ appTemplate:
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
                 - renderAsMarkdown: true
-            style:
-              ordered: []
             position2:
               position2:
                 container: container21
@@ -2750,8 +2638,6 @@ appTemplate:
                 - title: ''
                 - overflowType: hidden
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 container: UserTablecontainerView
@@ -3006,8 +2892,6 @@ appTemplate:
                 - showPaginationOnTop: false
                 - nextAfterCursor: ''
                 - useCompactMode: false
-            style:
-              ordered: []
             position2:
               position2:
                 container: UserTablecontainerView
@@ -3145,12 +3029,9 @@ appTemplate:
                 - showPaginationOnTop: false
                 - nextAfterCursor: ''
                 - useCompactMode: true
-            style:
-              ordered: []
             position2:
               position2:
                 container: UserOwnerSubscriptionsTable
-                subcontainer: id
                 height: 11
                 width: 12
             createdAt: 2021-04-08T02:11:29.505Z
@@ -3172,8 +3053,7 @@ appTemplate:
               ordered:
                 - funcBody: >-
                     // Tip: assign your external references to variables instead
-                    of chaining off the curly brackets. 
-                    const data = {
+                    of chaining off the curly brackets.  const data = {
                       info: 0,
                       profile: 1,
                       currency: 2,
@@ -3181,21 +3061,16 @@ appTemplate:
                       groupCreation: 4,
                       migrationPending: 5,
                       completed: 6,
-                    }
-                    {{OnboardingCheckboxGroup.disabled = true}}
-                    const currentStep = {{GetUser.data.steps.gettingStarted ||
-                    "info"}}
-                    const currentStepNumber = data[currentStep]
-                    const keys = Object.keys(data).filter(key => key !==
-                    "completed")
+                    } {{OnboardingCheckboxGroup.disabled = true}} const
+                    currentStep = {{GetUser.data.steps.gettingStarted ||
+                    "info"}} const currentStepNumber = data[currentStep] const
+                    keys = Object.keys(data).filter(key => key !== "completed")
                     const checkedItems = keys.filter(key => data[key] <
-                    currentStepNumber)
-                    const uncheckedItems = keys.filter(key => data[key] >=
-                    currentStepNumber)
-                    return { checkedItems, uncheckedItems, keys }
+                    currentStepNumber) const uncheckedItems = keys.filter(key =>
+                    data[key] >= currentStepNumber) return { checkedItems,
+                    uncheckedItems, keys }
                 - value: ''
             createdAt: 2021-04-13T20:01:10.397Z
-            folder: UserSetings
       - OnboardingCheckboxGroup:
           pluginTemplate:
             id: OnboardingCheckboxGroup
@@ -3217,8 +3092,6 @@ appTemplate:
                 - labels: >-
                     ["User Info", "User Profile", "Currency", "Segmentation",
                     "Group Creation", "Pending migration"]
-            style:
-              ordered: []
             position2:
               position2:
                 container: UserContainerDetails
@@ -3261,9 +3134,8 @@ appTemplate:
                 - triggersOnFailure: []
                 - errorTransformer: >-
                     // The variable 'data' allows you to reference the request's
-                    data in the transformer. 
-                    // example: return data.find(element => element.isError)
-                    return data.error
+                    data in the transformer.  // example: return
+                    data.find(element => element.isError) return data.error
                 - confirmationMessage: null
                 - isFetching: false
                 - rawData: null
@@ -3276,9 +3148,8 @@ appTemplate:
                 - enableTransformer: false
                 - runWhenPageLoads: false
                 - transformer: >-
-                    // type your code here
-                    // example: return formatDataAsArray(data).filter(row =>
-                    row.quantity > 20)
+                    // type your code here // example: return
+                    formatDataAsArray(data).filter(row => row.quantity > 20)
                     return data
                 - queryTimeout: '10000'
                 - requireConfirmation: false
@@ -3316,8 +3187,6 @@ appTemplate:
                     https://cdn3.iconfinder.com/data/icons/contact-us-line/3/13-512.png
                 - NextState: '{{NextState.value}}'
                 - childNamespace: UserCountry
-            style:
-              ordered: []
             position2:
               position2:
                 container: UserContainerDetails
@@ -3368,9 +3237,8 @@ appTemplate:
                 - value: '{"country": {{UserCountry.NextState}} }'
                 - errorTransformer: >-
                     // The variable 'data' allows you to reference the request's
-                    data in the transformer. 
-                    // example: return data.find(element => element.isError)
-                    return data.error
+                    data in the transformer.  // example: return
+                    data.find(element => element.isError) return data.error
                 - confirmationMessage: null
                 - isFetching: false
                 - filterType: ''
@@ -3392,9 +3260,8 @@ appTemplate:
                 - nextPageToken: ''
                 - runWhenPageLoads: false
                 - transformer: >-
-                    // type your code here
-                    // example: return formatDataAsArray(data).filter(row =>
-                    row.quantity > 20)
+                    // type your code here // example: return
+                    formatDataAsArray(data).filter(row => row.quantity > 20)
                     return data
                 - queryTimeout: '10000'
                 - useRawCollectionId: true
@@ -3411,7 +3278,6 @@ appTemplate:
                 - updateSetValueDynamically: false
                 - notificationDuration: ''
             createdAt: 2021-04-15T15:48:03.112Z
-            folder: QueriesEditData
       - UserCurrency:
           pluginTemplate:
             id: UserCurrency
@@ -3430,8 +3296,6 @@ appTemplate:
                 - Icon: 'https://pngimg.com/uploads/dollar_sign/dollar_sign_PNG11.png'
                 - NextState: '{{NextState.value}}'
                 - childNamespace: UserCurrency
-            style:
-              ordered: []
             position2:
               position2:
                 container: UserContainerDetails
@@ -3460,8 +3324,6 @@ appTemplate:
                 - EditorQuery: ''
                 - NextState: '{{NextState.value}}'
                 - childNamespace: UserWhatsappId
-            style:
-              ordered: []
             position2:
               position2:
                 container: UserContainerDetails
@@ -3512,9 +3374,8 @@ appTemplate:
                 - value: '{"isAdmin": {{UserIsAdmin.NextState || false}} }'
                 - errorTransformer: >-
                     // The variable 'data' allows you to reference the request's
-                    data in the transformer. 
-                    // example: return data.find(element => element.isError)
-                    return data.error
+                    data in the transformer.  // example: return
+                    data.find(element => element.isError) return data.error
                 - confirmationMessage: null
                 - isFetching: false
                 - filterType: ''
@@ -3536,9 +3397,8 @@ appTemplate:
                 - nextPageToken: ''
                 - runWhenPageLoads: false
                 - transformer: >-
-                    // type your code here
-                    // example: return formatDataAsArray(data).filter(row =>
-                    row.quantity > 20)
+                    // type your code here // example: return
+                    formatDataAsArray(data).filter(row => row.quantity > 20)
                     return data
                 - queryTimeout: '10000'
                 - useRawCollectionId: true
@@ -3555,727 +3415,8 @@ appTemplate:
                 - updateSetValueDynamically: false
                 - notificationDuration: ''
             createdAt: 2021-04-18T05:07:10.331Z
-            folder: QueriesEditData
-      - UserIsAdmin:
-          pluginTemplate:
-            id: UserIsAdmin
-            type: widget
-            subtype: GlobalWidget
-            template:
-              ordered:
-                - Editable: 'true'
-                - FieldName: Is Admin
-                - showFetchingIndicator: false
-                - pageUuid: 23ebea4d-3a02-4db6-84ad-ba83bc392fda
-                - name: Data editing
-                - State: '{{GetUser.data.isAdmin}}'
-                - EditorQuery: ChangeIsAdmin
-                - NextState: '{{NextState.value}}'
-                - childNamespace: UserIsAdmin
-            style:
-              ordered: []
-            position2:
-              position2:
-                container: UserContainerInfo
-                row: 13
-                height: 1
-                width: 12
-            createdAt: 2021-04-18T05:08:05.108Z
-      - entityHeader1:
-          pluginTemplate:
-            id: entityHeader1
-            type: widget
-            subtype: GlobalWidget
-            template:
-              ordered:
-                - showFetchingIndicator: false
-                - name: EntityHeader
-                - pageUuid: 265f5feb-fc65-4e83-aa55-ee0b7447bdb4
-                - Picture: >-
-                    {{search.User.picture ||
-                    "https://cdn2.iconfinder.com/data/icons/4web-3/139/header-account-image-line-512.png"}}
-                - Name: '{{search.User.firstName}} {{search.User.lastName}}'
-                - ID: '{{search.User.id}}'
-                - childNamespace: entityHeader1
-            style:
-              ordered: []
-            position2:
-              position2:
-                container: UserContainerInfo
-                height: 8
-                width: 12
-            createdAt: 2021-04-19T23:44:10.177Z
-      - textEditing1:
-          pluginTemplate:
-            id: textEditing1
-            type: widget
-            subtype: GlobalWidget
-            template:
-              ordered:
-                - Editable: ''
-                - CanCopy: ''
-                - showFetchingIndicator: false
-                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
-                - name: Text Editing
-                - Name: UserName
-                - Url: ''
-                - Value: '{{search.User.username}}'
-                - Icon: ''
-                - NextState: '{{NextState.value}}'
-                - childNamespace: textEditing1
-            style:
-              ordered: []
-            position2:
-              position2:
-                container: UserContainerInfo
-                row: 8
-                height: 1
-                width: 12
-            createdAt: 2021-04-23T00:48:27.802Z
-      - textEditing2:
-          pluginTemplate:
-            id: textEditing2
-            type: widget
-            subtype: GlobalWidget
-            template:
-              ordered:
-                - Editable: ''
-                - CanCopy: ''
-                - showFetchingIndicator: false
-                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
-                - name: Text Editing
-                - Name: Telegram
-                - Url: ''
-                - Value: '{{search.User.ims.telegramUsername}}'
-                - Icon: ''
-                - NextState: '{{NextState.value}}'
-                - childNamespace: textEditing2
-            style:
-              ordered: []
-            position2:
-              position2:
-                container: UserContainerInfo
-                row: 9
-                height: 1
-                width: 12
-            createdAt: 2021-04-23T00:51:40.357Z
-      - textEditing3:
-          pluginTemplate:
-            id: textEditing3
-            type: widget
-            subtype: GlobalWidget
-            template:
-              ordered:
-                - Editable: ''
-                - CanCopy: ''
-                - showFetchingIndicator: false
-                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
-                - name: Text Editing
-                - Name: CPF
-                - Url: ''
-                - Value: '{{search.User.document}}'
-                - Icon: ''
-                - NextState: '{{NextState.value}}'
-                - childNamespace: textEditing3
-            style:
-              ordered: []
-            position2:
-              position2:
-                container: UserContainerInfo
-                row: 10
-                height: 1
-                width: 12
-            createdAt: 2021-04-23T00:52:39.149Z
-      - textEditing4:
-          pluginTemplate:
-            id: textEditing4
-            type: widget
-            subtype: GlobalWidget
-            template:
-              ordered:
-                - Editable: ''
-                - CanCopy: ''
-                - showFetchingIndicator: false
-                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
-                - name: Text Editing
-                - Name: CreatedAt
-                - Url: ''
-                - Value: '{{new Date (search.User.createdAt).toLocaleString()}}'
-                - Icon: ''
-                - NextState: '{{NextState.value}}'
-                - childNamespace: textEditing4
-            style:
-              ordered: []
-            position2:
-              position2:
-                container: UserContainerInfo
-                row: 11
-                height: 1
-                width: 12
-            createdAt: 2021-04-23T00:53:33.761Z
-      - textEditing5:
-          pluginTemplate:
-            id: textEditing5
-            type: widget
-            subtype: GlobalWidget
-            template:
-              ordered:
-                - Editable: ''
-                - CanCopy: ''
-                - showFetchingIndicator: false
-                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
-                - name: Text Editing
-                - Name: GroupCount
-                - Url: ''
-                - Value: '{{search.User.groupCount}}'
-                - Icon: ''
-                - NextState: '{{NextState.value}}'
-                - childNamespace: textEditing5
-            style:
-              ordered: []
-            position2:
-              position2:
-                container: UserContainerInfo
-                row: 12
-                height: 1
-                width: 12
-            createdAt: 2021-04-23T00:54:45.528Z
-      - textEditing6:
-          pluginTemplate:
-            id: textEditing6
-            type: widget
-            subtype: GlobalWidget
-            template:
-              ordered:
-                - Editable: ''
-                - CanCopy: 'true'
-                - showFetchingIndicator: false
-                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
-                - name: Text Editing
-                - Name: ''
-                - Url: ''
-                - Value: '{{search.User.ims.telegram}}'
-                - Icon: >-
-                    https://cdn.iconscout.com/icon/free/png-512/telegram-1867901-1580057.png
-                - NextState: '{{NextState.value}}'
-                - childNamespace: textEditing6
-            style:
-              ordered: []
-            position2:
-              position2:
-                container: UserContainerDetails
-                row: 4
-                height: 1
-                width: 6
-            createdAt: 2021-04-23T01:04:36.702Z
-      - textEditing7:
-          pluginTemplate:
-            id: textEditing7
-            type: widget
-            subtype: GlobalWidget
-            template:
-              ordered:
-                - Editable: ''
-                - CanCopy: 'true'
-                - showFetchingIndicator: false
-                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
-                - name: Text Editing
-                - Name: ''
-                - Url: ''
-                - Value: '{{search.User.email}}'
-                - Icon: >-
-                    https://i.pinimg.com/originals/bb/18/bd/bb18bdbbef437b2d50518db5a8292c94.png
-                - NextState: '{{NextState.value}}'
-                - childNamespace: textEditing7
-            style:
-              ordered: []
-            position2:
-              position2:
-                container: UserContainerDetails
-                row: 5
-                height: 1
-                width: 6
-            createdAt: 2021-04-23T01:26:29.404Z
-      - textEditing8:
-          pluginTemplate:
-            id: textEditing8
-            type: widget
-            subtype: GlobalWidget
-            template:
-              ordered:
-                - Editable: ''
-                - CanCopy: ''
-                - showFetchingIndicator: false
-                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
-                - name: Text Editing
-                - Name: '{{search.User.firstName}}'
-                - Url: ''
-                - Value: ''
-                - Icon: >-
-                    https://cdn2.iconfinder.com/data/icons/4web-3/139/header-account-image-line-512.png
-                - NextState: '{{NextState.value}}'
-                - childNamespace: textEditing8
-            style:
-              ordered: []
-            position2:
-              position2:
-                container: AccountContainerInfo
-                height: 1
-                width: 12
-            createdAt: 2021-04-23T01:39:59.691Z
-      - textEditing9:
-          pluginTemplate:
-            id: textEditing9
-            type: widget
-            subtype: GlobalWidget
-            template:
-              ordered:
-                - Editable: ''
-                - CanCopy: ''
-                - showFetchingIndicator: false
-                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
-                - name: Text Editing
-                - Name: NameAccount
-                - Url: ''
-                - Value: '{{search.UserAccount.account.name}}'
-                - Icon: ''
-                - NextState: '{{NextState.value}}'
-                - childNamespace: textEditing9
-            style:
-              ordered: []
-            position2:
-              position2:
-                container: AccountContainerInfo
-                row: 2
-                height: 1
-                width: 12
-            createdAt: 2021-04-23T01:42:51.226Z
-      - textEditing10:
-          pluginTemplate:
-            id: textEditing10
-            type: widget
-            subtype: GlobalWidget
-            template:
-              ordered:
-                - Editable: ''
-                - CanCopy: ''
-                - showFetchingIndicator: false
-                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
-                - name: Text Editing
-                - Name: TypeAccount
-                - Url: ''
-                - Value: '{{search.UserAccount.account.type}}'
-                - Icon: ''
-                - NextState: '{{NextState.value}}'
-                - childNamespace: textEditing10
-            style:
-              ordered: []
-            position2:
-              position2:
-                container: AccountContainerInfo
-                row: 3
-                height: 1
-                width: 12
-            createdAt: 2021-04-23T01:46:01.183Z
-      - textEditing11:
-          pluginTemplate:
-            id: textEditing11
-            type: widget
-            subtype: GlobalWidget
-            template:
-              ordered:
-                - Editable: ''
-                - CanCopy: ''
-                - showFetchingIndicator: false
-                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
-                - name: Text Editing
-                - Name: CPF/CNPJ
-                - Url: ''
-                - Value: '{{search.UserAccount.account.document}}'
-                - Icon: ''
-                - NextState: '{{NextState.value}}'
-                - childNamespace: textEditing11
-            style:
-              ordered: []
-            position2:
-              position2:
-                container: AccountContainerInfo
-                row: 4
-                height: 1
-                width: 12
-            createdAt: 2021-04-23T01:48:49.056Z
-      - textEditing12:
-          pluginTemplate:
-            id: textEditing12
-            type: widget
-            subtype: GlobalWidget
-            template:
-              ordered:
-                - Editable: ''
-                - CanCopy: ''
-                - showFetchingIndicator: false
-                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
-                - name: Text Editing
-                - Name: Carrier
-                - Url: ''
-                - Value: '{{search.UserAccount.carrier}}'
-                - Icon: ''
-                - NextState: '{{NextState.value}}'
-                - childNamespace: textEditing12
-            style:
-              ordered: []
-            position2:
-              position2:
-                container: AccountContainerInfo
-                row: 5
-                height: 1
-                width: 12
-            createdAt: 2021-04-23T01:51:57.903Z
-      - textEditing13:
-          pluginTemplate:
-            id: textEditing13
-            type: widget
-            subtype: GlobalWidget
-            template:
-              ordered:
-                - Editable: ''
-                - CanCopy: ''
-                - showFetchingIndicator: false
-                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
-                - name: Text Editing
-                - Name: Fee
-                - Url: ''
-                - Value: '{{search.UserAccount.account.config.fee.percent}} %'
-                - Icon: ''
-                - NextState: '{{NextState.value}}'
-                - childNamespace: textEditing13
-            style:
-              ordered: []
-            position2:
-              position2:
-                container: AccountContainerInfo
-                row: 6
-                height: 1
-                width: 12
-            createdAt: 2021-04-23T01:54:45.483Z
-      - textEditing14:
-          pluginTemplate:
-            id: textEditing14
-            type: widget
-            subtype: GlobalWidget
-            template:
-              ordered:
-                - Editable: ''
-                - CanCopy: 'true'
-                - showFetchingIndicator: false
-                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
-                - name: Text Editing
-                - Name: IDCustomer
-                - Url: ''
-                - Value: '{{search.UserAccount.customerId}}'
-                - Icon: ''
-                - NextState: '{{NextState.value}}'
-                - childNamespace: textEditing14
-            style:
-              ordered: []
-            position2:
-              position2:
-                container: container22
-                row: 1
-                height: 1
-                width: 12
-            createdAt: 2021-04-23T02:03:40.907Z
-      - textEditing15:
-          pluginTemplate:
-            id: textEditing15
-            type: widget
-            subtype: GlobalWidget
-            template:
-              ordered:
-                - Editable: ''
-                - CanCopy: 'true'
-                - showFetchingIndicator: false
-                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
-                - name: Text Editing
-                - Name: IDAccount
-                - Url: ''
-                - Value: '{{search.UserAccount.account.id}}'
-                - Icon: ''
-                - NextState: '{{NextState.value}}'
-                - childNamespace: textEditing15
-            style:
-              ordered: []
-            position2:
-              position2:
-                container: container22
-                height: 1
-                width: 12
-            createdAt: 2021-04-23T02:08:23.042Z
-      - textEditing16:
-          pluginTemplate:
-            id: textEditing16
-            type: widget
-            subtype: GlobalWidget
-            template:
-              ordered:
-                - Editable: ''
-                - CanCopy: ''
-                - showFetchingIndicator: false
-                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
-                - name: Text Editing
-                - Name: Description
-                - Url: ''
-                - Value: ''
-                - Icon: ''
-                - NextState: '{{NextState.value}}'
-                - childNamespace: textEditing16
-            style:
-              ordered: []
-            position2:
-              position2:
-                container: AccountContainerInfo
-                row: 9
-                height: 1
-                width: 12
-            createdAt: 2021-04-23T02:12:14.252Z
-      - textEditing17:
-          pluginTemplate:
-            id: textEditing17
-            type: widget
-            subtype: GlobalWidget
-            template:
-              ordered:
-                - Editable: ''
-                - CanCopy: ''
-                - showFetchingIndicator: false
-                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
-                - name: Text Editing
-                - Name: BankAccount
-                - Url: ''
-                - Value: ''
-                - Icon: 'https://static.thenounproject.com/png/1783867-200.png'
-                - NextState: '{{NextState.value}}'
-                - childNamespace: textEditing17
-            style:
-              ordered: []
-            position2:
-              position2:
-                container: UserTablecontainerView
-                col: 5
-                height: 1
-                width: 4
-                tabNum: 1
-            createdAt: 2021-04-23T02:16:35.612Z
-      - dataEditing1:
-          pluginTemplate:
-            id: dataEditing1
-            type: widget
-            subtype: GlobalWidget
-            template:
-              ordered:
-                - showFetchingIndicator: false
-                - name: dataEditing
-                - pageUuid: 23ebea4d-3a02-4db6-84ad-ba83bc392fda
-                - FieldName: Verified
-                - State: '{{search.UserAccount.bankAccount.isVerified}}'
-                - Editable: 'true'
-                - childNamespace: dataEditing1
-                - NextState: '{{NextState.value}}'
-            style:
-              ordered: []
-            position2:
-              position2:
-                container: ContaContainerStatus
-                height: 1
-                width: 12
-            createdAt: 2021-04-23T02:32:07.947Z
-      - dataEditing2:
-          pluginTemplate:
-            id: dataEditing2
-            type: widget
-            subtype: GlobalWidget
-            template:
-              ordered:
-                - showFetchingIndicator: false
-                - name: dataEditing
-                - pageUuid: 23ebea4d-3a02-4db6-84ad-ba83bc392fda
-                - FieldName: Account
-                - State: '{{search.UserAccount.bankAccount.account}}'
-                - Editable: 'true'
-                - childNamespace: dataEditing2
-                - NextState: '{{NextState.value}}'
-            style:
-              ordered: []
-            position2:
-              position2:
-                container: ContaContainerStatus
-                row: 1
-                height: 1
-                width: 12
-            createdAt: 2021-04-23T02:32:44.876Z
-      - dataEditing3:
-          pluginTemplate:
-            id: dataEditing3
-            type: widget
-            subtype: GlobalWidget
-            template:
-              ordered:
-                - showFetchingIndicator: false
-                - name: dataEditing
-                - pageUuid: 23ebea4d-3a02-4db6-84ad-ba83bc392fda
-                - FieldName: Agency
-                - State: '{{search.UserAccount.bankAccount.agency}}'
-                - Editable: 'true'
-                - childNamespace: dataEditing3
-                - NextState: '{{NextState.value}}'
-            style:
-              ordered: []
-            position2:
-              position2:
-                container: ContaContainerStatus
-                row: 2
-                height: 1
-                width: 12
-            createdAt: 2021-04-23T02:43:06.863Z
-      - dataEditing4:
-          pluginTemplate:
-            id: dataEditing4
-            type: widget
-            subtype: GlobalWidget
-            template:
-              ordered:
-                - showFetchingIndicator: false
-                - name: dataEditing
-                - pageUuid: 23ebea4d-3a02-4db6-84ad-ba83bc392fda
-                - FieldName: Bank
-                - State: '{{search.UserAccount.bankAccount.bank}}'
-                - Editable: 'true'
-                - childNamespace: dataEditing4
-                - NextState: '{{NextState.value}}'
-            style:
-              ordered: []
-            position2:
-              position2:
-                container: ContaContainerStatus
-                row: 3
-                height: 1
-                width: 12
-            createdAt: 2021-04-23T02:47:26.466Z
-      - dataEditing5:
-          pluginTemplate:
-            id: dataEditing5
-            type: widget
-            subtype: GlobalWidget
-            template:
-              ordered:
-                - showFetchingIndicator: false
-                - name: dataEditing
-                - pageUuid: 23ebea4d-3a02-4db6-84ad-ba83bc392fda
-                - FieldName: Status
-                - State: '{{search.UserAccount.bankAccount.status}}'
-                - Editable: 'true'
-                - childNamespace: dataEditing5
-                - NextState: '{{NextState.value}}'
-            style:
-              ordered: []
-            position2:
-              position2:
-                container: ContaContainerStatus
-                row: 4
-                height: 1
-                width: 12
-            createdAt: 2021-04-23T02:48:27.478Z
-      - dataEditing6:
-          pluginTemplate:
-            id: dataEditing6
-            type: widget
-            subtype: GlobalWidget
-            template:
-              ordered:
-                - showFetchingIndicator: false
-                - name: dataEditing
-                - pageUuid: 23ebea4d-3a02-4db6-84ad-ba83bc392fda
-                - FieldName: Type
-                - State: |
-                    {{search.UserAccount.bankAccount.type}}
-                - Editable: 'true'
-                - childNamespace: dataEditing6
-                - NextState: '{{NextState.value}}'
-            style:
-              ordered: []
-            position2:
-              position2:
-                container: ContaContainerStatus
-                row: 5
-                height: 1
-                width: 12
-            createdAt: 2021-04-23T02:49:55.941Z
-      - container22:
-          pluginTemplate:
-            id: container22
-            type: widget
-            subtype: ContainerWidget
-            template:
-              ordered:
-                - heightType: fixed
-                - spinWhenChildrenAreFetching: true
-                - showBorder: true
-                - showDropShadow: true
-                - style:
-                    ordered: []
-                - backgroundColor: white
-                - title: ''
-                - id: container12
-                - overflowType: hidden
-                - disabled: ''
-            style:
-              ordered: []
-            position2:
-              position2:
-                container: UserTablecontainerView
-                row: 12
-                col: 5
-                height: 3
-                width: 7
-                tabNum: 1
-            createdAt: 2021-04-23T02:58:01.532Z
-      - search:
-          pluginTemplate:
-            id: search
-            type: widget
-            subtype: GlobalWidget
-            template:
-              ordered:
-                - UserAccount: '{{UserAccount.value}}'
-                - showFetchingIndicator: false
-                - pageUuid: ceea46c4-e36c-46b4-86fe-1f6914cb7f12
-                - UserSubscriptions: '{{UserSubscriptions.value}}'
-                - name: Search
-                - User: '{{User.value}}'
-                - GroupMember: '{{GroupMember.value}}'
-                - UserGroups: '{{UserGroups.value}}'
-                - childNamespace: search
-            style:
-              ordered: []
-            position2:
-              position2:
-                container: UserContainerView
-                height: 1
-                width: 12
-            createdAt: 2021-04-23T03:30:23.227Z
-  urlFragmentDefinitions: []
-  appStyles: ''
-  appThemeId: null
-  preloadedAppJavaScript: null
-  pageLoadValueOverrides: []
-  customDocumentTitle: ''
-  isGlobalWidget: false
-  isFetching: false
-  instrumentationEnabled: false
-  customDocumentTitleEnabled: false
-  preloadedAppJSLinks:
-    array: []
+  createdAt: null
   version: 2.68.3
   responsiveLayoutDisabled: false
-  createdAt: null
-  loadingIndicatorsDisabled: false
+  urlFragmentDefinitions: []
+  pageLoadValueOverrides: []
