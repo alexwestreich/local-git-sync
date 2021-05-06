@@ -1,6 +1,7 @@
 version: 43.0.9
 pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
 appTemplate:
+  isFetching: false
   plugins:
     ordered:
       - moduleContainer:
@@ -21,8 +22,6 @@ appTemplate:
                 - title: ''
                 - overflowType: hidden
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 height: 1
@@ -193,8 +192,6 @@ appTemplate:
                 - loading: ''
                 - disabled: ''
                 - buttonText: Open Modal
-            style:
-              ordered: []
             position2:
               position2:
                 container: moduleContainer
@@ -218,8 +215,6 @@ appTemplate:
                 - labelMaxWidth: ''
                 - labelPlacedOnLeft: false
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 container: EditableModal
@@ -250,8 +245,6 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 container: EditableModal
@@ -283,8 +276,6 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 container: EditableModal
@@ -460,8 +451,6 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 container: moduleContainer
@@ -554,8 +543,6 @@ appTemplate:
                     </p>
                 - Icon: '{{Icon.value}}'
                 - childNamespace: FieldPartial
-            style:
-              ordered: []
             position2:
               position2:
                 container: moduleContainer
@@ -579,8 +566,6 @@ appTemplate:
                 - Value: '{{Value.value}}'
                 - Icon: '{{Icon.value}}'
                 - childNamespace: FieldFull
-            style:
-              ordered: []
             position2:
               position2:
                 container: moduleContainer
@@ -588,19 +573,8 @@ appTemplate:
                 height: 1
                 width: 12
             createdAt: 2021-04-15T17:31:42.319Z
-  urlFragmentDefinitions: []
-  appStyles: ''
-  appThemeId: null
-  preloadedAppJavaScript: null
-  pageLoadValueOverrides: []
-  customDocumentTitle: ''
-  isGlobalWidget: true
-  isFetching: false
-  instrumentationEnabled: false
-  customDocumentTitleEnabled: false
-  preloadedAppJSLinks:
-    array: []
+  createdAt: null
   version: 2.67.4
   responsiveLayoutDisabled: false
-  createdAt: null
-  loadingIndicatorsDisabled: false
+  urlFragmentDefinitions: []
+  pageLoadValueOverrides: []
