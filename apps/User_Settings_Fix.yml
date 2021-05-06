@@ -3556,6 +3556,55 @@ appTemplate:
                 - notificationDuration: ''
             createdAt: 2021-04-18T05:07:10.331Z
             folder: QueriesEditData
+      - UserIsAdmin:
+          pluginTemplate:
+            id: UserIsAdmin
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: 'true'
+                - FieldName: Is Admin
+                - showFetchingIndicator: false
+                - pageUuid: 23ebea4d-3a02-4db6-84ad-ba83bc392fda
+                - name: Data editing
+                - State: '{{GetUser.data.isAdmin}}'
+                - EditorQuery: ChangeIsAdmin
+                - NextState: '{{NextState.value}}'
+                - childNamespace: UserIsAdmin
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserContainerInfo
+                row: 13
+                height: 1
+                width: 12
+            createdAt: 2021-04-18T05:08:05.108Z
+      - entityHeader1:
+          pluginTemplate:
+            id: entityHeader1
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - showFetchingIndicator: false
+                - name: EntityHeader
+                - pageUuid: 265f5feb-fc65-4e83-aa55-ee0b7447bdb4
+                - Picture: >-
+                    {{search.User.picture ||
+                    "https://cdn2.iconfinder.com/data/icons/4web-3/139/header-account-image-line-512.png"}}
+                - Name: '{{search.User.firstName}} {{search.User.lastName}}'
+                - ID: '{{search.User.id}}'
+                - childNamespace: entityHeader1
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: UserContainerInfo
+                height: 8
+                width: 12
+            createdAt: 2021-04-19T23:44:10.177Z
       - textEditing1:
           pluginTemplate:
             id: textEditing1
@@ -3747,27 +3796,6 @@ appTemplate:
                 height: 1
                 width: 6
             createdAt: 2021-04-23T01:26:29.404Z
-      - copyButton1:
-          pluginTemplate:
-            id: copyButton1
-            type: widget
-            subtype: GlobalWidget
-            template:
-              ordered:
-                - showFetchingIndicator: false
-                - name: CopyButton
-                - pageUuid: 4265d212-3a98-41f0-b611-d79067ca3175
-                - Text: '{{GetAuthLink.data.result}}'
-                - childNamespace: copyButton1
-            style:
-              ordered: []
-            position2:
-              position2:
-                container: container20
-                col: 11
-                height: 1
-                width: 1
-            createdAt: 2021-04-23T01:35:14.571Z
       - textEditing8:
           pluginTemplate:
             id: textEditing8
