@@ -1,6 +1,7 @@
 version: 43.0.9
 pageUuid: c8aad456-9976-11eb-9c44-278d5b6ec203
 appTemplate:
+  isFetching: false
   plugins:
     ordered:
       - query1:
@@ -9,7 +10,6 @@ appTemplate:
             type: datasource
             subtype: OpenAPIQuery
             resourceName: 47c14d7d-6c28-4152-9617-fea85f5848a3
-            resourceDisplayName: openapi test
             template:
               ordered:
                 - queryRefreshTime: ''
@@ -78,18 +78,8 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2021-04-09T21:01:42.618Z
-  urlFragmentDefinitions: []
-  appThemeId: null
-  preloadedAppJavaScript: null
-  pageLoadValueOverrides: []
-  customDocumentTitle: ''
-  isGlobalWidget: false
-  isFetching: false
-  instrumentationEnabled: false
-  customDocumentTitleEnabled: false
-  preloadedAppJSLinks:
-    array: []
+  createdAt: null
   version: 2.66.76
   responsiveLayoutDisabled: false
-  createdAt: null
-  loadingIndicatorsDisabled: false
+  urlFragmentDefinitions: []
+  pageLoadValueOverrides: []
