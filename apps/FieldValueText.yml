@@ -1,0 +1,127 @@
+version: 43.0.9
+pageUuid: 77a920cf-be0e-4fb2-8503-6381f7bf57c1
+appTemplate:
+  plugins:
+    ordered:
+      - moduleContainer:
+          pluginTemplate:
+            id: moduleContainer
+            type: widget
+            subtype: ModuleContainerWidget
+            template:
+              ordered:
+                - heightType: fixed
+                - spinWhenChildrenAreFetching: true
+                - showBorder: true
+                - showDropShadow: true
+                - isGlobalWidgetContainer: true
+                - style:
+                    ordered: []
+                - backgroundColor: white
+                - title: ''
+                - overflowType: hidden
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                height: 1
+                width: 12
+            mobilePosition2:
+              position2:
+                height: 12
+                width: 12
+            createdAt: 2021-04-15T16:22:05.946Z
+      - ValueText:
+          pluginTemplate:
+            id: ValueText
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: right
+                - truncateOverflow: false
+                - hidden: '{{Url.value}}'
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |+
+                    <p style=font-size:110%;>
+                      {{Text.value}}
+                    </p>
+
+                - renderAsHtml: true
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: moduleContainer
+                height: 1
+                width: 12
+            createdAt: 2021-04-15T16:22:16.382Z
+      - Text:
+          pluginTemplate:
+            id: Text
+            type: globalwidgetprop
+            subtype: GlobalWidgetProp
+            template:
+              ordered:
+                - value: ''
+                - defaultValue: ''
+            createdAt: 2021-04-15T16:22:36.217Z
+      - Url:
+          pluginTemplate:
+            id: Url
+            type: globalwidgetprop
+            subtype: GlobalWidgetProp
+            template:
+              ordered:
+                - value: ''
+                - defaultValue: ''
+            createdAt: 2021-04-15T17:41:13.501Z
+      - UrlText:
+          pluginTemplate:
+            id: UrlText
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - hidden: '{{!Url.value}}'
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: "<p>\n  <strong style=font-size:110%;> \n  \t<a style=\"color:#16C37B\" target=\"_blank\" rel=\"noopener noreferrer\" \nhref=\"{{Url.value}}\"> {{Text.value}}\n  \t</a>\n  </strong>\n</p>\n"
+                - renderAsHtml: true
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: moduleContainer
+                row: 1
+                height: 1
+                width: 12
+            createdAt: 2021-04-15T17:41:42.722Z
+  urlFragmentDefinitions: []
+  appStyles: ''
+  appThemeId: null
+  preloadedAppJavaScript: null
+  pageLoadValueOverrides: []
+  customDocumentTitle: ''
+  isGlobalWidget: true
+  isFetching: false
+  instrumentationEnabled: false
+  customDocumentTitleEnabled: false
+  preloadedAppJSLinks:
+    array: []
+  version: 2.67.4
+  responsiveLayoutDisabled: false
+  createdAt: null
+  loadingIndicatorsDisabled: false
