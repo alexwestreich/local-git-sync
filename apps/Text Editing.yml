@@ -1,0 +1,606 @@
+version: 43.0.9
+pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+appTemplate:
+  plugins:
+    ordered:
+      - moduleContainer:
+          pluginTemplate:
+            id: moduleContainer
+            type: widget
+            subtype: ModuleContainerWidget
+            template:
+              ordered:
+                - heightType: fixed
+                - spinWhenChildrenAreFetching: true
+                - showBorder: true
+                - showDropShadow: true
+                - isGlobalWidgetContainer: true
+                - style:
+                    ordered: []
+                - backgroundColor: white
+                - title: ''
+                - overflowType: hidden
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                height: 1
+                width: 11
+            mobilePosition2:
+              position2:
+                height: 12
+                width: 12
+            createdAt: 2021-04-09T13:55:10.078Z
+      - EditorQuery:
+          pluginTemplate:
+            id: EditorQuery
+            type: datasource
+            subtype: GlobalWidgetQuery
+            resourceName: GlobalWidgetQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: ''
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - defaultValue: ''
+                - value: ''
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-04-09T14:54:02.775Z
+      - NextState:
+          pluginTemplate:
+            id: NextState
+            type: globalwidgetoutput
+            subtype: GlobalWidgetOutput
+            template:
+              ordered:
+                - value: '{{ChangedState.value}}'
+            createdAt: 2021-04-09T20:29:26.926Z
+      - OpenModaIfAllowed:
+          pluginTemplate:
+            id: OpenModaIfAllowed
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: |-
+                    if(Editable.value) {
+                      FieldChangeToggle.setValue(State.value)
+                      EditableModal.open()
+                    }
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-04-09T20:54:05.004Z
+      - EditableModal:
+          pluginTemplate:
+            id: EditableModal
+            type: widget
+            subtype: ModalWidget
+            template:
+              ordered:
+                - buttonBackgroundColor: '#3c92dc'
+                - opened: false
+                - modalOverflowType: hidden
+                - hidden: 'true'
+                - onModalClose: ''
+                - modalHeightType: fixed
+                - modalHeight: 200px
+                - onModalOpen: ''
+                - modalWidth: 350px
+                - closeOnOutsideClick: false
+                - loading: ''
+                - disabled: ''
+                - buttonText: Open Modal
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: moduleContainer
+                row: 2
+                height: 1
+                width: 11
+            createdAt: 2021-04-09T20:54:48.982Z
+      - FieldChangeToggle:
+          pluginTemplate:
+            id: FieldChangeToggle
+            type: widget
+            subtype: ToggleWidget
+            template:
+              ordered:
+                - toggleOffQuery: ''
+                - toggleType: default
+                - tooltipText: ''
+                - value: '{{default.value}}'
+                - label: '{{Name.value}}'
+                - toggleOnQuery: ''
+                - labelMaxWidth: ''
+                - labelPlacedOnLeft: false
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: EditableModal
+                row: 1
+                height: 1
+                width: 12
+            createdAt: 2021-04-09T21:00:36.659Z
+      - EditFieldModalConfirmButton:
+          pluginTemplate:
+            id: EditFieldModalConfirmButton
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#16C37B'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: CHANGE
+                - exportQuery: ''
+                - action: ConfirmChange
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: EditableModal
+                row: 2
+                col: 6
+                height: 1
+                width: 6
+            createdAt: 2021-04-09T21:03:03.758Z
+      - EditFieldModalCloseButton:
+          pluginTemplate:
+            id: EditFieldModalCloseButton
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#cc5248'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: CANCEL
+                - exportQuery: ''
+                - action: CloseModal
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: EditableModal
+                row: 2
+                height: 1
+                width: 6
+            createdAt: 2021-04-09T21:03:07.106Z
+      - CloseModal:
+          pluginTemplate:
+            id: CloseModal
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: EditableModal.close()
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-04-09T21:05:45.149Z
+      - ConfirmChange:
+          pluginTemplate:
+            id: ConfirmChange
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: |
+                    if(FieldChangeToggle.value === State.value) {
+                      throw new Error("Nothing changed")
+                    }
+                    ChangedState.setValue(FieldChangeToggle.value)
+                    State.value = FieldChangeToggle.value
+                    EditableModal.close()
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess:
+                    - EditorQuery
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-04-09T21:07:41.093Z
+      - ChangedState:
+          pluginTemplate:
+            id: ChangedState
+            type: state
+            subtype: State
+            template:
+              ordered:
+                - value: null
+            createdAt: 2021-04-09T21:12:49.337Z
+      - EditFieldButton:
+          pluginTemplate:
+            id: EditFieldButton
+            type: widget
+            subtype: ImageWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - isFile: false
+                - internalUrlHashParams: ''
+                - hidden: '{{!Editable.value}}'
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - exportQuery: ''
+                - imageUrl: >-
+                    https://www.pngfind.com/pngs/m/275-2755033_edit-png-file-on-phone-svg-edit-icon.png
+                - action: OpenModaIfAllowed
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - imageFile: ''
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: moduleContainer
+                col: 10
+                height: 1
+                width: 2
+            createdAt: 2021-04-12T22:17:07.213Z
+      - Editable:
+          pluginTemplate:
+            id: Editable
+            type: globalwidgetprop
+            subtype: GlobalWidgetProp
+            template:
+              ordered:
+                - value: ''
+                - defaultValue: 'false'
+            createdAt: 2021-04-14T00:22:15.843Z
+      - Name:
+          pluginTemplate:
+            id: Name
+            type: globalwidgetprop
+            subtype: GlobalWidgetProp
+            template:
+              ordered:
+                - value: ''
+                - defaultValue: ''
+            createdAt: 2021-04-14T00:24:53.432Z
+      - Value:
+          pluginTemplate:
+            id: Value
+            type: globalwidgetprop
+            subtype: GlobalWidgetProp
+            template:
+              ordered:
+                - value: ''
+                - defaultValue: ''
+            createdAt: 2021-04-14T14:38:08.447Z
+      - Url:
+          pluginTemplate:
+            id: Url
+            type: globalwidgetprop
+            subtype: GlobalWidgetProp
+            template:
+              ordered:
+                - value: ''
+                - defaultValue: ''
+            createdAt: 2021-04-15T13:38:59.925Z
+      - Icon:
+          pluginTemplate:
+            id: Icon
+            type: globalwidgetprop
+            subtype: GlobalWidgetProp
+            template:
+              ordered:
+                - value: ''
+                - defaultValue: ''
+            createdAt: 2021-04-15T14:24:24.535Z
+      - CanCopy:
+          pluginTemplate:
+            id: CanCopy
+            type: globalwidgetprop
+            subtype: GlobalWidgetProp
+            template:
+              ordered:
+                - value: ''
+                - defaultValue: ''
+            createdAt: 2021-04-15T16:10:21.443Z
+      - FieldPartial:
+          pluginTemplate:
+            id: FieldPartial
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - CanCopy: '{{CanCopy.value}}'
+                - hidden: '{{!Editable.value}}'
+                - showFetchingIndicator: false
+                - pageUuid: 5cf5938a-5326-4864-83e7-075d2daea35c
+                - name: IconField
+                - Name: |-
+                    <p>
+                    <strong style=font-size:120%;
+                    > {{Name.value}}
+                    </strong>
+                    </p>
+                - Url: '{{Url.value}}'
+                - Value: |-
+                    <p style=font-size:110%; >{{Value.value}}
+                    </strong>
+                    </p>
+                - Icon: '{{Icon.value}}'
+                - childNamespace: FieldPartial
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: moduleContainer
+                height: 1
+                width: 10
+            createdAt: 2021-04-15T17:21:22.420Z
+      - FieldFull:
+          pluginTemplate:
+            id: FieldFull
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - CanCopy: '{{CanCopy.value}}'
+                - hidden: '{{Editable.value}}'
+                - showFetchingIndicator: false
+                - pageUuid: 5cf5938a-5326-4864-83e7-075d2daea35c
+                - name: IconField
+                - Name: '{{Name.value}}'
+                - Url: '{{Url.value}}'
+                - Value: '{{Value.value}}'
+                - Icon: '{{Icon.value}}'
+                - childNamespace: FieldFull
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: moduleContainer
+                row: 1
+                height: 1
+                width: 12
+            createdAt: 2021-04-15T17:31:42.319Z
+  urlFragmentDefinitions: []
+  appStyles: ''
+  appThemeId: null
+  preloadedAppJavaScript: null
+  pageLoadValueOverrides: []
+  customDocumentTitle: ''
+  isGlobalWidget: true
+  isFetching: false
+  instrumentationEnabled: false
+  customDocumentTitleEnabled: false
+  preloadedAppJSLinks:
+    array: []
+  version: 2.67.4
+  responsiveLayoutDisabled: false
+  createdAt: null
+  loadingIndicatorsDisabled: false
