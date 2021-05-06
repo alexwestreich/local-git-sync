@@ -1,6 +1,7 @@
 version: 43.0.9
 pageUuid: d41f932b-0a4d-454b-a9f6-c31c81986e67
 appTemplate:
+  isFetching: false
   plugins:
     ordered:
       - moduleContainer:
@@ -21,8 +22,6 @@ appTemplate:
                 - title: ''
                 - overflowType: hidden
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 height: 1
@@ -64,27 +63,14 @@ appTemplate:
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
                 - renderAsMarkdown: true
-            style:
-              ordered: []
             position2:
               position2:
                 container: moduleContainer
                 height: 1
                 width: 12
             createdAt: 2021-04-15T15:35:49.540Z
-  urlFragmentDefinitions: []
-  appStyles: ''
-  appThemeId: null
-  preloadedAppJavaScript: null
-  pageLoadValueOverrides: []
-  customDocumentTitle: ''
-  isGlobalWidget: true
-  isFetching: false
-  instrumentationEnabled: false
-  customDocumentTitleEnabled: false
-  preloadedAppJSLinks:
-    array: []
+  createdAt: null
   version: 2.66.90
   responsiveLayoutDisabled: false
-  createdAt: null
-  loadingIndicatorsDisabled: false
+  urlFragmentDefinitions: []
+  pageLoadValueOverrides: []
