@@ -1,6 +1,7 @@
 version: 43.0.9
 pageUuid: 265f5feb-fc65-4e83-aa55-ee0b7447bdb4
 appTemplate:
+  isFetching: false
   plugins:
     ordered:
       - moduleContainer:
@@ -24,8 +25,6 @@ appTemplate:
                 - overflowType: hidden
                 - disabled: ''
                 - Picture: ''
-            style:
-              ordered: []
             position2:
               position2:
                 height: 8
@@ -89,8 +88,6 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 container: moduleContainer
@@ -115,8 +112,6 @@ appTemplate:
                     </strong>
                     </p>
                 - childNamespace: fieldNameText1
-            style:
-              ordered: []
             position2:
               position2:
                 container: moduleContainer
@@ -140,8 +135,6 @@ appTemplate:
                     </p>
                 - Url: ''
                 - childNamespace: fieldValueText12
-            style:
-              ordered: []
             position2:
               position2:
                 container: moduleContainer
@@ -162,8 +155,6 @@ appTemplate:
                 - Text: '{{ID.value}}'
                 - childNamespace: copyButton1
                 - hidden: '{{!ID.value}}'
-            style:
-              ordered: []
             position2:
               position2:
                 container: moduleContainer
@@ -172,19 +163,8 @@ appTemplate:
                 height: 1
                 width: 2
             createdAt: 2021-04-23T03:37:26.971Z
-  urlFragmentDefinitions: []
-  appStyles: ''
-  appThemeId: null
-  preloadedAppJavaScript: null
-  pageLoadValueOverrides: []
-  customDocumentTitle: ''
-  isGlobalWidget: true
-  isFetching: false
-  instrumentationEnabled: false
-  customDocumentTitleEnabled: false
-  preloadedAppJSLinks:
-    array: []
+  createdAt: null
   version: 2.67.4
   responsiveLayoutDisabled: false
-  createdAt: null
-  loadingIndicatorsDisabled: false
+  urlFragmentDefinitions: []
+  pageLoadValueOverrides: []
