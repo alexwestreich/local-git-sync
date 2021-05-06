@@ -1,6 +1,7 @@
 version: 43.0.9
 pageUuid: ceea46c4-e36c-46b4-86fe-1f6914cb7f12
 appTemplate:
+  isFetching: false
   plugins:
     ordered:
       - moduleContainer:
@@ -21,8 +22,6 @@ appTemplate:
                 - title: ''
                 - overflowType: hidden
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 height: 1
@@ -72,8 +71,6 @@ appTemplate:
                     ["ID", "Email", "Telefone", "Username", "CPF/CNPJ", "Id de
                     Whatsapp", "Id de Telegram", "Username de Telegram",
                     "IdGroup"]
-            style:
-              ordered: []
             position2:
               position2:
                 container: moduleContainer
@@ -106,8 +103,6 @@ appTemplate:
                 - exportFileName: ''
                 - loading: ''
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 container: moduleContainer
@@ -193,7 +188,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2021-04-20T22:44:41.998Z
-            folder: Search
       - UserTextInputSearch:
           pluginTemplate:
             id: UserTextInputSearch
@@ -235,8 +229,6 @@ appTemplate:
                 - type: text
                 - allowedRegex: ''
                 - required: false
-            style:
-              ordered: []
             position2:
               position2:
                 container: moduleContainer
@@ -339,7 +331,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2021-04-20T22:51:24.925Z
-            folder: Search
       - GetGatewayByUserID:
           pluginTemplate:
             id: GetGatewayByUserID
@@ -428,7 +419,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2021-04-20T22:54:11.089Z
-            folder: Search
       - CloseUserTextInputSearch:
           pluginTemplate:
             id: CloseUserTextInputSearch
@@ -492,7 +482,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2021-04-20T22:56:12.256Z
-            folder: Search
       - User:
           pluginTemplate:
             id: User
@@ -600,7 +589,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2021-04-24T17:19:22.280Z
-            folder: Search
       - UserGroups:
           pluginTemplate:
             id: UserGroups
@@ -721,7 +709,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2021-04-26T01:36:24.452Z
-            folder: Search
       - GetGroupMember:
           pluginTemplate:
             id: GetGroupMember
@@ -813,7 +800,6 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2021-04-28T14:22:44.463Z
-            folder: Search
       - GroupMember:
           pluginTemplate:
             id: GroupMember
@@ -914,20 +900,8 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2021-04-29T00:32:39.097Z
-            folder: Search
-  urlFragmentDefinitions: []
-  appStyles: ''
-  appThemeId: null
-  preloadedAppJavaScript: null
-  pageLoadValueOverrides: []
-  customDocumentTitle: ''
-  isGlobalWidget: true
-  isFetching: false
-  instrumentationEnabled: false
-  customDocumentTitleEnabled: false
-  preloadedAppJSLinks:
-    array: []
+  createdAt: null
   version: 2.67.8
   responsiveLayoutDisabled: false
-  createdAt: null
-  loadingIndicatorsDisabled: false
+  urlFragmentDefinitions: []
+  pageLoadValueOverrides: []
