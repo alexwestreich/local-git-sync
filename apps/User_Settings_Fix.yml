@@ -3415,51 +3415,6 @@ appTemplate:
                 - updateSetValueDynamically: false
                 - notificationDuration: ''
             createdAt: 2021-04-18T05:07:10.331Z
-      - UserIsAdmin:
-          pluginTemplate:
-            id: UserIsAdmin
-            type: widget
-            subtype: GlobalWidget
-            template:
-              ordered:
-                - Editable: 'true'
-                - FieldName: Is Admin
-                - showFetchingIndicator: false
-                - pageUuid: 23ebea4d-3a02-4db6-84ad-ba83bc392fda
-                - name: Data editing
-                - State: '{{GetUser.data.isAdmin}}'
-                - EditorQuery: ChangeIsAdmin
-                - NextState: '{{NextState.value}}'
-                - childNamespace: UserIsAdmin
-            position2:
-              position2:
-                container: UserContainerInfo
-                row: 13
-                height: 1
-                width: 12
-            createdAt: 2021-04-18T05:08:05.108Z
-      - entityHeader1:
-          pluginTemplate:
-            id: entityHeader1
-            type: widget
-            subtype: GlobalWidget
-            template:
-              ordered:
-                - showFetchingIndicator: false
-                - name: EntityHeader
-                - pageUuid: 265f5feb-fc65-4e83-aa55-ee0b7447bdb4
-                - Picture: >-
-                    {{search.User.picture ||
-                    "https://cdn2.iconfinder.com/data/icons/4web-3/139/header-account-image-line-512.png"}}
-                - Name: '{{search.User.firstName}} {{search.User.lastName}}'
-                - ID: '{{search.User.id}}'
-                - childNamespace: entityHeader1
-            position2:
-              position2:
-                container: UserContainerInfo
-                height: 8
-                width: 12
-            createdAt: 2021-04-19T23:44:10.177Z
       - textEditing1:
           pluginTemplate:
             id: textEditing1
@@ -3585,6 +3540,508 @@ appTemplate:
                 height: 1
                 width: 12
             createdAt: 2021-04-23T00:54:45.528Z
+      - textEditing6:
+          pluginTemplate:
+            id: textEditing6
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: 'true'
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: ''
+                - Url: ''
+                - Value: '{{search.User.ims.telegram}}'
+                - Icon: >-
+                    https://cdn.iconscout.com/icon/free/png-512/telegram-1867901-1580057.png
+                - NextState: '{{NextState.value}}'
+                - childNamespace: textEditing6
+            position2:
+              position2:
+                container: UserContainerDetails
+                row: 4
+                height: 1
+                width: 6
+            createdAt: 2021-04-23T01:04:36.702Z
+      - textEditing7:
+          pluginTemplate:
+            id: textEditing7
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: 'true'
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: ''
+                - Url: ''
+                - Value: '{{search.User.email}}'
+                - Icon: >-
+                    https://i.pinimg.com/originals/bb/18/bd/bb18bdbbef437b2d50518db5a8292c94.png
+                - NextState: '{{NextState.value}}'
+                - childNamespace: textEditing7
+            position2:
+              position2:
+                container: UserContainerDetails
+                row: 5
+                height: 1
+                width: 6
+            createdAt: 2021-04-23T01:26:29.404Z
+      - copyButton1:
+          pluginTemplate:
+            id: copyButton1
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - showFetchingIndicator: false
+                - name: CopyButton
+                - pageUuid: 4265d212-3a98-41f0-b611-d79067ca3175
+                - Text: '{{GetAuthLink.data.result}}'
+                - childNamespace: copyButton1
+            position2:
+              position2:
+                container: container20
+                col: 11
+                height: 1
+                width: 1
+            createdAt: 2021-04-23T01:35:14.571Z
+      - textEditing8:
+          pluginTemplate:
+            id: textEditing8
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: ''
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: '{{search.User.firstName}}'
+                - Url: ''
+                - Value: ''
+                - Icon: >-
+                    https://cdn2.iconfinder.com/data/icons/4web-3/139/header-account-image-line-512.png
+                - NextState: '{{NextState.value}}'
+                - childNamespace: textEditing8
+            position2:
+              position2:
+                container: AccountContainerInfo
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T01:39:59.691Z
+      - textEditing9:
+          pluginTemplate:
+            id: textEditing9
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: ''
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: NameAccount
+                - Url: ''
+                - Value: '{{search.UserAccount.account.name}}'
+                - Icon: ''
+                - NextState: '{{NextState.value}}'
+                - childNamespace: textEditing9
+            position2:
+              position2:
+                container: AccountContainerInfo
+                row: 2
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T01:42:51.226Z
+      - textEditing10:
+          pluginTemplate:
+            id: textEditing10
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: ''
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: TypeAccount
+                - Url: ''
+                - Value: '{{search.UserAccount.account.type}}'
+                - Icon: ''
+                - NextState: '{{NextState.value}}'
+                - childNamespace: textEditing10
+            position2:
+              position2:
+                container: AccountContainerInfo
+                row: 3
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T01:46:01.183Z
+      - textEditing11:
+          pluginTemplate:
+            id: textEditing11
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: ''
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: CPF/CNPJ
+                - Url: ''
+                - Value: '{{search.UserAccount.account.document}}'
+                - Icon: ''
+                - NextState: '{{NextState.value}}'
+                - childNamespace: textEditing11
+            position2:
+              position2:
+                container: AccountContainerInfo
+                row: 4
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T01:48:49.056Z
+      - textEditing12:
+          pluginTemplate:
+            id: textEditing12
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: ''
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: Carrier
+                - Url: ''
+                - Value: '{{search.UserAccount.carrier}}'
+                - Icon: ''
+                - NextState: '{{NextState.value}}'
+                - childNamespace: textEditing12
+            position2:
+              position2:
+                container: AccountContainerInfo
+                row: 5
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T01:51:57.903Z
+      - textEditing13:
+          pluginTemplate:
+            id: textEditing13
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: ''
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: Fee
+                - Url: ''
+                - Value: '{{search.UserAccount.account.config.fee.percent}} %'
+                - Icon: ''
+                - NextState: '{{NextState.value}}'
+                - childNamespace: textEditing13
+            position2:
+              position2:
+                container: AccountContainerInfo
+                row: 6
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T01:54:45.483Z
+      - textEditing14:
+          pluginTemplate:
+            id: textEditing14
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: 'true'
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: IDCustomer
+                - Url: ''
+                - Value: '{{search.UserAccount.customerId}}'
+                - Icon: ''
+                - NextState: '{{NextState.value}}'
+                - childNamespace: textEditing14
+            position2:
+              position2:
+                container: container22
+                row: 1
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T02:03:40.907Z
+      - textEditing15:
+          pluginTemplate:
+            id: textEditing15
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: 'true'
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: IDAccount
+                - Url: ''
+                - Value: '{{search.UserAccount.account.id}}'
+                - Icon: ''
+                - NextState: '{{NextState.value}}'
+                - childNamespace: textEditing15
+            position2:
+              position2:
+                container: container22
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T02:08:23.042Z
+      - textEditing16:
+          pluginTemplate:
+            id: textEditing16
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: ''
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: Description
+                - Url: ''
+                - Value: ''
+                - Icon: ''
+                - NextState: '{{NextState.value}}'
+                - childNamespace: textEditing16
+            position2:
+              position2:
+                container: AccountContainerInfo
+                row: 9
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T02:12:14.252Z
+      - textEditing17:
+          pluginTemplate:
+            id: textEditing17
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - Editable: ''
+                - CanCopy: ''
+                - showFetchingIndicator: false
+                - pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
+                - name: Text Editing
+                - Name: BankAccount
+                - Url: ''
+                - Value: ''
+                - Icon: 'https://static.thenounproject.com/png/1783867-200.png'
+                - NextState: '{{NextState.value}}'
+                - childNamespace: textEditing17
+            position2:
+              position2:
+                container: UserTablecontainerView
+                col: 5
+                height: 1
+                width: 4
+                tabNum: 1
+            createdAt: 2021-04-23T02:16:35.612Z
+      - dataEditing1:
+          pluginTemplate:
+            id: dataEditing1
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - showFetchingIndicator: false
+                - name: dataEditing
+                - pageUuid: 23ebea4d-3a02-4db6-84ad-ba83bc392fda
+                - FieldName: Verified
+                - State: '{{search.UserAccount.bankAccount.isVerified}}'
+                - Editable: 'true'
+                - childNamespace: dataEditing1
+                - NextState: '{{NextState.value}}'
+            position2:
+              position2:
+                container: ContaContainerStatus
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T02:32:07.947Z
+      - dataEditing2:
+          pluginTemplate:
+            id: dataEditing2
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - showFetchingIndicator: false
+                - name: dataEditing
+                - pageUuid: 23ebea4d-3a02-4db6-84ad-ba83bc392fda
+                - FieldName: Account
+                - State: '{{search.UserAccount.bankAccount.account}}'
+                - Editable: 'true'
+                - childNamespace: dataEditing2
+                - NextState: '{{NextState.value}}'
+            position2:
+              position2:
+                container: ContaContainerStatus
+                row: 1
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T02:32:44.876Z
+      - dataEditing3:
+          pluginTemplate:
+            id: dataEditing3
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - showFetchingIndicator: false
+                - name: dataEditing
+                - pageUuid: 23ebea4d-3a02-4db6-84ad-ba83bc392fda
+                - FieldName: Agency
+                - State: '{{search.UserAccount.bankAccount.agency}}'
+                - Editable: 'true'
+                - childNamespace: dataEditing3
+                - NextState: '{{NextState.value}}'
+            position2:
+              position2:
+                container: ContaContainerStatus
+                row: 2
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T02:43:06.863Z
+      - dataEditing4:
+          pluginTemplate:
+            id: dataEditing4
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - showFetchingIndicator: false
+                - name: dataEditing
+                - pageUuid: 23ebea4d-3a02-4db6-84ad-ba83bc392fda
+                - FieldName: Bank
+                - State: '{{search.UserAccount.bankAccount.bank}}'
+                - Editable: 'true'
+                - childNamespace: dataEditing4
+                - NextState: '{{NextState.value}}'
+            position2:
+              position2:
+                container: ContaContainerStatus
+                row: 3
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T02:47:26.466Z
+      - dataEditing5:
+          pluginTemplate:
+            id: dataEditing5
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - showFetchingIndicator: false
+                - name: dataEditing
+                - pageUuid: 23ebea4d-3a02-4db6-84ad-ba83bc392fda
+                - FieldName: Status
+                - State: '{{search.UserAccount.bankAccount.status}}'
+                - Editable: 'true'
+                - childNamespace: dataEditing5
+                - NextState: '{{NextState.value}}'
+            position2:
+              position2:
+                container: ContaContainerStatus
+                row: 4
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T02:48:27.478Z
+      - dataEditing6:
+          pluginTemplate:
+            id: dataEditing6
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - showFetchingIndicator: false
+                - name: dataEditing
+                - pageUuid: 23ebea4d-3a02-4db6-84ad-ba83bc392fda
+                - FieldName: Type
+                - State: |
+                    {{search.UserAccount.bankAccount.type}}
+                - Editable: 'true'
+                - childNamespace: dataEditing6
+                - NextState: '{{NextState.value}}'
+            position2:
+              position2:
+                container: ContaContainerStatus
+                row: 5
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T02:49:55.941Z
+      - container22:
+          pluginTemplate:
+            id: container22
+            type: widget
+            subtype: ContainerWidget
+            template:
+              ordered:
+                - heightType: fixed
+                - spinWhenChildrenAreFetching: true
+                - showBorder: true
+                - showDropShadow: true
+                - style:
+                    ordered: []
+                - backgroundColor: white
+                - title: ''
+                - id: container12
+                - overflowType: hidden
+                - disabled: ''
+            position2:
+              position2:
+                container: UserTablecontainerView
+                row: 12
+                col: 5
+                height: 3
+                width: 7
+                tabNum: 1
+            createdAt: 2021-04-23T02:58:01.532Z
+      - search:
+          pluginTemplate:
+            id: search
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - UserAccount: '{{UserAccount.value}}'
+                - showFetchingIndicator: false
+                - pageUuid: ceea46c4-e36c-46b4-86fe-1f6914cb7f12
+                - UserSubscriptions: '{{UserSubscriptions.value}}'
+                - name: Search
+                - User: '{{User.value}}'
+                - GroupMember: '{{GroupMember.value}}'
+                - UserGroups: '{{UserGroups.value}}'
+                - childNamespace: search
+            position2:
+              position2:
+                container: UserContainerView
+                height: 1
+                width: 12
+            createdAt: 2021-04-23T03:30:23.227Z
   createdAt: null
   version: 2.68.3
   responsiveLayoutDisabled: false
