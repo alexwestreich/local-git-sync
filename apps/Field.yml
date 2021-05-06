@@ -1,6 +1,7 @@
 version: 43.0.9
 pageUuid: e9e66bde-443f-4ff4-8cca-37962aad6348
 appTemplate:
+  isFetching: false
   plugins:
     ordered:
       - moduleContainer:
@@ -21,8 +22,6 @@ appTemplate:
                 - title: ''
                 - overflowType: hidden
                 - disabled: ''
-            style:
-              ordered: []
             position2:
               position2:
                 height: 1
@@ -65,8 +64,6 @@ appTemplate:
                 - Name: '{{Name.value}}'
                 - childNamespace: NameText
                 - hidden: '{{!Name.value}}'
-            style:
-              ordered: []
             position2:
               position2:
                 container: moduleContainer
@@ -87,8 +84,6 @@ appTemplate:
                 - childNamespace: ValuePartial
                 - hidden: '{{!Name.value}}'
                 - Url: '{{Url.value}}'
-            style:
-              ordered: []
             position2:
               position2:
                 container: moduleContainer
@@ -110,8 +105,6 @@ appTemplate:
                 - childNamespace: ValueFull
                 - hidden: '{{Name.value}}'
                 - Url: '{{Url.value}}'
-            style:
-              ordered: []
             position2:
               position2:
                 container: moduleContainer
@@ -129,19 +122,8 @@ appTemplate:
                 - value: ''
                 - defaultValue: ''
             createdAt: 2021-04-15T17:44:55.384Z
-  urlFragmentDefinitions: []
-  appStyles: ''
-  appThemeId: null
-  preloadedAppJavaScript: null
-  pageLoadValueOverrides: []
-  customDocumentTitle: ''
-  isGlobalWidget: true
-  isFetching: false
-  instrumentationEnabled: false
-  customDocumentTitleEnabled: false
-  preloadedAppJSLinks:
-    array: []
+  createdAt: null
   version: 2.66.90
   responsiveLayoutDisabled: false
-  createdAt: null
-  loadingIndicatorsDisabled: false
+  urlFragmentDefinitions: []
+  pageLoadValueOverrides: []
