@@ -268,7 +268,7 @@ appTemplate:
                 height: 1
                 width: 2
             createdAt: 2021-05-14T02:36:58.241Z
-            updatedAt: 2021-05-14T02:38:43.162Z
+            updatedAt: 2021-05-14T20:17:44.023Z
       - method:
           pluginTemplate:
             id: method
@@ -382,6 +382,7 @@ appTemplate:
                 - data: ''
                 - showDropShadow: true
                 - submitButtonFullWidth: false
+                - scroll: false
                 - submitDisabled: ''
                 - submitButtonText: Submit
                 - onSubmit: ''
@@ -730,7 +731,7 @@ appTemplate:
             createdAt: 2021-05-14T03:38:35.041Z
             updatedAt: 2021-05-14T03:45:24.549Z
   createdAt: null
-  version: 2.68.12
+  version: 2.60.4
   responsiveLayoutDisabled: false
   urlFragmentDefinitions: []
   pageLoadValueOverrides: []
