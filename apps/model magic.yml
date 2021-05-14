@@ -245,7 +245,7 @@ appTemplate:
                 - newWindow: false
                 - value: Run method
                 - exportQuery: ''
-                - action: ''
+                - action: runMethod
                 - internalUrlQuery: ''
                 - internalUrlPath: ''
                 - events:
@@ -268,7 +268,7 @@ appTemplate:
                 height: 1
                 width: 2
             createdAt: 2021-05-14T02:36:58.241Z
-            updatedAt: 2021-05-14T20:17:44.023Z
+            updatedAt: 2021-05-14T20:17:46.978Z
       - method:
           pluginTemplate:
             id: method
