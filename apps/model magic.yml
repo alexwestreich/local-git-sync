@@ -1,0 +1,736 @@
+version: 43.0.9
+pageUuid: 60c551e0-b45b-11eb-a28d-17039ad0f75a
+appTemplate:
+  isFetching: false
+  plugins:
+    ordered:
+      - runMethod:
+          pluginTemplate:
+            id: runMethod
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: >-
+                    const model = arguments[0] //This is the entire current data
+                    model of the retool app. Be careful.
+
+                    model[plugin.value][method.value](args.value); //this could
+                    be used with triggeredById to run methods or return dynamic
+                    values I.E. arguments[0]['table1'].data
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - showUpdateSetValueDynamicallyToggle: true
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - updateSetValueDynamically: false
+                - notificationDuration: ''
+            createdAt: 2021-05-14T02:23:32.773Z
+            updatedAt: 2021-05-14T04:18:35.423Z
+      - datetimepicker1:
+          pluginTemplate:
+            id: datetimepicker1
+            type: widget
+            subtype: DateTimePickerWidget
+            template:
+              ordered:
+                - minDate: ''
+                - showTime: false
+                - formattedString: null
+                - tooltipText: ''
+                - value: '{{moment()}}'
+                - maxDate: ''
+                - placeholder: ''
+                - label: datepicker1
+                - labelMaxWidth: ''
+                - labelPlacedOnLeft: false
+                - format: MM/DD/YYYY
+                - validationState: ''
+                - events: []
+                - onSelect: ''
+                - disabled: ''
+                - useLocalTimezone: true
+            position2:
+              position2:
+                container: form1
+                row: 1
+                height: 1
+                width: 6
+            createdAt: 2021-05-14T02:24:06.811Z
+            updatedAt: 2021-05-14T03:07:17.433Z
+      - text1:
+          pluginTemplate:
+            id: text1
+            type: widget
+            subtype: TextWidget2
+            template:
+              ordered:
+                - heightType: auto
+                - horizontalAlign: left
+                - hidden: false
+                - imageWidth: fit
+                - verticalAlign: center
+                - tooltipText: ''
+                - value: text1
+                - disableMarkdown: false
+                - overflowType: scroll
+            position2:
+              position2:
+                container: form1
+                height: 1
+                width: 6
+            createdAt: 2021-05-14T02:24:42.676Z
+            updatedAt: 2021-05-14T02:36:11.266Z
+      - textinput1:
+          pluginTemplate:
+            id: textinput1
+            type: widget
+            subtype: TextInputWidget
+            template:
+              ordered:
+                - validationMaxlengthValue: ''
+                - readonly: ''
+                - disabledKeyCodes: ''
+                - showNumberCommas: false
+                - validationMaxValue: ''
+                - onBlur: ''
+                - currencyType: USD
+                - leftIconName: ''
+                - initialValue: a default value
+                - validationMessage: ''
+                - tooltipText: ''
+                - value: ''
+                - suffix: ''
+                - validationMinlengthValue: ''
+                - validationLengthValue: ''
+                - placeholder: Enter value
+                - validationType: ''
+                - label: textinput1
+                - currencyMajorOnly: false
+                - formattedValue: ''
+                - allowedInputsRegex: ''
+                - labelMaxWidth: ''
+                - enableValidationType: false
+                - labelPlacedOnLeft: false
+                - onSubmit: ''
+                - validationMinValue: ''
+                - lastSubmittedAt: ''
+                - validationState:
+                    object:
+                      required: null
+                      validationType: null
+                - events: []
+                - type: text
+                - allowedRegex: ''
+                - required: false
+            position2:
+              position2:
+                container: form1
+                row: 2
+                height: 1
+                width: 6
+            createdAt: 2021-05-14T02:25:08.666Z
+            updatedAt: 2021-05-14T03:07:23.039Z
+      - plugin:
+          pluginTemplate:
+            id: plugin
+            type: widget
+            subtype: TextInputWidget
+            template:
+              ordered:
+                - validationMaxlengthValue: ''
+                - readonly: ''
+                - disabledKeyCodes: ''
+                - showNumberCommas: false
+                - validationMaxValue: ''
+                - onBlur: ''
+                - currencyType: USD
+                - leftIconName: ''
+                - initialValue: '{{["textinput1","utils",''query3''][buttongroup1.value]}}'
+                - validationMessage: ''
+                - tooltipText: ''
+                - value: ''
+                - suffix: ''
+                - validationMinlengthValue: ''
+                - validationLengthValue: ''
+                - placeholder: Enter value
+                - validationType: ''
+                - label: Plugin
+                - currencyMajorOnly: false
+                - formattedValue: ''
+                - allowedInputsRegex: ''
+                - labelMaxWidth: '45'
+                - enableValidationType: false
+                - labelPlacedOnLeft: false
+                - onSubmit: ''
+                - validationMinValue: ''
+                - lastSubmittedAt: ''
+                - validationState:
+                    object:
+                      required: ''
+                      validationType: ''
+                - type: text
+                - allowedRegex: ''
+                - required: false
+            position2:
+              position2:
+                row: 5
+                height: 1
+                width: 3
+            createdAt: 2021-05-14T02:36:54.880Z
+            updatedAt: 2021-05-14T03:40:54.381Z
+      - button2:
+          pluginTemplate:
+            id: button2
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#3c92dc'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: Run method
+                - exportQuery: ''
+                - action: ''
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - events:
+                    - ordered:
+                        - event: click
+                        - type: datasource
+                        - method: trigger
+                        - pluginId: runMethod
+                        - params:
+                            ordered: []
+                        - waitType: debounce
+                        - waitMs: '0'
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            position2:
+              position2:
+                row: 10
+                col: 1
+                height: 1
+                width: 2
+            createdAt: 2021-05-14T02:36:58.241Z
+            updatedAt: 2021-05-14T02:38:43.162Z
+      - method:
+          pluginTemplate:
+            id: method
+            type: widget
+            subtype: TextInputWidget
+            template:
+              ordered:
+                - validationMaxlengthValue: ''
+                - readonly: ''
+                - disabledKeyCodes: ''
+                - showNumberCommas: false
+                - validationMaxValue: ''
+                - onBlur: ''
+                - currencyType: USD
+                - leftIconName: ''
+                - initialValue: >-
+                    {{
+
+                    ["setValue","showNotification",'trigger'][buttongroup1.value]
+
+                    }}
+                - validationMessage: ''
+                - tooltipText: ''
+                - value: ''
+                - suffix: ''
+                - validationMinlengthValue: ''
+                - validationLengthValue: ''
+                - placeholder: Enter value
+                - validationType: ''
+                - label: Method
+                - currencyMajorOnly: false
+                - formattedValue: ''
+                - allowedInputsRegex: ''
+                - labelMaxWidth: '45'
+                - enableValidationType: false
+                - labelPlacedOnLeft: false
+                - onSubmit: ''
+                - validationMinValue: ''
+                - lastSubmittedAt: ''
+                - validationState:
+                    object:
+                      required: ''
+                      validationType: ''
+                - type: text
+                - allowedRegex: ''
+                - required: false
+            position2:
+              position2:
+                row: 6
+                height: 1
+                width: 3
+            createdAt: 2021-05-14T02:55:21.132Z
+            updatedAt: 2021-05-14T03:41:01.348Z
+      - args:
+          pluginTemplate:
+            id: args
+            type: widget
+            subtype: JSONEditorWidget
+            template:
+              ordered:
+                - value: >-
+                    {{
+
+                    ["Hello!",{"title": "hi", "description":
+                    "Magic"}][buttongroup1.value]
+
+                    }}
+                - valid: true
+            position2:
+              position2:
+                row: 8
+                height: 2
+                width: 3
+            createdAt: 2021-05-14T02:58:53.401Z
+            updatedAt: 2021-05-14T03:33:31.226Z
+      - text2:
+          pluginTemplate:
+            id: text2
+            type: widget
+            subtype: TextWidget2
+            template:
+              ordered:
+                - heightType: auto
+                - horizontalAlign: left
+                - hidden: false
+                - imageWidth: fit
+                - verticalAlign: center
+                - tooltipText: ''
+                - value: '**Arguments**'
+                - disableMarkdown: false
+                - overflowType: scroll
+            position2:
+              position2:
+                row: 7
+                height: 1
+                width: 3
+            createdAt: 2021-05-14T03:02:17.831Z
+            updatedAt: 2021-05-14T03:04:57.719Z
+      - form1:
+          pluginTemplate:
+            id: form1
+            type: widget
+            subtype: FormWidget
+            template:
+              ordered:
+                - heightType: fixed
+                - spinWhenChildrenAreFetching: true
+                - clearFormAfterSubmit: false
+                - requireValidFormForSubmit: true
+                - showBorder: true
+                - data: ''
+                - showDropShadow: true
+                - submitButtonFullWidth: false
+                - submitDisabled: ''
+                - submitButtonText: Submit
+                - onSubmit: ''
+                - requiredFormControls: []
+                - hideSubmit: false
+                - loading: ''
+                - overflowType: hidden
+                - disabled: ''
+            position2:
+              position2:
+                row: 2
+                col: 7
+                height: 8
+                width: 5
+            createdAt: 2021-05-14T03:03:49.565Z
+            updatedAt: 2021-05-14T03:03:49.565Z
+      - text3:
+          pluginTemplate:
+            id: text3
+            type: widget
+            subtype: TextWidget2
+            template:
+              ordered:
+                - heightType: auto
+                - horizontalAlign: left
+                - hidden: false
+                - imageWidth: fit
+                - verticalAlign: center
+                - tooltipText: ''
+                - value: >-
+                    **Instructions**
+
+                    Input any JS methods, for any components, queries, or
+                    utilites. (I.E. textinput1, setValue, "Hi")
+                - disableMarkdown: false
+                - overflowType: scroll
+            position2:
+              position2:
+                height: 1
+                width: 5
+            createdAt: 2021-05-14T03:09:28.177Z
+            updatedAt: 2021-05-14T03:34:19.651Z
+      - entireAppModel:
+          pluginTemplate:
+            id: entireAppModel
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: >-
+                    const model = arguments[0] //This is the entire current data
+                    model of the retool app. Be careful.
+
+                    return Object.entries(model).map(d=>JSON.stringify(d))
+                    //stringfying the values prevents the query from throwing
+                    postMessage errors
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - showUpdateSetValueDynamicallyToggle: false
+                - runWhenPageLoads: true
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - updateSetValueDynamically: true
+                - notificationDuration: ''
+            createdAt: 2021-05-14T03:11:42.422Z
+            updatedAt: 2021-05-14T03:52:42.594Z
+      - jsonexplorer1:
+          pluginTemplate:
+            id: jsonexplorer1
+            type: widget
+            subtype: JSONExplorerWidget
+            template:
+              ordered:
+                - value: >-
+                    {{Object.fromEntries((entireAppModel.data).filter(f=>
+                    f.toLowerCase().includes(search.value.toLowerCase())).map(d=>JSON.parse(d)))}}
+                - html: false
+                - expandNodes: true
+            position2:
+              position2:
+                row: 13
+                height: 9
+                width: 6
+            createdAt: 2021-05-14T03:14:25.980Z
+            updatedAt: 2021-05-14T03:45:24.309Z
+      - search:
+          pluginTemplate:
+            id: search
+            type: widget
+            subtype: TextInputWidget
+            template:
+              ordered:
+                - validationMaxlengthValue: ''
+                - readonly: ''
+                - disabledKeyCodes: ''
+                - showNumberCommas: false
+                - validationMaxValue: ''
+                - onBlur: ''
+                - currencyType: USD
+                - leftIconName: ''
+                - initialValue: JSON
+                - validationMessage: ''
+                - tooltipText: ''
+                - value: ''
+                - suffix: ''
+                - validationMinlengthValue: ''
+                - validationLengthValue: ''
+                - placeholder: Enter value
+                - validationType: ''
+                - label: Search App Model
+                - currencyMajorOnly: false
+                - formattedValue: ''
+                - allowedInputsRegex: ''
+                - labelMaxWidth: ''
+                - enableValidationType: false
+                - labelPlacedOnLeft: false
+                - onSubmit: ''
+                - validationMinValue: ''
+                - lastSubmittedAt: ''
+                - validationState:
+                    object:
+                      required: ''
+                      validationType: ''
+                - type: text
+                - allowedRegex: ''
+                - required: false
+            position2:
+              position2:
+                row: 12
+                height: 1
+                width: 4
+            createdAt: 2021-05-14T03:18:16.103Z
+            updatedAt: 2021-05-14T03:26:23.938Z
+      - buttongroup1:
+          pluginTemplate:
+            id: buttongroup1
+            type: widget
+            subtype: ButtonGroupWidget
+            template:
+              ordered:
+                - values: '[0,1,2]'
+                - onChange: ''
+                - tooltipText: ''
+                - value: '1'
+                - renderAsHtml: false
+                - label: Examples
+                - labelMaxWidth: '60'
+                - labelPlacedOnLeft: false
+                - disabled: ''
+                - labels: |-
+                    ['textinput1.setValue("Hello!")','utils.showNotification({
+                      "title": "hi",
+                      "description": "Magic"
+                    })','query3.trigger()']
+            position2:
+              position2:
+                row: 1
+                height: 2
+                width: 6
+            createdAt: 2021-05-14T03:28:29.831Z
+            updatedAt: 2021-05-14T03:46:54.902Z
+      - text4:
+          pluginTemplate:
+            id: text4
+            type: widget
+            subtype: TextWidget2
+            template:
+              ordered:
+                - heightType: auto
+                - horizontalAlign: left
+                - hidden: false
+                - imageWidth: fit
+                - verticalAlign: center
+                - tooltipText: ''
+                - value: '### Example components to target'
+                - disableMarkdown: false
+                - overflowType: scroll
+            position2:
+              position2:
+                row: 1
+                col: 7
+                height: 1
+                width: 4
+            createdAt: 2021-05-14T03:34:58.087Z
+            updatedAt: 2021-05-14T03:35:18.959Z
+      - query3:
+          pluginTemplate:
+            id: query3
+            type: datasource
+            subtype: SqlQuery
+            resourceName: ecommerce
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - databasePasswordOverride: ''
+                - queryDisabledMessage: ''
+                - successMessage: query3 run successfully!
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: select * from actors
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - warningCodes: []
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - dataArray: []
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - shouldUseLegacySql: false
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - databaseNameOverride: ''
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - showUpdateSetValueDynamicallyToggle: true
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - databaseUsernameOverride: ''
+                - shouldEnableBatchQuerying: false
+                - queryThrottleTime: '750'
+                - updateSetValueDynamically: false
+                - notificationDuration: ''
+            createdAt: 2021-05-14T03:38:04.111Z
+            updatedAt: 2021-05-14T03:41:38.250Z
+      - button3:
+          pluginTemplate:
+            id: button3
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#3c92dc'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: Refresh Model
+                - exportQuery: ''
+                - action: ''
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - events:
+                    - ordered:
+                        - event: click
+                        - type: datasource
+                        - method: trigger
+                        - pluginId: entireAppModel
+                        - params:
+                            ordered: []
+                        - waitType: debounce
+                        - waitMs: '0'
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            position2:
+              position2:
+                row: 12
+                col: 4
+                height: 1
+                width: 2
+            createdAt: 2021-05-14T03:38:35.041Z
+            updatedAt: 2021-05-14T03:45:24.549Z
+  createdAt: null
+  version: 2.68.12
+  responsiveLayoutDisabled: false
+  urlFragmentDefinitions: []
+  pageLoadValueOverrides: []
