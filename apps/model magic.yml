@@ -1,7 +1,6 @@
 version: 43.0.9
 pageUuid: 60c551e0-b45b-11eb-a28d-17039ad0f75a
 appTemplate:
-  isFetching: false
   plugins:
     ordered:
       - runMethod:
@@ -75,7 +74,6 @@ appTemplate:
                 - updateSetValueDynamically: false
                 - notificationDuration: ''
             createdAt: 2021-05-14T02:23:32.773Z
-            updatedAt: 2021-05-14T04:18:35.423Z
       - datetimepicker1:
           pluginTemplate:
             id: datetimepicker1
@@ -106,7 +104,6 @@ appTemplate:
                 height: 1
                 width: 6
             createdAt: 2021-05-14T02:24:06.811Z
-            updatedAt: 2021-05-14T03:07:17.433Z
       - text1:
           pluginTemplate:
             id: text1
@@ -129,7 +126,6 @@ appTemplate:
                 height: 1
                 width: 6
             createdAt: 2021-05-14T02:24:42.676Z
-            updatedAt: 2021-05-14T02:36:11.266Z
       - textinput1:
           pluginTemplate:
             id: textinput1
@@ -179,7 +175,6 @@ appTemplate:
                 height: 1
                 width: 6
             createdAt: 2021-05-14T02:25:08.666Z
-            updatedAt: 2021-05-14T03:07:23.039Z
       - plugin:
           pluginTemplate:
             id: plugin
@@ -227,7 +222,6 @@ appTemplate:
                 height: 1
                 width: 3
             createdAt: 2021-05-14T02:36:54.880Z
-            updatedAt: 2021-05-14T03:40:54.381Z
       - button2:
           pluginTemplate:
             id: button2
@@ -268,7 +262,6 @@ appTemplate:
                 height: 1
                 width: 2
             createdAt: 2021-05-14T02:36:58.241Z
-            updatedAt: 2021-05-14T20:17:46.978Z
       - method:
           pluginTemplate:
             id: method
@@ -321,7 +314,6 @@ appTemplate:
                 height: 1
                 width: 3
             createdAt: 2021-05-14T02:55:21.132Z
-            updatedAt: 2021-05-14T03:41:01.348Z
       - args:
           pluginTemplate:
             id: args
@@ -343,7 +335,6 @@ appTemplate:
                 height: 2
                 width: 3
             createdAt: 2021-05-14T02:58:53.401Z
-            updatedAt: 2021-05-14T03:33:31.226Z
       - text2:
           pluginTemplate:
             id: text2
@@ -366,7 +357,6 @@ appTemplate:
                 height: 1
                 width: 3
             createdAt: 2021-05-14T03:02:17.831Z
-            updatedAt: 2021-05-14T03:04:57.719Z
       - form1:
           pluginTemplate:
             id: form1
@@ -398,7 +388,6 @@ appTemplate:
                 height: 8
                 width: 5
             createdAt: 2021-05-14T03:03:49.565Z
-            updatedAt: 2021-05-14T03:03:49.565Z
       - text3:
           pluginTemplate:
             id: text3
@@ -424,7 +413,6 @@ appTemplate:
                 height: 1
                 width: 5
             createdAt: 2021-05-14T03:09:28.177Z
-            updatedAt: 2021-05-14T03:34:19.651Z
       - entireAppModel:
           pluginTemplate:
             id: entireAppModel
@@ -496,7 +484,6 @@ appTemplate:
                 - updateSetValueDynamically: true
                 - notificationDuration: ''
             createdAt: 2021-05-14T03:11:42.422Z
-            updatedAt: 2021-05-14T03:52:42.594Z
       - jsonexplorer1:
           pluginTemplate:
             id: jsonexplorer1
@@ -515,7 +502,6 @@ appTemplate:
                 height: 9
                 width: 6
             createdAt: 2021-05-14T03:14:25.980Z
-            updatedAt: 2021-05-14T03:45:24.309Z
       - search:
           pluginTemplate:
             id: search
@@ -563,7 +549,6 @@ appTemplate:
                 height: 1
                 width: 4
             createdAt: 2021-05-14T03:18:16.103Z
-            updatedAt: 2021-05-14T03:26:23.938Z
       - buttongroup1:
           pluginTemplate:
             id: buttongroup1
@@ -591,7 +576,6 @@ appTemplate:
                 height: 2
                 width: 6
             createdAt: 2021-05-14T03:28:29.831Z
-            updatedAt: 2021-05-14T03:46:54.902Z
       - text4:
           pluginTemplate:
             id: text4
@@ -615,7 +599,6 @@ appTemplate:
                 height: 1
                 width: 4
             createdAt: 2021-05-14T03:34:58.087Z
-            updatedAt: 2021-05-14T03:35:18.959Z
       - query3:
           pluginTemplate:
             id: query3
@@ -688,7 +671,6 @@ appTemplate:
                 - updateSetValueDynamically: false
                 - notificationDuration: ''
             createdAt: 2021-05-14T03:38:04.111Z
-            updatedAt: 2021-05-14T03:41:38.250Z
       - button3:
           pluginTemplate:
             id: button3
@@ -729,9 +711,19 @@ appTemplate:
                 height: 1
                 width: 2
             createdAt: 2021-05-14T03:38:35.041Z
-            updatedAt: 2021-05-14T03:45:24.549Z
-  createdAt: null
+  urlFragmentDefinitions: []
+  appStyles: ''
+  appThemeId: null
+  preloadedAppJavaScript: null
+  pageLoadValueOverrides: []
+  customDocumentTitle: ''
+  isGlobalWidget: false
+  isFetching: false
+  instrumentationEnabled: false
+  customDocumentTitleEnabled: false
+  preloadedAppJSLinks:
+    array: []
   version: 2.60.4
   responsiveLayoutDisabled: false
-  urlFragmentDefinitions: []
-  pageLoadValueOverrides: []
+  createdAt: null
+  loadingIndicatorsDisabled: false
