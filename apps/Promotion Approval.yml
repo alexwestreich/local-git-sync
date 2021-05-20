@@ -2174,12 +2174,6 @@ appTemplate:
                 container: tabbedcontainer1
                 height: 23
                 width: 12
-            mobilePosition2:
-              position2:
-                container: container1
-                row: 3
-                height: 6
-                width: 6
             createdAt: 2020-07-17T22:48:18.387Z
       - feeLogicType:
           pluginTemplate:
