@@ -1,7 +1,6 @@
 version: 43.0.9
 pageUuid: 33d83bbc-8b65-47cf-b49b-7ab411b575e1
 appTemplate:
-  isFetching: false
   plugins:
     ordered:
       - moduleContainer:
@@ -573,8 +572,19 @@ appTemplate:
                 height: 1
                 width: 12
             createdAt: 2021-04-15T17:31:42.319Z
-  createdAt: null
+  urlFragmentDefinitions: []
+  appStyles: ''
+  appThemeId: null
+  preloadedAppJavaScript: null
+  pageLoadValueOverrides: []
+  customDocumentTitle: ''
+  isGlobalWidget: false
+  isFetching: false
+  instrumentationEnabled: false
+  customDocumentTitleEnabled: false
+  preloadedAppJSLinks:
+    array: []
   version: 2.67.4
   responsiveLayoutDisabled: false
-  urlFragmentDefinitions: []
-  pageLoadValueOverrides: []
+  createdAt: null
+  loadingIndicatorsDisabled: false
