@@ -2424,6 +2424,12 @@ appTemplate:
                 row: 1
                 height: 61
                 width: 12
+            mobilePosition2:
+              position2:
+                container: form1
+                col: 2
+                height: 8
+                width: 6
             createdAt: 2020-07-18T00:45:54.684Z
       - updatePromotionForm:
           pluginTemplate:
