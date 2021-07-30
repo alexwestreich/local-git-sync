@@ -65,6 +65,81 @@ appTemplate:
                      return {{input1.value}} +'returned!'
                 - value: ''
             createdAt: 2021-07-30T02:00:01.051Z
+      - query1:
+          pluginTemplate:
+            id: query1
+            type: datasource
+            subtype: OpenAPIQuery
+            resourceName: 47c14d7d-6c28-4152-9617-fea85f5848a3
+            resourceDisplayName: openapi test
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - method: ''
+                - operationId: ''
+                - queryDisabledMessage: ''
+                - server: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - path: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: ''
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - parameters: ''
+                - data: null
+                - specPathOverride: ''
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - requestBodyDynamicStates: ''
+                - triggersOnFailure: []
+                - requestBody: ''
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - specBasePath: ''
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - serverVariables: ''
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - parameterDynamicStates: ''
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-07-30T02:04:47.938Z
   urlFragmentDefinitions: []
   appStyles: ''
   appThemeId: null
