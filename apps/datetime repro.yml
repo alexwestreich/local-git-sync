@@ -378,6 +378,37 @@ appTemplate:
                 height: 1
                 width: 2
             createdAt: 2021-07-30T03:01:40.104Z
+      - datetimepicker4:
+          pluginTemplate:
+            id: datetimepicker4
+            type: widget
+            subtype: DateTimePickerWidget
+            template:
+              ordered:
+                - minDate: ''
+                - showTime: false
+                - formattedString: null
+                - tooltipText: ''
+                - value: null
+                - maxDate: ''
+                - placeholder: ''
+                - label: ''
+                - labelMaxWidth: ''
+                - labelPlacedOnLeft: false
+                - format: MM/DD/YYYY
+                - validationState: ''
+                - onSelect: ''
+                - disabled: ''
+                - useLocalTimezone: true
+            style:
+              ordered: []
+            position2:
+              position2:
+                row: 6
+                col: 6
+                height: 1
+                width: 2
+            createdAt: 2021-07-30T03:03:13.369Z
   tests:
     array: []
   urlFragmentDefinitions: []
