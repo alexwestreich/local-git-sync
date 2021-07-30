@@ -318,7 +318,7 @@ appTemplate:
                 - validationLengthValue: ''
                 - placeholder: Enter value
                 - validationType: ''
-                - label: '{{tex}}'
+                - label: '{{testmodule1.output1}}'
                 - currencyMajorOnly: false
                 - formattedValue: ''
                 - allowedInputsRegex: ''
