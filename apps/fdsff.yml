@@ -54,11 +54,13 @@ appTemplate:
                 - queryTriggerDelay: '0'
                 - watchedParams: []
                 - enableErrorTransformer: false
+                - showLatestVersionUpdatedWarning: false
                 - paginationDataField: ''
                 - timestamp: 0
                 - importedQueryDefaults:
                     ordered: []
                 - enableTransformer: false
+                - showUpdateSetValueDynamicallyToggle: true
                 - runWhenPageLoads: false
                 - transformer: >-
                     // type your code here
@@ -74,6 +76,7 @@ appTemplate:
                 - enableCaching: false
                 - bodyType: json
                 - queryThrottleTime: '750'
+                - updateSetValueDynamically: false
                 - notificationDuration: ''
             createdAt: 2021-07-30T03:12:24.186Z
       - datetimepicker1:
@@ -138,6 +141,8 @@ appTemplate:
                 height: 1
                 width: 2
             createdAt: 2021-07-30T03:42:40.224Z
+  tests:
+    array: []
   urlFragmentDefinitions: []
   appStyles: ''
   appThemeId: null
@@ -150,7 +155,9 @@ appTemplate:
   customDocumentTitleEnabled: false
   preloadedAppJSLinks:
     array: []
-  version: 2.66.91
+  version: 2.69.18
   responsiveLayoutDisabled: false
   createdAt: null
+  customShortcuts:
+    array: []
   loadingIndicatorsDisabled: false
