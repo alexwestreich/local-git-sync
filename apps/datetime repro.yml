@@ -69,6 +69,7 @@ appTemplate:
                 - requireConfirmation: false
                 - queryFailureConditions: ''
                 - enableCaching: false
+                - allowedGroups: []
                 - databaseUsernameOverride: ''
                 - shouldEnableBatchQuerying: false
                 - queryThrottleTime: '750'
@@ -450,11 +451,13 @@ appTemplate:
   customDocumentTitle: ''
   isGlobalWidget: false
   isFetching: false
+  testEntities:
+    array: []
   instrumentationEnabled: false
   customDocumentTitleEnabled: false
   preloadedAppJSLinks:
     array: []
-  version: 2.69.18
+  version: 2.70.20
   responsiveLayoutDisabled: false
   createdAt: null
   customShortcuts:
