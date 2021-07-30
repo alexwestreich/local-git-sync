@@ -167,8 +167,8 @@ appTemplate:
               ordered: []
             position2:
               position2:
-                row: 7
-                col: 2
+                row: 5
+                col: 4
                 height: 1
                 width: 2
             createdAt: 2021-07-30T03:54:59.174Z
