@@ -472,8 +472,6 @@ appTemplate:
                 height: 1
                 width: 2
             createdAt: 2021-07-30T03:09:43.642Z
-  tests:
-    array: []
   urlFragmentDefinitions: []
   appStyles: ''
   appThemeId: null
@@ -482,15 +480,11 @@ appTemplate:
   customDocumentTitle: ''
   isGlobalWidget: false
   isFetching: false
-  testEntities:
-    array: []
   instrumentationEnabled: false
   customDocumentTitleEnabled: false
   preloadedAppJSLinks:
     array: []
-  version: 2.70.20
+  version: 2.66.91
   responsiveLayoutDisabled: false
   createdAt: null
-  customShortcuts:
-    array: []
   loadingIndicatorsDisabled: false
