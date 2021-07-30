@@ -42,6 +42,15 @@ appTemplate:
                 - value: ''
                 - defaultValue: ''
             createdAt: 2021-07-30T01:59:53.814Z
+      - output1:
+          pluginTemplate:
+            id: output1
+            type: globalwidgetoutput
+            subtype: GlobalWidgetOutput
+            template:
+              ordered:
+                - value: ''
+            createdAt: 2021-07-30T01:59:57.704Z
   urlFragmentDefinitions: []
   appStyles: ''
   appThemeId: null
