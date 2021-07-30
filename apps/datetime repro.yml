@@ -84,6 +84,8 @@ appTemplate:
                 - formattedString: null
                 - tooltipText: ''
                 - value: 3/22/2021
+                - style:
+                    ordered: []
                 - maxDate: ''
                 - placeholder: ''
                 - label: ''
@@ -116,6 +118,8 @@ appTemplate:
                 - formattedString: null
                 - startValue: 3/22/2021
                 - tooltipText: ''
+                - style:
+                    ordered: []
                 - startPlaceholder: ''
                 - endFormattedString: null
                 - maxDate: ''
@@ -150,6 +154,8 @@ appTemplate:
                 - formattedString: null
                 - tooltipText: ''
                 - value: null
+                - style:
+                    ordered: []
                 - maxDate: ''
                 - placeholder: ''
                 - label: ''
@@ -182,6 +188,8 @@ appTemplate:
                 - formattedString: null
                 - startValue: null
                 - tooltipText: ''
+                - style:
+                    ordered: []
                 - startPlaceholder: ''
                 - endFormattedString: null
                 - maxDate: ''
@@ -218,6 +226,8 @@ appTemplate:
                 - tooltipText: ''
                 - value: |
                     Can navigate months in the popover when the value is null
+                - style:
+                    ordered: []
                 - renderAsHtml: false
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
@@ -247,6 +257,8 @@ appTemplate:
                 - value: >
                     Cannot navigate to select a date in a different month once a
                     value is selected
+                - style:
+                    ordered: []
                 - renderAsHtml: false
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
@@ -262,6 +274,7 @@ appTemplate:
                 width: 3
             createdAt: 2021-03-18T23:16:46.811Z
   urlFragmentDefinitions: []
+  appStyles: ''
   appThemeId: null
   preloadedAppJavaScript: null
   pageLoadValueOverrides: []
@@ -272,7 +285,7 @@ appTemplate:
   customDocumentTitleEnabled: false
   preloadedAppJSLinks:
     array: []
-  version: 2.66.55
+  version: 2.66.91
   responsiveLayoutDisabled: false
   createdAt: null
   loadingIndicatorsDisabled: false
