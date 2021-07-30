@@ -51,6 +51,20 @@ appTemplate:
               ordered:
                 - value: ''
             createdAt: 2021-07-30T01:59:57.704Z
+      - transformer1:
+          pluginTemplate:
+            id: transformer1
+            type: function
+            subtype: Function
+            template:
+              ordered:
+                - funcBody: >-
+                    // Tip: assign your external references to variables instead
+                    of chaining off the curly brackets. 
+
+                     return 5
+                - value: ''
+            createdAt: 2021-07-30T02:00:01.051Z
   urlFragmentDefinitions: []
   appStyles: ''
   appThemeId: null
