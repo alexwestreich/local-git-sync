@@ -69,42 +69,39 @@ appTemplate:
           pluginTemplate:
             id: query1
             type: datasource
-            subtype: OpenAPIQuery
-            resourceName: 47c14d7d-6c28-4152-9617-fea85f5848a3
-            resourceDisplayName: openapi test
+            subtype: RESTQuery
+            resourceName: REST-WithoutResource
             template:
               ordered:
                 - queryRefreshTime: ''
-                - method: ''
-                - operationId: ''
+                - paginationLimit: ''
+                - body: '[{"key":"input","value":"{{transformer1.value}}"}]'
                 - queryDisabledMessage: ''
-                - server: ''
                 - successMessage: ''
                 - queryDisabled: ''
-                - path: ''
                 - playgroundQuerySaveId: 0
                 - resourceNameOverride: ''
                 - runWhenModelUpdates: false
+                - paginationPaginationField: ''
+                - headers: ''
                 - showFailureToaster: true
-                - query: ''
+                - paginationEnabled: false
+                - query: 'https://postman-echo.com/post'
                 - playgroundQueryUuid: ''
                 - playgroundQueryId: null
                 - privateParams: []
                 - triggersOnSuccess: []
                 - runWhenPageLoadsDelay: ''
-                - parameters: ''
                 - data: null
-                - specPathOverride: ''
                 - importedQueryInputs:
                     ordered: []
                 - showSuccessConfetti: false
                 - isImported: false
                 - showSuccessToaster: true
                 - cacheKeyTtl: ''
+                - cookies: ''
                 - metadata: null
-                - requestBodyDynamicStates: ''
                 - triggersOnFailure: []
-                - requestBody: ''
                 - errorTransformer: >-
                     // The variable 'data' allows you to reference the request's
                     data in the transformer. 
@@ -112,19 +109,17 @@ appTemplate:
                     // example: return data.find(element => element.isError)
 
                     return data.error
-                - specBasePath: ''
                 - confirmationMessage: null
                 - isFetching: false
                 - rawData: null
                 - queryTriggerDelay: '0'
                 - watchedParams: []
-                - serverVariables: ''
                 - enableErrorTransformer: false
+                - paginationDataField: ''
                 - timestamp: 0
                 - importedQueryDefaults:
                     ordered: []
                 - enableTransformer: false
-                - parameterDynamicStates: ''
                 - runWhenPageLoads: false
                 - transformer: >-
                     // type your code here
@@ -135,8 +130,10 @@ appTemplate:
                     return data
                 - queryTimeout: '10000'
                 - requireConfirmation: false
+                - type: POST
                 - queryFailureConditions: ''
                 - enableCaching: false
+                - bodyType: json
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2021-07-30T02:04:47.938Z
