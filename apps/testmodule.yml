@@ -49,7 +49,7 @@ appTemplate:
             subtype: GlobalWidgetOutput
             template:
               ordered:
-                - value: '{{query1.data.}}'
+                - value: '{{query1.data.data.input}}'
             createdAt: 2021-07-30T01:59:57.704Z
       - transformer1:
           pluginTemplate:
