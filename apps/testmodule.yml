@@ -15,10 +15,14 @@ appTemplate:
                 - showBorder: true
                 - showDropShadow: true
                 - isGlobalWidgetContainer: true
+                - style:
+                    ordered: []
                 - backgroundColor: white
                 - title: ''
                 - overflowType: hidden
                 - disabled: ''
+            style:
+              ordered: []
             position2:
               position2:
                 height: 12
@@ -27,6 +31,7 @@ appTemplate:
               position2:
                 height: 12
                 width: 12
+            createdAt: 2021-07-30T01:59:50.055Z
   urlFragmentDefinitions: []
   appStyles: ''
   appThemeId: null
@@ -39,7 +44,7 @@ appTemplate:
   customDocumentTitleEnabled: false
   preloadedAppJSLinks:
     array: []
-  version: null
+  version: 2.66.91
   responsiveLayoutDisabled: false
   createdAt: null
   loadingIndicatorsDisabled: false
