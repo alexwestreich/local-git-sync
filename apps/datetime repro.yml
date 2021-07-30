@@ -283,7 +283,7 @@ appTemplate:
                 - showFetchingIndicator: false
                 - name: testmodule
                 - pageUuid: d2b36886-f0d9-11eb-aeb0-73ceb53379cd
-                - input1: ''
+                - input1: '{{textinput1.value}}'
                 - childNamespace: testmodule1
                 - output1: '{{output1.value}}'
             style:
