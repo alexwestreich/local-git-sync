@@ -339,9 +339,9 @@ appTemplate:
               ordered: []
             position2:
               position2:
-                col: 7
+                col: 9
                 height: 1
-                width: 4
+                width: 2
             createdAt: 2021-07-30T02:00:45.397Z
   urlFragmentDefinitions: []
   appStyles: ''
