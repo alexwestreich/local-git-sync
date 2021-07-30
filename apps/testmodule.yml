@@ -81,7 +81,7 @@ appTemplate:
                 - queryDisabled: ''
                 - playgroundQuerySaveId: 0
                 - resourceNameOverride: ''
-                - runWhenModelUpdates: false
+                - runWhenModelUpdates: true
                 - paginationPaginationField: ''
                 - headers: ''
                 - showFailureToaster: true
