@@ -49,7 +49,7 @@ appTemplate:
             subtype: GlobalWidgetOutput
             template:
               ordered:
-                - value: ''
+                - value: '{{transformer1.value}}'
             createdAt: 2021-07-30T01:59:57.704Z
       - transformer1:
           pluginTemplate:
