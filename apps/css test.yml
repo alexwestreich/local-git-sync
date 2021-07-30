@@ -51,10 +51,12 @@ appTemplate:
                 - queryTriggerDelay: '0'
                 - watchedParams: []
                 - enableErrorTransformer: false
+                - showLatestVersionUpdatedWarning: false
                 - timestamp: 0
                 - importedQueryDefaults:
                     ordered: []
                 - enableTransformer: false
+                - showUpdateSetValueDynamicallyToggle: true
                 - runWhenPageLoads: false
                 - transformer: >-
                     // type your code here
@@ -70,6 +72,7 @@ appTemplate:
                 - databaseUsernameOverride: ''
                 - shouldEnableBatchQuerying: false
                 - queryThrottleTime: '750'
+                - updateSetValueDynamically: false
                 - notificationDuration: ''
             createdAt: 2021-03-30T01:21:16.043Z
       - dropdown1:
@@ -90,6 +93,8 @@ appTemplate:
                 - displayValue: ''
                 - tooltipText: ''
                 - value: ''
+                - style:
+                    ordered: []
                 - maxResults: 50
                 - placeholder: Select a value
                 - label: Numbers
@@ -131,6 +136,8 @@ appTemplate:
                         color: red;
                         font-size: 30px;
                       }
+                - style:
+                    ordered: []
                 - renderAsHtml: true
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
@@ -158,8 +165,10 @@ appTemplate:
                 - exportTemplate: null
                 - url: ''
                 - newWindow: false
+                - style:
+                    ordered: []
                 - exportQuery: ''
-                - imageUrl: 'https://placekitten.com/g/200/300'
+                - imageUrl: https://placekitten.com/g/200/300
                 - action: ''
                 - internalUrlQuery: ''
                 - internalUrlPath: ''
@@ -196,6 +205,8 @@ appTemplate:
                       }
                     </style>
 
+                - style:
+                    ordered: []
                 - renderAsHtml: true
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
@@ -229,6 +240,8 @@ appTemplate:
                         color: red;
                         font-size: 30px;
                       }
+                - style:
+                    ordered: []
                 - renderAsHtml: true
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
@@ -260,6 +273,8 @@ appTemplate:
                 - displayValue: ''
                 - tooltipText: ''
                 - value: ''
+                - style:
+                    ordered: []
                 - maxResults: 50
                 - placeholder: Select a value
                 - label: Numbers
@@ -283,6 +298,7 @@ appTemplate:
                 width: 4
             createdAt: 2021-03-30T17:03:27.709Z
   urlFragmentDefinitions: []
+  appStyles: ''
   appThemeId: -1
   preloadedAppJavaScript: null
   pageLoadValueOverrides: []
@@ -293,7 +309,9 @@ appTemplate:
   customDocumentTitleEnabled: false
   preloadedAppJSLinks:
     array: []
-  version: 2.66.67
+  version: 2.68.24
   responsiveLayoutDisabled: false
   createdAt: null
+  customShortcuts:
+    array: []
   loadingIndicatorsDisabled: false
