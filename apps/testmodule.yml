@@ -32,6 +32,16 @@ appTemplate:
                 height: 12
                 width: 12
             createdAt: 2021-07-30T01:59:50.055Z
+      - input1:
+          pluginTemplate:
+            id: input1
+            type: globalwidgetprop
+            subtype: GlobalWidgetProp
+            template:
+              ordered:
+                - value: ''
+                - defaultValue: ''
+            createdAt: 2021-07-30T01:59:53.814Z
   urlFragmentDefinitions: []
   appStyles: ''
   appThemeId: null
