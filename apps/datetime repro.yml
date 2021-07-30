@@ -483,7 +483,7 @@ appTemplate:
                 - showTime: false
                 - formattedString: null
                 - tooltipText: ''
-                - value: null
+                - value: ''
                 - maxDate: ''
                 - placeholder: ''
                 - label: ''
