@@ -215,7 +215,7 @@ appTemplate:
               ordered: []
             position2:
               position2:
-                row: 8
+                row: 3
                 col: 4
                 height: 1
                 width: 3
