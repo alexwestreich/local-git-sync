@@ -294,6 +294,55 @@ appTemplate:
                 height: 1
                 width: 1
             createdAt: 2021-07-30T02:00:41.534Z
+      - textinput1:
+          pluginTemplate:
+            id: textinput1
+            type: widget
+            subtype: TextInputWidget
+            template:
+              ordered:
+                - validationMaxlengthValue: ''
+                - readonly: ''
+                - disabledKeyCodes: ''
+                - showNumberCommas: false
+                - validationMaxValue: ''
+                - onBlur: ''
+                - currencyType: USD
+                - leftIconName: ''
+                - initialValue: ''
+                - validationMessage: ''
+                - tooltipText: ''
+                - value: ''
+                - suffix: ''
+                - validationMinlengthValue: ''
+                - validationLengthValue: ''
+                - placeholder: Enter value
+                - validationType: ''
+                - label: Name
+                - currencyMajorOnly: false
+                - formattedValue: ''
+                - allowedInputsRegex: ''
+                - labelMaxWidth: ''
+                - enableValidationType: false
+                - labelPlacedOnLeft: false
+                - onSubmit: ''
+                - validationMinValue: ''
+                - lastSubmittedAt: ''
+                - validationState:
+                    object:
+                      required: ''
+                      validationType: ''
+                - type: text
+                - allowedRegex: ''
+                - required: false
+            style:
+              ordered: []
+            position2:
+              position2:
+                col: 7
+                height: 1
+                width: 4
+            createdAt: 2021-07-30T02:00:45.397Z
   urlFragmentDefinitions: []
   appStyles: ''
   appThemeId: null
