@@ -273,6 +273,27 @@ appTemplate:
                 height: 1
                 width: 3
             createdAt: 2021-03-18T23:16:46.811Z
+      - testmodule1:
+          pluginTemplate:
+            id: testmodule1
+            type: widget
+            subtype: GlobalWidget
+            template:
+              ordered:
+                - showFetchingIndicator: false
+                - name: testmodule
+                - pageUuid: d2b36886-f0d9-11eb-aeb0-73ceb53379cd
+                - input1: ''
+                - childNamespace: testmodule1
+                - output1: '{{output1.value}}'
+            style:
+              ordered: []
+            position2:
+              position2:
+                col: 11
+                height: 1
+                width: 1
+            createdAt: 2021-07-30T02:00:41.534Z
   urlFragmentDefinitions: []
   appStyles: ''
   appThemeId: null
