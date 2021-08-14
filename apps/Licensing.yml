@@ -222,6 +222,8 @@ appTemplate:
                 - resourceNameOverride: ''
                 - runWhenModelUpdates: false
                 - showFailureToaster: true
+                
+                
                 - query: ''
                 - playgroundQueryUuid: ''
                 - playgroundQueryId: 0
@@ -250,7 +252,9 @@ appTemplate:
                 - confirmationMessage: Are you sure you want to create this license key?
                 - isFetching: false
                 - changeset: >-
-                    [{"key":"license_key","value":"{{textinput2.value}}"},{"key":"expires_at","value":"{{datetimepicker1.value}}"},{"key":"billing_type","value":"{{select1.value}}"},{"key":"authorized_number_of_users","value":"0"},{"key":"domain","value":"{{textinput3.value}}"},{"key":"company_id","value":"{{table1.selectedRow.data.id}}"},{"key":"created_at","value":"now()"},{"key":"updated_at","value":"now()"}]
+                    [{"key":"license_key","value":"{{textinput2.value}}"},{"key":"expires_at","value":"{{datetimepicker1.value}}"},{"key":"billing_type","value":"{{select1.value}}"},{"key":"authorized_number_of_users","value":"0"},{"key":"domain","value":"{{textinput3.value}}"},{"key":"company_id","value":"{{
+                    
+                    .selectedRow.data.id}}"},{"key":"created_at","value":"now()"},{"key":"updated_at","value":"now()"}]
                 - rawData: null
                 - queryTriggerDelay: '0'
                 - watchedParams: []
@@ -3387,7 +3391,7 @@ appTemplate:
                       - id: ''
                       - Description: green
                       - company_id: ''
-                      - expires_at: '{{moment(self) > moment() ? "forestgreen" : ''pink''}}'
+                      - expires_at: '{{moment('self') > moment() ? "forestgreen" : ''pink''}}'
                       - billing_type: ''
                       - stripe_plan_id: ''
                 - columnFrozenAlignments:
@@ -4655,14 +4659,12 @@ appTemplate:
                       - name: ''
                       - created_at: ''
                       - updated_at: ''
-                      - expires_at: >-
-                          {{moment(self) < moment().add(7,'days') ? "pink" :
-                          moment(self) < moment().add(28,'days') ? "yellow" :
-                          ""}}
+                      - expires_at:
+                          '{{moment('self') < moment().add(7,'days') ? "pink" :
+                          moment('self') < moment().add(28,'days') ? "yellow" :
+                          ""}}'
                       - domain: ''
-                      - billing_type: >-
-                          {{self == 'invoice' || self == 'stripe' ? 'green' :
-                          ''}}
+                      - billing_type:'{{'self' == 'invoice' || 'self' == 'stripe' ? 'green' :''}}'
                 - columnFrozenAlignments:
                     ordered: []
                 - allowMultiRowSelect: false
@@ -4917,9 +4919,8 @@ appTemplate:
                       - updated_at: ''
                       - expires_at: ''
                       - domain: ''
-                      - billing_type: >-
-                          {{self == 'invoice' || self == 'stripe' ? 'green' :
-                          ''}}
+                      - billing_type: '{{'self' == 'invoice' || 'self' == 'stripe' ? 'green' :
+                          ''}}'
                 - columnFrozenAlignments:
                     ordered: []
                 - allowMultiRowSelect: false
