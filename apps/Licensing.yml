@@ -4659,12 +4659,14 @@ appTemplate:
                       - name: ''
                       - created_at: ''
                       - updated_at: ''
-                      - expires_at:
-                          '{{moment('self') < moment().add(7,'days') ? "pink" :
+                      - expires_at: >-
+                          {{moment('self') < moment().add(7,'days') ? "pink" :
                           moment('self') < moment().add(28,'days') ? "yellow" :
-                          ""}}'
+                          ""}}
                       - domain: ''
-                      - billing_type:'{{'self' == 'invoice' || 'self' == 'stripe' ? 'green' :''}}'
+                      - billing_type: >-
+                          {{'self' == 'invoice' || 'self' == 'stripe' ? 'green' :
+                          ''}}
                 - columnFrozenAlignments:
                     ordered: []
                 - allowMultiRowSelect: false
@@ -4919,8 +4921,9 @@ appTemplate:
                       - updated_at: ''
                       - expires_at: ''
                       - domain: ''
-                      - billing_type: '{{'self' == 'invoice' || 'self' == 'stripe' ? 'green' :
-                          ''}}'
+                      - billing_type: >-
+                          {{'self' == 'invoice' || 'self' == 'stripe' ? 'green' :
+                          ''}}
                 - columnFrozenAlignments:
                     ordered: []
                 - allowMultiRowSelect: false
