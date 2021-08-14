@@ -6205,7 +6205,7 @@ appTemplate:
                 - columnMappersRenderAsHTML:
                     ordered: []
                 - showRefreshButton: true
-                - pageSize: 4
+                - pageSize: 5
                 - useDynamicColumnSettings: false
                 - style:
                     ordered: []
@@ -6866,6 +6866,7 @@ appTemplate:
             template:
               ordered:
                 - valueToCopy: ''
+                - color: '#3c92dc'
                 - internalUrlHashParams: ''
                 - exportFileType: csv
                 - buttonType: action
@@ -6962,7 +6963,7 @@ appTemplate:
   customDocumentTitleEnabled: false
   preloadedAppJSLinks:
     array: []
-  version: 2.74.4
+  version: 2.68.24
   responsiveLayoutDisabled: false
   createdAt: null
   customShortcuts:
